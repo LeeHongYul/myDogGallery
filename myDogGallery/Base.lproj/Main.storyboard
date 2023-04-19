@@ -132,7 +132,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="knM-29-pl9">
                             <color key="tintColor" systemColor="secondaryLabelColor"/>
                             <connections>
-                                <segue destination="hk1-SX-jbI" kind="presentation" id="I58-Au-nqh"/>
+                                <segue destination="hk1-SX-jbI" kind="presentation" modalPresentationStyle="fullScreen" id="I58-Au-nqh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -336,24 +336,24 @@
             <objects>
                 <viewController id="9Fr-Df-4rX" customClass="NewMemoViewController" customModule="myDogGallery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RBU-Tj-27B">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="제목을 입력해주세요" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="onO-9Z-N3M">
-                                <rect key="frame" x="16" y="56" width="361" height="34"/>
+                                <rect key="frame" x="16" y="103" width="361" height="34"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="IMM-kD-d7N">
-                                <rect key="frame" x="16" y="110" width="361" height="401"/>
+                                <rect key="frame" x="16" y="157" width="361" height="389"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9uq-Zs-tvC">
-                                <rect key="frame" x="16" y="531" width="361" height="136"/>
+                                <rect key="frame" x="16" y="566" width="361" height="136"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="0Iu-CM-uFL">
                                         <rect key="frame" x="0.0" y="0.0" width="361" height="32"/>
@@ -723,7 +723,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hk1-SX-jbI" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="loM-fd-Gac">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -784,7 +784,7 @@
     </designables>
     <inferredMetricsTieBreakers>
         <segue reference="wB4-4P-7vD"/>
-        <segue reference="SFf-tE-G66"/>
+        <segue reference="I58-Au-nqh"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="8595649" width="1752.5" height="3000"/>
