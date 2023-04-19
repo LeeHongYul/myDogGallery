@@ -15,6 +15,7 @@
 		5DC7F7E529EF836C005F9E22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DC7F7E429EF836C005F9E22 /* Assets.xcassets */; };
 		5DC7F7E829EF836C005F9E22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DC7F7E629EF836C005F9E22 /* LaunchScreen.storyboard */; };
 		5DC7F7F029EF89D0005F9E22 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC7F7EF29EF89D0005F9E22 /* WeatherData.swift */; };
+		5DC7F7F429EF9816005F9E22 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC7F7F329EF9816005F9E22 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		5DC7F7E729EF836C005F9E22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5DC7F7E929EF836C005F9E22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DC7F7EF29EF89D0005F9E22 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
+		5DC7F7F329EF9816005F9E22 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 		5DC7F7F129EF8A1A005F9E22 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				5DC7F7F329EF9816005F9E22 /* CoreDataManager.swift */,
 				5DC7F7EF29EF89D0005F9E22 /* WeatherData.swift */,
 			);
 			path = Data;
@@ -160,6 +163,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DC7F7F429EF9816005F9E22 /* CoreDataManager.swift in Sources */,
 				5DC7F7DD29EF836C005F9E22 /* MainViewController.swift in Sources */,
 				5DC7F7F029EF89D0005F9E22 /* WeatherData.swift in Sources */,
 				5DC7F7E329EF836C005F9E22 /* myDogGallery.xcdatamodeld in Sources */,

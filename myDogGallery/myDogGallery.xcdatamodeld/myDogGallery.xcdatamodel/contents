@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22D68" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Memo" representedClassName="MemoEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="context" attributeType="String"/>
+        <attribute name="pooCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="timeStamp" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" attributeType="String"/>
+        <attribute name="walkCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="walkTime" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="Profile" representedClassName="ProfileEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="age" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="birthDay" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="detail" optional="YES" attributeType="String"/>
+        <attribute name="gender" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary"/>
+        <attribute name="name" attributeType="String"/>
+    </entity>
 </model>
