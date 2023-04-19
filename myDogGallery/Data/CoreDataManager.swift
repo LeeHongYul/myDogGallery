@@ -11,7 +11,9 @@ import CoreData
 class CoreDataManager {
     
     static let shared = CoreDataManager()
+    
     private init() {
+        
     }
     
     var mainContext: NSManagedObjectContext {
@@ -47,7 +49,9 @@ class CoreDataManager {
     }
     
     func addNewMemo(memoTitle: String?, memoContext: String?, timeStamp: Date?, walkCount: Int?, walkTime: Int?, pooCount: Int?) {
+        
         let newMemo = MemoEntity(context:  mainContext)
+        
         newMemo.title = memoTitle
         newMemo.context = memoContext
         newMemo.timeStamp = timeStamp
@@ -60,6 +64,7 @@ class CoreDataManager {
     }
     
     func updateMemo(memo: MemoEntity, memoTitle: String?, memoContext: String?, walkCount: Int?, walkTime: Int?, pooCount: Int?) {
+        
         memo.title = memoTitle
         memo.context = memoContext
         memo.walkCount = Int16(walkCount!)
@@ -76,13 +81,13 @@ class CoreDataManager {
     func addNewProfile(name: String, age: Int, gender: Bool, birthDay: Date, detail: String?, image: Data) {
         
         let newProfile = ProfileEntity(context: mainContext)
+        
         newProfile.name = name
         newProfile.age = Int16(age)
         newProfile.gender = gender
         newProfile.birthDay = birthDay
         newProfile.detail  = detail
         newProfile.image = image
-        
         
         profileList.insert(newProfile, at: 0)
         
@@ -114,22 +119,22 @@ class CoreDataManager {
         mainContext.delete(profile)
         saveContext()
     }
-
+    
     // MARK: - Core Data stack
-
+    
     lazy var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation
          creates and returns a container, having loaded the store for the
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
-        */
+         */
         let container = NSPersistentContainer(name: "myDogGallery")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                 
+                
                 /*
                  Typical reasons for an error here include:
                  * The parent directory does not exist, cannot be created, or disallows writing.
@@ -143,9 +148,9 @@ class CoreDataManager {
         })
         return container
     }()
-
+    
     // MARK: - Core Data Saving support
-
+    
     func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {

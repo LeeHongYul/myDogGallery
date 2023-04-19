@@ -13,18 +13,14 @@ extension Notification.Name {
 }
 
 class NewMemoViewController: UIViewController {
-
+    
     var editTarget: MemoEntity?
     
     @IBOutlet var memoTitleTextField: UITextField!
-    
     @IBOutlet var memoContextTextView: UITextView!
-    
-    
     @IBOutlet var walkCountLabel: UILabel!
     @IBOutlet var walkTimeLabel: UILabel!
     @IBOutlet var pooLabel: UILabel!
-    
     
     @IBAction func walkCountStepper(_ sender: UIStepper) {
         let target = sender.value
@@ -39,10 +35,7 @@ class NewMemoViewController: UIViewController {
     @IBAction func pooStepper(_ sender: UIStepper) {
         let target = sender.value
         pooLabel.text = "\(Int(target))"
-        
     }
-    
-    
     
     @IBAction func close(_ sender: Any) {
         dismiss(animated: true)
@@ -63,13 +56,13 @@ class NewMemoViewController: UIViewController {
         let memoContext = memoContextTextView.text
         
         let timeStamp = Date()
-    
+        
         guard let walkCountStr = walkCountLabel.text, let walkCount = Int(walkCountStr) else { return }
         guard let walkTimeStr = walkTimeLabel.text, let walkTime = Int(walkTimeStr) else { return }
         guard let pooCountStr = pooLabel.text, let pooCount = Int(pooCountStr) else { return }
         
         CoreDataManager.shared.saveContext()
-
+        
         if let target = editTarget {
             CoreDataManager.shared.updateMemo(memo: target, memoTitle: memoTitle, memoContext: memoContext, walkCount: walkCount, walkTime: walkTime, pooCount: pooCount)
             NotificationCenter.default.post(name: .memoDidChange, object: nil)
@@ -78,10 +71,8 @@ class NewMemoViewController: UIViewController {
             NotificationCenter.default.post(name: .newMemoDidInsert, object: nil)
         }
         
-        
         dismiss(animated: true)
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,8 +89,5 @@ class NewMemoViewController: UIViewController {
         } else {
             print("에러")
         }
-    
     }
-    
-
 }

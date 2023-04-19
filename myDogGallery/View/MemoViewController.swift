@@ -25,7 +25,7 @@ class MemoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         NotificationCenter.default.addObserver(forName: .memoDidChange, object: nil, queue: .main) { noti in
             CoreDataManager.shared.fetchMemo()
             self.memoTableView.reloadData()
@@ -55,6 +55,21 @@ extension MemoViewController: UITableViewDataSource {
         
         return cell
     }
+}
+
+extension MemoViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        true
+    }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let target = CoreDataManager.shared.memoList[indexPath.row]
+            CoreDataManager.shared.deleteMemo(memo: target)
+            
+            CoreDataManager.shared.fetchMemo()
+            memoTableView.reloadData()
+        }
+    }
 }

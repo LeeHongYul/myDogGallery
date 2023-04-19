@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		5D0DEAA529EF9E4C00FFF700 /* MemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0DEAA429EF9E4C00FFF700 /* MemoViewController.swift */; };
 		5D0DEAA729EFA19400FFF700 /* NewMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0DEAA629EFA19400FFF700 /* NewMemoViewController.swift */; };
+		5D56118329EFB00100A6EA56 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D56118229EFB00100A6EA56 /* ProfileTableViewController.swift */; };
+		5D56118529EFB02100A6EA56 /* ProfileEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D56118429EFB02100A6EA56 /* ProfileEditTableViewController.swift */; };
+		5D56118729EFB0E700A6EA56 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D56118629EFB0E700A6EA56 /* ProfileTableViewCell.swift */; };
 		5DC7F7D929EF836C005F9E22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC7F7D829EF836C005F9E22 /* AppDelegate.swift */; };
 		5DC7F7DB29EF836C005F9E22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC7F7DA29EF836C005F9E22 /* SceneDelegate.swift */; };
 		5DC7F7DD29EF836C005F9E22 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC7F7DC29EF836C005F9E22 /* MainViewController.swift */; };
@@ -23,6 +26,9 @@
 /* Begin PBXFileReference section */
 		5D0DEAA429EF9E4C00FFF700 /* MemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewController.swift; sourceTree = "<group>"; };
 		5D0DEAA629EFA19400FFF700 /* NewMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMemoViewController.swift; sourceTree = "<group>"; };
+		5D56118229EFB00100A6EA56 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		5D56118429EFB02100A6EA56 /* ProfileEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditTableViewController.swift; sourceTree = "<group>"; };
+		5D56118629EFB0E700A6EA56 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		5DC7F7D529EF836C005F9E22 /* myDogGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myDogGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DC7F7D829EF836C005F9E22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DC7F7DA29EF836C005F9E22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +53,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D56118829EFB1EC00A6EA56 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5D56118629EFB0E700A6EA56 /* ProfileTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		5DC7F7CC29EF836C005F9E22 = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +89,7 @@
 				5DC7F7E129EF836C005F9E22 /* myDogGallery.xcdatamodeld */,
 				5DC7F7F229EF8A87005F9E22 /* View */,
 				5DC7F7F129EF8A1A005F9E22 /* Data */,
+				5D56118829EFB1EC00A6EA56 /* Cell */,
 			);
 			path = myDogGallery;
 			sourceTree = "<group>";
@@ -94,6 +109,8 @@
 				5DC7F7DC29EF836C005F9E22 /* MainViewController.swift */,
 				5D0DEAA429EF9E4C00FFF700 /* MemoViewController.swift */,
 				5D0DEAA629EFA19400FFF700 /* NewMemoViewController.swift */,
+				5D56118229EFB00100A6EA56 /* ProfileTableViewController.swift */,
+				5D56118429EFB02100A6EA56 /* ProfileEditTableViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -169,14 +186,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D56118329EFB00100A6EA56 /* ProfileTableViewController.swift in Sources */,
 				5DC7F7F429EF9816005F9E22 /* CoreDataManager.swift in Sources */,
 				5DC7F7DD29EF836C005F9E22 /* MainViewController.swift in Sources */,
+				5D56118729EFB0E700A6EA56 /* ProfileTableViewCell.swift in Sources */,
 				5DC7F7F029EF89D0005F9E22 /* WeatherData.swift in Sources */,
 				5DC7F7E329EF836C005F9E22 /* myDogGallery.xcdatamodeld in Sources */,
 				5D0DEAA529EF9E4C00FFF700 /* MemoViewController.swift in Sources */,
 				5D0DEAA729EFA19400FFF700 /* NewMemoViewController.swift in Sources */,
 				5DC7F7D929EF836C005F9E22 /* AppDelegate.swift in Sources */,
 				5DC7F7DB29EF836C005F9E22 /* SceneDelegate.swift in Sources */,
+				5D56118529EFB02100A6EA56 /* ProfileEditTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

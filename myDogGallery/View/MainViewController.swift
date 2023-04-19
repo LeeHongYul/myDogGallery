@@ -8,7 +8,7 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
+    
     @IBOutlet var weatherTempLabel: UILabel!
     
     let apiKey = "153ecc2a0d1adc1ba46cc2bbde5081ec"
@@ -55,7 +55,6 @@ class MainViewController: UIViewController {
                 print(error)
             }
         }.resume()
-        
     }
 }
 
