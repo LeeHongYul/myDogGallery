@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D0DEAA529EF9E4C00FFF700 /* MemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0DEAA429EF9E4C00FFF700 /* MemoViewController.swift */; };
+		5D0DEAA729EFA19400FFF700 /* NewMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0DEAA629EFA19400FFF700 /* NewMemoViewController.swift */; };
 		5DC7F7D929EF836C005F9E22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC7F7D829EF836C005F9E22 /* AppDelegate.swift */; };
 		5DC7F7DB29EF836C005F9E22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC7F7DA29EF836C005F9E22 /* SceneDelegate.swift */; };
 		5DC7F7DD29EF836C005F9E22 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC7F7DC29EF836C005F9E22 /* MainViewController.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5D0DEAA429EF9E4C00FFF700 /* MemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewController.swift; sourceTree = "<group>"; };
+		5D0DEAA629EFA19400FFF700 /* NewMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMemoViewController.swift; sourceTree = "<group>"; };
 		5DC7F7D529EF836C005F9E22 /* myDogGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myDogGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DC7F7D829EF836C005F9E22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DC7F7DA29EF836C005F9E22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +92,8 @@
 			isa = PBXGroup;
 			children = (
 				5DC7F7DC29EF836C005F9E22 /* MainViewController.swift */,
+				5D0DEAA429EF9E4C00FFF700 /* MemoViewController.swift */,
+				5D0DEAA629EFA19400FFF700 /* NewMemoViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -167,6 +173,8 @@
 				5DC7F7DD29EF836C005F9E22 /* MainViewController.swift in Sources */,
 				5DC7F7F029EF89D0005F9E22 /* WeatherData.swift in Sources */,
 				5DC7F7E329EF836C005F9E22 /* myDogGallery.xcdatamodeld in Sources */,
+				5D0DEAA529EF9E4C00FFF700 /* MemoViewController.swift in Sources */,
+				5D0DEAA729EFA19400FFF700 /* NewMemoViewController.swift in Sources */,
 				5DC7F7D929EF836C005F9E22 /* AppDelegate.swift in Sources */,
 				5DC7F7DB29EF836C005F9E22 /* SceneDelegate.swift in Sources */,
 			);

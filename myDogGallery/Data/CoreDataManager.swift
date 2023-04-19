@@ -46,7 +46,7 @@ class CoreDataManager {
         }
     }
     
-    func addNewMemo(memoTitle: String, memoContext: String, timeStamp: Date, walkCount: Int?, walkTime: Int?, pooCount: Int?) {
+    func addNewMemo(memoTitle: String?, memoContext: String?, timeStamp: Date?, walkCount: Int?, walkTime: Int?, pooCount: Int?) {
         let newMemo = MemoEntity(context:  mainContext)
         newMemo.title = memoTitle
         newMemo.context = memoContext
@@ -59,7 +59,7 @@ class CoreDataManager {
         saveContext()
     }
     
-    func updateMemo(memo: MemoEntity, memoTitle: String, memoContext: String, walkCount: Int?, walkTime: Int?, pooCount: Int?) {
+    func updateMemo(memo: MemoEntity, memoTitle: String?, memoContext: String?, walkCount: Int?, walkTime: Int?, pooCount: Int?) {
         memo.title = memoTitle
         memo.context = memoContext
         memo.walkCount = Int16(walkCount!)
