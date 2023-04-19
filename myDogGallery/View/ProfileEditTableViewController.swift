@@ -98,7 +98,7 @@ class ProfileEditTableViewController: UITableViewController {
             
             navigationItem.title = "Profile Edit Page"
         } else {
-            print("에러입니다1")
+            print("에러입니다")
         }
     }
     

@@ -160,14 +160,19 @@
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="336"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qzB-uX-cHL" customClass="RoundedImage" customModule="myDog" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qzB-uX-cHL" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
                                             <rect key="frame" x="5" y="5" width="383" height="326"/>
                                             <subviews>
-                                                <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="lbb-BZ-Ynh" customClass="RoundedImage" customModule="myDog" customModuleProvider="target">
+                                                <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="lbb-BZ-Ynh">
                                                     <rect key="frame" x="10" y="10" width="80" height="80"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hanny" translatesAutoresizingMaskIntoConstraints="NO" id="j6e-AX-yvV">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hanny" translatesAutoresizingMaskIntoConstraints="NO" id="j6e-AX-yvV" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="15"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -181,7 +186,7 @@
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="10"/>
+                                                            <real key="value" value="15"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
@@ -282,7 +287,7 @@
                                                     <real key="value" value="0.0"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <real key="value" value="10"/>
+                                                    <real key="value" value="15"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
@@ -590,7 +595,7 @@
                                                 <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="1zS-vZ-7dX">
                                                     <rect key="frame" x="140" y="0.0" width="113" height="100"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dog-nose" translatesAutoresizingMaskIntoConstraints="NO" id="yuc-Hp-ksB">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dog-nose" translatesAutoresizingMaskIntoConstraints="NO" id="yuc-Hp-ksB" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="113" height="100"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -769,6 +774,14 @@
             <point key="canvasLocation" x="662" y="1623"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="j6e-AX-yvV">
+            <size key="intrinsicContentSize" width="1012.5" height="988"/>
+        </designable>
+        <designable name="yuc-Hp-ksB">
+            <size key="intrinsicContentSize" width="512" height="512"/>
+        </designable>
+    </designables>
     <inferredMetricsTieBreakers>
         <segue reference="wB4-4P-7vD"/>
         <segue reference="SFf-tE-G66"/>
