@@ -9,10 +9,15 @@
 /* Begin PBXBuildFile section */
 		5D0DEAA529EF9E4C00FFF700 /* MemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0DEAA429EF9E4C00FFF700 /* MemoViewController.swift */; };
 		5D0DEAA729EFA19400FFF700 /* NewMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0DEAA629EFA19400FFF700 /* NewMemoViewController.swift */; };
+		5D51179029EFD78100061A97 /* GallaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D51178E29EFD78100061A97 /* GallaryViewController.swift */; };
+		5D51179129EFD78100061A97 /* GallaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D51178F29EFD78100061A97 /* GallaryViewController.xib */; };
+		5D51179A29F000D000061A97 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D51179829F000D000061A97 /* PhotoCollectionViewCell.swift */; };
+		5D51179B29F000D000061A97 /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D51179929F000D000061A97 /* PhotoCollectionViewCell.xib */; };
 		5D56118329EFB00100A6EA56 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D56118229EFB00100A6EA56 /* ProfileTableViewController.swift */; };
 		5D56118529EFB02100A6EA56 /* ProfileEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D56118429EFB02100A6EA56 /* ProfileEditTableViewController.swift */; };
 		5D56118729EFB0E700A6EA56 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D56118629EFB0E700A6EA56 /* ProfileTableViewCell.swift */; };
 		5D56118C29EFBBBF00A6EA56 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D56118B29EFBBBF00A6EA56 /* RoundedView.swift */; };
+		5D56118F29EFCE6700A6EA56 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D56118E29EFCE6700A6EA56 /* PhotoViewController.swift */; };
 		5DC7F7D929EF836C005F9E22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC7F7D829EF836C005F9E22 /* AppDelegate.swift */; };
 		5DC7F7DB29EF836C005F9E22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC7F7DA29EF836C005F9E22 /* SceneDelegate.swift */; };
 		5DC7F7DD29EF836C005F9E22 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC7F7DC29EF836C005F9E22 /* MainViewController.swift */; };
@@ -27,10 +32,15 @@
 /* Begin PBXFileReference section */
 		5D0DEAA429EF9E4C00FFF700 /* MemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewController.swift; sourceTree = "<group>"; };
 		5D0DEAA629EFA19400FFF700 /* NewMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMemoViewController.swift; sourceTree = "<group>"; };
+		5D51178E29EFD78100061A97 /* GallaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GallaryViewController.swift; sourceTree = "<group>"; };
+		5D51178F29EFD78100061A97 /* GallaryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GallaryViewController.xib; sourceTree = "<group>"; };
+		5D51179829F000D000061A97 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		5D51179929F000D000061A97 /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
 		5D56118229EFB00100A6EA56 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		5D56118429EFB02100A6EA56 /* ProfileEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditTableViewController.swift; sourceTree = "<group>"; };
 		5D56118629EFB0E700A6EA56 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		5D56118B29EFBBBF00A6EA56 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
+		5D56118E29EFCE6700A6EA56 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		5DC7F7D529EF836C005F9E22 /* myDogGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myDogGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DC7F7D829EF836C005F9E22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DC7F7DA29EF836C005F9E22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +111,11 @@
 				5DC7F7F129EF8A1A005F9E22 /* Data */,
 				5D56118829EFB1EC00A6EA56 /* Cell */,
 				5D56118D29EFBCE000A6EA56 /* CustomView */,
+				5D56118E29EFCE6700A6EA56 /* PhotoViewController.swift */,
+				5D51178E29EFD78100061A97 /* GallaryViewController.swift */,
+				5D51178F29EFD78100061A97 /* GallaryViewController.xib */,
+				5D51179829F000D000061A97 /* PhotoCollectionViewCell.swift */,
+				5D51179929F000D000061A97 /* PhotoCollectionViewCell.xib */,
 			);
 			path = myDogGallery;
 			sourceTree = "<group>";
@@ -185,6 +200,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DC7F7E829EF836C005F9E22 /* LaunchScreen.storyboard in Resources */,
+				5D51179B29F000D000061A97 /* PhotoCollectionViewCell.xib in Resources */,
+				5D51179129EFD78100061A97 /* GallaryViewController.xib in Resources */,
 				5DC7F7E529EF836C005F9E22 /* Assets.xcassets in Resources */,
 				5DC7F7E029EF836C005F9E22 /* Main.storyboard in Resources */,
 			);
@@ -208,7 +225,10 @@
 				5D56118C29EFBBBF00A6EA56 /* RoundedView.swift in Sources */,
 				5DC7F7D929EF836C005F9E22 /* AppDelegate.swift in Sources */,
 				5DC7F7DB29EF836C005F9E22 /* SceneDelegate.swift in Sources */,
+				5D51179A29F000D000061A97 /* PhotoCollectionViewCell.swift in Sources */,
 				5D56118529EFB02100A6EA56 /* ProfileEditTableViewController.swift in Sources */,
+				5D56118F29EFCE6700A6EA56 /* PhotoViewController.swift in Sources */,
+				5D51179029EFD78100061A97 /* GallaryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +378,7 @@
 				DEVELOPMENT_TEAM = 2P89RZGR74;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = myDogGallery/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "앨범 허용 가능할까요?";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -386,6 +407,7 @@
 				DEVELOPMENT_TEAM = 2P89RZGR74;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = myDogGallery/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "앨범 허용 가능할까요?";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
