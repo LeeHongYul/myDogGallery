@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		5D0DEAA529EF9E4C00FFF700 /* MemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0DEAA429EF9E4C00FFF700 /* MemoViewController.swift */; };
 		5D0DEAA729EFA19400FFF700 /* NewMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0DEAA629EFA19400FFF700 /* NewMemoViewController.swift */; };
+		5D1F3F5429F22A98007FBD7E /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 5D1F3F5329F22A98007FBD7E /* SDWebImage */; };
+		5D1F3F5729F22AC8007FBD7E /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 5D1F3F5629F22AC8007FBD7E /* Moya */; };
+		5D1F3F5929F22AF2007FBD7E /* WeatherDataApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F3F5829F22AF2007FBD7E /* WeatherDataApi.swift */; };
 		5D51179029EFD78100061A97 /* GallaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D51178E29EFD78100061A97 /* GallaryViewController.swift */; };
 		5D51179129EFD78100061A97 /* GallaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D51178F29EFD78100061A97 /* GallaryViewController.xib */; };
 		5D51179A29F000D000061A97 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D51179829F000D000061A97 /* PhotoCollectionViewCell.swift */; };
@@ -32,6 +35,7 @@
 /* Begin PBXFileReference section */
 		5D0DEAA429EF9E4C00FFF700 /* MemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewController.swift; sourceTree = "<group>"; };
 		5D0DEAA629EFA19400FFF700 /* NewMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMemoViewController.swift; sourceTree = "<group>"; };
+		5D1F3F5829F22AF2007FBD7E /* WeatherDataApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataApi.swift; sourceTree = "<group>"; };
 		5D51178E29EFD78100061A97 /* GallaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GallaryViewController.swift; sourceTree = "<group>"; };
 		5D51178F29EFD78100061A97 /* GallaryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GallaryViewController.xib; sourceTree = "<group>"; };
 		5D51179829F000D000061A97 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -59,6 +63,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D1F3F5729F22AC8007FBD7E /* Moya in Frameworks */,
+				5D1F3F5429F22A98007FBD7E /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +131,7 @@
 			children = (
 				5DC7F7F329EF9816005F9E22 /* CoreDataManager.swift */,
 				5DC7F7EF29EF89D0005F9E22 /* WeatherData.swift */,
+				5D1F3F5829F22AF2007FBD7E /* WeatherDataApi.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -157,6 +164,10 @@
 			dependencies = (
 			);
 			name = myDogGallery;
+			packageProductDependencies = (
+				5D1F3F5329F22A98007FBD7E /* SDWebImage */,
+				5D1F3F5629F22AC8007FBD7E /* Moya */,
+			);
 			productName = myDogGallery;
 			productReference = 5DC7F7D529EF836C005F9E22 /* myDogGallery.app */;
 			productType = "com.apple.product-type.application";
@@ -185,6 +196,10 @@
 				Base,
 			);
 			mainGroup = 5DC7F7CC29EF836C005F9E22;
+			packageReferences = (
+				5D1F3F5229F22A98007FBD7E /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				5D1F3F5529F22AC8007FBD7E /* XCRemoteSwiftPackageReference "Moya" */,
+			);
 			productRefGroup = 5DC7F7D629EF836C005F9E22 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -217,6 +232,7 @@
 				5D56118329EFB00100A6EA56 /* ProfileTableViewController.swift in Sources */,
 				5DC7F7F429EF9816005F9E22 /* CoreDataManager.swift in Sources */,
 				5DC7F7DD29EF836C005F9E22 /* MainViewController.swift in Sources */,
+				5D1F3F5929F22AF2007FBD7E /* WeatherDataApi.swift in Sources */,
 				5D56118729EFB0E700A6EA56 /* ProfileTableViewCell.swift in Sources */,
 				5DC7F7F029EF89D0005F9E22 /* WeatherData.swift in Sources */,
 				5DC7F7E329EF836C005F9E22 /* myDogGallery.xcdatamodeld in Sources */,
@@ -448,6 +464,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5D1F3F5229F22A98007FBD7E /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		5D1F3F5529F22AC8007FBD7E /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5D1F3F5329F22A98007FBD7E /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5D1F3F5229F22A98007FBD7E /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		5D1F3F5629F22AC8007FBD7E /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5D1F3F5529F22AC8007FBD7E /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		5DC7F7E129EF836C005F9E22 /* myDogGallery.xcdatamodeld */ = {
