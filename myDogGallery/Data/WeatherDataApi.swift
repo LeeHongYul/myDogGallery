@@ -7,9 +7,56 @@
 
 import Foundation
 import Moya
-//"https://api.openweathermap.org/data/2.5/weather?q=\(cityName)&appid=153ecc2a0d1adc1ba46cc2bbde5081ec&units=metric&lang=kr"
+
+
+enum AirDataApi {
+    case airDataList
+}
+
+
+extension AirDataApi: TargetType {
+    var baseURL: URL {
+        URL(string: "https://apis.data.go.kr")!
+    }
+
+    var path: String {
+        switch self {
+        case .airDataList:
+            return "/B552584/ArpltnInforInqireSvc/getMinuDustFrcstDspth"
+        }
+    }
+
+    var method: Moya.Method {
+        switch self {
+        case .airDataList:
+            return .get
+        }
+    }
+    var task: Moya.Task {
+        switch self {
+        case .airDataList:
+            return .requestParameters(parameters: [
+                "serviceKey": "xpJQ7oTQFvmMZUv%2BlfRVof8rIRxQ0p6wL3rwtMQjXFxcRuThGaiZagr4bSJR76KMpd8GeFdnF3mxA%2BNXjyOV0Q%3D%3D",
+                "returnType": "json",
+                "searchDate": "2023-04-14",
+                "InformCode": "PM10"
+            ], encoding: URLEncoding.queryString)
+        }
+    }
+
+    var headers: [String : String]? {
+       nil
+    }
+
+
+}
+
+
+
+
+
 enum WeatherDataApi {
-    case weatherDataList(q: String, unit: String, lang: String)
+    case weatherDataList(lat: Double, lon: Double, units: String)
 }
 
 extension WeatherDataApi: TargetType {
@@ -33,8 +80,8 @@ extension WeatherDataApi: TargetType {
     
     var task: Moya.Task {
         switch self {
-        case let .weatherDataList(q, unit, lang):
-            return .requestParameters(parameters: ["q": q, "appid": "153ecc2a0d1adc1ba46cc2bbde5081ec", "unit": unit, "lang": lang ], encoding: URLEncoding.queryString)
+        case let .weatherDataList(lat, lon, units):
+            return .requestParameters(parameters: ["lat": lat, "lon": lon, "units": units, "appid": "153ecc2a0d1adc1ba46cc2bbde5081ec"], encoding: URLEncoding.queryString)
         }
     }
     
