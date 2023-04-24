@@ -10,10 +10,6 @@ import Photos
 
 class PhotoViewController: UIViewController {
     
-    
-    
-    
-    
     @IBAction func presentGalleryView(_ sender: Any) {
         if #available(iOS 14, *) {
             switch PHPhotoLibrary.authorizationStatus(for: .readWrite) {
@@ -89,11 +85,11 @@ class PhotoViewController: UIViewController {
         
         self.present(alertController, animated: false, completion: nil)
     }
-    
+        
     func presentGallaryViewController() {
         DispatchQueue.main.async {
             let GallaryViewController = GallaryViewController()
-            GallaryViewController.modalPresentationStyle = .popover
+            GallaryViewController.modalPresentationStyle = .fullScreen
             self.present(GallaryViewController, animated: true, completion: nil)
         }
     }

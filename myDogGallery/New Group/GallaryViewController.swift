@@ -27,6 +27,7 @@ class GallaryViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+
     @IBOutlet var collectionView: UICollectionView!
     private let cellWidth = (UIScreen.main.bounds.width - 20) / 3
     private let kPhotoCell = "PhotoCollectionViewCell"
@@ -35,21 +36,33 @@ class GallaryViewController: UIViewController {
         dismiss(animated: true)
     }
     
+    @IBAction func cancelButton(_sender: Any) {
+        dismiss(animated: true)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let cancelButton = UIButton(frame: CGRect(x: 50, y: 50, width: 50, height: 50))
+        cancelButton.setTitle("되냐", for: .normal)
+        cancelButton.backgroundColor = .orange
+        self.view.addSubview(cancelButton)
+        
+        
+        
+        
         
         let layout = UICollectionViewCompositionalLayout { sectionIndex, env in
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/4), heightDimension:  .fractionalHeight(1.0))
 
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
-            item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 5)
+            item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 5)
 
             let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(100))
             
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
 
             let section = NSCollectionLayoutSection(group: group)
-            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 0)
+            section.contentInsets = NSDirectionalEdgeInsets(top: 50, leading: 30, bottom: 0, trailing: 0)
 
             return section
             
@@ -88,5 +101,13 @@ extension GallaryViewController: UICollectionViewDelegate, UICollectionViewDataS
         }
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let target = asset[indexPath.item]
+        
+        
+        
+        print(target)
     }
 }
