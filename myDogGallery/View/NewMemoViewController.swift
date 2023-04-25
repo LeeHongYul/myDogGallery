@@ -57,9 +57,14 @@ class NewMemoViewController: UIViewController {
         
         let timeStamp = Date()
         
-        guard let walkCountStr = walkCountLabel.text, let walkCount = Int(walkCountStr) else { return }
-        guard let walkTimeStr = walkTimeLabel.text, let walkTime = Int(walkTimeStr) else { return }
-        guard let pooCountStr = pooLabel.text, let pooCount = Int(pooCountStr) else { return }
+        guard let walkCountStr = walkCountLabel.text else { return }
+            let walkCount = Int(walkCountStr)
+         
+        guard let walkTimeStr = walkTimeLabel.text else { return }
+            let walkTime = Int(walkTimeStr)
+        
+        guard let pooCountStr = pooLabel.text else { return }
+            let pooCount = Int(pooCountStr)
         
         CoreDataManager.shared.saveContext()
         

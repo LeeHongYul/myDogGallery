@@ -55,9 +55,19 @@ class CoreDataManager {
         newMemo.title = memoTitle
         newMemo.context = memoContext
         newMemo.timeStamp = timeStamp
-        newMemo.walkCount = Int16(walkCount!)
-        newMemo.walkTime = Int16(walkTime!)
-        newMemo.pooCount = Int16(walkCount!)
+        
+        if let walkCount {
+            newMemo.walkCount = Int16(walkCount)
+        }
+        
+        if let walkTime {
+            newMemo.walkTime = Int16(walkTime)
+        }
+        
+        if let pooCount {
+            newMemo.pooCount = Int16(pooCount)
+        }
+        
         
         memoList.insert(newMemo, at: 0)
         saveContext()
@@ -67,9 +77,18 @@ class CoreDataManager {
         
         memo.title = memoTitle
         memo.context = memoContext
-        memo.walkCount = Int16(walkCount!)
-        memo.walkTime = Int16(walkTime!)
-        memo.pooCount = Int16(pooCount!)
+        
+        if let walkCount {
+            memo.walkCount = Int16(walkCount)
+        }
+        
+        if let walkTime {
+            memo.walkTime = Int16(walkTime)
+        }
+        
+        if let pooCount {
+            memo.pooCount = Int16(pooCount)
+        }
         
         do {
             try mainContext.save()
