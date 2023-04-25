@@ -13,7 +13,6 @@ enum AirDataApi {
     case airDataList
 }
 
-
 extension AirDataApi: TargetType {
     var baseURL: URL {
         URL(string: "https://apis.data.go.kr")!
@@ -39,8 +38,7 @@ extension AirDataApi: TargetType {
                 "serviceKey": "xpJQ7oTQFvmMZUv%2BlfRVof8rIRxQ0p6wL3rwtMQjXFxcRuThGaiZagr4bSJR76KMpd8GeFdnF3mxA%2BNXjyOV0Q%3D%3D",
                 "returnType": "json",
                 "searchDate": "2023-04-14",
-                "InformCode": "PM10"
-            ], encoding: URLEncoding.queryString)
+                "InformCode": "PM10"], encoding: URLEncoding.queryString)
         }
     }
 
