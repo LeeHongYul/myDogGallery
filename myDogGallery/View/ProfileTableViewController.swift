@@ -57,6 +57,8 @@ class ProfileTableViewController: UITableViewController {
         
         let target = CoreDataManager.shared.profileList[indexPath.row]
         
+        
+        
         cell.nameLabel.text = target.name
         cell.ageLabel.text = "\(target.age) 살"
         
@@ -83,5 +85,37 @@ class ProfileTableViewController: UITableViewController {
             CoreDataManager.shared.fetchProfile()
             profileListTableView.reloadData()
         }
+        
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let target = CoreDataManager.shared.profileList[indexPath.row]
+        
+        let actionPin = UIContextualAction(style: .normal, title: "", handler: { action, view, completionHaldler in
+            
+            if target.pin == false {
+                target.pin = true
+                CoreDataManager.shared.fetchProfileByPin()
+            } else {
+                target.pin = false
+                CoreDataManager.shared.fetchProfile()
+            }
+            
+            self.profileListTableView.reloadData()
+            
+            CoreDataManager.shared.saveContext()
+            completionHaldler(true)
+        })
+        
+        actionPin.image = UIImage(systemName: "pin")
+        
+        if target.pin == true {
+            actionPin.backgroundColor = .blue
+            actionPin.image = UIImage(systemName: "pin.fill")
+        }
+        
+        return UISwipeActionsConfiguration(actions: [actionPin])
     }
 }

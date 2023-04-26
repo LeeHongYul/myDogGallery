@@ -37,9 +37,40 @@ class CoreDataManager {
         }
     }
     
+//    func fetchProfile() {
+//        
+//        let request = ProfileEntity.fetchRequest()
+//        
+//        do {
+//            profileList = try mainContext.fetch(request)
+//        } catch {
+//            print(error)
+//        }
+//    }
+    
     func fetchProfile() {
         
         let request = ProfileEntity.fetchRequest()
+        
+        let sortByTimeStamp = NSSortDescriptor(key: "timeStamp", ascending: false)
+        
+
+        request.sortDescriptors = [sortByTimeStamp]
+        
+        do {
+            profileList = try mainContext.fetch(request)
+        } catch {
+            print(error)
+        }
+    }
+    
+    func fetchProfileByPin() {
+        
+        let request = ProfileEntity.fetchRequest()
+        
+        let sortByPin = NSSortDescriptor(key: "pin", ascending: false)
+        
+        request.sortDescriptors = [sortByPin]
         
         do {
             profileList = try mainContext.fetch(request)
@@ -97,7 +128,7 @@ class CoreDataManager {
         }
     }
     
-    func addNewProfile(name: String, age: Int, gender: Bool, birthDay: Date, detail: String?, image: Data) {
+    func addNewProfile(name: String, age: Int, gender: Bool, birthDay: Date, detail: String?, image: Data, timeStamp: Date?) {
         
         let newProfile = ProfileEntity(context: mainContext)
         
@@ -107,6 +138,7 @@ class CoreDataManager {
         newProfile.birthDay = birthDay
         newProfile.detail  = detail
         newProfile.image = image
+        newProfile.timeStamp = timeStamp
         
         profileList.insert(newProfile, at: 0)
         

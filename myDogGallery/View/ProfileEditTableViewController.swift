@@ -63,6 +63,8 @@ class ProfileEditTableViewController: UITableViewController {
         
         let detail = detailField.text
         
+        let timeStamp = Date()
+        
         guard let data = profileImage.image?.jpegData(compressionQuality: 0.75) else { return }
         
         if let target = profileList {
@@ -70,7 +72,7 @@ class ProfileEditTableViewController: UITableViewController {
             
             NotificationCenter.default.post(name: .profileDidUpdate, object: nil)
         } else {
-            CoreDataManager.shared.addNewProfile(name: name, age: age, gender: isMale, birthDay: birthDay, detail: detail, image: data)
+            CoreDataManager.shared.addNewProfile(name: name, age: age, gender: isMale, birthDay: birthDay, detail: detail, image: data, timeStamp: timeStamp)
             
             NotificationCenter.default.post(name: .profileDidInsert, object: nil)
         }

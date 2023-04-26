@@ -11,6 +11,7 @@ class MemoViewController: UIViewController {
     
     @IBOutlet var memoTableView: UITableView!
     
+    @IBOutlet var memoTitleLabel: UILabel!
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EditSegue" {
             if let cell = sender as? UITableViewCell, let indexPath = memoTableView.indexPath(for: cell) {
@@ -48,10 +49,10 @@ extension MemoViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MemoViewController")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MemoViewController") as! MemoTableViewCell
         
-        cell.textLabel?.text = CoreDataManager.shared.memoList[indexPath.row].title
-        cell.detailTextLabel?.text = CoreDataManager.shared.memoList[indexPath.row].context
+        cell.memoTitleLabel?.text = CoreDataManager.shared.memoList[indexPath.row].title
+//        cell.detailTextLabel?.text = CoreDataManager.shared.memoList[indexPath.row].context
         
         return cell
     }
