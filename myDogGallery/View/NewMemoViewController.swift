@@ -16,6 +16,7 @@ class NewMemoViewController: UIViewController {
     
     var editTarget: MemoEntity?
     
+    @IBOutlet var inputDatePicker: UIDatePicker!
     @IBOutlet var memoTitleTextField: UITextField!
     @IBOutlet var memoContextTextView: UITextView!
     @IBOutlet var walkCountLabel: UILabel!
@@ -37,6 +38,15 @@ class NewMemoViewController: UIViewController {
         pooLabel.text = "\(Int(target))"
     }
     
+    
+    var dateFormatter: DateFormatter = {
+        let inputDate = DateFormatter()
+        inputDate.dateFormat = "MMM d, yyyy"
+        inputDate.locale = Locale(identifier: "en_US_POSIX")
+        
+        return inputDate
+    }()
+    
     @IBAction func close(_ sender: Any) {
         dismiss(animated: true)
     }
@@ -57,6 +67,10 @@ class NewMemoViewController: UIViewController {
         
         let timeStamp = Date()
         
+        let inputDate = inputDatePicker.date
+
+        print(inputDatePicker.date)
+        
         guard let walkCountStr = walkCountLabel.text else { return }
             let walkCount = Int(walkCountStr)
          
@@ -69,10 +83,10 @@ class NewMemoViewController: UIViewController {
         CoreDataManager.shared.saveContext()
         
         if let target = editTarget {
-            CoreDataManager.shared.updateMemo(memo: target, memoTitle: memoTitle, memoContext: memoContext, walkCount: walkCount, walkTime: walkTime, pooCount: pooCount)
+            CoreDataManager.shared.updateMemo(memo: target, memoTitle: memoTitle, memoContext: memoContext, walkCount: walkCount, walkTime: walkTime, pooCount: pooCount, inputDate: inputDate)
             NotificationCenter.default.post(name: .memoDidChange, object: nil)
         } else {
-            CoreDataManager.shared.addNewMemo(memoTitle: memoTitle, memoContext: memoContext, timeStamp: timeStamp, walkCount: walkCount, walkTime: walkTime, pooCount: pooCount)
+            CoreDataManager.shared.addNewMemo(memoTitle: memoTitle, memoContext: memoContext, timeStamp: timeStamp, walkCount: walkCount, walkTime: walkTime, pooCount: pooCount, inputDate: inputDate)
             NotificationCenter.default.post(name: .newMemoDidInsert, object: nil)
         }
         
@@ -91,6 +105,10 @@ class NewMemoViewController: UIViewController {
             walkTimeLabel.text = "\(target.walkTime)"
             pooLabel.text = "\(target.pooCount)"
             navigationItem.title = "Memo Edit Page"
+            
+            inputDatePicker.date = target.inputDate!
+            
+            
         } else {
             print("에러")
         }

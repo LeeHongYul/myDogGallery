@@ -15,6 +15,7 @@ class PhotoCollectionViewController: UICollectionViewController {
     
     @IBOutlet var photoCollectionView: UICollectionView!
     var allPhotos: PHFetchResult<PHAsset>!
+    
     let imageManager = PHCachingImageManager()
     
     
@@ -31,21 +32,45 @@ class PhotoCollectionViewController: UICollectionViewController {
     }
     
     func fetchAllPhotos() {
-           let allPhotosOptions = PHFetchOptions()
-           allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
-           allPhotos = PHAsset.fetchAssets(with: allPhotosOptions)
-       
-            self.photoCollectionView?.reloadData()
+        let allPhotosOptions = PHFetchOptions()
+        allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+        allPhotos = PHAsset.fetchAssets(with: allPhotosOptions)
         
-           
-       }
+        self.photoCollectionView?.reloadData()
+        
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       
+        
+//        switch PHPhotoLibrary.authorizationStatus(for: .addOnly) {
+//        case .notDetermined:
+//            print("not determined")
+//            PHPhotoLibrary.requestAuthorization(for: .addOnly) { status in
+//                switch status {
+//                case .authorized, .limited:
+//                    self.photoCollectionView.reloadData()
+//                case .denied:
+//                    print("")
+//                default:
+//                    print("그 밖의 권한이 부여 되었습니다.")
+//                }
+//            }
+//        case .restricted:
+//            print("restricted")
+//        case .denied:
+//            print("")
+//        case .limited, .authorized:
+//            self.fetchAllPhotos()
+//        default:
+//            print("")
+//        }
+        
+        
         let conditionalLayout = UICollectionViewCompositionalLayout { sectionIndex, env in
             
-            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/3), heightDimension: .fractionalHeight(1.0))
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/3), heightDimension: .absolute(100))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
             item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
             
@@ -65,31 +90,31 @@ class PhotoCollectionViewController: UICollectionViewController {
         fetchAllPhotos()
         
     }
-
     
-
+    
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         
         return 1
     }
-
-
+    
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return allPhotos.count
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! myPhotoCollectionViewCell
-                let asset = allPhotos.object(at: indexPath.item)
-                
-                cell.representedAssetIdentifier = asset.localIdentifier
-                imageManager.requestImage(for: asset, targetSize: CGSize(width: 100, height: 100), contentMode: .aspectFill, options: nil, resultHandler: { image, _ in
-                    if cell.representedAssetIdentifier == asset.localIdentifier {
-                        cell.imageView.image = image
-                    }
-                })
-       
-                return cell
+        let asset = allPhotos.object(at: indexPath.item)
+        
+        cell.representedAssetIdentifier = asset.localIdentifier
+        imageManager.requestImage(for: asset, targetSize: CGSize(width: 100, height: 100), contentMode: .aspectFill, options: nil, resultHandler: { image, _ in
+            if cell.representedAssetIdentifier == asset.localIdentifier {
+                cell.imageView.image = image
             }
+        })
+        
+        return cell
     }
+}

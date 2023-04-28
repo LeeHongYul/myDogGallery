@@ -35,6 +35,7 @@ class ProfileTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         CoreDataManager.shared.fetchProfile()
         NotificationCenter.default.addObserver(forName: .profileDidInsert, object: nil, queue: .main) { noti in
             CoreDataManager.shared.fetchProfile()
@@ -68,8 +69,8 @@ class ProfileTableViewController: UITableViewController {
             cell.genderLabel.text = "Girl"
         }
         
-        cell.birthdayLabel.text = dateFormatter.string(for: target.birthDay)
-        cell.detailLabel.text = target.detail
+//        cell.birthdayLabel.text = dateFormatter.string(for: target.birthDay)
+//        cell.detailLabel.text = target.detail
         cell.profileImage.image = UIImage(data: target.image ?? Data())
         cell.profileImage.contentMode = .scaleAspectFill
         
@@ -119,3 +120,5 @@ class ProfileTableViewController: UITableViewController {
         return UISwipeActionsConfiguration(actions: [actionPin])
     }
 }
+
+

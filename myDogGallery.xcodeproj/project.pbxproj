@@ -13,15 +13,10 @@
 		5D1F3F5729F22AC8007FBD7E /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 5D1F3F5629F22AC8007FBD7E /* Moya */; };
 		5D1F3F5929F22AF2007FBD7E /* WeatherDataApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F3F5829F22AF2007FBD7E /* WeatherDataApi.swift */; };
 		5D4B6FEA29F51E1A00BFC43B /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4B6FE929F51E1A00BFC43B /* MainCollectionViewCell.swift */; };
-		5D51179029EFD78100061A97 /* GallaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D51178E29EFD78100061A97 /* GallaryViewController.swift */; };
-		5D51179129EFD78100061A97 /* GallaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D51178F29EFD78100061A97 /* GallaryViewController.xib */; };
-		5D51179A29F000D000061A97 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D51179829F000D000061A97 /* PhotoCollectionViewCell.swift */; };
-		5D51179B29F000D000061A97 /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D51179929F000D000061A97 /* PhotoCollectionViewCell.xib */; };
 		5D56118329EFB00100A6EA56 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D56118229EFB00100A6EA56 /* ProfileTableViewController.swift */; };
 		5D56118529EFB02100A6EA56 /* ProfileEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D56118429EFB02100A6EA56 /* ProfileEditTableViewController.swift */; };
 		5D56118729EFB0E700A6EA56 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D56118629EFB0E700A6EA56 /* ProfileTableViewCell.swift */; };
 		5D56118C29EFBBBF00A6EA56 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D56118B29EFBBBF00A6EA56 /* RoundedView.swift */; };
-		5D56118F29EFCE6700A6EA56 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D56118E29EFCE6700A6EA56 /* PhotoViewController.swift */; };
 		5D5A16FB29F7FF5F002E7C15 /* Phrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A16FA29F7FF5F002E7C15 /* Phrase.swift */; };
 		5D5A16FD29F827BD002E7C15 /* MemoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A16FC29F827BD002E7C15 /* MemoTableViewCell.swift */; };
 		5D75A3C429F3BAAC001C25B3 /* PhotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D75A3C329F3BAAC001C25B3 /* PhotoCollectionViewController.swift */; };
@@ -41,17 +36,13 @@
 /* Begin PBXFileReference section */
 		5D0DEAA429EF9E4C00FFF700 /* MemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewController.swift; sourceTree = "<group>"; };
 		5D0DEAA629EFA19400FFF700 /* NewMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMemoViewController.swift; sourceTree = "<group>"; };
+		5D1BE46729FA11F0003371EF /* myDogGallery.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = myDogGallery.entitlements; sourceTree = "<group>"; };
 		5D1F3F5829F22AF2007FBD7E /* WeatherDataApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataApi.swift; sourceTree = "<group>"; };
 		5D4B6FE929F51E1A00BFC43B /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
-		5D51178E29EFD78100061A97 /* GallaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GallaryViewController.swift; sourceTree = "<group>"; };
-		5D51178F29EFD78100061A97 /* GallaryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GallaryViewController.xib; sourceTree = "<group>"; };
-		5D51179829F000D000061A97 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
-		5D51179929F000D000061A97 /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
 		5D56118229EFB00100A6EA56 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		5D56118429EFB02100A6EA56 /* ProfileEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditTableViewController.swift; sourceTree = "<group>"; };
 		5D56118629EFB0E700A6EA56 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		5D56118B29EFBBBF00A6EA56 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
-		5D56118E29EFCE6700A6EA56 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		5D5A16FA29F7FF5F002E7C15 /* Phrase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phrase.swift; sourceTree = "<group>"; };
 		5D5A16FC29F827BD002E7C15 /* MemoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTableViewCell.swift; sourceTree = "<group>"; };
 		5D75A3C329F3BAAC001C25B3 /* PhotoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewController.swift; sourceTree = "<group>"; };
@@ -86,7 +77,10 @@
 		5D56118829EFB1EC00A6EA56 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				5D5A16FC29F827BD002E7C15 /* MemoTableViewCell.swift */,
 				5D56118629EFB0E700A6EA56 /* ProfileTableViewCell.swift */,
+				5D75A3C729F3BC5C001C25B3 /* myPhotoCollectionViewCell.swift */,
+				5D4B6FE929F51E1A00BFC43B /* MainCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -97,18 +91,6 @@
 				5D56118B29EFBBBF00A6EA56 /* RoundedView.swift */,
 			);
 			path = CustomView;
-			sourceTree = "<group>";
-		};
-		5D75A3C229F3BA75001C25B3 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-				5D56118E29EFCE6700A6EA56 /* PhotoViewController.swift */,
-				5D51178F29EFD78100061A97 /* GallaryViewController.xib */,
-				5D51178E29EFD78100061A97 /* GallaryViewController.swift */,
-				5D51179929F000D000061A97 /* PhotoCollectionViewCell.xib */,
-				5D51179829F000D000061A97 /* PhotoCollectionViewCell.swift */,
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		5DC7F7CC29EF836C005F9E22 = {
@@ -130,6 +112,7 @@
 		5DC7F7D729EF836C005F9E22 /* myDogGallery */ = {
 			isa = PBXGroup;
 			children = (
+				5D1BE46729FA11F0003371EF /* myDogGallery.entitlements */,
 				5DC7F7D829EF836C005F9E22 /* AppDelegate.swift */,
 				5DC7F7DA29EF836C005F9E22 /* SceneDelegate.swift */,
 				5DC7F7DE29EF836C005F9E22 /* Main.storyboard */,
@@ -141,13 +124,9 @@
 				5DC7F7F129EF8A1A005F9E22 /* Data */,
 				5D56118829EFB1EC00A6EA56 /* Cell */,
 				5D56118D29EFBCE000A6EA56 /* CustomView */,
-				5D75A3C229F3BA75001C25B3 /* New Group */,
 				5D75A3C329F3BAAC001C25B3 /* PhotoCollectionViewController.swift */,
-				5D75A3C729F3BC5C001C25B3 /* myPhotoCollectionViewCell.swift */,
 				5D75A3C929F3C27C001C25B3 /* DetailPhotoViewController.swift */,
-				5D4B6FE929F51E1A00BFC43B /* MainCollectionViewCell.swift */,
 				5D5A16FA29F7FF5F002E7C15 /* Phrase.swift */,
-				5D5A16FC29F827BD002E7C15 /* MemoTableViewCell.swift */,
 			);
 			path = myDogGallery;
 			sourceTree = "<group>";
@@ -241,8 +220,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DC7F7E829EF836C005F9E22 /* LaunchScreen.storyboard in Resources */,
-				5D51179B29F000D000061A97 /* PhotoCollectionViewCell.xib in Resources */,
-				5D51179129EFD78100061A97 /* GallaryViewController.xib in Resources */,
 				5DC7F7E529EF836C005F9E22 /* Assets.xcassets in Resources */,
 				5DC7F7E029EF836C005F9E22 /* Main.storyboard in Resources */,
 			);
@@ -273,10 +250,7 @@
 				5DC7F7D929EF836C005F9E22 /* AppDelegate.swift in Sources */,
 				5DC7F7DB29EF836C005F9E22 /* SceneDelegate.swift in Sources */,
 				5D75A3CA29F3C27C001C25B3 /* DetailPhotoViewController.swift in Sources */,
-				5D51179A29F000D000061A97 /* PhotoCollectionViewCell.swift in Sources */,
 				5D56118529EFB02100A6EA56 /* ProfileEditTableViewController.swift in Sources */,
-				5D56118F29EFCE6700A6EA56 /* PhotoViewController.swift in Sources */,
-				5D51179029EFD78100061A97 /* GallaryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,6 +395,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = myDogGallery/myDogGallery.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2P89RZGR74;
@@ -450,6 +425,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = myDogGallery/myDogGallery.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2P89RZGR74;

@@ -24,6 +24,15 @@ class MemoViewController: UIViewController {
         }
     }
     
+    var dateFormatter: DateFormatter = {
+        let inputDateFormat = DateFormatter()
+        inputDateFormat.dateFormat = "MMM d, yyyy"
+        inputDateFormat.locale = Locale(identifier: "en_US_POSIX")
+        
+        return inputDateFormat
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,6 +41,17 @@ class MemoViewController: UIViewController {
             self.memoTableView.reloadData()
             
         }
+        
+        
+        let searchBar1 = UISearchBar()
+        searchBar1.placeholder = "제목을 검색해주세요"
+        navigationItem.titleView = searchBar1
+        
+        
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar1: UISearchBar) {
+        CoreDataManager.shared.searchByName(searchBar1.text)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,6 +61,15 @@ class MemoViewController: UIViewController {
         memoTableView.reloadData()
         
     }
+    
+   
+    
+    
+    
+    
+    
+    
+    
 }
 
 extension MemoViewController: UITableViewDataSource {
@@ -52,7 +81,10 @@ extension MemoViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemoViewController") as! MemoTableViewCell
         
         cell.memoTitleLabel?.text = CoreDataManager.shared.memoList[indexPath.row].title
-//        cell.detailTextLabel?.text = CoreDataManager.shared.memoList[indexPath.row].context
+        
+        if let inputDateType = CoreDataManager.shared.memoList[indexPath.row].inputDate{
+            cell.memoInputDateLabel.text = dateFormatter.string(from: inputDateType)
+        }
         
         return cell
     }
@@ -72,5 +104,11 @@ extension MemoViewController: UITableViewDelegate {
             CoreDataManager.shared.fetchMemo()
             memoTableView.reloadData()
         }
+    }
+}
+
+extension MemoViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
     }
 }

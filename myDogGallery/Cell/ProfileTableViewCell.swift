@@ -18,8 +18,8 @@ class ProfileTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        detailLabel.lineBreakMode = .byWordWrapping
-        detailLabel.numberOfLines = 0
+//        detailLabel.lineBreakMode = .byWordWrapping
+//        detailLabel.numberOfLines = 0
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

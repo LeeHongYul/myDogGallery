@@ -30,11 +30,15 @@ class MainViewController: UIViewController {
     
     @IBOutlet var mainCollectionView: UICollectionView!
     
+    @IBOutlet var testView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         CoreDataManager.shared.fetchProfile()
         
-//        weatherView.setGradient(color1: UIColor.white, color2: UIColor.systemOrange, color3: UIColor.orange)
+        
+        
+        testView.setGradient(color1: UIColor.systemOrange, color2: UIColor.white)
         
         fetchMoya()
         
@@ -54,7 +58,8 @@ class MainViewController: UIViewController {
             return section
             
         }
-        
+        mainCollectionView.layer.borderWidth = 1
+        mainCollectionView.layer.borderColor = UIColor.lightGray.cgColor
         mainCollectionView.layer.cornerRadius = 15
         mainCollectionView.collectionViewLayout = conditionalLayout
         mainCollectionView.reloadData()
@@ -159,12 +164,12 @@ class MainViewController: UIViewController {
 }
 
 extension UIView{
-    func setGradient(color1:UIColor, color2:UIColor, color3:UIColor){
+    func setGradient(color1:UIColor, color2:UIColor){
         let gradient: CAGradientLayer = CAGradientLayer()
-        gradient.colors = [color1.cgColor, color2.cgColor, color3.cgColor]
-        gradient.locations = [0.0 , 0.5, 1.0]
-        gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
-        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradient.colors = [color1.cgColor, color2.cgColor]
+        gradient.locations = [0.0 , 1.0]
+        gradient.startPoint = CGPoint(x: 5.0, y: 0.0)
+        gradient.endPoint = CGPoint(x: 5.0, y: 1.0)
         gradient.frame = bounds
         gradient.type = .axial
         gradient.cornerRadius = 15
@@ -201,6 +206,8 @@ extension MainViewController: CLLocationManagerDelegate {
             print("위치 업데이트!")
             print("위도 : \(location.coordinate.latitude)")
             print("경도 : \(location.coordinate.longitude)")
+            
+            locationManager.stopUpdatingLocation()
         }
     }
         

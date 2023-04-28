@@ -22,6 +22,7 @@ class CoreDataManager {
     
     var memoList = [MemoEntity]()
     var profileList = [ProfileEntity]()
+    var list = [NSManagedObject]()
     
     func fetchMemo() {
         
@@ -35,6 +36,25 @@ class CoreDataManager {
         } catch {
             print(error)
         }
+    }
+    
+    func fetch(predicate: NSPredicate? = nil) {
+        let request = NSFetchRequest<NSManagedObject>(entityName: "Memo")
+        
+        request.predicate = predicate
+        
+        do {
+            list = try CoreDataManager.shared.mainContext.fetch(request)
+            
+        } catch {
+            print(error)
+        }
+    }
+    
+    func searchByName(_ keyword: String?) {
+        guard let keyword = keyword else { return }
+        let predicate = NSPredicate(format: "title CONTAINS %@", keyword)
+        fetch(predicate: predicate)
     }
     
 //    func fetchProfile() {
@@ -79,7 +99,7 @@ class CoreDataManager {
         }
     }
     
-    func addNewMemo(memoTitle: String?, memoContext: String?, timeStamp: Date?, walkCount: Int?, walkTime: Int?, pooCount: Int?) {
+    func addNewMemo(memoTitle: String?, memoContext: String?, timeStamp: Date?, walkCount: Int?, walkTime: Int?, pooCount: Int?, inputDate: Date?) {
         
         let newMemo = MemoEntity(context:  mainContext)
         
@@ -99,12 +119,17 @@ class CoreDataManager {
             newMemo.pooCount = Int16(pooCount)
         }
         
+        if let inputDate {
+            newMemo.inputDate = inputDate
+        }
+       
+        
         
         memoList.insert(newMemo, at: 0)
         saveContext()
     }
     
-    func updateMemo(memo: MemoEntity, memoTitle: String?, memoContext: String?, walkCount: Int?, walkTime: Int?, pooCount: Int?) {
+    func updateMemo(memo: MemoEntity, memoTitle: String?, memoContext: String?, walkCount: Int?, walkTime: Int?, pooCount: Int?, inputDate: Date?) {
         
         memo.title = memoTitle
         memo.context = memoContext
@@ -119,6 +144,10 @@ class CoreDataManager {
         
         if let pooCount {
             memo.pooCount = Int16(pooCount)
+        }
+        
+        if let inputDate {
+            memo.inputDate = inputDate
         }
         
         do {
