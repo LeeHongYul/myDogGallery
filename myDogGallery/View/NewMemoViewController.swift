@@ -55,8 +55,8 @@ class NewMemoViewController: UIViewController {
         
         let memoTitle = memoTitleTextField.text
         
-        if memoTitle?.count == 0 {
-            let alert = UIAlertController(title: "제목을 입력해주세요", message: "제목 작성 필요", preferredStyle: .alert)
+        if memoTitle?.count ?? 0 >= 15 {
+            let alert = UIAlertController(title: "제목 글자수가 많습니다 15자", message: "제목 글자수 수정 필요", preferredStyle: .alert)
             let action = UIAlertAction(title: "확인", style: .cancel, handler: nil)
             alert.addAction(action)
             present(alert, animated:  true, completion:  nil)
@@ -64,6 +64,14 @@ class NewMemoViewController: UIViewController {
         }
         
         let memoContext = memoContextTextView.text
+        
+        if memoContext?.count == 0 {
+            let alert = UIAlertController(title: "오늘의 기록을 입력해주세요", message: "오늘의 기록 작성 필요", preferredStyle: .alert)
+            let action = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+            alert.addAction(action)
+            present(alert, animated:  true, completion:  nil)
+            return
+        }
         
         let timeStamp = Date()
         

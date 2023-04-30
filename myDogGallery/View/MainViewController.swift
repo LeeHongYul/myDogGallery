@@ -13,6 +13,7 @@ import SDWebImage
 
 class MainViewController: UIViewController {
     
+    @IBOutlet var mainPageControl: UIPageControl!
     @IBOutlet var randomPhraseTextView: UITextView!
     @IBOutlet var weatherView: RoundedView!
     
@@ -32,10 +33,29 @@ class MainViewController: UIViewController {
     
     @IBOutlet var testView: UIView!
     
+    
+    @IBAction func pageChaged(_ sender: UIPageControl) {
+        
+        let indexPath = IndexPath(item: sender.currentPage, section: 0)
+        
+        mainCollectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: true)
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         CoreDataManager.shared.fetchProfile()
         
+        mainPageControl.currentPage = 0
+        mainPageControl.numberOfPages = CoreDataManager.shared.profileList.count
         
         
         testView.setGradient(color1: UIColor.systemOrange, color2: UIColor.white)
@@ -92,13 +112,8 @@ class MainViewController: UIViewController {
             }
         }
     }
-    
-    
-    
-    
-    
-    
-    
+
+
 //        func fetchAirMoya() {
 //            let provider = MoyaProvider<AirDataApi>()
 //            provider.request(.airDataList) { result in
@@ -199,6 +214,13 @@ extension MainViewController: UICollectionViewDataSource {
     }
 }
 
+extension MainViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        mainPageControl.currentPage = indexPath.row
+    }
+}
+
 extension MainViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -216,5 +238,6 @@ extension MainViewController: CLLocationManagerDelegate {
         print("error")
     }
 }
+
 
 

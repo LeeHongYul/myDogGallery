@@ -17,7 +17,7 @@ class ProfileEditTableViewController: UITableViewController {
     var profileList: ProfileEntity?
     
     @IBOutlet var nameField: UITextField!
-    @IBOutlet var ageField: UITextField!
+    @IBOutlet var ageLabel: UILabel!
     @IBOutlet var genderSegmentedControl: UISegmentedControl!
     @IBOutlet var birthDayDatePicker: UIDatePicker!
     @IBOutlet var detailField: UITextField!
@@ -29,16 +29,30 @@ class ProfileEditTableViewController: UITableViewController {
     
     @IBAction func dateSelected(_ sender: UIDatePicker) {
         let dateSelected = sender.date
-        print(sender.date)
+        print("###########",sender.date)
+        print(yearFormatter.string(from: sender.date))
+      
+       
     }
     
-    var dateFormatter: DateFormatter = {
-        let birthDayDate = DateFormatter()
-        birthDayDate.dateFormat = "MMM d, yyyy"
-        birthDayDate.locale = Locale(identifier: "en_US_POSIX")
-        
-        return birthDayDate
-    }()
+//    var dateFormatter: DateFormatter = {
+//        let birthDayDate = DateFormatter()
+//        birthDayDate.dateFormat = "MMM d, yyyy"
+//        birthDayDate.locale = Locale(identifier: "en_US_POSIX")
+//
+//        return birthDayDate
+//    }()
+    
+    var yearFormatter: DateFormatter = {
+        let yearFormatter = DateFormatter()
+        yearFormatter.dateFormat = "yyyy"
+    
+   
+           return yearFormatter
+       }()
+    
+    
+    
     
     @IBAction func close(_ sender: Any) {
         dismiss(animated: true)
@@ -49,13 +63,26 @@ class ProfileEditTableViewController: UITableViewController {
             return
         }
         
-        guard let ageStr = ageField.text, let age = Int(ageStr), age <= Int16.max else {
-            let alert = UIAlertController(title: "숫자가 너무 큽니다", message: "올바른 나이를 작성해주세요", preferredStyle: .alert)
-            let action = UIAlertAction(title: "확인", style: .cancel, handler: nil)
-            alert.addAction(action)
-            present(alert, animated:  true, completion:  nil)
-            return
-        }
+       
+        let ageYearStr = yearFormatter.string(from: birthDayDatePicker.date)
+        let currentYearStr = yearFormatter.string(from: Date())
+        
+        guard let ageInt = Int(ageYearStr), let currentInt = Int(currentYearStr) else { return }
+            let age = currentInt - ageInt
+        
+        print("$#@!$#!@", age)
+//        guard let ageStr = ageField.text, let age = Int(ageStr), age <= Int16.max else {
+//            let alert = UIAlertController(title: "숫자가 너무 큽니다", message: "올바른 나이를 작성해주세요", preferredStyle: .alert)
+//            let action = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+//            alert.addAction(action)
+//            present(alert, animated:  true, completion:  nil)
+//            return
+//        }
+        
+        
+        
+        
+        
         
         let isMale = genderSegmentedControl.selectedSegmentIndex == 0
         
@@ -86,7 +113,7 @@ class ProfileEditTableViewController: UITableViewController {
         if let target = profileList {
             
             nameField.text = target.name
-            ageField.text   = "\(target.age)"
+            ageLabel.text   = "\(target.age)"
             
             if target.gender {
                 genderSegmentedControl.selectedSegmentIndex = 0
