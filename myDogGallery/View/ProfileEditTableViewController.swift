@@ -29,10 +29,6 @@ class ProfileEditTableViewController: UITableViewController {
     
     @IBAction func dateSelected(_ sender: UIDatePicker) {
         let dateSelected = sender.date
-        print("###########",sender.date)
-        print(yearFormatter.string(from: sender.date))
-      
-       
     }
     
 //    var dateFormatter: DateFormatter = {
@@ -69,20 +65,6 @@ class ProfileEditTableViewController: UITableViewController {
         
         guard let ageInt = Int(ageYearStr), let currentInt = Int(currentYearStr) else { return }
             let age = currentInt - ageInt
-        
-        print("$#@!$#!@", age)
-//        guard let ageStr = ageField.text, let age = Int(ageStr), age <= Int16.max else {
-//            let alert = UIAlertController(title: "숫자가 너무 큽니다", message: "올바른 나이를 작성해주세요", preferredStyle: .alert)
-//            let action = UIAlertAction(title: "확인", style: .cancel, handler: nil)
-//            alert.addAction(action)
-//            present(alert, animated:  true, completion:  nil)
-//            return
-//        }
-        
-        
-        
-        
-        
         
         let isMale = genderSegmentedControl.selectedSegmentIndex == 0
         

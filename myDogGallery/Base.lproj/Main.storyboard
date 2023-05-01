@@ -3,6 +3,7 @@
     <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -518,31 +519,109 @@
             </objects>
             <point key="canvasLocation" x="1627" y="908"/>
         </scene>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="r1J-wx-z3h">
             <objects>
-                <viewController id="kRh-qS-WNk" sceneMemberID="viewController">
+                <viewController id="kRh-qS-WNk" customClass="MapViewController" customModule="myDogGallery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lwu-Eq-LXe">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="YNf-Kh-Jdo">
-                                <rect key="frame" x="95" y="342" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P15-ni-9fu">
+                                <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                                <standardMapConfiguration key="preferredConfiguration"/>
+                                <connections>
+                                    <outlet property="delegate" destination="kRh-qS-WNk" id="RiW-FV-tEF"/>
+                                </connections>
+                            </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6EE-PK-cDB" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
+                                <rect key="frame" x="120" y="118" width="190" height="128"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HgU-sf-bcw">
+                                        <rect key="frame" x="0.0" y="0.0" width="190" height="128"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="HgU-sf-bcw" secondAttribute="bottom" id="2VT-Bj-ZoO"/>
+                                    <constraint firstAttribute="height" constant="128" id="Iu5-QW-8Qc"/>
+                                    <constraint firstItem="HgU-sf-bcw" firstAttribute="top" secondItem="6EE-PK-cDB" secondAttribute="top" id="P7J-um-EZA"/>
+                                    <constraint firstItem="HgU-sf-bcw" firstAttribute="leading" secondItem="6EE-PK-cDB" secondAttribute="leading" id="gbO-wD-VYN"/>
+                                    <constraint firstAttribute="trailing" secondItem="HgU-sf-bcw" secondAttribute="trailing" id="sz2-cc-vGk"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ORb-ED-Qud" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
+                                <rect key="frame" x="120" y="713" width="190" height="73"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QGi-bm-UnJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="190" height="69"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title=""/>
+                                        <connections>
+                                            <action selector="getLocationBtn:" destination="kRh-qS-WNk" eventType="touchUpInside" id="tuA-ZI-5b5"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="START" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Enk-QI-Ou7">
+                                        <rect key="frame" x="0.0" y="0.0" width="190" height="69"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <constraints>
+                                    <constraint firstItem="Enk-QI-Ou7" firstAttribute="leading" secondItem="ORb-ED-Qud" secondAttribute="leading" id="0WM-q5-eVg"/>
+                                    <constraint firstItem="QGi-bm-UnJ" firstAttribute="top" secondItem="ORb-ED-Qud" secondAttribute="top" id="8z4-au-nkR"/>
+                                    <constraint firstItem="Enk-QI-Ou7" firstAttribute="top" secondItem="ORb-ED-Qud" secondAttribute="top" id="Ehh-Rj-mex"/>
+                                    <constraint firstAttribute="bottom" secondItem="Enk-QI-Ou7" secondAttribute="bottom" constant="4" id="GOv-SP-BSb"/>
+                                    <constraint firstAttribute="trailing" secondItem="Enk-QI-Ou7" secondAttribute="trailing" id="iXh-kd-DK3"/>
+                                    <constraint firstAttribute="trailing" secondItem="QGi-bm-UnJ" secondAttribute="trailing" id="lM3-xf-H2y"/>
+                                    <constraint firstAttribute="bottom" secondItem="QGi-bm-UnJ" secondAttribute="bottom" constant="4" id="lfg-u4-Jii"/>
+                                    <constraint firstItem="QGi-bm-UnJ" firstAttribute="leading" secondItem="ORb-ED-Qud" secondAttribute="leading" id="wZ3-yY-F4u"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8pJ-By-Frn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8pJ-By-Frn" firstAttribute="trailing" secondItem="6EE-PK-cDB" secondAttribute="trailing" constant="120" id="0a0-DO-koJ"/>
+                            <constraint firstItem="6EE-PK-cDB" firstAttribute="leading" secondItem="8pJ-By-Frn" secondAttribute="leading" constant="120" id="1Y5-M3-Ohi"/>
+                            <constraint firstItem="6EE-PK-cDB" firstAttribute="centerX" secondItem="lwu-Eq-LXe" secondAttribute="centerX" id="3q0-fc-cIg"/>
+                            <constraint firstItem="6EE-PK-cDB" firstAttribute="top" secondItem="8pJ-By-Frn" secondAttribute="top" constant="15" id="5lA-yO-XZI"/>
+                            <constraint firstItem="8pJ-By-Frn" firstAttribute="trailing" secondItem="ORb-ED-Qud" secondAttribute="trailing" constant="120" id="6xd-7K-vKF"/>
+                            <constraint firstItem="8pJ-By-Frn" firstAttribute="bottom" secondItem="ORb-ED-Qud" secondAttribute="bottom" constant="63" id="GUC-ss-C5s"/>
+                            <constraint firstItem="P15-ni-9fu" firstAttribute="leading" secondItem="8pJ-By-Frn" secondAttribute="leading" id="NDl-VC-c1R"/>
+                            <constraint firstItem="P15-ni-9fu" firstAttribute="trailing" secondItem="8pJ-By-Frn" secondAttribute="trailing" id="O6t-Ct-hnN"/>
+                            <constraint firstItem="P15-ni-9fu" firstAttribute="top" secondItem="lwu-Eq-LXe" secondAttribute="top" id="Qs2-6r-Wfr"/>
+                            <constraint firstAttribute="bottom" secondItem="P15-ni-9fu" secondAttribute="bottom" id="afM-Jh-ukd"/>
+                            <constraint firstItem="ORb-ED-Qud" firstAttribute="leading" secondItem="8pJ-By-Frn" secondAttribute="leading" constant="120" id="und-TO-UIv"/>
+                            <constraint firstItem="ORb-ED-Qud" firstAttribute="top" secondItem="6EE-PK-cDB" secondAttribute="bottom" constant="467" id="zCA-WC-TIo"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="6AF-Oz-ppK"/>
+                    <connections>
+                        <outlet property="btnLabel" destination="Enk-QI-Ou7" id="zXw-Wa-qm3"/>
+                        <outlet property="getLocationBtn" destination="QGi-bm-UnJ" id="VSg-Iq-sYo"/>
+                        <outlet property="kmeterLabel" destination="HgU-sf-bcw" id="VqI-b4-hJk"/>
+                        <outlet property="mapView" destination="P15-ni-9fu" id="7G2-da-W92"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iIh-cf-16N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4725" y="774"/>
+            <point key="canvasLocation" x="2702.7906976744184" y="905.79399141630904"/>
         </scene>
         <!--Today Walk Memo-->
         <scene sceneID="LvU-fD-VbM">
@@ -969,6 +1048,7 @@
                         <segue destination="ONP-OL-Khf" kind="relationship" relationship="viewControllers" id="gDg-Rl-1xr"/>
                         <segue destination="Iyz-Dg-NKS" kind="relationship" relationship="viewControllers" id="cxB-ST-9Uh"/>
                         <segue destination="F7f-uC-oRw" kind="relationship" relationship="viewControllers" id="vaD-ao-ckj"/>
+                        <segue destination="J9n-gQ-oHV" kind="relationship" relationship="viewControllers" id="IDf-t7-kIN"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6vh-ez-EL0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1087,6 +1167,25 @@
             </objects>
             <point key="canvasLocation" x="561" y="127"/>
         </scene>
+        <!--Map-->
+        <scene sceneID="Gjg-D3-WZb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="J9n-gQ-oHV" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" id="nZ8-Ry-gOy"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pkU-tm-oYR">
+                        <rect key="frame" x="0.0" y="59" width="430" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kRh-qS-WNk" kind="relationship" relationship="rootViewController" id="h6J-f1-aE5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2d7-3q-8SI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2703" y="127"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="3DV-Ud-JE7">
@@ -1108,6 +1207,7 @@
         <image name="dog-nose" width="512" height="512"/>
         <image name="hanny" width="1012.5" height="988"/>
         <image name="house" catalog="system" width="128" height="104"/>
+        <image name="map" catalog="system" width="128" height="112"/>
         <image name="person" catalog="system" width="128" height="121"/>
         <image name="photo.artframe" catalog="system" width="128" height="93"/>
         <image name="xmark" catalog="system" width="128" height="113"/>

@@ -31,6 +31,7 @@
 		5DC7F7E829EF836C005F9E22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DC7F7E629EF836C005F9E22 /* LaunchScreen.storyboard */; };
 		5DC7F7F029EF89D0005F9E22 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC7F7EF29EF89D0005F9E22 /* WeatherData.swift */; };
 		5DC7F7F429EF9816005F9E22 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC7F7F329EF9816005F9E22 /* CoreDataManager.swift */; };
+		5DD4372329FFFF8300181A72 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD4372229FFFF8300181A72 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		5DC7F7E929EF836C005F9E22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DC7F7EF29EF89D0005F9E22 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		5DC7F7F329EF9816005F9E22 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		5DD4372229FFFF8300181A72 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 				5D0DEAA629EFA19400FFF700 /* NewMemoViewController.swift */,
 				5D56118229EFB00100A6EA56 /* ProfileTableViewController.swift */,
 				5D56118429EFB02100A6EA56 /* ProfileEditTableViewController.swift */,
+				5DD4372229FFFF8300181A72 /* MapViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 				5D56118329EFB00100A6EA56 /* ProfileTableViewController.swift in Sources */,
 				5DC7F7F429EF9816005F9E22 /* CoreDataManager.swift in Sources */,
 				5DC7F7DD29EF836C005F9E22 /* MainViewController.swift in Sources */,
+				5DD4372329FFFF8300181A72 /* MapViewController.swift in Sources */,
 				5D75A3C429F3BAAC001C25B3 /* PhotoCollectionViewController.swift in Sources */,
 				5D1F3F5929F22AF2007FBD7E /* WeatherDataApi.swift in Sources */,
 				5D5A16FD29F827BD002E7C15 /* MemoTableViewCell.swift in Sources */,
