@@ -20,26 +20,50 @@ class MapViewController: UIViewController {
     
     var previousCoordinate: CLLocationCoordinate2D?
     var totalMeter = 0.0
-    
+    let saveBtn = UIButton()
     @IBAction func getLocationBtn(_ sender: UIButton) {
     
         if btnLabel.text == "START" {
             print("request 시작")
             btnLabel.text = "STOP"
             requestMyLocation()
-
+            self.tabBarController?.tabBar.frame.origin = CGPoint(x: 0, y: UIScreen.main.bounds.maxY)
+            saveBtn.layer.isHidden = false
+            getSaveBtn()
         } else if btnLabel.text == "STOP" {
+            saveBtn.layer.isHidden = true
+            
             btnLabel.text = "START"
             stopRequestMyLocation()
             let request = MKDirections.Request()
+            let heigh = self.tabBarController?.tabBar.frame.height ?? 0
+            self.tabBarController?.tabBar.frame.origin = CGPoint(x: 0, y: UIScreen.main.bounds.maxY - heigh)
+            self.tabBarController?.tabBar.backgroundColor = .lightGray
 
         }
         
     }
     
+    func getSaveBtn() {
+        
+        saveBtn.setTitle("산책 기록을 저장합니다", for: .normal)
+        saveBtn.backgroundColor = .systemOrange
+        saveBtn.translatesAutoresizingMaskIntoConstraints = false
+        saveBtn.layer.cornerRadius = 15
+        view.addSubview(saveBtn)
+        
+        saveBtn.leadingAnchor.constraint(equalTo: getLocationBtn.leadingAnchor, constant: 0).isActive = true
+        saveBtn.trailingAnchor.constraint(equalTo: getLocationBtn.trailingAnchor, constant: 0).isActive = true
+        saveBtn.topAnchor.constraint(equalTo: getLocationBtn.bottomAnchor, constant: 10).isActive = true
+    //            saveBtn.bottomAnchor.constraint(equalTo: saf.leadingAnchor, constant: 0).isActive = true
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tabBarController?.tabBar.frame.origin = CGPoint(x: 0, y: UIScreen.main.bounds.maxY)
         
         kmeterLabel.layer.cornerRadius = 15
         

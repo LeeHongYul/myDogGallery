@@ -534,7 +534,7 @@
                                     <outlet property="delegate" destination="kRh-qS-WNk" id="RiW-FV-tEF"/>
                                 </connections>
                             </mapView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6EE-PK-cDB" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
+                            <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6EE-PK-cDB" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
                                 <rect key="frame" x="120" y="118" width="190" height="128"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HgU-sf-bcw">
@@ -1048,7 +1048,7 @@
                         <segue destination="ONP-OL-Khf" kind="relationship" relationship="viewControllers" id="gDg-Rl-1xr"/>
                         <segue destination="Iyz-Dg-NKS" kind="relationship" relationship="viewControllers" id="cxB-ST-9Uh"/>
                         <segue destination="F7f-uC-oRw" kind="relationship" relationship="viewControllers" id="vaD-ao-ckj"/>
-                        <segue destination="J9n-gQ-oHV" kind="relationship" relationship="viewControllers" id="IDf-t7-kIN"/>
+                        <segue destination="J9n-gQ-oHV" kind="relationship" relationship="viewControllers" id="NI1-DX-bo7"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6vh-ez-EL0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1173,6 +1173,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="J9n-gQ-oHV" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" id="nZ8-Ry-gOy"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="bce-Th-6jW"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pkU-tm-oYR">
                         <rect key="frame" x="0.0" y="59" width="430" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
