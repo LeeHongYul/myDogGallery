@@ -17,6 +17,8 @@ class MainViewController: UIViewController {
     @IBOutlet var randomPhraseTextView: UITextView!
     @IBOutlet var weatherView: RoundedView!
     
+    @IBOutlet var lastWalkDateLabel: UILabel!
+    @IBOutlet var weatherDetailLabel: UILabel!
     @IBOutlet var weatherTempLabel: UILabel!
     
     @IBOutlet var mainWeatherImageView: UIImageView!
@@ -24,7 +26,7 @@ class MainViewController: UIViewController {
     @IBOutlet var informOverallLabel: UILabel!
     
     var weatherList = [Forcast.ForcastTemp]()
-
+    
     var airList = [Air.Response]()
     
     var locationManager = CLLocationManager()
@@ -41,7 +43,13 @@ class MainViewController: UIViewController {
         mainCollectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: true)
     }
     
-    
+    var dateFormatter: DateFormatter = {
+        let inputDate = DateFormatter()
+        inputDate.dateFormat = "MMM d, yyyy"
+        inputDate.locale = Locale(identifier: "en_US_POSIX")
+        
+        return inputDate
+    }()
     
     
     
@@ -52,6 +60,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         CoreDataManager.shared.fetchProfile()
         
         mainPageControl.currentPage = 0
@@ -86,10 +95,14 @@ class MainViewController: UIViewController {
         
         setLocationManager()
         
-//                fetchAirMoya()
+        //                fetchAirMoya()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        CoreDataManager.shared.fetchMemo()
+        if let inputeDate = CoreDataManager.shared.memoList.first?.inputDate {
+            lastWalkDateLabel.text =  dateFormatter.string(from: inputeDate)
+        }
         
         randomPhraseTextView.text = "\(phraselist[Int.random(in: 0 ... phraselist.count - 1)])"
         
@@ -112,36 +125,36 @@ class MainViewController: UIViewController {
             }
         }
     }
-
-
-//        func fetchAirMoya() {
-//            let provider = MoyaProvider<AirDataApi>()
-//            provider.request(.airDataList) { result in
-//                switch result {
-//                case let .success(moyaResponse):
-//                    let data = moyaResponse.data
-//                    let statusCode = moyaResponse.statusCode
-//                    print(moyaResponse.statusCode)
-//
-//                    do {
-//                        try moyaResponse.filterSuccessfulStatusCodes()
-//
-//                        let decoder = JSONDecoder()
-//                        let list = try decoder.decode(Air.self, from: data)
-//
-//                        self.airList = [list.response]
-//                        DispatchQueue.main.async {
-//                            print(list.response.body.items[0].informOverall)
-//                        }
-//                    } catch {
-//                        print(error)
-//                    }
-//
-//                case let .failure(error):
-//                    break
-//                }
-//            }
-//        }
+    
+    
+    //        func fetchAirMoya() {
+    //            let provider = MoyaProvider<AirDataApi>()
+    //            provider.request(.airDataList) { result in
+    //                switch result {
+    //                case let .success(moyaResponse):
+    //                    let data = moyaResponse.data
+    //                    let statusCode = moyaResponse.statusCode
+    //                    print(moyaResponse.statusCode)
+    //
+    //                    do {
+    //                        try moyaResponse.filterSuccessfulStatusCodes()
+    //
+    //                        let decoder = JSONDecoder()
+    //                        let list = try decoder.decode(Air.self, from: data)
+    //
+    //                        self.airList = [list.response]
+    //                        DispatchQueue.main.async {
+    //                            print(list.response.body.items[0].informOverall)
+    //                        }
+    //                    } catch {
+    //                        print(error)
+    //                    }
+    //
+    //                case let .failure(error):
+    //                    break
+    //                }
+    //            }
+    //        }
     
     func fetchMoya() {
         let provider = MoyaProvider<WeatherDataApi>()
@@ -160,12 +173,27 @@ class MainViewController: UIViewController {
                     self.weatherList = [list.main]
                     
                     DispatchQueue.main.async {
-                        self.weatherTempLabel.text = "\(list.main.temp)"
-                       
+                        let tempStr = String(format: "%.1f",list.main.temp)
+                        self.weatherDetailLabel.text = list.weather[0].main
+                        self.weatherTempLabel.text = tempStr+"°"
+                        
                         let urlStr = "https://openweathermap.org/img/wn/" + (list.weather[0].icon)! + "@2x.png"
-                            
-                        self.mainWeatherImageView.sd_setImage(with: URL(string: urlStr))
-
+                        
+                        switch list.weather[0].icon {
+                        case "01n":
+                            self.mainWeatherImageView.image = UIImage(named: "sun")
+                        case "02n","03n", "04n","05n":
+                            self.mainWeatherImageView.image = UIImage(named: "fog")
+                        case "09n", "10n","11n":
+                            self.mainWeatherImageView.image = UIImage(named: "rain")
+                        case "13n":
+                            self.mainWeatherImageView.image = UIImage(named: "snow")
+                        default:
+                            print("no image")
+                        }
+                        
+                        //                        self.mainWeatherImageView.sd_setImage(with: URL(string: urlStr))
+                        
                     }
                 } catch {
                     print(error)
@@ -232,8 +260,8 @@ extension MainViewController: CLLocationManagerDelegate {
             locationManager.stopUpdatingLocation()
         }
     }
-        
-   
+    
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("error")
     }

@@ -18,6 +18,7 @@ struct Forcast: Codable {
     }
     
     struct ForcastDetail: Codable {
+        let main: String
         let id: Int
         let icon: String?
     }
