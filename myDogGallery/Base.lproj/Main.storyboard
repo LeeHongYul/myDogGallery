@@ -21,51 +21,47 @@
                             <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bn7-lk-97t" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
                                 <rect key="frame" x="20" y="137.66666666666663" width="390" height="142.33333333333337"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="o2N-jm-D85">
-                                        <rect key="frame" x="10" y="12.666666666666686" width="370" height="68"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7sH-EB-7yB">
-                                                <rect key="frame" x="0.0" y="0.0" width="64" height="68"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="64" id="QSU-kw-a9n"/>
-                                                    <constraint firstAttribute="height" constant="68" id="fJL-FR-5dF"/>
-                                                </constraints>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘의 산책 날씨" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UfN-3I-EUb">
-                                                <rect key="frame" x="114" y="0.0" width="256" height="68"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <variation key="heightClass=regular-widthClass=regular" spacing="450"/>
-                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today's Weather" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UfN-3I-EUb">
+                                        <rect key="frame" x="131.33333333333337" y="14.999999999999996" width="243.66666666666663" height="40.666666666666657"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="VXD-lm-hzl">
-                                        <rect key="frame" x="124" y="88.666666666666686" width="256" height="33.666666666666657"/>
+                                        <rect key="frame" x="131.33333333333337" y="88.666666666666686" width="243.66666666666663" height="33.666666666666657"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQx-gT-Bip">
-                                                <rect key="frame" x="0.0" y="0.0" width="128" height="33.666666666666664"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="122" height="33.666666666666664"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1II-P3-tHx">
-                                                <rect key="frame" x="128" y="0.0" width="128" height="33.666666666666664"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temp" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1II-P3-tHx">
+                                                <rect key="frame" x="121.99999999999997" y="0.0" width="121.66666666666666" height="33.666666666666664"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7sH-EB-7yB">
+                                        <rect key="frame" x="15" y="15" width="90" height="90"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="90" id="1Kh-MS-9Ew"/>
+                                            <constraint firstAttribute="width" constant="90" id="HgC-HF-1lr"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                 <constraints>
-                                    <constraint firstItem="VXD-lm-hzl" firstAttribute="top" secondItem="o2N-jm-D85" secondAttribute="bottom" constant="8" symbolic="YES" id="4qG-QO-IOJ"/>
-                                    <constraint firstItem="VXD-lm-hzl" firstAttribute="trailing" secondItem="o2N-jm-D85" secondAttribute="trailing" id="DJM-Kp-0W2"/>
-                                    <constraint firstItem="o2N-jm-D85" firstAttribute="leading" secondItem="Bn7-lk-97t" secondAttribute="leading" constant="10" id="FxZ-RD-ikJ"/>
-                                    <constraint firstItem="VXD-lm-hzl" firstAttribute="leading" secondItem="UfN-3I-EUb" secondAttribute="leading" id="PBg-hQ-ZdR"/>
+                                    <constraint firstItem="UfN-3I-EUb" firstAttribute="top" secondItem="Bn7-lk-97t" secondAttribute="top" constant="15" id="2dD-hH-ijR"/>
+                                    <constraint firstItem="7sH-EB-7yB" firstAttribute="top" secondItem="Bn7-lk-97t" secondAttribute="top" constant="15" id="35R-Et-2Z8"/>
+                                    <constraint firstItem="VXD-lm-hzl" firstAttribute="leading" secondItem="UfN-3I-EUb" secondAttribute="leading" id="7T1-O4-gmb"/>
+                                    <constraint firstAttribute="trailing" secondItem="UfN-3I-EUb" secondAttribute="trailing" constant="15" id="7qn-Dj-BN1"/>
+                                    <constraint firstItem="VXD-lm-hzl" firstAttribute="trailing" secondItem="UfN-3I-EUb" secondAttribute="trailing" id="A6V-zR-clo"/>
+                                    <constraint firstItem="UfN-3I-EUb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7sH-EB-7yB" secondAttribute="trailing" constant="5" id="DEz-p2-iE0"/>
+                                    <constraint firstItem="7sH-EB-7yB" firstAttribute="leading" secondItem="Bn7-lk-97t" secondAttribute="leading" constant="15" id="Nro-sB-X6J"/>
                                     <constraint firstAttribute="bottom" secondItem="VXD-lm-hzl" secondAttribute="bottom" constant="20" id="Xsx-Dn-6EP"/>
-                                    <constraint firstAttribute="trailing" secondItem="o2N-jm-D85" secondAttribute="trailing" constant="10" id="dmD-RM-Axf"/>
                                     <constraint firstAttribute="height" constant="142.33000000000001" id="tUr-LP-fHQ"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>

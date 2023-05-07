@@ -38,11 +38,16 @@ class CoreDataManager {
         }
     }
     
-    func fetch(predicate: NSPredicate? = nil) {
+    
+    func searchByName(_ keyword: String?) {
+        guard let keyword = keyword else { return }
+        let predicate = NSPredicate(format: "title CONTAINS %@", keyword)
+        fetchPredicate(predicate: predicate)
+    }
+    
+    func fetchPredicate(predicate: NSPredicate? = nil) {
         let request = NSFetchRequest<NSManagedObject>(entityName: "Memo")
-        
         request.predicate = predicate
-        
         do {
             list = try CoreDataManager.shared.mainContext.fetch(request)
             
@@ -50,12 +55,7 @@ class CoreDataManager {
             print(error)
         }
     }
-    
-    func searchByName(_ keyword: String?) {
-        guard let keyword = keyword else { return }
-        let predicate = NSPredicate(format: "title CONTAINS %@", keyword)
-        fetch(predicate: predicate)
-    }
+
     
 //    func fetchProfile() {
 //        

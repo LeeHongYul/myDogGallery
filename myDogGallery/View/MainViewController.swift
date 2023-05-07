@@ -51,22 +51,13 @@ class MainViewController: UIViewController {
         return inputDate
     }()
     
-    
-    
-    
-    
-    
-    
-    
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        CoreDataManager.shared.fetchProfile()
+        super.viewDidLoad() 
         
         mainPageControl.currentPage = 0
         mainPageControl.numberOfPages = CoreDataManager.shared.profileList.count
         
-        
+
         testView.setGradient(color1: UIColor.systemOrange, color2: UIColor.white)
         
         fetchMoya()
@@ -178,21 +169,21 @@ class MainViewController: UIViewController {
                         self.weatherTempLabel.text = tempStr+"°"
                         
                         let urlStr = "https://openweathermap.org/img/wn/" + (list.weather[0].icon)! + "@2x.png"
-                        
+                        print(urlStr)
                         switch list.weather[0].icon {
-                        case "01n":
+                        case "01n","01d":
                             self.mainWeatherImageView.image = UIImage(named: "sun")
-                        case "02n","03n", "04n","05n":
+                        case "02n","03n", "04n","05n","02d","03d", "04d","05d":
                             self.mainWeatherImageView.image = UIImage(named: "fog")
-                        case "09n", "10n","11n":
+                        case "09n", "10n","11n","09d", "10d","11d":
                             self.mainWeatherImageView.image = UIImage(named: "rain")
-                        case "13n":
+                        case "13n","13d":
                             self.mainWeatherImageView.image = UIImage(named: "snow")
                         default:
                             print("no image")
                         }
                         
-                        //                        self.mainWeatherImageView.sd_setImage(with: URL(string: urlStr))
+                        //    self.mainWeatherImageView.sd_setImage(with: URL(string: urlStr))
                         
                     }
                 } catch {
