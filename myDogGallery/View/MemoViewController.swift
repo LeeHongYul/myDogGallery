@@ -131,7 +131,7 @@ extension MemoViewController: UISearchBarDelegate {
             isSearchMode = false
             
             DispatchQueue.main.async {
-                print("DISQUUUE")
+                
                 self.memoTableView.reloadData()
             }
         } else {

@@ -59,6 +59,14 @@ class ProfileEditTableViewController: UITableViewController {
             return
         }
         
+        if name.count ?? 0 >= 11 {
+            let alert = UIAlertController(title: "이름 글자수가 많습니다 10자", message: "이름 글자수 수정 필요", preferredStyle: .alert)
+            let action = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+            alert.addAction(action)
+            present(alert, animated:  true, completion:  nil)
+            return
+        }
+        
        
         let ageYearStr = yearFormatter.string(from: birthDayDatePicker.date)
         let currentYearStr = yearFormatter.string(from: Date())
@@ -131,7 +139,6 @@ extension ProfileEditTableViewController: PHPickerViewControllerDelegate {
         for item in results {
             item.itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in
                 if let image = image as? UIImage {
-                    print(image)
                     
                     DispatchQueue.main.async {
                         self.profileImage.image = image

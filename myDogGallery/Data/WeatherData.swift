@@ -24,22 +24,3 @@ struct Forcast: Codable {
     }
 }
 
-struct Air: Codable {
-    
-    let response: Response
-    
-    struct Response: Codable {
-        let body: Body
-    }
-    
-    struct Body: Codable {
-        let totalCount: Int
-        let items: [Detail]
-        let pageNo, numOfRows: Int
-    }
-    
-    struct Detail: Codable {
-        let informOverall: String
-    }
- 
-}
