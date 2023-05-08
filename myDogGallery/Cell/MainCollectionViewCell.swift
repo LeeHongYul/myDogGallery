@@ -11,4 +11,5 @@ class MainCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var mainImageView: UIImageView!
     @IBOutlet var mainCollectionLabel: UILabel!
+    
 }

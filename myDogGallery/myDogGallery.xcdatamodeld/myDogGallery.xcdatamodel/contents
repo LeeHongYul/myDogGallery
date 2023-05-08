@@ -19,4 +19,8 @@
         <attribute name="pin" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="timeStamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
+    <entity name="Walk" representedClassName="WalkEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="currentDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="totalDistance" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+    </entity>
 </model>

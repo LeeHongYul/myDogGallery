@@ -22,7 +22,33 @@ class CoreDataManager {
     
     var memoList = [MemoEntity]()
     var profileList = [ProfileEntity]()
+    var walkList = [WalkEntity]()
     var list = [NSManagedObject]()
+    
+    
+    
+    func fetchWalk() {
+        
+        let request = WalkEntity.fetchRequest()
+        
+        do {
+            walkList = try mainContext.fetch(request)
+        } catch {
+            print(error)
+        }
+    }
+    
+    
+    func addNewWalk(cuurentDate: Date, totalDistance: Double) {
+        
+        let newWalk = WalkEntity(context:  mainContext)
+        
+        newWalk.currentDate = cuurentDate
+        newWalk.totalDistance = totalDistance
+       
+        walkList.insert(newWalk, at: 0)
+        saveContext()
+    }
     
     func fetchMemo() {
         
@@ -41,7 +67,7 @@ class CoreDataManager {
     
     func searchByName(_ keyword: String?) {
         guard let keyword = keyword else { return }
-        let predicate = NSPredicate(format: "title CONTAINS %@", keyword)
+        let predicate = NSPredicate(format: "title CONTAINS[c] %@", keyword)
         fetchPredicate(predicate: predicate)
     }
     
@@ -56,18 +82,6 @@ class CoreDataManager {
         }
     }
 
-    
-//    func fetchProfile() {
-//        
-//        let request = ProfileEntity.fetchRequest()
-//        
-//        do {
-//            profileList = try mainContext.fetch(request)
-//        } catch {
-//            print(error)
-//        }
-//    }
-    
     func fetchProfile() {
         
         let request = ProfileEntity.fetchRequest()

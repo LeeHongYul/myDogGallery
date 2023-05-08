@@ -37,6 +37,7 @@ class ProfileTableViewController: UITableViewController {
         super.viewDidLoad()
         
         CoreDataManager.shared.fetchProfile()
+        
         NotificationCenter.default.addObserver(forName: .profileDidInsert, object: nil, queue: .main) { noti in
             CoreDataManager.shared.fetchProfile()
             self.profileListTableView.reloadData()
