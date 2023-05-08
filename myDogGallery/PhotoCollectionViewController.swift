@@ -35,38 +35,45 @@ class PhotoCollectionViewController: UICollectionViewController {
         let allPhotosOptions = PHFetchOptions()
         allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
         allPhotos = PHAsset.fetchAssets(with: allPhotosOptions)
-        
+
         self.photoCollectionView?.reloadData()
         
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+       
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        switch PHPhotoLibrary.authorizationStatus(for: .addOnly) {
-//        case .notDetermined:
-//            print("not determined")
-//            PHPhotoLibrary.requestAuthorization(for: .addOnly) { status in
-//                switch status {
-//                case .authorized, .limited:
-//                    self.photoCollectionView.reloadData()
-//                case .denied:
-//                    print("")
-//                default:
-//                    print("그 밖의 권한이 부여 되었습니다.")
-//                }
-//            }
-//        case .restricted:
-//            print("restricted")
-//        case .denied:
-//            print("")
-//        case .limited, .authorized:
-//            self.fetchAllPhotos()
-//        default:
-//            print("")
-//        }
-        
+        switch PHPhotoLibrary.authorizationStatus(for: .addOnly) {
+        case .notDetermined:
+            print("not determined")
+            PHPhotoLibrary.requestAuthorization(for: .addOnly) { status in
+                switch status {
+                case .authorized, .limited:
+                    DispatchQueue.main.async {
+                        self.fetchAllPhotos()
+                    }
+                   
+                    
+                case .denied:
+                    print("")
+                default:
+                    print("그 밖의 권한이 부여 되었습니다.")
+                }
+            }
+        case .restricted:
+            print("restricted")
+        case .denied:
+            print("")
+        case .limited, .authorized:
+            self.fetchAllPhotos()
+           
+        default:
+            print("")
+        }
         
         let conditionalLayout = UICollectionViewCompositionalLayout { sectionIndex, env in
             
@@ -85,13 +92,14 @@ class PhotoCollectionViewController: UICollectionViewController {
             
         }
         
-        collectionView.collectionViewLayout = conditionalLayout
+        photoCollectionView.collectionViewLayout = conditionalLayout
         
-        fetchAllPhotos()
+        photoCollectionView.reloadData()
+        
+        
+        
         
     }
-    
-    
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         
@@ -100,8 +108,14 @@ class PhotoCollectionViewController: UICollectionViewController {
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if PHPhotoLibrary.authorizationStatus(for: .addOnly) == .authorized {
+           
+            return allPhotos.count
+        } else {
+            return 0
+        }
+
         
-        return allPhotos.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -118,3 +132,7 @@ class PhotoCollectionViewController: UICollectionViewController {
         return cell
     }
 }
+
+
+
+
