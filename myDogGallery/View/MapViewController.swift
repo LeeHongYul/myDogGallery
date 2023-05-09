@@ -16,87 +16,55 @@ class MapViewController: UIViewController {
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var getLocationBtn: UIButton!
     @IBOutlet var kmeterLabel: UILabel!
-    
-    @IBOutlet var btnLabel: UILabel!
+
     let locationManager = CLLocationManager()
     
     var previousCoordinate: CLLocationCoordinate2D?
+
     var totalMeter = 0.0
-    let saveBtn = UIButton()
-    let restartBtn = UIButton()
+
+    var getLocationBtnState = true
     
     @IBAction func getLocationBtn(_ sender: UIButton) {
-    
-        if btnLabel.text == "START" {
-            print("request 시작")
-            btnLabel.text = "STOP"
+
+        if getLocationBtnState == true {
+            getLocationBtn.setImage(UIImage(systemName: "stop.fill"), for: .normal)
             requestMyLocation()
-
-            saveBtn.layer.isHidden = false
-            saveBtn.addTarget(self, action: #selector(self.saveWalkBtn), for: .touchUpInside)
-            restartBtn.layer.isHidden = false
-            restartBtn.addTarget(self, action: #selector(self.restartWalkBtn), for: .touchUpInside)
-            setTwoBtns()
-        } else if btnLabel.text == "STOP" {
-            saveBtn.layer.isHidden = true
-            restartBtn.layer.isHidden = true
-            
-            btnLabel.text = "START"
+            getLocationBtnState = false
+        } else if getLocationBtnState == false {
+            getLocationBtn.setImage(UIImage(systemName: "play.fill"), for: .normal)
+            getLocationBtnState = true
             stopRequestMyLocation()
-            let request = MKDirections.Request()
-
 
         }
-        
     }
     
-    @objc func saveWalkBtn(_ sender: UIButton) {
+    @IBAction func restartWalkBtn(_ sender: Any) {
+        print("산책 기록을 초기화합니다")
+        print(totalMeter)
+        kmeterLabel.text = "0.0 Km"
+        totalMeter = 0
+        stopRequestMyLocation()
+        getLocationBtnState = true
+
+    }
+
+    @IBAction func saveWalkBtn(_ sender: Any) {
         print("산책 기록을 저장합니다")
         print(totalMeter)
+        kmeterLabel.text = "0.0 Km"
         CoreDataManager.shared.addNewWalk(cuurentDate: Date(), totalDistance: totalMeter)
         totalMeter = 0
     }
-    
-    @objc func restartWalkBtn(_ sender: UIButton) {
-        print("산책 기록을 초기화합니다")
-        print(totalMeter)
-        totalMeter = 0
-    }
-    
-    
-    func setTwoBtns() {
-        
-        saveBtn.setTitle("산책 기록을 저장합니다", for: .normal)
-        saveBtn.backgroundColor = .systemOrange
-        saveBtn.translatesAutoresizingMaskIntoConstraints = false
-        saveBtn.layer.cornerRadius = 15
-        view.addSubview(saveBtn)
-        
-        restartBtn.setTitle("거리 초기화", for: .normal)
-        restartBtn.backgroundColor = .red
-        restartBtn.translatesAutoresizingMaskIntoConstraints = false
-        restartBtn.layer.cornerRadius = 15
-        view.addSubview(restartBtn)
-        
-        saveBtn.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -30).isActive = true
-//        saveBtn.leadingAnchor.constraint(equalTo: restartBtn.trailingAnchor, constant: -10).isActive = true
-        saveBtn.bottomAnchor.constraint(equalTo: getLocationBtn.topAnchor, constant: -30).isActive = true
-        
-        
-        
-        restartBtn.trailingAnchor.constraint(equalTo: saveBtn.leadingAnchor, constant: -30).isActive = true
-        restartBtn.leadingAnchor.constraint(equalTo: mapView.leadingAnchor, constant: 30).isActive = true
-        restartBtn.bottomAnchor.constraint(equalTo: getLocationBtn.topAnchor, constant: -30).isActive = true
-        
-    }
+
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        UIColor.systemOrange
-        mapGradientView.setGradient(color1: UIColor.systemOrange, color2: UIColor.white)
-//        self.tabBarController?.tabBar.frame.origin = CGPoint(x: 0, y: UIScreen.main.bounds.maxY)
+
+        mapGradientView.setGradient(color1: UIColor.systemOrange, color2: UIColor.white, color3: UIColor.white)
+
         let heigh = self.tabBarController?.tabBar.frame.height ?? 0
         self.tabBarController?.tabBar.frame.origin = CGPoint(x: 0, y: UIScreen.main.bounds.maxY - heigh)
         kmeterLabel.layer.cornerRadius = 15
@@ -180,7 +148,7 @@ extension MapViewController: CLLocationManagerDelegate {
             points.append(point2)
             let lineDraw = MKPolyline(coordinates: points, count:points.count)
             self.mapView.addOverlay(lineDraw)
-          
+
             totalMeter += Double(location.coordinate.distance(from: previousCoordinate))
             
         }
@@ -192,7 +160,7 @@ extension MapViewController: CLLocationManagerDelegate {
     }
     
     func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager) {
-       
+
     }
 }
 
@@ -217,5 +185,6 @@ extension CLLocationCoordinate2D {
 }
 
 
-   
+
+
 

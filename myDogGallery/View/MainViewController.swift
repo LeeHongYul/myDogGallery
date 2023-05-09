@@ -61,7 +61,7 @@ class MainViewController: UIViewController {
         mainPageControl.numberOfPages = CoreDataManager.shared.profileList.count
         
 
-        mainGradientView.setGradient(color1: UIColor.systemOrange, color2: UIColor.white)
+        mainGradientView.setGradient(color1: UIColor.systemOrange, color2: UIColor.white, color3: UIColor.white)
         
         fetchMoya()
         
@@ -189,10 +189,10 @@ class MainViewController: UIViewController {
 }
 
 extension UIView{
-    func setGradient(color1:UIColor, color2:UIColor){
+    func setGradient(color1:UIColor, color2:UIColor, color3:UIColor){
         let gradient: CAGradientLayer = CAGradientLayer()
-        gradient.colors = [color1.cgColor, color2.cgColor]
-        gradient.locations = [0.0 , 1.0]
+        gradient.colors = [color1.cgColor, color2.cgColor, color3.cgColor]
+        gradient.locations = [0.0 , 0.8]
         gradient.startPoint = CGPoint(x: 5.0, y: 0.0)
         gradient.endPoint = CGPoint(x: 5.0, y: 1.0)
         gradient.frame = bounds
