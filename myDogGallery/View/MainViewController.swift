@@ -107,7 +107,7 @@ class MainViewController: UIViewController {
         }
         
         CoreDataManager.shared.fetchProfile()
-        print(CoreDataManager.shared.profileList.count,"프로필 수22")
+
         mainPageControl.currentPage = 0
         mainPageControl.numberOfPages = CoreDataManager.shared.profileList.count
         

@@ -14,6 +14,8 @@ class WalkHistoryTableViewCell: UITableViewCell {
     @IBOutlet var currentDistanceLabel: UILabel!
     
     
+    @IBOutlet var walkProfileImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

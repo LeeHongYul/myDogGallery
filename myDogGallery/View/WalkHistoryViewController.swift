@@ -7,18 +7,19 @@
 
 import UIKit
 
+
 class WalkHistoryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         CoreDataManager.shared.fetchWalk()
-        
+        CoreDataManager.shared.fetchProfile()
        
     }
     
     var dateFormatter: DateFormatter = {
         let inputDate = DateFormatter()
-        inputDate.dateFormat = "MMM d, h:mm a"
+        inputDate.dateFormat = "EEEE, MMM d, yyyy"
         inputDate.locale = Locale(identifier: "en_US_POSIX")
         
         return inputDate
