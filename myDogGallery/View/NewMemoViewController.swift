@@ -122,3 +122,21 @@ class NewMemoViewController: UIViewController {
         }
     }
 }
+
+extension NewMemoViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = NSString(string: textField.text ?? "")
+        let finalText = currentText.replacingCharacters(in: range, with: string)
+
+        switch textField {
+        case memoTitleTextField:
+            if finalText.count >= 14 {
+                return false
+            }
+        default:
+            break
+        }
+
+        return true
+    }
+}
