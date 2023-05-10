@@ -25,8 +25,33 @@ class MapViewController: UIViewController {
 
     var getLocationBtnState = true
     
-    @IBAction func getLocationBtn(_ sender: UIButton) {
 
+
+    @IBOutlet var testPickerView: UIView!
+
+
+    @IBOutlet var textImageView: UIImageView!
+
+    @IBOutlet var testTextField: UITextField!
+
+
+    @IBOutlet var testBar: UIToolbar!
+
+
+
+
+
+    @IBAction func testDoneBtn(_ sender: Any) {
+        testTextField.resignFirstResponder()
+    }
+
+
+
+
+
+
+    @IBAction func getLocationBtn(_ sender: Any) {
+        print(#function)
         if getLocationBtnState == true {
             getLocationBtn.setImage(UIImage(systemName: "stop.fill"), for: .normal)
             requestMyLocation()
@@ -38,30 +63,68 @@ class MapViewController: UIViewController {
 
         }
     }
+
     
     @IBAction func restartWalkBtn(_ sender: Any) {
+        print(#function)
         print("산책 기록을 초기화합니다")
         print(totalMeter)
-        kmeterLabel.text = "0.0 Km"
-        totalMeter = 0
-        stopRequestMyLocation()
-        getLocationBtnState = true
 
+        if totalMeter != 0 {
+            kmeterLabel.text = "0.0 Km"
+            totalMeter = 0
+            stopRequestMyLocation()
+            getLocationBtn.setImage(UIImage(systemName: "play.fill"), for: .normal)
+            getLocationBtnState = true
+        } else {
+            print("초기화 못합니다")
+        }
     }
 
     @IBAction func saveWalkBtn(_ sender: Any) {
         print("산책 기록을 저장합니다")
         print(totalMeter)
-        kmeterLabel.text = "0.0 Km"
-        CoreDataManager.shared.addNewWalk(cuurentDate: Date(), totalDistance: totalMeter)
-        totalMeter = 0
+        showAlertController()
+
     }
 
-    
+    func showAlertController() {
+            //UIAlertController
+            let alert = UIAlertController(title: "산책 기록 저장", message: "산책이 다 끝났나요?", preferredStyle: .alert)
+
+            // Button
+        let realcancel = UIAlertAction(title: "산책 기록이 없어서 저장 못합니다", style: .destructive)
+        let ok = UIAlertAction(title: "확인", style: .default) { _ in
+
+                self.kmeterLabel.text = "0.0 Km"
+                CoreDataManager.shared.addNewWalk(cuurentDate: Date(), totalDistance: self.totalMeter)
+                self.totalMeter = 0
+                self.stopRequestMyLocation()
+                self.getLocationBtnState = true
+
+
+        }
+            let cancel = UIAlertAction(title: "취소", style: .destructive, handler: nil)
+
+
+            alert.addAction(cancel)
+            alert.addAction(ok)
+
+
+            //present
+            present(alert, animated: true, completion: nil)
+        }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        CoreDataManager.shared.fetchProfile()
+        testTextField.inputView = testPickerView
+        testTextField.inputAccessoryView = testBar
+        textImageView.layer.cornerRadius = textImageView.frame.width / 2
+        textImageView.layer.borderWidth = 1
+        textImageView.layer.borderColor = UIColor.systemOrange.cgColor
+
 
         mapGradientView.setGradient(color1: UIColor.systemOrange, color2: UIColor.white, color3: UIColor.white)
 
@@ -184,7 +247,35 @@ extension CLLocationCoordinate2D {
     }
 }
 
+extension MapViewController: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
 
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        CoreDataManager.shared.profileList.count
+    }
+
+
+}
+
+extension MapViewController: UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+
+        let target = CoreDataManager.shared.profileList[row]
+        return target.name
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let target = CoreDataManager.shared.profileList[row]
+        testTextField.text = target.name
+
+        let dataImage = UIImage(data: target.image!)
+        textImageView.image = dataImage
+    }
+
+
+}
 
 
 
