@@ -50,10 +50,23 @@ class MainViewController: UIViewController {
         return inputDate
     }()
     
+    @IBOutlet var phaseView: RoundedView!
+
+    @IBOutlet var walkHistoryView: RoundedView!
+
+    func shadow(inputView: UIView) {
+        inputView.layer.shadowColor = UIColor.lightGray.cgColor
+        inputView.layer.shadowOpacity = 1
+        inputView.layer.shadowRadius = 2
+        inputView.layer.shadowOffset = CGSize(width: 5, height: 5)
+        inputView.layer.shadowPath = nil
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        mainProfileViewSet()
+        shadow(inputView: phaseView)
+        shadow(inputView: walkHistoryView)
+        shadow(inputView: mainProfileView)
         
         CoreDataManager.shared.fetchProfile()
         print(CoreDataManager.shared.profileList.count,"프로필 수")
@@ -62,7 +75,7 @@ class MainViewController: UIViewController {
         
 
         mainGradientView.setGradient(color1: UIColor.systemOrange, color2: UIColor.white, color3: UIColor.white)
-        
+
         fetchMoya()
         
         let conditionalLayout = UICollectionViewCompositionalLayout { sectionIndex, env in
@@ -81,22 +94,14 @@ class MainViewController: UIViewController {
             return section
             
         }
-        
-        mainCollectionView.layer.borderWidth = 1
-        mainCollectionView.layer.borderColor = UIColor.lightGray.cgColor
+
+
         mainCollectionView.layer.cornerRadius = 15
         mainCollectionView.collectionViewLayout = conditionalLayout
         mainCollectionView.reloadData()
         
         setLocationManager()
         
-    }
-    
-    func mainProfileViewSet() {
-    
-        mainProfileView.layer.borderWidth = 1
-        mainProfileView.layer.borderColor = UIColor.lightGray.cgColor
-        mainProfileView.layer.cornerRadius = 15
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -216,7 +221,7 @@ extension MainViewController: UICollectionViewDataSource {
         
         let target = CoreDataManager.shared.profileList[indexPath.row]
         
-        cell.mainCollectionLabel.text = target.name
+//        cell.mainCollectionLabel.text = target.name
         cell.mainImageView.image = UIImage(data: target.image!)
         
         return cell

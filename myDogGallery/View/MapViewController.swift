@@ -11,21 +11,27 @@ import CoreLocation
 
 class MapViewController: UIViewController {
     
+    @IBOutlet var playBtnView: RoundedView!
+
     @IBOutlet var mapGradientView: UIView!
     
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var getLocationBtn: UIButton!
     @IBOutlet var kmeterLabel: UILabel!
+    @IBOutlet var timeLabel: UILabel!
 
     let locationManager = CLLocationManager()
-    
     var previousCoordinate: CLLocationCoordinate2D?
 
     var totalMeter = 0.0
 
+    var addResetBtn = UIButton()
+    var addSaveBtn = UIButton()
+
     var getLocationBtnState = true
     
 
+    @IBOutlet var mapControlView: RoundedView!
 
     @IBOutlet var testPickerView: UIView!
 
@@ -37,8 +43,8 @@ class MapViewController: UIViewController {
 
     @IBOutlet var testBar: UIToolbar!
 
-
-
+    var timer: Timer = Timer()
+    var count: Int = 0
 
 
     @IBAction func testDoneBtn(_ sender: Any) {
@@ -50,29 +56,66 @@ class MapViewController: UIViewController {
 
 
 
+
     @IBAction func getLocationBtn(_ sender: Any) {
         print(#function)
         if getLocationBtnState == true {
-            getLocationBtn.setImage(UIImage(systemName: "stop.fill"), for: .normal)
+            getLocationBtn.setImage(UIImage(systemName: "pause.fill"), for: .normal)
             requestMyLocation()
+
+            addSaveBtn.layer.isHidden = false
+            addResetBtn.layer.isHidden = false
+            addSaveBtn.addTarget(self, action: #selector(self.saveWalk), for: .touchUpInside)
+            addResetBtn.addTarget(self, action: #selector(self.resetWalk), for: .touchUpInside)
+
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCounter), userInfo: nil, repeats: true)
             getLocationBtnState = false
         } else if getLocationBtnState == false {
             getLocationBtn.setImage(UIImage(systemName: "play.fill"), for: .normal)
             getLocationBtnState = true
+            addSaveBtn.layer.isHidden = true
+            addResetBtn.layer.isHidden = true
+            timer.invalidate()
             stopRequestMyLocation()
 
         }
     }
 
-    
-    @IBAction func restartWalkBtn(_ sender: Any) {
-        print(#function)
-        print("산책 기록을 초기화합니다")
-        print(totalMeter)
+    @objc func timerCounter() -> Void {
+        count += 1
+        let time = secondtoHourMinSec(seconds: count)
+        let timeString = makeStirng(hours: time.0, minutes: time.1, seconds: time.2)
+        timeLabel.text = timeString
+    }
 
+    func secondtoHourMinSec(seconds: Int) -> (Int, Int, Int) {
+        return ((seconds / 3600), ((seconds % 3600) / 60), ((seconds % 3600) % 60))
+    }
+
+    func makeStirng(hours: Int, minutes: Int, seconds: Int) -> String{
+        var timeString = ""
+        timeString += String(format: "%02d", hours)
+        timeString += " : "
+        timeString += String(format: "%02d", minutes)
+        timeString += " : "
+        timeString += String(format: "%02d", seconds)
+
+        return timeString
+    }
+
+    @objc func saveWalk(_ sender: UIButton) {
+        print("save btn pressed")
+        showAlertController()
+    }
+
+    @objc func resetWalk(_ sender: UIButton) {
+        print("reset btn pressed")
         if totalMeter != 0 {
+            timer.invalidate()
             kmeterLabel.text = "0.0 Km"
+            timeLabel.text = "0:0:0"
             totalMeter = 0
+            count = 0
             stopRequestMyLocation()
             getLocationBtn.setImage(UIImage(systemName: "play.fill"), for: .normal)
             getLocationBtnState = true
@@ -81,50 +124,116 @@ class MapViewController: UIViewController {
         }
     }
 
-    @IBAction func saveWalkBtn(_ sender: Any) {
-        print("산책 기록을 저장합니다")
-        print(totalMeter)
-        showAlertController()
 
-    }
+    
+    //    @IBAction func restartWalkBtn(_ sender: Any) {
+    //        print(#function)
+    //        print("산책 기록을 초기화합니다")
+    //        print(totalMeter)
+    //
+    //        if totalMeter != 0 {
+    //            kmeterLabel.text = "0.0 Km"
+    //            totalMeter = 0
+    //            stopRequestMyLocation()
+    //            getLocationBtn.setImage(UIImage(systemName: "play.fill"), for: .normal)
+    //            getLocationBtnState = true
+    //        } else {
+    //            print("초기화 못합니다")
+    //        }
+    //    }
+
+    //    @IBAction func saveWalkBtn(_ sender: Any) {
+    //        print("산책 기록을 저장합니다")
+    //        print(totalMeter)
+    //        showAlertController()
+    //
+    //    }
 
     func showAlertController() {
-            //UIAlertController
-            let alert = UIAlertController(title: "산책 기록 저장", message: "산책이 다 끝났나요?", preferredStyle: .alert)
+        //UIAlertController
+        let alert = UIAlertController(title: "산책 기록 저장", message: "산책이 다 끝났나요?", preferredStyle: .alert)
 
-            // Button
+        // Button
         let realcancel = UIAlertAction(title: "산책 기록이 없어서 저장 못합니다", style: .destructive)
         let ok = UIAlertAction(title: "확인", style: .default) { _ in
 
-                self.kmeterLabel.text = "0.0 Km"
-                CoreDataManager.shared.addNewWalk(cuurentDate: Date(), totalDistance: self.totalMeter)
-                self.totalMeter = 0
-                self.stopRequestMyLocation()
-                self.getLocationBtnState = true
+            if let timeString = self.timeLabel.text {
+                CoreDataManager.shared.addNewWalk(cuurentDate: Date(), totalDistance: self.totalMeter, totalTime: timeString)
+            }
+
+
+            self.kmeterLabel.text = "0.0 Km"
+            self.timeLabel.text = "0:0:0"
+            self.totalMeter = 0
+            self.count = 0
+            self.timer.invalidate()
+            self.stopRequestMyLocation()
+            self.getLocationBtn.setImage(UIImage(systemName: "play.fill"), for: .normal)
+            self.getLocationBtnState = true
 
 
         }
-            let cancel = UIAlertAction(title: "취소", style: .destructive, handler: nil)
+        let cancel = UIAlertAction(title: "취소", style: .destructive, handler: nil)
 
 
-            alert.addAction(cancel)
-            alert.addAction(ok)
+        alert.addAction(cancel)
+        alert.addAction(ok)
 
 
-            //present
-            present(alert, animated: true, completion: nil)
-        }
-    
-    
+        //present
+        present(alert, animated: true, completion: nil)
+    }
+
+    func getSaveResetBtn() {
+
+        addSaveBtn.setTitle("Save", for: .normal)
+        addSaveBtn.backgroundColor = .systemOrange
+        addSaveBtn.translatesAutoresizingMaskIntoConstraints = false
+        addSaveBtn.layer.cornerRadius = playBtnView.cornerRadius
+        view.addSubview(addSaveBtn)
+
+        addSaveBtn.widthAnchor.constraint(equalToConstant: playBtnView.frame.width).isActive = true
+        addSaveBtn.heightAnchor.constraint(equalToConstant: playBtnView.frame.height).isActive = true
+        addSaveBtn.trailingAnchor.constraint(equalTo: playBtnView.leadingAnchor, constant: -20).isActive = true
+        addSaveBtn.bottomAnchor.constraint(equalTo: playBtnView.bottomAnchor, constant: 0).isActive = true
+
+        addResetBtn.setImage(UIImage(systemName: "stop.fill"), for: .normal)
+        addResetBtn.backgroundColor = .systemRed
+        addResetBtn.tintColor = .white
+        addResetBtn.translatesAutoresizingMaskIntoConstraints = false
+        addResetBtn.layer.cornerRadius = playBtnView.cornerRadius
+        view.addSubview(addResetBtn)
+
+        addResetBtn.widthAnchor.constraint(equalToConstant: playBtnView.frame.width).isActive = true
+        addResetBtn.heightAnchor.constraint(equalToConstant: playBtnView.frame.height).isActive = true
+        addResetBtn.leadingAnchor.constraint(equalTo: playBtnView.trailingAnchor, constant: 20).isActive = true
+        addResetBtn.bottomAnchor.constraint(equalTo: playBtnView.bottomAnchor, constant: 0).isActive = true
+    }
+
+    func shadow(inputView: UIView) {
+        inputView.layer.shadowColor = UIColor.lightGray.cgColor
+        inputView.layer.shadowOpacity = 1
+        inputView.layer.shadowRadius = 2
+        inputView.layer.shadowOffset = CGSize(width: 5, height: 5)
+        inputView.layer.shadowPath = nil
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        shadow(inputView: mapControlView)
+
+        getSaveResetBtn()
+        addSaveBtn.layer.isHidden = true
+        addResetBtn.layer.isHidden = true
+
+
         CoreDataManager.shared.fetchProfile()
         testTextField.inputView = testPickerView
         testTextField.inputAccessoryView = testBar
         textImageView.layer.cornerRadius = textImageView.frame.width / 2
         textImageView.layer.borderWidth = 1
         textImageView.layer.borderColor = UIColor.systemOrange.cgColor
-
 
         mapGradientView.setGradient(color1: UIColor.systemOrange, color2: UIColor.white, color3: UIColor.white)
 
@@ -160,6 +269,8 @@ class MapViewController: UIViewController {
             
             mapView.addAnnotation(pin)
         }
+
+
         
         
         

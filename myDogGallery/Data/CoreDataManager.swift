@@ -39,12 +39,13 @@ class CoreDataManager {
     }
     
     
-    func addNewWalk(cuurentDate: Date, totalDistance: Double) {
+    func addNewWalk(cuurentDate: Date, totalDistance: Double, totalTime: String) {
         
         let newWalk = WalkEntity(context:  mainContext)
         
         newWalk.currentDate = cuurentDate
         newWalk.totalDistance = totalDistance
+        newWalk.totalTime = totalTime
        
         walkList.insert(newWalk, at: 0)
         saveContext()

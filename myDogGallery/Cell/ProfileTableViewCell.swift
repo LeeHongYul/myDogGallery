@@ -12,9 +12,7 @@ class ProfileTableViewCell: UITableViewCell {
     @IBOutlet var profileImage: UIImageView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var ageLabel: UILabel!
-    @IBOutlet var birthdayLabel: UILabel!
     @IBOutlet var genderLabel: UILabel!
-    @IBOutlet var detailLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

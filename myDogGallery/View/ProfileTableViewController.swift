@@ -69,9 +69,7 @@ class ProfileTableViewController: UITableViewController {
         } else {
             cell.genderLabel.text = "Girl"
         }
-        
-//        cell.birthdayLabel.text = dateFormatter.string(for: target.birthDay)
-//        cell.detailLabel.text = target.detail
+
         cell.profileImage.image = UIImage(data: target.image ?? Data())
         cell.profileImage.contentMode = .scaleAspectFill
         

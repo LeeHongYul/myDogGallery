@@ -42,7 +42,7 @@ extension WalkHistoryViewController: UITableViewDataSource {
         let result = target.totalDistance / 1000
       
         cell.currentDistanceLabel?.text = String(format: "%.2f Km", result)
-        
+        cell.currentTimeLabel.text = target.totalTime
        
         
         return cell
