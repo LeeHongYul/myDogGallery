@@ -10,6 +10,8 @@ import MapKit
 import CoreLocation
 
 class MapViewController: UIViewController {
+
+ var selectedItem: UIImage?
     
     @IBOutlet var playBtnView: RoundedView!
 
@@ -33,26 +35,8 @@ class MapViewController: UIViewController {
 
     @IBOutlet var mapControlView: RoundedView!
 
-    @IBOutlet var testPickerView: UIView!
-
-
-    @IBOutlet var textImageView: UIImageView!
-
-    @IBOutlet var testTextField: UITextField!
-
-
-    @IBOutlet var testBar: UIToolbar!
-
     var timer: Timer = Timer()
     var count: Int = 0
-
-
-    @IBAction func testDoneBtn(_ sender: Any) {
-        testTextField.resignFirstResponder()
-    }
-
-
-
 
 
 
@@ -125,30 +109,6 @@ class MapViewController: UIViewController {
     }
 
 
-    
-    //    @IBAction func restartWalkBtn(_ sender: Any) {
-    //        print(#function)
-    //        print("산책 기록을 초기화합니다")
-    //        print(totalMeter)
-    //
-    //        if totalMeter != 0 {
-    //            kmeterLabel.text = "0.0 Km"
-    //            totalMeter = 0
-    //            stopRequestMyLocation()
-    //            getLocationBtn.setImage(UIImage(systemName: "play.fill"), for: .normal)
-    //            getLocationBtnState = true
-    //        } else {
-    //            print("초기화 못합니다")
-    //        }
-    //    }
-
-    //    @IBAction func saveWalkBtn(_ sender: Any) {
-    //        print("산책 기록을 저장합니다")
-    //        print(totalMeter)
-    //        showAlertController()
-    //
-    //    }
-
     func showAlertController() {
         //UIAlertController
         let alert = UIAlertController(title: "산책 기록 저장", message: "산책이 다 끝났나요?", preferredStyle: .alert)
@@ -218,9 +178,13 @@ class MapViewController: UIViewController {
         inputView.layer.shadowPath = nil
     }
 
+    var targetImage: UIImage?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+
+        
         shadow(inputView: mapControlView)
 
         getSaveResetBtn()
@@ -229,11 +193,7 @@ class MapViewController: UIViewController {
 
 
         CoreDataManager.shared.fetchProfile()
-        testTextField.inputView = testPickerView
-        testTextField.inputAccessoryView = testBar
-        textImageView.layer.cornerRadius = textImageView.frame.width / 2
-        textImageView.layer.borderWidth = 1
-        textImageView.layer.borderColor = UIColor.systemOrange.cgColor
+
 
         mapGradientView.setGradient(color1: UIColor.systemOrange, color2: UIColor.white, color3: UIColor.white)
 
@@ -260,21 +220,33 @@ class MapViewController: UIViewController {
         
         
         
-        func addPin(at coordinate: CLLocationCoordinate2D, title: String? = nil, subtitle: String? = nil) {
-            
-            let pin = MKPointAnnotation()
-            pin.coordinate = coordinate
-            pin.title = title
-            pin.subtitle = subtitle
-            
-            mapView.addAnnotation(pin)
-        }
+//        func addPin(at coordinate: CLLocationCoordinate2D, title: String? = nil, subtitle: String? = nil) {
+//
+//            let pin = MKPointAnnotation()
+//            pin.coordinate = coordinate
+//            pin.title = title
+//            pin.subtitle = subtitle
+//
+//            mapView.addAnnotation(pin)
+//        }
 
-
+        mapView.register(MKAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         
         
         
     }
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 extension MapViewController: CLLocationManagerDelegate {
@@ -339,6 +311,24 @@ extension MapViewController: CLLocationManagerDelegate {
 }
 
 extension MapViewController: MKMapViewDelegate {
+
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let v = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier, for: annotation)
+
+        if selectedItem != nil {
+            print("not image nil", #function)
+
+            v.image = selectedItem
+            v.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+            v.canShowCallout = true
+        } else {
+            v.image = UIImage(systemName: "plus")
+            v.canShowCallout = true
+        }
+
+        return v
+    }
+
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
         let renderer = MKPolylineRenderer(overlay: overlay as! MKPolyline)
@@ -358,35 +348,10 @@ extension CLLocationCoordinate2D {
     }
 }
 
-extension MapViewController: UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        1
-    }
-
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        CoreDataManager.shared.profileList.count
-    }
 
 
-}
-
-extension MapViewController: UIPickerViewDelegate {
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-
-        let target = CoreDataManager.shared.profileList[row]
-        return target.name
-    }
-
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let target = CoreDataManager.shared.profileList[row]
-        testTextField.text = target.name
-
-        let dataImage = UIImage(data: target.image!)
-        textImageView.image = dataImage
-    }
 
 
-}
 
 
 

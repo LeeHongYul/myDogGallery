@@ -21,6 +21,7 @@
 		5D56118C29EFBBBF00A6EA56 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D56118B29EFBBBF00A6EA56 /* RoundedView.swift */; };
 		5D5A16FB29F7FF5F002E7C15 /* Phrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A16FA29F7FF5F002E7C15 /* Phrase.swift */; };
 		5D5A16FD29F827BD002E7C15 /* MemoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A16FC29F827BD002E7C15 /* MemoTableViewCell.swift */; };
+		5D5CB80F2A0E93BA0098E38B /* ProfilePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5CB80E2A0E93BA0098E38B /* ProfilePickerViewController.swift */; };
 		5D687F6E2A08ED06003FCDA3 /* WalkHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D687F6D2A08ED06003FCDA3 /* WalkHistoryTableViewCell.swift */; };
 		5D75A3C429F3BAAC001C25B3 /* PhotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D75A3C329F3BAAC001C25B3 /* PhotoCollectionViewController.swift */; };
 		5D75A3C829F3BC5C001C25B3 /* myPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D75A3C729F3BC5C001C25B3 /* myPhotoCollectionViewCell.swift */; };
@@ -50,6 +51,7 @@
 		5D56118B29EFBBBF00A6EA56 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		5D5A16FA29F7FF5F002E7C15 /* Phrase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phrase.swift; sourceTree = "<group>"; };
 		5D5A16FC29F827BD002E7C15 /* MemoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTableViewCell.swift; sourceTree = "<group>"; };
+		5D5CB80E2A0E93BA0098E38B /* ProfilePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePickerViewController.swift; sourceTree = "<group>"; };
 		5D687F6D2A08ED06003FCDA3 /* WalkHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		5D75A3C329F3BAAC001C25B3 /* PhotoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewController.swift; sourceTree = "<group>"; };
 		5D75A3C729F3BC5C001C25B3 /* myPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				5D0DEAA629EFA19400FFF700 /* NewMemoViewController.swift */,
 				5D56118229EFB00100A6EA56 /* ProfileTableViewController.swift */,
 				5D56118429EFB02100A6EA56 /* ProfileEditTableViewController.swift */,
+				5D5CB80E2A0E93BA0098E38B /* ProfilePickerViewController.swift */,
 				5DD4372229FFFF8300181A72 /* MapViewController.swift */,
 				5D12B0952A08A8E7007CA12B /* WalkHistoryViewController.swift */,
 			);
@@ -254,6 +257,7 @@
 				5D687F6E2A08ED06003FCDA3 /* WalkHistoryTableViewCell.swift in Sources */,
 				5D5A16FD29F827BD002E7C15 /* MemoTableViewCell.swift in Sources */,
 				5D56118729EFB0E700A6EA56 /* ProfileTableViewCell.swift in Sources */,
+				5D5CB80F2A0E93BA0098E38B /* ProfilePickerViewController.swift in Sources */,
 				5D5A16FB29F7FF5F002E7C15 /* Phrase.swift in Sources */,
 				5DC7F7F029EF89D0005F9E22 /* WeatherData.swift in Sources */,
 				5D4B6FEA29F51E1A00BFC43B /* MainCollectionViewCell.swift in Sources */,
