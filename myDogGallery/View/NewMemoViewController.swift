@@ -66,7 +66,7 @@ class NewMemoViewController: UIViewController {
         let memoContext = memoContextTextView.text
         
         if memoContext?.count == 0 {
-            let alert = UIAlertController(title: "오늘의 기록을 입력해주세요", message: "오늘의 기록 작성 필요", preferredStyle: .alert)
+            let alert = UIAlertController(title: "오늘의 기록을 입력해주세요", message: "오늘의 기록 작성 필요합니다", preferredStyle: .alert)
             let action = UIAlertAction(title: "확인", style: .cancel, handler: nil)
             alert.addAction(action)
             present(alert, animated:  true, completion:  nil)

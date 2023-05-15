@@ -12,40 +12,52 @@ class ProfilePickerViewController: UIViewController {
 
     var pickedFinalImage: UIImage?
 
+    @IBOutlet var startWalkView: RoundedView!
     @IBOutlet var profileImagePicker: UIImageView!
-
-
+    @IBOutlet var profileImageContainerView: RoundedView!
     @IBOutlet var profileImagePickerView: UIPickerView!
-
+    @IBOutlet var saveProfileBtn: UIButton!
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "profilePickerSegue" {
-            if let nextViewController = segue.destination as? MapViewController {
-                if let selectedItem = sender as? UIImage {
-                    nextViewController.selectedItem = selectedItem // 다음 뷰 컨트롤러로 데이터 전달
-                }
+
+                if let destinationVC = segue.destination as? MapViewController {
+
+                        destinationVC.pickedFinalImage = pickedFinalImage
+
             }
         }
     }
 
 
+
+    func shadow(inputView: UIView) {
+        inputView.layer.shadowColor = UIColor.lightGray.cgColor
+        inputView.layer.shadowOpacity = 1
+        inputView.layer.shadowRadius = 2
+        inputView.layer.shadowOffset = CGSize(width: 5, height: 5)
+        inputView.layer.shadowPath = nil
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
         CoreDataManager.shared.fetchProfile()
-
-
+        saveProfileBtn.isEnabled = false
+        shadow(inputView: profileImageContainerView)
+        shadow(inputView: startWalkView)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         profileImagePickerView.reloadAllComponents()
+
+
     }
     
-    @IBAction func profileSaveBtn(_ sender: Any) {
-
-
-
+    @IBAction func saveProfileBtn(_ sender: Any) {
 
     }
+
 
 
 }
@@ -70,7 +82,7 @@ extension ProfilePickerViewController: UIPickerViewDataSource {
 extension ProfilePickerViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if CoreDataManager.shared.profileList.count == 0 {
-            return "프로필을 등록해주세요"
+            return "산책 시킬 반려견을 선택해 주세요"
         } else {
             let target = CoreDataManager.shared.profileList[row]
             return target.name
@@ -82,12 +94,12 @@ extension ProfilePickerViewController: UIPickerViewDelegate {
 
         let target = CoreDataManager.shared.profileList[row]
 //        testTextField.text = target.name
+        saveProfileBtn.isEnabled = true
+        profileImagePicker.image = UIImage(data: target.image!)
+        pickedFinalImage = UIImage(data: target.image!)
 
-        let dataImage = UIImage(data: target.image!)
-
-        profileImagePicker.image = dataImage
-        performSegue(withIdentifier: "profilePickerSegue", sender: dataImage)
     }
+
 
 
 

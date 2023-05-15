@@ -67,6 +67,7 @@ class MainViewController: UIViewController {
         shadow(inputView: phaseView)
         shadow(inputView: walkHistoryView)
         shadow(inputView: mainProfileView)
+        shadow(inputView: weatherView)
         
         CoreDataManager.shared.fetchProfile()
         print(CoreDataManager.shared.profileList.count,"프로필 수")

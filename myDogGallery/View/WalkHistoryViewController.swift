@@ -10,16 +10,21 @@ import UIKit
 
 class WalkHistoryViewController: UIViewController {
 
+    var pickedFinalImage: UIImage?
+
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         CoreDataManager.shared.fetchWalk()
         CoreDataManager.shared.fetchProfile()
+        
        
     }
     
     var dateFormatter: DateFormatter = {
         let inputDate = DateFormatter()
-        inputDate.dateFormat = "EEEE, MMM d, yyyy"
+        inputDate.dateFormat = "yyyy.MM.dd"
         inputDate.locale = Locale(identifier: "en_US_POSIX")
         
         return inputDate
@@ -40,7 +45,8 @@ extension WalkHistoryViewController: UITableViewDataSource {
         cell.currentDateLabel?.text = dateFormatter.string(from:  target.currentDate!)
         
         let result = target.totalDistance / 1000
-      
+
+        cell.walkProfileImageView.image = UIImage(data: target.profile ?? Data())
         cell.currentDistanceLabel?.text = String(format: "%.2f Km", result)
         cell.currentTimeLabel.text = target.totalTime
        

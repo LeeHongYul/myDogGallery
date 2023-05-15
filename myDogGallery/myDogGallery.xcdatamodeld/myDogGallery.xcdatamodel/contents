@@ -21,6 +21,7 @@
     </entity>
     <entity name="Walk" representedClassName="WalkEntity" syncable="YES" codeGenerationType="class">
         <attribute name="currentDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="profile" attributeType="Binary"/>
         <attribute name="totalDistance" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="totalTime" attributeType="String"/>
     </entity>

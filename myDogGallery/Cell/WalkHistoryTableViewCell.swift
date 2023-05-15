@@ -16,7 +16,8 @@ class WalkHistoryTableViewCell: UITableViewCell {
     @IBOutlet var currentTimeLabel: UILabel!
 
     @IBOutlet var walkProfileImageView: UIImageView!
-    
+
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

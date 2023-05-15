@@ -45,7 +45,7 @@ class MemoViewController: UIViewController {
             
         }
         
-        memoSearchBar.placeholder = "제목을 검색해주세요"
+        memoSearchBar.placeholder = "제목을 검색해 주세요"
         navigationItem.titleView = memoSearchBar
         memoSearchBar.delegate = self
         

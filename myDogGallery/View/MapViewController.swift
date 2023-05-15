@@ -11,7 +11,7 @@ import CoreLocation
 
 class MapViewController: UIViewController {
 
- var selectedItem: UIImage?
+    var pickedFinalImage: UIImage?
     
     @IBOutlet var playBtnView: RoundedView!
 
@@ -39,6 +39,17 @@ class MapViewController: UIViewController {
     var count: Int = 0
 
 
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == " walkHistorySegue" {
+
+            if let destinationVC = segue.destination as? WalkHistoryViewController {
+
+                destinationVC.pickedFinalImage = pickedFinalImage
+
+            }
+        }
+    }
 
 
     @IBAction func getLocationBtn(_ sender: Any) {
@@ -111,14 +122,14 @@ class MapViewController: UIViewController {
 
     func showAlertController() {
         //UIAlertController
-        let alert = UIAlertController(title: "산책 기록 저장", message: "산책이 다 끝났나요?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "산책 기록을 저장합니다", message: "산책을 종료하겠습니까?", preferredStyle: .alert)
 
         // Button
         let realcancel = UIAlertAction(title: "산책 기록이 없어서 저장 못합니다", style: .destructive)
         let ok = UIAlertAction(title: "확인", style: .default) { _ in
-
+            guard let data = self.pickedFinalImage?.pngData() else { return }
             if let timeString = self.timeLabel.text {
-                CoreDataManager.shared.addNewWalk(cuurentDate: Date(), totalDistance: self.totalMeter, totalTime: timeString)
+                CoreDataManager.shared.addNewWalk(cuurentDate: Date(), totalDistance: self.totalMeter, totalTime: timeString, profile: data)
             }
 
 
@@ -183,8 +194,8 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationController?.navigationBar.tintColor = .orange
 
-        
         shadow(inputView: mapControlView)
 
         getSaveResetBtn()
@@ -217,39 +228,23 @@ class MapViewController: UIViewController {
             print("사용 가능")
             
         }
-        
-        
-        
-//        func addPin(at coordinate: CLLocationCoordinate2D, title: String? = nil, subtitle: String? = nil) {
-//
-//            let pin = MKPointAnnotation()
-//            pin.coordinate = coordinate
-//            pin.title = title
-//            pin.subtitle = subtitle
-//
-//            mapView.addAnnotation(pin)
-//        }
+
+        guard let loaclValue: CLLocationCoordinate2D = locationManager.location?.coordinate else { return }
+
+        let region = MKCoordinateRegion(center: loaclValue, latitudinalMeters: 100, longitudinalMeters: 100)
+        mapView.setRegion(region, animated: true)
 
         mapView.register(MKAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-        
+
         
         
     }
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 extension MapViewController: CLLocationManagerDelegate {
+
+
+
     func requestMyLocation() {
         
         locationManager.startUpdatingLocation()
@@ -258,6 +253,7 @@ extension MapViewController: CLLocationManagerDelegate {
     
     func stopRequestMyLocation() {
         locationManager.stopUpdatingLocation()
+        locationManager.delegate?.locationManagerDidPauseLocationUpdates!(locationManager)
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
@@ -285,6 +281,11 @@ extension MapViewController: CLLocationManagerDelegate {
         guard let location = locations.last else {return}
         let latitude = location.coordinate.latitude
         let longtitude = location.coordinate.longitude
+
+        let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 100, longitudinalMeters: 100)
+        mapView.setRegion(region, animated: true)
+
+
         
         if let previousCoordinate = self.previousCoordinate {
             var points: [CLLocationCoordinate2D] = []
@@ -307,6 +308,7 @@ extension MapViewController: CLLocationManagerDelegate {
     
     func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager) {
 
+
     }
 }
 
@@ -315,11 +317,11 @@ extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let v = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier, for: annotation)
 
-        if selectedItem != nil {
-            print("not image nil", #function)
+        if pickedFinalImage != nil {
+            v.image = pickedFinalImage
+            v.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+            v.layer.cornerRadius = v.frame.width / 8
 
-            v.image = selectedItem
-            v.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
             v.canShowCallout = true
         } else {
             v.image = UIImage(systemName: "plus")
