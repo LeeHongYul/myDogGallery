@@ -9,7 +9,6 @@ import UIKit
 
 class ProfilePickerViewController: UIViewController {
 
-
     var pickedFinalImage: UIImage?
 
     @IBOutlet var startWalkView: RoundedView!
@@ -24,12 +23,9 @@ class ProfilePickerViewController: UIViewController {
                 if let destinationVC = segue.destination as? MapViewController {
 
                         destinationVC.pickedFinalImage = pickedFinalImage
-
             }
         }
     }
-
-
 
     func shadow(inputView: UIView) {
         inputView.layer.shadowColor = UIColor.lightGray.cgColor
@@ -58,8 +54,6 @@ class ProfilePickerViewController: UIViewController {
 
     }
 
-
-
 }
 
 extension ProfilePickerViewController: UIPickerViewDataSource {
@@ -74,9 +68,7 @@ extension ProfilePickerViewController: UIPickerViewDataSource {
         } else {
             return  CoreDataManager.shared.profileList.count
         }
-
     }
-    
 }
 
 extension ProfilePickerViewController: UIPickerViewDelegate {
@@ -87,7 +79,6 @@ extension ProfilePickerViewController: UIPickerViewDelegate {
             let target = CoreDataManager.shared.profileList[row]
             return target.name
         }
-
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -99,9 +90,4 @@ extension ProfilePickerViewController: UIPickerViewDelegate {
         pickedFinalImage = UIImage(data: target.image!)
 
     }
-
-
-
-
-
 }

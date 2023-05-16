@@ -165,7 +165,7 @@ class MainViewController: UIViewController {
                         self.weatherDetailLabel.text = list.weather[0].main
                         self.weatherTempLabel.text = tempStr+"°"
                         
-                        let urlStr = "https://openweathermap.org/img/wn/" + (list.weather[0].icon)! + "@2x.png"
+//                        let urlStr = "https://openweathermap.org/img/wn/" + (list.weather[0].icon)! + "@2x.png"
                         
                         switch list.weather[0].icon {
                         case "01n","01d":
@@ -187,7 +187,7 @@ class MainViewController: UIViewController {
                     print(error)
                 }
                 
-            case let .failure(error):
+            case let .failure(_):
                 break
             }
         }

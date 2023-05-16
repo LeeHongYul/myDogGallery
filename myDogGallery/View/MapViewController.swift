@@ -125,7 +125,7 @@ class MapViewController: UIViewController {
         let alert = UIAlertController(title: "산책 기록을 저장합니다", message: "산책을 종료하겠습니까?", preferredStyle: .alert)
 
         // Button
-        let realcancel = UIAlertAction(title: "산책 기록이 없어서 저장 못합니다", style: .destructive)
+//        let realcancel = UIAlertAction(title: "산책 기록이 없어서 저장 못합니다", style: .destructive)
         let ok = UIAlertAction(title: "확인", style: .default) { _ in
             guard let data = self.pickedFinalImage?.pngData() else { return }
             if let timeString = self.timeLabel.text {
@@ -157,8 +157,9 @@ class MapViewController: UIViewController {
 
     func getSaveResetBtn() {
 
-        addSaveBtn.setTitle("Save", for: .normal)
+        addSaveBtn.setImage(UIImage(systemName: "arrow.down.doc.fill"), for: .normal)
         addSaveBtn.backgroundColor = .systemOrange
+        addSaveBtn.tintColor = .white
         addSaveBtn.translatesAutoresizingMaskIntoConstraints = false
         addSaveBtn.layer.cornerRadius = playBtnView.cornerRadius
         view.addSubview(addSaveBtn)
@@ -189,8 +190,6 @@ class MapViewController: UIViewController {
         inputView.layer.shadowPath = nil
     }
 
-    var targetImage: UIImage?
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -202,9 +201,7 @@ class MapViewController: UIViewController {
         addSaveBtn.layer.isHidden = true
         addResetBtn.layer.isHidden = true
 
-
         CoreDataManager.shared.fetchProfile()
-
 
         mapGradientView.setGradient(color1: UIColor.systemOrange, color2: UIColor.white, color3: UIColor.white)
 
@@ -235,20 +232,13 @@ class MapViewController: UIViewController {
         mapView.setRegion(region, animated: true)
 
         mapView.register(MKAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-
-        
-        
     }
 }
 
 extension MapViewController: CLLocationManagerDelegate {
 
-
-
     func requestMyLocation() {
-        
         locationManager.startUpdatingLocation()
-        
     }
     
     func stopRequestMyLocation() {
@@ -283,10 +273,9 @@ extension MapViewController: CLLocationManagerDelegate {
         let longtitude = location.coordinate.longitude
 
         let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 100, longitudinalMeters: 100)
+
         mapView.setRegion(region, animated: true)
 
-
-        
         if let previousCoordinate = self.previousCoordinate {
             var points: [CLLocationCoordinate2D] = []
             let point1 = CLLocationCoordinate2DMake(previousCoordinate.latitude, previousCoordinate.longitude)
@@ -297,18 +286,14 @@ extension MapViewController: CLLocationManagerDelegate {
             self.mapView.addOverlay(lineDraw)
 
             totalMeter += Double(location.coordinate.distance(from: previousCoordinate))
-            
         }
         
         self.previousCoordinate = location.coordinate
         let result = totalMeter / 1000
         kmeterLabel.text = String(format: "%.2f Km", result)
-        
     }
     
     func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager) {
-
-
     }
 }
 
@@ -318,10 +303,15 @@ extension MapViewController: MKMapViewDelegate {
         let v = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier, for: annotation)
 
         if pickedFinalImage != nil {
-            v.image = pickedFinalImage
+            v.image = UIImage(named: "dogFace")
             v.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-            v.layer.cornerRadius = v.frame.width / 8
 
+            let icon = pickedFinalImage
+            let imgView = UIImageView(image: icon)
+            imgView.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+            imgView.layer.cornerRadius = imgView.frame.width / 8
+
+            v.leftCalloutAccessoryView = imgView
             v.canShowCallout = true
         } else {
             v.image = UIImage(systemName: "plus")
