@@ -57,7 +57,6 @@ class MapViewController: UIViewController {
         if getLocationBtnState == true {
             getLocationBtn.setImage(UIImage(systemName: "pause.fill"), for: .normal)
             requestMyLocation()
-
             addSaveBtn.layer.isHidden = false
             addResetBtn.layer.isHidden = false
             addSaveBtn.addTarget(self, action: #selector(self.saveWalk), for: .touchUpInside)
@@ -125,7 +124,7 @@ class MapViewController: UIViewController {
         let alert = UIAlertController(title: "산책 기록을 저장합니다", message: "산책을 종료하겠습니까?", preferredStyle: .alert)
 
         // Button
-//        let realcancel = UIAlertAction(title: "산책 기록이 없어서 저장 못합니다", style: .destructive)
+        //        let realcancel = UIAlertAction(title: "산책 기록이 없어서 저장 못합니다", style: .destructive)
         let ok = UIAlertAction(title: "확인", style: .default) { _ in
             guard let data = self.pickedFinalImage?.pngData() else { return }
             if let timeString = self.timeLabel.text {
@@ -193,6 +192,7 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+
         self.navigationController?.navigationBar.tintColor = .orange
 
         shadow(inputView: mapControlView)
@@ -233,6 +233,10 @@ class MapViewController: UIViewController {
 
         mapView.register(MKAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
     }
+
+
+
+
 }
 
 extension MapViewController: CLLocationManagerDelegate {
@@ -278,6 +282,7 @@ extension MapViewController: CLLocationManagerDelegate {
 
         if let previousCoordinate = self.previousCoordinate {
             var points: [CLLocationCoordinate2D] = []
+
             let point1 = CLLocationCoordinate2DMake(previousCoordinate.latitude, previousCoordinate.longitude)
             let point2: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longtitude)
             points.append(point1)
@@ -285,9 +290,9 @@ extension MapViewController: CLLocationManagerDelegate {
             let lineDraw = MKPolyline(coordinates: points, count:points.count)
             self.mapView.addOverlay(lineDraw)
 
+
             totalMeter += Double(location.coordinate.distance(from: previousCoordinate))
         }
-        
         self.previousCoordinate = location.coordinate
         let result = totalMeter / 1000
         kmeterLabel.text = String(format: "%.2f Km", result)
