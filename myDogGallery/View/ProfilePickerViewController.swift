@@ -34,14 +34,21 @@ class ProfilePickerViewController: UIViewController {
         inputView.layer.shadowOffset = CGSize(width: 5, height: 5)
         inputView.layer.shadowPath = nil
     }
+    func shadowOrange(inputView: UIView) {
+        inputView.layer.shadowColor = UIColor.systemOrange.cgColor
+        inputView.layer.shadowOpacity = 0.9
+        inputView.layer.shadowRadius = 40
+        inputView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        inputView.layer.shadowPath = nil
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         CoreDataManager.shared.fetchProfile()
         saveProfileBtn.isEnabled = false
-        shadow(inputView: profileImageContainerView)
-        shadow(inputView: startWalkView)
+//        shadowOrange(inputView: profileImageContainerView)
+//        shadow(inputView: startWalkView)
     }
 
     override func viewWillAppear(_ animated: Bool) {

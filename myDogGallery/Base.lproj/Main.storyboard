@@ -24,13 +24,13 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Walk" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J1l-Bl-GI4">
                                         <rect key="frame" x="15" y="10" width="141" height="40.666666666666664"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Walk Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glz-Cl-IEs">
                                         <rect key="frame" x="15.000000000000007" y="60.666666666666693" width="113.66666666666669" height="20.333333333333336"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="walking-the-dog-2" translatesAutoresizingMaskIntoConstraints="NO" id="c79-hb-KjS">
@@ -56,7 +56,7 @@
                                         <real key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.66666666669999997" alpha="0.29550393211920528" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -199,7 +199,7 @@
                                     <constraint firstAttribute="bottom" secondItem="7sH-EB-7yB" secondAttribute="bottom" constant="15" id="2WC-kF-VaC"/>
                                     <constraint firstAttribute="bottom" secondItem="vQx-gT-Bip" secondAttribute="bottom" constant="15" id="3P8-S7-Z2q"/>
                                     <constraint firstItem="1II-P3-tHx" firstAttribute="top" secondItem="Bn7-lk-97t" secondAttribute="top" constant="15" id="FoW-e4-hAQ"/>
-                                    <constraint firstItem="1II-P3-tHx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7sH-EB-7yB" secondAttribute="trailing" constant="5" id="K3a-M2-oaO"/>
+                                    <constraint firstItem="1II-P3-tHx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7sH-EB-7yB" secondAttribute="trailing" id="K3a-M2-oaO"/>
                                     <constraint firstAttribute="trailing" secondItem="vQx-gT-Bip" secondAttribute="trailing" constant="20" id="ZnF-BE-LgW"/>
                                     <constraint firstItem="7sH-EB-7yB" firstAttribute="leading" secondItem="Bn7-lk-97t" secondAttribute="leading" constant="15" id="Zod-FA-psz"/>
                                     <constraint firstItem="7sH-EB-7yB" firstAttribute="top" secondItem="Bn7-lk-97t" secondAttribute="top" constant="15" id="cfq-FN-EC8"/>
@@ -264,7 +264,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1264.1860465116279" y="994.63519313304732"/>
+            <point key="canvasLocation" x="-1263" y="899"/>
         </scene>
         <!--Home-->
         <scene sceneID="ibM-aF-5Wr">
@@ -305,14 +305,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uoo-3p-KPR" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
-                                                    <rect key="frame" x="5" y="6" width="420" height="52"/>
+                                                    <rect key="frame" x="15" y="6" width="400" height="52"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.pencil" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="sS2-mw-oxL">
                                                             <rect key="frame" x="15" y="16.333333333333329" width="21" height="18.666666666666671"/>
                                                             <color key="tintColor" systemColor="systemOrangeColor"/>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="q0i-fu-xUL">
-                                                            <rect key="frame" x="303.66666666666669" y="14" width="101.33333333333331" height="24"/>
+                                                            <rect key="frame" x="283.66666666666669" y="14" width="101.33333333333331" height="24"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CiE-LF-v6i">
                                                                     <rect key="frame" x="0.0" y="0.0" width="49" height="24"/>
@@ -345,10 +345,10 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="uoo-3p-KPR" secondAttribute="trailing" constant="5" id="33W-a5-mkc"/>
+                                                <constraint firstAttribute="trailing" secondItem="uoo-3p-KPR" secondAttribute="trailing" constant="15" id="33W-a5-mkc"/>
                                                 <constraint firstItem="uoo-3p-KPR" firstAttribute="top" secondItem="M5q-Ok-IIy" secondAttribute="top" constant="6" id="DCb-YL-chQ"/>
                                                 <constraint firstAttribute="bottom" secondItem="uoo-3p-KPR" secondAttribute="bottom" constant="5" id="QRg-4p-WsQ"/>
-                                                <constraint firstItem="uoo-3p-KPR" firstAttribute="leading" secondItem="M5q-Ok-IIy" secondAttribute="leading" constant="5" id="jbu-lj-eQY"/>
+                                                <constraint firstItem="uoo-3p-KPR" firstAttribute="leading" secondItem="M5q-Ok-IIy" secondAttribute="leading" constant="15" id="jbu-lj-eQY"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -389,7 +389,7 @@
             </objects>
             <point key="canvasLocation" x="-357.2093023255814" y="907.72532188841205"/>
         </scene>
-        <!--Profile-->
+        <!--Profile Table View Controller-->
         <scene sceneID="kCZ-sh-vCe">
             <objects>
                 <tableViewController id="nss-Qy-5Vv" customClass="ProfileTableViewController" customModule="myDogGallery" customModuleProvider="target" sceneMemberID="viewController">
@@ -443,11 +443,14 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="루니" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbo-EH-NFO">
-                                            <rect key="frame" x="322" y="291.66666666666669" width="78" height="54"/>
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="45"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="루니" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbo-EH-NFO">
+                                            <rect key="frame" x="30" y="297.66666666666669" width="370" height="48"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="40"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
+                                            <variation key="heightClass=compact-widthClass=compact">
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                            </variation>
                                         </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hto-zp-UQG">
                                             <rect key="frame" x="332.33333333333331" y="355.66666666666669" width="67.666666666666686" height="25.333333333333314"/>
@@ -468,6 +471,7 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="xbo-EH-NFO" firstAttribute="leading" secondItem="KIT-XH-Gb8" secondAttribute="leadingMargin" constant="10" id="1yH-Zk-jID"/>
                                         <constraint firstAttribute="trailing" secondItem="qzB-uX-cHL" secondAttribute="trailing" constant="10" id="9V0-h9-qos"/>
                                         <constraint firstItem="hto-zp-UQG" firstAttribute="trailing" secondItem="xbo-EH-NFO" secondAttribute="trailing" id="DXh-ZR-BOo"/>
                                         <constraint firstItem="PZt-5d-Puc" firstAttribute="top" secondItem="qzB-uX-cHL" secondAttribute="top" id="RUJ-bj-15q"/>
@@ -497,7 +501,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Profile" id="qH7-pt-tbI">
+                    <navigationItem key="navigationItem" id="qH7-pt-tbI">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="HP8-2Q-o9R">
                             <color key="tintColor" systemColor="systemOrangeColor"/>
                             <connections>
@@ -514,7 +518,7 @@
             </objects>
             <point key="canvasLocation" x="560.93023255813955" y="905.79399141630904"/>
         </scene>
-        <!--Photo-->
+        <!--Photo Collection View Controller-->
         <scene sceneID="hjc-ai-z9c">
             <objects>
                 <collectionViewController id="NUe-h6-MRu" customClass="PhotoCollectionViewController" customModule="myDogGallery" customModuleProvider="target" sceneMemberID="viewController">
@@ -558,7 +562,7 @@
                             <outlet property="delegate" destination="NUe-h6-MRu" id="JEZ-Ec-pYs"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Photo" id="hRc-cf-Up5">
+                    <navigationItem key="navigationItem" id="hRc-cf-Up5">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Fyo-9r-p1X">
                             <color key="tintColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>
@@ -571,7 +575,7 @@
             </objects>
             <point key="canvasLocation" x="1627" y="908"/>
         </scene>
-        <!--Walk Together-->
+        <!--Profile Picker View Controller-->
         <scene sceneID="RXY-Tv-k6X">
             <objects>
                 <viewController id="svF-Ko-5II" customClass="ProfilePickerViewController" customModule="myDogGallery" customModuleProvider="target" sceneMemberID="viewController">
@@ -595,10 +599,10 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7wT-6m-yOr" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
-                                <rect key="frame" x="20" y="503" width="390" height="316"/>
+                                <rect key="frame" x="20" y="573" width="390" height="246"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B8l-4h-Ksu" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="186" width="330" height="100"/>
+                                        <rect key="frame" x="30" y="116" width="330" height="100"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="snL-MM-y1K">
                                                 <rect key="frame" x="60.333333333333329" y="19" width="209.33333333333337" height="62"/>
@@ -613,7 +617,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                         <constraints>
                                             <constraint firstItem="snL-MM-y1K" firstAttribute="centerY" secondItem="B8l-4h-Ksu" secondAttribute="centerY" id="a5d-i0-QsR"/>
                                             <constraint firstAttribute="height" constant="100" id="ioP-3i-wa9"/>
@@ -625,37 +629,37 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jsj-OK-sgi">
-                                        <rect key="frame" x="10" y="10" width="370" height="166"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <pickerView alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jsj-OK-sgi">
+                                        <rect key="frame" x="10" y="10" width="370" height="96"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="dataSource" destination="svF-Ko-5II" id="FHD-1r-vkR"/>
                                             <outlet property="delegate" destination="svF-Ko-5II" id="hX6-RP-sx8"/>
                                         </connections>
                                     </pickerView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="jsj-OK-sgi" firstAttribute="leading" secondItem="7wT-6m-yOr" secondAttribute="leading" constant="10" id="KTm-wL-KOA"/>
-                                    <constraint firstItem="jsj-OK-sgi" firstAttribute="top" secondItem="7wT-6m-yOr" secondAttribute="top" constant="10" id="P5N-DX-vCd"/>
                                     <constraint firstAttribute="trailing" secondItem="B8l-4h-Ksu" secondAttribute="trailing" constant="30" id="T7u-xG-3cU"/>
                                     <constraint firstItem="B8l-4h-Ksu" firstAttribute="top" secondItem="jsj-OK-sgi" secondAttribute="bottom" constant="10" id="XP6-uJ-p2v"/>
+                                    <constraint firstItem="jsj-OK-sgi" firstAttribute="top" secondItem="7wT-6m-yOr" secondAttribute="top" constant="10" id="YeA-pf-CZs"/>
+                                    <constraint firstItem="jsj-OK-sgi" firstAttribute="height" secondItem="B8l-4h-Ksu" secondAttribute="height" multiplier="0.96" id="eal-Nm-o3l"/>
                                     <constraint firstItem="B8l-4h-Ksu" firstAttribute="leading" secondItem="7wT-6m-yOr" secondAttribute="leading" constant="30" id="gpO-rw-143"/>
                                     <constraint firstAttribute="trailing" secondItem="jsj-OK-sgi" secondAttribute="trailing" constant="10" id="kG8-3t-bpA"/>
                                     <constraint firstAttribute="bottom" secondItem="B8l-4h-Ksu" secondAttribute="bottom" constant="30" id="raX-kh-Ggh"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="15"/>
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" systemColor="systemOrangeColor"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
                                         <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
+                                        <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -667,13 +671,12 @@
                             <constraint firstItem="2mS-xZ-XuW" firstAttribute="bottom" secondItem="tAg-3v-xPW" secondAttribute="bottom" id="ODC-YH-iri"/>
                             <constraint firstItem="7wT-6m-yOr" firstAttribute="leading" secondItem="tAg-3v-xPW" secondAttribute="leading" constant="20" id="R0h-up-G3Z"/>
                             <constraint firstItem="tAg-3v-xPW" firstAttribute="bottom" secondItem="7wT-6m-yOr" secondAttribute="bottom" constant="30" id="iGD-10-SFB"/>
-                            <constraint firstItem="7wT-6m-yOr" firstAttribute="top" secondItem="tAg-3v-xPW" secondAttribute="top" constant="400" id="jXm-ic-D4v"/>
                             <constraint firstItem="tAg-3v-xPW" firstAttribute="trailing" secondItem="7wT-6m-yOr" secondAttribute="trailing" constant="20" id="mnq-kF-DLT"/>
                             <constraint firstItem="2mS-xZ-XuW" firstAttribute="top" secondItem="8Ss-0M-k9w" secondAttribute="top" id="nHb-4d-0qZ"/>
                             <constraint firstItem="2mS-xZ-XuW" firstAttribute="trailing" secondItem="tAg-3v-xPW" secondAttribute="trailing" id="oK2-Ud-xgZ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Walk Together" id="uGY-A9-Nwz"/>
+                    <navigationItem key="navigationItem" id="uGY-A9-Nwz"/>
                     <connections>
                         <outlet property="profileImageContainerView" destination="7wT-6m-yOr" id="PeP-Pb-iqX"/>
                         <outlet property="profileImagePicker" destination="2mS-xZ-XuW" id="omD-MS-vxu"/>
@@ -1120,7 +1123,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ajo-eG-xNs">
-                                                            <rect key="frame" x="0.0" y="0.0" width="92" height="100"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                             <state key="normal" title="Button"/>
                                                             <buttonConfiguration key="configuration" style="plain"/>
                                                             <connections>
@@ -1131,7 +1134,7 @@
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="KSf-BB-NnX"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Ajo-eG-xNs" secondAttribute="trailing" constant="8" id="O7H-5u-czh"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Ajo-eG-xNs" secondAttribute="trailing" id="O7H-5u-czh"/>
                                                         <constraint firstItem="Ajo-eG-xNs" firstAttribute="top" secondItem="1zS-vZ-7dX" secondAttribute="top" id="YjA-AS-QX9"/>
                                                         <constraint firstAttribute="trailing" secondItem="yuc-Hp-ksB" secondAttribute="trailing" id="aj7-rN-7bn"/>
                                                         <constraint firstItem="Ajo-eG-xNs" firstAttribute="leading" secondItem="1zS-vZ-7dX" secondAttribute="leading" id="hQ2-Eb-SXs"/>
@@ -1154,8 +1157,7 @@
                                                 <constraint firstItem="1zS-vZ-7dX" firstAttribute="top" secondItem="3W2-oV-XnI" secondAttribute="top" id="Rwu-dU-jau"/>
                                                 <constraint firstItem="5wp-TJ-TGw" firstAttribute="top" secondItem="1zS-vZ-7dX" secondAttribute="bottom" constant="30" id="U7l-qH-a85"/>
                                                 <constraint firstItem="5wp-TJ-TGw" firstAttribute="trailing" secondItem="3W2-oV-XnI" secondAttribute="trailingMargin" id="fAl-dD-DAf"/>
-                                                <constraint firstAttribute="trailing" secondItem="1zS-vZ-7dX" secondAttribute="trailing" constant="165" id="lXn-my-et6"/>
-                                                <constraint firstItem="1zS-vZ-7dX" firstAttribute="leading" secondItem="3W2-oV-XnI" secondAttribute="leading" constant="165" id="tZL-HY-UEd"/>
+                                                <constraint firstItem="1zS-vZ-7dX" firstAttribute="centerX" secondItem="3W2-oV-XnI" secondAttribute="centerX" id="w74-Ea-Dh5"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1347,7 +1349,7 @@
             </objects>
             <point key="canvasLocation" x="1598" y="1623"/>
         </scene>
-        <!--Walk History-->
+        <!--Walk History View Controller-->
         <scene sceneID="VQG-rW-idf">
             <objects>
                 <viewController id="MDO-JJ-BOh" customClass="WalkHistoryViewController" customModule="myDogGallery" customModuleProvider="target" sceneMemberID="viewController">
@@ -1459,7 +1461,7 @@
                             <constraint firstItem="HB6-Rc-at7" firstAttribute="leading" secondItem="4tQ-dz-dCk" secondAttribute="leading" id="ywL-4g-oMe"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Walk History" id="ykL-sR-zk5"/>
+                    <navigationItem key="navigationItem" id="ykL-sR-zk5"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jdq-Xz-64O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1541,9 +1543,6 @@
         </scene>
     </scenes>
     <designables>
-        <designable name="2mS-xZ-XuW">
-            <size key="intrinsicContentSize" width="1752.5" height="3000"/>
-        </designable>
         <designable name="3DV-Ud-JE7">
             <size key="intrinsicContentSize" width="256" height="256"/>
         </designable>

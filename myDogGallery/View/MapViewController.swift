@@ -51,6 +51,51 @@ class MapViewController: UIViewController {
         }
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+
+        self.navigationController?.navigationBar.tintColor = .orange
+
+        shadow(inputView: mapControlView)
+
+        getSaveResetBtn()
+        addSaveBtn.layer.isHidden = true
+        addResetBtn.layer.isHidden = true
+
+        CoreDataManager.shared.fetchProfile()
+
+        mapGradientView.setGradient(color1: UIColor.systemOrange, color2: UIColor.white, color3: UIColor.white)
+
+        let heigh = self.tabBarController?.tabBar.frame.height ?? 0
+        self.tabBarController?.tabBar.frame.origin = CGPoint(x: 0, y: UIScreen.main.bounds.maxY - heigh)
+        kmeterLabel.layer.cornerRadius = 15
+
+        mapView.showsUserLocation = true
+        mapView.setUserTrackingMode(.follow, animated: true)
+        locationManager.delegate = self
+        locationManager.distanceFilter = 1
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.activityType = .other
+
+        switch locationManager.authorizationStatus {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .denied, .restricted:
+            print("사용 불가능")
+        case .authorizedWhenInUse, .authorizedAlways:
+            print("사용 가능")
+
+        }
+
+        guard let loaclValue: CLLocationCoordinate2D = locationManager.location?.coordinate else { return }
+
+        let region = MKCoordinateRegion(center: loaclValue, latitudinalMeters: 100, longitudinalMeters: 100)
+        mapView.setRegion(region, animated: true)
+
+        mapView.register(MKAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+    }
+
 
     @IBAction func getLocationBtn(_ sender: Any) {
         print(#function)
@@ -188,55 +233,6 @@ class MapViewController: UIViewController {
         inputView.layer.shadowOffset = CGSize(width: 5, height: 5)
         inputView.layer.shadowPath = nil
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-
-        self.navigationController?.navigationBar.tintColor = .orange
-
-        shadow(inputView: mapControlView)
-
-        getSaveResetBtn()
-        addSaveBtn.layer.isHidden = true
-        addResetBtn.layer.isHidden = true
-
-        CoreDataManager.shared.fetchProfile()
-
-        mapGradientView.setGradient(color1: UIColor.systemOrange, color2: UIColor.white, color3: UIColor.white)
-
-        let heigh = self.tabBarController?.tabBar.frame.height ?? 0
-        self.tabBarController?.tabBar.frame.origin = CGPoint(x: 0, y: UIScreen.main.bounds.maxY - heigh)
-        kmeterLabel.layer.cornerRadius = 15
-        
-        mapView.showsUserLocation = true
-        mapView.setUserTrackingMode(.follow, animated: true)
-        locationManager.delegate = self
-        locationManager.distanceFilter = 1
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.activityType = .other
-        
-        switch locationManager.authorizationStatus {
-        case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-        case .denied, .restricted:
-            print("사용 불가능")
-        case .authorizedWhenInUse, .authorizedAlways:
-            print("사용 가능")
-            
-        }
-
-        guard let loaclValue: CLLocationCoordinate2D = locationManager.location?.coordinate else { return }
-
-        let region = MKCoordinateRegion(center: loaclValue, latitudinalMeters: 100, longitudinalMeters: 100)
-        mapView.setRegion(region, animated: true)
-
-        mapView.register(MKAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-    }
-
-
-
-
 }
 
 extension MapViewController: CLLocationManagerDelegate {

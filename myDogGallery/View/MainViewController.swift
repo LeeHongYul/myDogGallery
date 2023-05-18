@@ -62,18 +62,23 @@ class MainViewController: UIViewController {
         inputView.layer.shadowPath = nil
     }
 
+    func shadowWeather(inputView: UIView) {
+        inputView.layer.shadowColor = UIColor.black.cgColor
+        inputView.layer.shadowOpacity = 0.9
+        inputView.layer.shadowRadius = 10
+        inputView.layer.shadowOffset = CGSize(width: 0,height: 1)
+        inputView.layer.shadowPath = nil
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        shadow(inputView: phaseView)
-        shadow(inputView: walkHistoryView)
-        shadow(inputView: mainProfileView)
-        shadow(inputView: weatherView)
+
+        shadowWeather(inputView: weatherView)
         
         CoreDataManager.shared.fetchProfile()
         print(CoreDataManager.shared.profileList.count,"프로필 수")
         mainPageControl.currentPage = 0
         mainPageControl.numberOfPages = CoreDataManager.shared.profileList.count
-        
 
         mainGradientView.setGradient(color1: UIColor.systemOrange, color2: UIColor.white, color3: UIColor.white)
 
