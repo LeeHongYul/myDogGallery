@@ -10,12 +10,12 @@ import UIKit
 class ProfilePickerViewController: UIViewController {
 
     var pickedFinalImage: UIImage?
-
-    @IBOutlet var startWalkView: RoundedView!
+    @IBOutlet var profileCollectionView: UICollectionView!
     @IBOutlet var profileImagePicker: UIImageView!
     @IBOutlet var profileImageContainerView: RoundedView!
-    @IBOutlet var profileImagePickerView: UIPickerView!
-    @IBOutlet var saveProfileBtn: UIButton!
+
+    @IBOutlet var starWalkButton: UIButton!
+
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "profilePickerSegue" {
@@ -44,57 +44,68 @@ class ProfilePickerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController?.navigationBar.tintColor = .orange
         CoreDataManager.shared.fetchProfile()
-        saveProfileBtn.isEnabled = false
-//        shadowOrange(inputView: profileImageContainerView)
-//        shadow(inputView: startWalkView)
+
+        let conditionalLayout = UICollectionViewCompositionalLayout { sectionIndex, env in
+
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/2), heightDimension: .fractionalHeight(1.0))
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+            item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+
+            let section = NSCollectionLayoutSection(group: group)
+            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+//            section.orthogonalScrollingBehavior = .groupPaging
+            return section
+
+        }
+
+        profileCollectionView.collectionViewLayout = conditionalLayout
+        profileCollectionView.reloadData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        profileImagePickerView.reloadAllComponents()
+        profileCollectionView.reloadData()
 
 
     }
-    
-    @IBAction func saveProfileBtn(_ sender: Any) {
 
-    }
 
 }
 
-extension ProfilePickerViewController: UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        1
+
+extension ProfilePickerViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return CoreDataManager.shared.profileList.count
     }
 
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfilePickCollectionViewCell", for: indexPath) as! ProfilePickCollectionViewCell
 
-        if CoreDataManager.shared.profileList.count == 0 {
-           return 1
-        } else {
-            return  CoreDataManager.shared.profileList.count
-        }
+            let target = CoreDataManager.shared.profileList[indexPath.row]
+
+            cell.profilePickImage.image = UIImage(data: target.image!)
+
+            return cell
+
     }
+
+
 }
 
-extension ProfilePickerViewController: UIPickerViewDelegate {
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if CoreDataManager.shared.profileList.count == 0 {
-            return "산책 시킬 반려견을 선택해 주세요"
-        } else {
-            let target = CoreDataManager.shared.profileList[row]
-            return target.name
-        }
-    }
 
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+extension ProfilePickerViewController: UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let target = CoreDataManager.shared.profileList[indexPath.row]
 
-        let target = CoreDataManager.shared.profileList[row]
-//        testTextField.text = target.name
-        saveProfileBtn.isEnabled = true
         profileImagePicker.image = UIImage(data: target.image!)
+
         pickedFinalImage = UIImage(data: target.image!)
+//        pickedFinalImage?.images = UIImage(data: target.image!)
 
     }
 }
