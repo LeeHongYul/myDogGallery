@@ -21,7 +21,11 @@
     </entity>
     <entity name="Walk" representedClassName="WalkEntity" syncable="YES" codeGenerationType="class">
         <attribute name="currentDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="endLat" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="endLon" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="profile" attributeType="Binary"/>
+        <attribute name="startLat" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="startLon" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="totalDistance" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="totalTime" attributeType="String"/>
     </entity>

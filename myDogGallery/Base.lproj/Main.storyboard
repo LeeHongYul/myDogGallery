@@ -1482,6 +1482,7 @@
                                             <outlet property="currentDistanceLabel" destination="7Ub-mP-eiK" id="pzh-Va-QHn"/>
                                             <outlet property="currentTimeLabel" destination="9E5-ik-ZGt" id="5de-bv-svk"/>
                                             <outlet property="walkProfileImageView" destination="OX5-Ee-bR4" id="pcD-G2-vLr"/>
+                                            <segue destination="qdw-v4-42E" kind="presentation" identifier="segueMapDetail" id="CkF-xa-i7T"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1501,6 +1502,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ykL-sR-zk5"/>
+                    <connections>
+                        <outlet property="walkHistoryTableview" destination="HB6-Rc-at7" id="oiD-X1-zmR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jdq-Xz-64O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1511,16 +1515,84 @@
             <objects>
                 <viewController id="qdw-v4-42E" customClass="MapDetailViewController" customModule="myDogGallery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Dxi-3M-xTO">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="863"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WJX-CC-olh">
+                                <rect key="frame" x="20" y="79" width="390" height="286"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="286" id="Ybj-1a-PPr"/>
+                                    <constraint firstAttribute="width" constant="390" id="afz-zB-Hte"/>
+                                </constraints>
+                                <standardMapConfiguration key="preferredConfiguration"/>
+                                <connections>
+                                    <outlet property="delegate" destination="qdw-v4-42E" id="TZU-de-2GJ"/>
+                                </connections>
+                            </mapView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EoU-38-XIf" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
+                                <rect key="frame" x="20" y="380" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="0Tj-ja-ahe"/>
+                                    <constraint firstAttribute="width" constant="120" id="Lun-Td-3Kd"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HqP-gp-TJS">
+                                <rect key="frame" x="335.33333333333331" y="422" width="74.666666666666686" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gtv-MB-4ek">
+                                <rect key="frame" x="20" y="520" width="390" height="62.666666666666629"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4e-Jr-Urc">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="26.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XTq-Zt-lk8">
+                                        <rect key="frame" x="0.0" y="36.333333333333371" width="390" height="26.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="xgb-hb-clK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="EoU-38-XIf" firstAttribute="centerY" secondItem="HqP-gp-TJS" secondAttribute="centerY" id="5Ok-MT-9Vc"/>
+                            <constraint firstItem="EoU-38-XIf" firstAttribute="top" secondItem="WJX-CC-olh" secondAttribute="bottom" constant="15" id="6oE-ZG-KpE"/>
+                            <constraint firstItem="EoU-38-XIf" firstAttribute="leading" secondItem="WJX-CC-olh" secondAttribute="leading" id="DcX-wj-ZIE"/>
+                            <constraint firstItem="xgb-hb-clK" firstAttribute="trailing" secondItem="gtv-MB-4ek" secondAttribute="trailing" constant="20" id="EYI-rU-xKl"/>
+                            <constraint firstItem="HqP-gp-TJS" firstAttribute="trailing" secondItem="WJX-CC-olh" secondAttribute="trailing" id="Qfk-eR-TNk"/>
+                            <constraint firstItem="WJX-CC-olh" firstAttribute="leading" secondItem="xgb-hb-clK" secondAttribute="leading" constant="20" id="YNt-rO-7ep"/>
+                            <constraint firstItem="gtv-MB-4ek" firstAttribute="top" secondItem="EoU-38-XIf" secondAttribute="bottom" constant="20" id="aNY-XO-VJc"/>
+                            <constraint firstItem="xgb-hb-clK" firstAttribute="trailing" secondItem="WJX-CC-olh" secondAttribute="trailing" constant="20" id="bsy-jG-q6w"/>
+                            <constraint firstItem="gtv-MB-4ek" firstAttribute="leading" secondItem="EoU-38-XIf" secondAttribute="leading" id="cs3-Cy-XvT"/>
+                            <constraint firstItem="WJX-CC-olh" firstAttribute="top" secondItem="xgb-hb-clK" secondAttribute="top" constant="20" id="ek4-gq-2P1"/>
+                            <constraint firstItem="xgb-hb-clK" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="gtv-MB-4ek" secondAttribute="bottom" constant="200" id="hDq-bo-FTZ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="CCE-sz-JMZ"/>
+                    <connections>
+                        <outlet property="detailDistance" destination="a4e-Jr-Urc" id="PLS-JP-i0H"/>
+                        <outlet property="detailImage" destination="EoU-38-XIf" id="0pa-jq-zXF"/>
+                        <outlet property="detailName" destination="HqP-gp-TJS" id="LOT-HF-S4l"/>
+                        <outlet property="detailTime" destination="XTq-Zt-lk8" id="ROr-jo-WaE"/>
+                        <outlet property="mapView" destination="WJX-CC-olh" id="2GH-xI-v0T"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rLg-JG-JK1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3497" y="3140"/>
+            <point key="canvasLocation" x="3496.7441860465115" y="3139.6995708154509"/>
         </scene>
         <!--Porfile-->
         <scene sceneID="Qq9-hA-raZ">

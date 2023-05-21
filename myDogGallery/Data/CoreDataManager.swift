@@ -39,7 +39,7 @@ class CoreDataManager {
     }
     
     
-    func addNewWalk(cuurentDate: Date, totalDistance: Double, totalTime: String, profile: Data) {
+    func addNewWalk(cuurentDate: Date, totalDistance: Double, totalTime: String, profile: Data, startLon: Double, startLat: Double, endLon: Double, endLat: Double) {
         
         let newWalk = WalkEntity(context:  mainContext)
         
@@ -47,7 +47,12 @@ class CoreDataManager {
         newWalk.totalDistance = totalDistance
         newWalk.totalTime = totalTime
         newWalk.profile = profile
-       
+        newWalk.startLon = startLon
+        newWalk.startLat = startLat
+        newWalk.endLon = endLon
+        newWalk.endLat = endLat
+
+
         walkList.insert(newWalk, at: 0)
         saveContext()
     }

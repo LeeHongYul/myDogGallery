@@ -12,13 +12,35 @@ class WalkHistoryViewController: UIViewController {
 
     var pickedFinalImage: UIImage?
 
+    @IBOutlet var walkHistoryTableview: UITableView!
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueMapDetail" {
+            if let cell = sender as? UITableViewCell, let indexPath = walkHistoryTableview.indexPath(for: cell) {
+                let target = CoreDataManager.shared.walkList[indexPath.row]
+
+                if let vc = segue.destination as? MapDetailViewController {
+                    vc.fristLat = target.startLat
+                    vc.fristLon = target.startLon
+                    vc.secondLat = target.endLat
+                    vc.secondLon = target.endLon
+                    vc.walkDetailImage = UIImage(data: target.profile!)
+                    vc.walkDetail = target.totalDistance
+                    vc.walkDistance = target.totalTime
+
+
+                }
+            }
+        }
+    }
+
+
+
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         CoreDataManager.shared.fetchWalk()
-        CoreDataManager.shared.fetchProfile()
-        
        
     }
     
@@ -53,6 +75,20 @@ extension WalkHistoryViewController: UITableViewDataSource {
         
         return cell
     }
-    
-    
+}
+
+extension WalkHistoryViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let target = CoreDataManager.shared.walkList[indexPath.row]
+
+
+        print(target.startLat, "SASASASAAAAAAAAAAAAAAAAAA")
+        print(target.startLon, "SASABBBBBBBBBBBBBBBB")
+                print(target.endLat, "SASAAAAAAAAAAAAAAAAAAA")
+                print(target.endLon, "SASBBBBBBBBBBBBBBBB")
+
+
+
+
+    }
 }

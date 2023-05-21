@@ -11,6 +11,7 @@
 		5D0DEAA729EFA19400FFF700 /* NewMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0DEAA629EFA19400FFF700 /* NewMemoViewController.swift */; };
 		5D12B0962A08A8E7007CA12B /* WalkHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D12B0952A08A8E7007CA12B /* WalkHistoryViewController.swift */; };
 		5D1F3F5929F22AF2007FBD7E /* WeatherDataApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F3F5829F22AF2007FBD7E /* WeatherDataApi.swift */; };
+		5D221E5C2A19A02B00B4AC33 /* MapDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D221E5B2A19A02B00B4AC33 /* MapDetailViewController.swift */; };
 		5D4B6FEA29F51E1A00BFC43B /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4B6FE929F51E1A00BFC43B /* MainCollectionViewCell.swift */; };
 		5D56118329EFB00100A6EA56 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D56118229EFB00100A6EA56 /* ProfileTableViewController.swift */; };
 		5D56118529EFB02100A6EA56 /* ProfileEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D56118429EFB02100A6EA56 /* ProfileEditTableViewController.swift */; };
@@ -45,6 +46,7 @@
 		5D12B0952A08A8E7007CA12B /* WalkHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkHistoryViewController.swift; sourceTree = "<group>"; };
 		5D1BE46729FA11F0003371EF /* myDogGallery.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = myDogGallery.entitlements; sourceTree = "<group>"; };
 		5D1F3F5829F22AF2007FBD7E /* WeatherDataApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataApi.swift; sourceTree = "<group>"; };
+		5D221E5B2A19A02B00B4AC33 /* MapDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailViewController.swift; sourceTree = "<group>"; };
 		5D4B6FE929F51E1A00BFC43B /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		5D56118229EFB00100A6EA56 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		5D56118429EFB02100A6EA56 /* ProfileEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditTableViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				5D5CB80E2A0E93BA0098E38B /* ProfilePickerViewController.swift */,
 				5DD4372229FFFF8300181A72 /* MapViewController.swift */,
 				5D12B0952A08A8E7007CA12B /* WalkHistoryViewController.swift */,
+				5D221E5B2A19A02B00B4AC33 /* MapDetailViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				5D5A16FB29F7FF5F002E7C15 /* Phrase.swift in Sources */,
 				5DC7F7F029EF89D0005F9E22 /* WeatherData.swift in Sources */,
 				5D4B6FEA29F51E1A00BFC43B /* MainCollectionViewCell.swift in Sources */,
+				5D221E5C2A19A02B00B4AC33 /* MapDetailViewController.swift in Sources */,
 				5D75A3C829F3BC5C001C25B3 /* myPhotoCollectionViewCell.swift in Sources */,
 				5DC7F7E329EF836C005F9E22 /* myDogGallery.xcdatamodeld in Sources */,
 				5D0DEAA529EF9E4C00FFF700 /* MemoViewController.swift in Sources */,

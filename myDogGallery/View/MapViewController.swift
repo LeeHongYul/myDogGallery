@@ -11,6 +11,10 @@ import CoreLocation
 
 class MapViewController: UIViewController {
 
+    var drawPoint: [CLLocationCoordinate2D] = []
+
+
+
     var pickedFinalImage: UIImage?
     
     @IBOutlet var playBtnView: RoundedView!
@@ -173,7 +177,10 @@ class MapViewController: UIViewController {
         let ok = UIAlertAction(title: "확인", style: .default) { _ in
             guard let data = self.pickedFinalImage?.pngData() else { return }
             if let timeString = self.timeLabel.text {
-                CoreDataManager.shared.addNewWalk(cuurentDate: Date(), totalDistance: self.totalMeter, totalTime: timeString, profile: data)
+                CoreDataManager.shared.addNewWalk(cuurentDate: Date(), totalDistance: self.totalMeter, totalTime: timeString, profile: data, startLon: self.drawPoint.first?.longitude ?? 0.0,  startLat: self.drawPoint.first?.latitude ?? 0.0, endLon: self.drawPoint.last?.longitude ?? 0.0 ,endLat: self.drawPoint.last?.latitude ?? 0.0)
+                print("SAVE좌표",self.drawPoint.first?.longitude, self.drawPoint.first?.latitude)
+                print("SAVE좌표",self.drawPoint.last?.longitude, self.drawPoint.last?.latitude)
+                self.drawPoint = []
             }
 
 
@@ -281,6 +288,11 @@ extension MapViewController: CLLocationManagerDelegate {
 
             let point1 = CLLocationCoordinate2DMake(previousCoordinate.latitude, previousCoordinate.longitude)
             let point2: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longtitude)
+
+print("좌표 비교",point2)
+
+
+            drawPoint.append(point2)
             points.append(point1)
             points.append(point2)
             let lineDraw = MKPolyline(coordinates: points, count:points.count)
@@ -289,6 +301,7 @@ extension MapViewController: CLLocationManagerDelegate {
 
             totalMeter += Double(location.coordinate.distance(from: previousCoordinate))
         }
+        print(drawPoint.count)
         self.previousCoordinate = location.coordinate
         let result = totalMeter / 1000
         kmeterLabel.text = String(format: "%.2f Km", result)
