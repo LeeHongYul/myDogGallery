@@ -153,7 +153,7 @@ class MapViewController: UIViewController {
 
     @objc func resetWalk(_ sender: UIButton) {
         print("reset btn pressed")
-        if totalMeter != 0 {
+        if totalMeter != 0 || count != 0{
             timer.invalidate()
             kmeterLabel.text = "0.0 Km"
             timeLabel.text = "0:0:0"

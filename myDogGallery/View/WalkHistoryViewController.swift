@@ -19,14 +19,16 @@ class WalkHistoryViewController: UIViewController {
             if let cell = sender as? UITableViewCell, let indexPath = walkHistoryTableview.indexPath(for: cell) {
                 let target = CoreDataManager.shared.walkList[indexPath.row]
 
-                if let vc = segue.destination as? MapDetailViewController {
-                    vc.fristLat = target.startLat
-                    vc.fristLon = target.startLon
-                    vc.secondLat = target.endLat
-                    vc.secondLon = target.endLon
-                    vc.walkDetailImage = UIImage(data: target.profile!)
-                    vc.walkDetail = target.totalDistance
-                    vc.walkDistance = target.totalTime
+                if (segue.destination.sheetPresentationController?.detents = [.medium()]) != nil, let vc = segue.destination as? MapDetailViewController
+                {
+
+                        vc.fristLat = target.startLat
+                        vc.fristLon = target.startLon
+                        vc.secondLat = target.endLat
+                        vc.secondLon = target.endLon
+                        vc.walkDetailImage = UIImage(data: target.profile!)
+                        vc.walkDetail = target.totalDistance
+                        vc.walkDistance = target.totalTime
 
 
                 }
@@ -34,9 +36,13 @@ class WalkHistoryViewController: UIViewController {
         }
     }
 
-
-
-
+//    @objc func showDetail(_ sender: Any?) {
+//        performSegue(withIdentifier: "detailSegue", sender: sender)
+//    }
+//
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        segue.destination.sheetPresentationController?.detents = [.medium(), .large()]
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

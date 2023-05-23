@@ -31,7 +31,7 @@ class MapDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        mapView.layer.cornerRadius = 15
         detailImage.image = walkDetailImage
         let walkDeatilFormat = (walkDetail! / 1000)
         detailDistance.text = String(format: "%.2f Km", walkDeatilFormat)
