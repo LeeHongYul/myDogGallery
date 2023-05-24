@@ -10,13 +10,9 @@ import UIKit
 class WalkHistoryTableViewCell: UITableViewCell {
 
     @IBOutlet var currentDateLabel: UILabel!
-    
     @IBOutlet var currentDistanceLabel: UILabel!
-    
     @IBOutlet var currentTimeLabel: UILabel!
-
     @IBOutlet var walkProfileImageView: UIImageView!
-
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,5 +24,4 @@ class WalkHistoryTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }

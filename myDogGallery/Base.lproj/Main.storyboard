@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xfW-Le-cXG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xfW-Le-cXG">
     <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -66,7 +67,7 @@
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="dsadasdasdadasdasdsadasdasdasdasdas" textAlignment="center" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2X-p2-9YB">
                                         <rect key="frame" x="10" y="10" width="370" height="64"/>
                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                        <color key="textColor" systemColor="tertiaryLabelColor"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -447,7 +448,7 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="루니" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbo-EH-NFO">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="루니" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbo-EH-NFO">
                                             <rect key="frame" x="30" y="297.66666666666669" width="370" height="48"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="40"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -537,7 +538,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="XlL-iX-fOW" customClass="myPhotoCollectionViewCell" customModule="myDogGallery" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="XlL-iX-fOW" customClass="MyPhotoCollectionViewCell" customModule="myDogGallery" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="JJj-iV-gRz">
@@ -579,16 +580,16 @@
             </objects>
             <point key="canvasLocation" x="1627" y="908"/>
         </scene>
-        <!--Profile Picker View Controller-->
+        <!--Pick Profile View Controller-->
         <scene sceneID="RXY-Tv-k6X">
             <objects>
-                <viewController id="svF-Ko-5II" customClass="ProfilePickerViewController" customModule="myDogGallery" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="svF-Ko-5II" customClass="PickProfileViewController" customModule="myDogGallery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Ss-0M-k9w">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="8595649" translatesAutoresizingMaskIntoConstraints="NO" id="2mS-xZ-XuW">
-                                <rect key="frame" x="0.0" y="0.0" width="430" height="364"/>
+                                <rect key="frame" x="10" y="103" width="410" height="411"/>
                                 <color key="tintColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -603,7 +604,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7wT-6m-yOr" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
-                                <rect key="frame" x="10" y="374" width="410" height="450"/>
+                                <rect key="frame" x="10" y="524" width="410" height="300"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="산책할 반려견을 선택해주세요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5FM-LC-bCd">
                                         <rect key="frame" x="0.0" y="20" width="410" height="30"/>
@@ -612,7 +613,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C6a-FH-ZhZ">
-                                        <rect key="frame" x="10" y="405.66666666666663" width="390" height="34.333333333333314"/>
+                                        <rect key="frame" x="10" y="255.66666666666666" width="390" height="34.333333333333343"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Start Walk">
                                             <color key="baseBackgroundColor" systemColor="systemOrangeColor"/>
@@ -622,7 +623,7 @@
                                         </connections>
                                     </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wht-eW-oxY">
-                                        <rect key="frame" x="10" y="65" width="390" height="336.66666666666669"/>
+                                        <rect key="frame" x="10" y="64.999999999999986" width="390" height="186.66666666666663"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LtM-jp-8TM">
                                             <size key="itemSize" width="188" height="185"/>
@@ -674,7 +675,7 @@
                                     <constraint firstItem="C6a-FH-ZhZ" firstAttribute="leading" secondItem="7wT-6m-yOr" secondAttribute="leading" constant="10" id="TYt-lC-58S"/>
                                     <constraint firstAttribute="trailing" secondItem="wht-eW-oxY" secondAttribute="trailing" constant="10" id="fQY-Sx-MHw"/>
                                     <constraint firstAttribute="trailing" secondItem="5FM-LC-bCd" secondAttribute="trailing" id="hvK-gf-ton"/>
-                                    <constraint firstAttribute="height" constant="450" id="i0b-AJ-jFy"/>
+                                    <constraint firstAttribute="height" constant="300" id="i0b-AJ-jFy"/>
                                     <constraint firstItem="5FM-LC-bCd" firstAttribute="leading" secondItem="7wT-6m-yOr" secondAttribute="leading" id="o4T-Xl-lbL"/>
                                     <constraint firstItem="5FM-LC-bCd" firstAttribute="top" secondItem="7wT-6m-yOr" secondAttribute="top" constant="20" id="rIC-4M-Fca"/>
                                     <constraint firstAttribute="trailing" secondItem="C6a-FH-ZhZ" secondAttribute="trailing" constant="10" id="xTn-HK-7IM"/>
@@ -698,16 +699,13 @@
                         <viewLayoutGuide key="safeArea" id="tAg-3v-xPW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="2mS-xZ-XuW" firstAttribute="leading" secondItem="tAg-3v-xPW" secondAttribute="leading" id="0fM-m7-LNL"/>
-                            <constraint firstItem="2mS-xZ-XuW" firstAttribute="trailing" secondItem="tAg-3v-xPW" secondAttribute="trailing" id="7gx-L1-daU"/>
-                            <constraint firstItem="2mS-xZ-XuW" firstAttribute="leading" secondItem="tAg-3v-xPW" secondAttribute="leading" id="8Zx-iv-qGw"/>
-                            <constraint firstItem="2mS-xZ-XuW" firstAttribute="top" secondItem="8Ss-0M-k9w" secondAttribute="top" id="BnN-9z-9V0"/>
+                            <constraint firstItem="2mS-xZ-XuW" firstAttribute="leading" secondItem="tAg-3v-xPW" secondAttribute="leading" constant="10" id="Dkt-ij-qZa"/>
                             <constraint firstItem="tAg-3v-xPW" firstAttribute="bottom" secondItem="7wT-6m-yOr" secondAttribute="bottom" constant="25" id="Kwe-80-FdY"/>
                             <constraint firstItem="7wT-6m-yOr" firstAttribute="leading" secondItem="tAg-3v-xPW" secondAttribute="leading" constant="10" id="R0h-up-G3Z"/>
-                            <constraint firstItem="7wT-6m-yOr" firstAttribute="top" secondItem="2mS-xZ-XuW" secondAttribute="bottom" constant="10" id="akJ-9J-TFA"/>
+                            <constraint firstItem="2mS-xZ-XuW" firstAttribute="top" secondItem="tAg-3v-xPW" secondAttribute="top" id="Twz-R8-Ygf"/>
+                            <constraint firstItem="7wT-6m-yOr" firstAttribute="top" secondItem="2mS-xZ-XuW" secondAttribute="bottom" constant="10" id="UiT-v9-MsR"/>
                             <constraint firstItem="tAg-3v-xPW" firstAttribute="trailing" secondItem="7wT-6m-yOr" secondAttribute="trailing" constant="10" id="mnq-kF-DLT"/>
-                            <constraint firstItem="2mS-xZ-XuW" firstAttribute="top" secondItem="8Ss-0M-k9w" secondAttribute="top" id="nHb-4d-0qZ"/>
-                            <constraint firstItem="2mS-xZ-XuW" firstAttribute="trailing" secondItem="tAg-3v-xPW" secondAttribute="trailing" id="oK2-Ud-xgZ"/>
+                            <constraint firstItem="tAg-3v-xPW" firstAttribute="trailing" secondItem="2mS-xZ-XuW" secondAttribute="trailing" constant="10" id="wBi-h0-MPi"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="uGY-A9-Nwz">
@@ -720,7 +718,7 @@
                     <connections>
                         <outlet property="profileCollectionView" destination="wht-eW-oxY" id="HMh-cs-4wj"/>
                         <outlet property="profileImageContainerView" destination="7wT-6m-yOr" id="PeP-Pb-iqX"/>
-                        <outlet property="profileImagePicker" destination="2mS-xZ-XuW" id="omD-MS-vxu"/>
+                        <outlet property="selectedProfileImage" destination="2mS-xZ-XuW" id="omD-MS-vxu"/>
                         <outlet property="starWalkButton" destination="C6a-FH-ZhZ" id="7Hw-V4-feU"/>
                     </connections>
                 </viewController>
@@ -870,7 +868,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="제목을 입력해주세요" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="onO-9Z-N3M">
-                                <rect key="frame" x="16" y="103" width="398" height="34"/>
+                                <rect key="frame" x="16" y="44" width="398" height="34"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -879,7 +877,7 @@
                                 </connections>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nxf-QW-rmH">
-                                <rect key="frame" x="16" y="157" width="398" height="70.333333333333314"/>
+                                <rect key="frame" x="16" y="98" width="398" height="70.333333333333314"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘 날짜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vrG-mj-UEV">
                                         <rect key="frame" x="0.0" y="0.0" width="398" height="20.333333333333332"/>
@@ -888,12 +886,12 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="gtb-g9-UZQ">
-                                        <rect key="frame" x="0.0" y="20.333333333333343" width="398" height="50"/>
+                                        <rect key="frame" x="0.0" y="20.333333333333329" width="398" height="50"/>
                                     </datePicker>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="dtK-GP-9hH">
-                                <rect key="frame" x="16" y="247.33333333333337" width="398" height="500"/>
+                                <rect key="frame" x="16" y="188.33333333333337" width="398" height="500"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘의 기록" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s8h-Iq-emG">
                                         <rect key="frame" x="0.0" y="0.0" width="398" height="20.333333333333332"/>
@@ -902,7 +900,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IMM-kD-d7N">
-                                        <rect key="frame" x="0.0" y="36.333333333333343" width="398" height="319.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="36.333333333333314" width="398" height="319.66666666666669"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1126,9 +1124,6 @@
                                                                 </label>
                                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="R2X-RA-3fN">
                                                                     <rect key="frame" x="0.0" y="28.333333333333314" width="390" height="50"/>
-                                                                    <connections>
-                                                                        <action selector="dateSelected:" destination="neY-mx-tk6" eventType="valueChanged" id="lD6-Cz-tbH"/>
-                                                                    </connections>
                                                                 </datePicker>
                                                             </subviews>
                                                         </stackView>
@@ -1244,7 +1239,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HHr-BN-nQg">
-                                <rect key="frame" x="0.0" y="103" width="430" height="795"/>
+                                <rect key="frame" x="0.0" y="44" width="430" height="888"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XV1-9c-rlY"/>
@@ -1320,7 +1315,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hk1-SX-jbI" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="loM-fd-Gac">
-                        <rect key="frame" x="0.0" y="59" width="430" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1376,7 +1371,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YjB-kT-VmS" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="veU-J7-MEX">
-                        <rect key="frame" x="0.0" y="59" width="430" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1393,11 +1388,11 @@
             <objects>
                 <viewController id="MDO-JJ-BOh" customClass="WalkHistoryViewController" customModule="myDogGallery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gQ4-3y-We4">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="863"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="922"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="HB6-Rc-at7">
-                                <rect key="frame" x="0.0" y="5" width="430" height="858"/>
+                                <rect key="frame" x="0.0" y="5" width="430" height="917"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="WalkHistoryTableViewCell" rowHeight="88" id="29z-u5-1sp" customClass="WalkHistoryTableViewCell" customModule="myDogGallery" customModuleProvider="target">
@@ -1515,11 +1510,11 @@
             <objects>
                 <viewController id="qdw-v4-42E" customClass="MapDetailViewController" customModule="myDogGallery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Dxi-3M-xTO">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="863"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="922"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gtv-MB-4ek">
-                                <rect key="frame" x="20" y="419" width="265" height="120"/>
+                                <rect key="frame" x="20" y="478" width="265" height="120"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4e-Jr-Urc">
                                         <rect key="frame" x="0.0" y="0.0" width="265" height="74"/>
@@ -1536,7 +1531,7 @@
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dog-nose" translatesAutoresizingMaskIntoConstraints="NO" id="EoU-38-XIf" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
-                                <rect key="frame" x="290" y="419" width="120" height="120"/>
+                                <rect key="frame" x="290" y="478" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="N6Y-Uo-XeA"/>
                                     <constraint firstAttribute="height" constant="120" id="ykP-fB-1ss"/>
@@ -1548,7 +1543,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WJX-CC-olh">
-                                <rect key="frame" x="20" y="559" width="390" height="284"/>
+                                <rect key="frame" x="20" y="618" width="390" height="284"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="390" id="L3o-jX-bqs"/>
                                     <constraint firstAttribute="height" constant="284" id="ZJw-bh-Nmt"/>
@@ -1584,7 +1579,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rLg-JG-JK1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3496.7441860465115" y="3139.6995708154509"/>
+            <point key="canvasLocation" x="3493" y="3125"/>
         </scene>
         <!--Porfile-->
         <scene sceneID="Qq9-hA-raZ">
@@ -1701,9 +1696,6 @@
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="tertiaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

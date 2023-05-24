@@ -9,40 +9,27 @@ import Foundation
 import CoreData
 
 class CoreDataManager {
-    
     static let shared = CoreDataManager()
-    
     private init() {
-        
     }
-    
     var mainContext: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
-    
     var memoList = [MemoEntity]()
     var profileList = [ProfileEntity]()
     var walkList = [WalkEntity]()
     var list = [NSManagedObject]()
-    
-    
-    
     func fetchWalk() {
-        
+
         let request = WalkEntity.fetchRequest()
-        
         do {
             walkList = try mainContext.fetch(request)
         } catch {
             print(error)
         }
     }
-    
-    
     func addNewWalk(cuurentDate: Date, totalDistance: Double, totalTime: String, profile: Data, startLon: Double, startLat: Double, endLon: Double, endLat: Double) {
-        
-        let newWalk = WalkEntity(context:  mainContext)
-        
+        let newWalk = WalkEntity(context: mainContext)
         newWalk.currentDate = cuurentDate
         newWalk.totalDistance = totalDistance
         newWalk.totalTime = totalTime
@@ -52,136 +39,97 @@ class CoreDataManager {
         newWalk.endLon = endLon
         newWalk.endLat = endLat
 
-
         walkList.insert(newWalk, at: 0)
         saveContext()
     }
-    
     func fetchMemo() {
-        
         let request = MemoEntity.fetchRequest()
-        
         let sortByTimeStamp = NSSortDescriptor(key: "timeStamp", ascending: false)
         request.sortDescriptors = [sortByTimeStamp]
-        
         do {
             memoList = try mainContext.fetch(request)
         } catch {
             print(error)
         }
     }
-    
-    
     func searchByName(_ keyword: String?) {
         guard let keyword = keyword else { return }
         let predicate = NSPredicate(format: "title CONTAINS[c] %@", keyword)
         fetchPredicate(predicate: predicate)
     }
-    
     func fetchPredicate(predicate: NSPredicate? = nil) {
         let request = NSFetchRequest<NSManagedObject>(entityName: "Memo")
         request.predicate = predicate
         do {
             list = try CoreDataManager.shared.mainContext.fetch(request)
-            
         } catch {
             print(error)
         }
     }
 
     func fetchProfile() {
-        
         let request = ProfileEntity.fetchRequest()
-        
         let sortByTimeStamp = NSSortDescriptor(key: "timeStamp", ascending: false)
-        
-
         request.sortDescriptors = [sortByTimeStamp]
-        
         do {
             profileList = try mainContext.fetch(request)
         } catch {
             print(error)
         }
     }
-    
     func fetchProfileByPin() {
-        
         let request = ProfileEntity.fetchRequest()
-        
         let sortByPin = NSSortDescriptor(key: "pin", ascending: false)
-        
         request.sortDescriptors = [sortByPin]
-        
         do {
             profileList = try mainContext.fetch(request)
         } catch {
             print(error)
         }
     }
-    
     func addNewMemo(memoTitle: String?, memoContext: String?, timeStamp: Date?, walkCount: Int?, walkTime: Int?, pooCount: Int?, inputDate: Date?) {
-        
-        let newMemo = MemoEntity(context:  mainContext)
-        
+        let newMemo = MemoEntity(context: mainContext)
         newMemo.title = memoTitle
         newMemo.context = memoContext
         newMemo.timeStamp = timeStamp
-        
         if let walkCount {
             newMemo.walkCount = Int16(walkCount)
         }
-        
         if let walkTime {
             newMemo.walkTime = Int16(walkTime)
         }
-        
         if let pooCount {
             newMemo.pooCount = Int16(pooCount)
         }
-        
         if let inputDate {
             newMemo.inputDate = inputDate
         }
-       
-        
-        
         memoList.insert(newMemo, at: 0)
         saveContext()
     }
-    
     func updateMemo(memo: MemoEntity, memoTitle: String?, memoContext: String?, walkCount: Int?, walkTime: Int?, pooCount: Int?, inputDate: Date?) {
-        
         memo.title = memoTitle
         memo.context = memoContext
-        
         if let walkCount {
             memo.walkCount = Int16(walkCount)
         }
-        
         if let walkTime {
             memo.walkTime = Int16(walkTime)
         }
-        
         if let pooCount {
             memo.pooCount = Int16(pooCount)
         }
-        
         if let inputDate {
             memo.inputDate = inputDate
         }
-        
         do {
             try mainContext.save()
         } catch {
             print(error)
         }
     }
-    
     func addNewProfile(name: String, age: Int, gender: Bool, birthDay: Date, detail: String?, image: Data, timeStamp: Date?) {
-        
         let newProfile = ProfileEntity(context: mainContext)
-        
         newProfile.name = name
         newProfile.age = Int16(age)
         newProfile.gender = gender
@@ -189,40 +137,31 @@ class CoreDataManager {
         newProfile.detail  = detail
         newProfile.image = image
         newProfile.timeStamp = timeStamp
-        
         profileList.insert(newProfile, at: 0)
-        
         saveContext()
     }
-    
     func updateProfile(update: ProfileEntity ,name: String, age: Int, gender: Bool, birthDay: Date, detail: String?, image: Data) {
-        
         update.name = name
         update.age = Int16(age)
         update.gender = true
         update.birthDay = birthDay
-        update.detail  = detail
+        update.detail = detail
         update.image = image
-        
         do {
             try mainContext.save()
         } catch {
             print(error)
         }
     }
-    
     func deleteMemo(memo: MemoEntity) {
         mainContext.delete(memo)
         saveContext()
     }
-    
     func deleteProfile(profile: ProfileEntity) {
         mainContext.delete(profile)
         saveContext()
     }
-    
     // MARK: - Core Data stack
-    
     lazy var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation
@@ -235,7 +174,6 @@ class CoreDataManager {
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                
                 /*
                  Typical reasons for an error here include:
                  * The parent directory does not exist, cannot be created, or disallows writing.
@@ -249,9 +187,7 @@ class CoreDataManager {
         })
         return container
     }()
-    
     // MARK: - Core Data Saving support
-    
     func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {

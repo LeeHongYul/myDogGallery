@@ -10,39 +10,30 @@ import MapKit
 import CoreLocation
 
 class MapViewController: UIViewController {
-
-    var drawPoint: [CLLocationCoordinate2D] = []
-
-
-
-    var pickedFinalImage: UIImage?
-    
-    @IBOutlet var playBtnView: RoundedView!
-
-    @IBOutlet var mapGradientView: UIView!
-    
-    @IBOutlet var mapView: MKMapView!
-    @IBOutlet var getLocationBtn: UIButton!
-    @IBOutlet var kmeterLabel: UILabel!
-    @IBOutlet var timeLabel: UILabel!
-
-    let locationManager = CLLocationManager()
-    var previousCoordinate: CLLocationCoordinate2D?
-
+    var timer: Timer = Timer()
+    var count: Int = 0
     var totalMeter = 0.0
 
     var addResetBtn = UIButton()
     var addSaveBtn = UIButton()
 
+    @IBOutlet var mapGradientView: UIView!
+
+    var pickedFinalImage: UIImage?
+
     var getLocationBtnState = true
-    
+    let locationManager = CLLocationManager()
+    var previousCoordinate: CLLocationCoordinate2D?
+    var drawPoint: [CLLocationCoordinate2D] = []
+
+    @IBOutlet var playBtnView: RoundedView!
+
+    @IBOutlet var mapView: MKMapView!
+    @IBOutlet var getLocationBtn: UIButton!
+    @IBOutlet var kmeterLabel: UILabel!
+    @IBOutlet var timeLabel: UILabel!
 
     @IBOutlet var mapControlView: RoundedView!
-
-    var timer: Timer = Timer()
-    var count: Int = 0
-
-
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == " walkHistorySegue" {
@@ -58,8 +49,8 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
         self.navigationController?.navigationBar.tintColor = .orange
+        mapGradientView.setGradient(color1: UIColor.systemOrange, color2: UIColor.white, color3: UIColor.white)
 
         shadow(inputView: mapControlView)
 
@@ -69,7 +60,6 @@ class MapViewController: UIViewController {
 
         CoreDataManager.shared.fetchProfile()
 
-        mapGradientView.setGradient(color1: UIColor.systemOrange, color2: UIColor.white, color3: UIColor.white)
 
         let heigh = self.tabBarController?.tabBar.frame.height ?? 0
         self.tabBarController?.tabBar.frame.origin = CGPoint(x: 0, y: UIScreen.main.bounds.maxY - heigh)
@@ -77,6 +67,7 @@ class MapViewController: UIViewController {
 
         mapView.showsUserLocation = true
         mapView.setUserTrackingMode(.follow, animated: true)
+
         locationManager.delegate = self
         locationManager.distanceFilter = 1
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -86,20 +77,42 @@ class MapViewController: UIViewController {
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
         case .denied, .restricted:
-            print("사용 불가능")
+            print("location 사용 불가능")
         case .authorizedWhenInUse, .authorizedAlways:
-            print("사용 가능")
+            print("location 사용 가능")
+            print("location 사용 가능")
 
         }
 
-        guard let loaclValue: CLLocationCoordinate2D = locationManager.location?.coordinate else { return }
+        guard let localValue: CLLocationCoordinate2D = locationManager.location?.coordinate else { return }
 
-        let region = MKCoordinateRegion(center: loaclValue, latitudinalMeters: 100, longitudinalMeters: 100)
+        let region = MKCoordinateRegion(center: localValue, latitudinalMeters: 100, longitudinalMeters: 100)
+
         mapView.setRegion(region, animated: true)
-
         mapView.register(MKAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
     }
 
+    @objc func timerCounter() -> Void {
+        count += 1
+        let time = secondtoHourMinSec(seconds: count)
+        let timeString = makeStirng(hours: time.0, minutes: time.1, seconds: time.2)
+        timeLabel.text = timeString
+    }
+
+    func secondtoHourMinSec(seconds: Int) -> (Int, Int, Int) {
+        return ((seconds / 3600), ((seconds % 3600) / 60), ((seconds % 3600) % 60))
+    }
+
+    func makeStirng(hours: Int, minutes: Int, seconds: Int) -> String {
+        var timeString = ""
+        timeString += String(format: "%02d", hours)
+        timeString += " : "
+        timeString += String(format: "%02d", minutes)
+        timeString += " : "
+        timeString += String(format: "%02d", seconds)
+
+        return timeString
+    }
 
     @IBAction func getLocationBtn(_ sender: Any) {
         print(#function)
@@ -124,28 +137,6 @@ class MapViewController: UIViewController {
         }
     }
 
-    @objc func timerCounter() -> Void {
-        count += 1
-        let time = secondtoHourMinSec(seconds: count)
-        let timeString = makeStirng(hours: time.0, minutes: time.1, seconds: time.2)
-        timeLabel.text = timeString
-    }
-
-    func secondtoHourMinSec(seconds: Int) -> (Int, Int, Int) {
-        return ((seconds / 3600), ((seconds % 3600) / 60), ((seconds % 3600) % 60))
-    }
-
-    func makeStirng(hours: Int, minutes: Int, seconds: Int) -> String{
-        var timeString = ""
-        timeString += String(format: "%02d", hours)
-        timeString += " : "
-        timeString += String(format: "%02d", minutes)
-        timeString += " : "
-        timeString += String(format: "%02d", seconds)
-
-        return timeString
-    }
-
     @objc func saveWalk(_ sender: UIButton) {
         print("save btn pressed")
         showAlertController()
@@ -153,7 +144,7 @@ class MapViewController: UIViewController {
 
     @objc func resetWalk(_ sender: UIButton) {
         print("reset btn pressed")
-        if totalMeter != 0 || count != 0{
+        if totalMeter != 0 || count != 0 {
             timer.invalidate()
             kmeterLabel.text = "0.0 Km"
             timeLabel.text = "0:0:0"
@@ -167,22 +158,17 @@ class MapViewController: UIViewController {
         }
     }
 
-
     func showAlertController() {
-        //UIAlertController
         let alert = UIAlertController(title: "산책 기록을 저장합니다", message: "산책을 종료하겠습니까?", preferredStyle: .alert)
 
-        // Button
-        //        let realcancel = UIAlertAction(title: "산책 기록이 없어서 저장 못합니다", style: .destructive)
         let ok = UIAlertAction(title: "확인", style: .default) { _ in
             guard let data = self.pickedFinalImage?.pngData() else { return }
             if let timeString = self.timeLabel.text {
                 CoreDataManager.shared.addNewWalk(cuurentDate: Date(), totalDistance: self.totalMeter, totalTime: timeString, profile: data, startLon: self.drawPoint.first?.longitude ?? 0.0,  startLat: self.drawPoint.first?.latitude ?? 0.0, endLon: self.drawPoint.last?.longitude ?? 0.0 ,endLat: self.drawPoint.last?.latitude ?? 0.0)
-                print("SAVE좌표",self.drawPoint.first?.longitude, self.drawPoint.first?.latitude)
-                print("SAVE좌표",self.drawPoint.last?.longitude, self.drawPoint.last?.latitude)
+                print("SAVE좌표", self.drawPoint.first?.longitude, self.drawPoint.first?.latitude)
+                print("SAVE좌표", self.drawPoint.last?.longitude, self.drawPoint.last?.latitude)
                 self.drawPoint = []
             }
-
 
             self.kmeterLabel.text = "0.0 Km"
             self.timeLabel.text = "0:0:0"
@@ -193,16 +179,12 @@ class MapViewController: UIViewController {
             self.getLocationBtn.setImage(UIImage(systemName: "play.fill"), for: .normal)
             self.getLocationBtnState = true
 
-
         }
         let cancel = UIAlertAction(title: "취소", style: .destructive, handler: nil)
-
 
         alert.addAction(cancel)
         alert.addAction(ok)
 
-
-        //present
         present(alert, animated: true, completion: nil)
     }
 
@@ -247,34 +229,24 @@ extension MapViewController: CLLocationManagerDelegate {
     func requestMyLocation() {
         locationManager.startUpdatingLocation()
     }
-    
     func stopRequestMyLocation() {
         locationManager.stopUpdatingLocation()
         locationManager.delegate?.locationManagerDidPauseLocationUpdates!(locationManager)
     }
-    
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        
         switch manager.authorizationStatus {
         case .denied, .restricted:
             print("사용할 수 없음")
-            
         case .authorizedWhenInUse, .authorizedAlways:
             print("사용할 있음")
-            
         default:
             break
         }
     }
-    
-    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        
         print(error)
     }
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
         guard let location = locations.last else {return}
         let latitude = location.coordinate.latitude
         let longtitude = location.coordinate.longitude
@@ -289,15 +261,11 @@ extension MapViewController: CLLocationManagerDelegate {
             let point1 = CLLocationCoordinate2DMake(previousCoordinate.latitude, previousCoordinate.longitude)
             let point2: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longtitude)
 
-print("좌표 비교",point2)
-
-
             drawPoint.append(point2)
             points.append(point1)
             points.append(point2)
-            let lineDraw = MKPolyline(coordinates: points, count:points.count)
+            let lineDraw = MKPolyline(coordinates: points, count: points.count)
             self.mapView.addOverlay(lineDraw)
-
 
             totalMeter += Double(location.coordinate.distance(from: previousCoordinate))
         }
@@ -306,7 +274,6 @@ print("좌표 비교",point2)
         let result = totalMeter / 1000
         kmeterLabel.text = String(format: "%.2f Km", result)
     }
-    
     func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager) {
     }
 }
@@ -314,50 +281,38 @@ print("좌표 비교",point2)
 extension MapViewController: MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let v = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier, for: annotation)
+        let reusableAnnotation = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier, for: annotation)
 
         if pickedFinalImage != nil {
-            v.image = UIImage(named: "dogFace")
-            v.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+            reusableAnnotation.image = UIImage(named: "dogFace")
+            reusableAnnotation.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
 
             let icon = pickedFinalImage
             let imgView = UIImageView(image: icon)
             imgView.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
             imgView.layer.cornerRadius = imgView.frame.width / 8
 
-            v.leftCalloutAccessoryView = imgView
-            v.canShowCallout = true
+            reusableAnnotation.leftCalloutAccessoryView = imgView
+            reusableAnnotation.canShowCallout = true
         } else {
-            v.image = UIImage(systemName: "plus")
-            v.canShowCallout = true
+            reusableAnnotation.image = UIImage(systemName: "plus")
+            reusableAnnotation.canShowCallout = true
         }
 
-        return v
+        return reusableAnnotation
     }
 
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        
         let renderer = MKPolylineRenderer(overlay: overlay as! MKPolyline)
-        
         renderer.strokeColor = .orange
         renderer.lineWidth = 5
-        
         return renderer
     }
 }
 
 extension CLLocationCoordinate2D {
-    //distance in meters, as explained in CLLoactionDistance definition
     func distance(from: CLLocationCoordinate2D) -> CLLocationDistance {
-        let destination = CLLocation(latitude:from.latitude,longitude:from.longitude)
+        let destination = CLLocation(latitude: from.latitude, longitude: from.longitude)
         return CLLocation(latitude: latitude, longitude: longitude).distance(from: destination)
     }
 }
-
-
-
-
-
-
-
-

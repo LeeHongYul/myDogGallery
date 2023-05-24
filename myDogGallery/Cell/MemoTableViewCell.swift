@@ -11,7 +11,6 @@ class MemoTableViewCell: UITableViewCell {
 
     @IBOutlet var memoTitleLabel: UILabel!
     @IBOutlet var memoInputDateLabel: UILabel!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

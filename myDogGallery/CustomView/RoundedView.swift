@@ -11,9 +11,9 @@ import UIKit
 @IBDesignable
 
 class RoundedView: UIImageView {
-    
     @IBInspectable
     var borderWidth: CGFloat {
+
         get {
             layer.borderWidth
         }
@@ -21,8 +21,10 @@ class RoundedView: UIImageView {
             layer.borderWidth = newValue
         }
     }
+
     @IBInspectable
     var borderColor: UIColor? {
+
         get {
             guard let cgColor = layer.borderColor else {
                return nil
@@ -33,8 +35,10 @@ class RoundedView: UIImageView {
             layer.borderColor = newValue?.cgColor
         }
     }
+
     @IBInspectable
     var cornerRadius: CGFloat {
+
         get {
             layer.cornerRadius
         }
@@ -42,8 +46,10 @@ class RoundedView: UIImageView {
             layer.cornerRadius = newValue
         }
     }
+
     @IBInspectable
     override var backgroundColor: UIColor? {
+
         get {
             guard let cgColor = layer.backgroundColor else {
                 return nil

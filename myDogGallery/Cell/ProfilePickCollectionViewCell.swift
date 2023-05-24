@@ -8,6 +8,5 @@
 import UIKit
 
 class ProfilePickCollectionViewCell: UICollectionViewCell {
-    
     @IBOutlet var profilePickImage: UIImageView!
 }

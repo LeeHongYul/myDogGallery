@@ -7,15 +7,16 @@
 
 import UIKit
 
-class ProfilePickerViewController: UIViewController {
+class PickProfileViewController: UIViewController {
 
     var pickedFinalImage: UIImage?
-    @IBOutlet var profileCollectionView: UICollectionView!
-    @IBOutlet var profileImagePicker: UIImageView!
+
+    @IBOutlet var selectedProfileImage: UIImageView!
+
     @IBOutlet var profileImageContainerView: RoundedView!
+    @IBOutlet var profileCollectionView: UICollectionView!
 
     @IBOutlet var starWalkButton: UIButton!
-
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "profilePickerSegue" {
@@ -25,21 +26,6 @@ class ProfilePickerViewController: UIViewController {
                         destinationVC.pickedFinalImage = pickedFinalImage
             }
         }
-    }
-
-    func shadow(inputView: UIView) {
-        inputView.layer.shadowColor = UIColor.lightGray.cgColor
-        inputView.layer.shadowOpacity = 1
-        inputView.layer.shadowRadius = 2
-        inputView.layer.shadowOffset = CGSize(width: 5, height: 5)
-        inputView.layer.shadowPath = nil
-    }
-    func shadowOrange(inputView: UIView) {
-        inputView.layer.shadowColor = UIColor.systemOrange.cgColor
-        inputView.layer.shadowOpacity = 0.9
-        inputView.layer.shadowRadius = 40
-        inputView.layer.shadowOffset = CGSize(width: 0, height: 1)
-        inputView.layer.shadowPath = nil
     }
 
     override func viewDidLoad() {
@@ -70,15 +56,10 @@ class ProfilePickerViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         profileCollectionView.reloadData()
-
-
     }
-
-
 }
 
-
-extension ProfilePickerViewController: UICollectionViewDataSource {
+extension PickProfileViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return CoreDataManager.shared.profileList.count
     }
@@ -91,21 +72,15 @@ extension ProfilePickerViewController: UICollectionViewDataSource {
             cell.profilePickImage.image = UIImage(data: target.image!)
 
             return cell
-
     }
-
-
 }
 
-
-extension ProfilePickerViewController: UICollectionViewDelegate{
+extension PickProfileViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let target = CoreDataManager.shared.profileList[indexPath.row]
 
-        profileImagePicker.image = UIImage(data: target.image!)
+        selectedProfileImage.image = UIImage(data: target.image!)
 
         pickedFinalImage = UIImage(data: target.image!)
-//        pickedFinalImage?.images = UIImage(data: target.image!)
-
     }
 }
