@@ -30,6 +30,15 @@ class ProfileEditTableViewController: UITableViewController {
         yearFormatter.dateFormat = "yyyy"
            return yearFormatter
        }()
+
+    func addAlert(title: String, messageStr: String, actionTitleStr: String) {
+        let alert = UIAlertController(title: title, message: messageStr, preferredStyle: .alert)
+        let action = UIAlertAction(title: actionTitleStr, style: .cancel, handler: nil)
+        alert.addAction(action)
+
+        present(alert, animated: true, completion: nil)
+    }
+
     @IBAction func close(_ sender: Any) {
         dismiss(animated: true)
     }
@@ -40,10 +49,7 @@ class ProfileEditTableViewController: UITableViewController {
             return
         }
         if name.count >= 11 {
-            let alert = UIAlertController(title: "이름 글자수가 많습니다 10자", message: "이름 글자수 수정 필요", preferredStyle: .alert)
-            let action = UIAlertAction(title: "확인", style: .cancel, handler: nil)
-            alert.addAction(action)
-            present(alert, animated: true, completion: nil)
+            addAlert(title: "이름 글자수가 많습니다 10자", messageStr: "이름 글자수 수정 필요합니다.", actionTitleStr: "확인")
             return
         }
         let ageYearStr = yearFormatter.string(from: birthDayDatePicker.date)
@@ -66,6 +72,7 @@ class ProfileEditTableViewController: UITableViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        //ProfileTableController에서 클릭한 프로필의 데이터 가져오기
         if let target = profileList {
             nameField.text = target.name
             ageLabel.text = "\(target.age)"
@@ -79,9 +86,10 @@ class ProfileEditTableViewController: UITableViewController {
             profileImage.image = UIImage(data: target.image!)
             navigationItem.title = "Profile Edit Page"
         } else {
-            print("에러입니다")
+            print("error")
         }
     }
+    //프로필 선택하는 뷰
     func presentPickerView() {
         var configuration = PHPickerConfiguration()
         configuration.filter = PHPickerFilter.images

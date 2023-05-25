@@ -23,6 +23,10 @@ class MemoViewController: UIViewController {
         return inputDateFormat
     }()
 
+    /// Memo 내용을 수정하가 위한 세그웨이 코드
+    /// - Parameters:
+    ///   - segue: EditSegue
+    ///   - sender: UITableViewCell
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EditSegue" {
             if let cell = sender as? UITableViewCell, let indexPath = memoTableView.indexPath(for: cell) {
@@ -34,6 +38,7 @@ class MemoViewController: UIViewController {
         }
     }
 
+    /// 메모의 이름으로 검색하는 SearchBar
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
 
         CoreDataManager.shared.searchByName(searchBar.text)

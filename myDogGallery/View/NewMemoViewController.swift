@@ -46,21 +46,29 @@ class NewMemoViewController: UIViewController {
     @IBAction func close(_ sender: Any) {
         dismiss(animated: true)
     }
+
+    /// 경고창
+    /// - Parameters:
+    ///   - title: 경고창 제목
+    ///   - messageStr: 경고창 메시지
+    ///   - actionTitleStr: 경고창 버튼
+    func addAlert(title: String, messageStr: String, actionTitleStr: String) {
+        let alert = UIAlertController(title: title, message: messageStr, preferredStyle: .alert)
+        let action = UIAlertAction(title: actionTitleStr, style: .cancel, handler: nil)
+        alert.addAction(action)
+
+        present(alert, animated: true, completion: nil)
+    }
+
     @IBAction func save(_ sender: Any) {
         let memoTitle = memoTitleTextField.text
         if memoTitle?.count ?? 0 >= 15 {
-            let alert = UIAlertController(title: "제목 글자수가 많습니다 15자", message: "제목 글자수 수정 필요", preferredStyle: .alert)
-            let action = UIAlertAction(title: "확인", style: .cancel, handler: nil)
-            alert.addAction(action)
-            present(alert, animated: true, completion: nil)
+            addAlert(title: "제목 글자수가 많습니다. 15자", messageStr: "제목 글자수 수정 필요합니다.", actionTitleStr: "확인")
             return
         }
         let memoContext = memoContextTextView.text
         if memoContext?.count == 0 {
-            let alert = UIAlertController(title: "오늘의 기록을 입력해주세요", message: "오늘의 기록 작성 필요합니다", preferredStyle: .alert)
-            let action = UIAlertAction(title: "확인", style: .cancel, handler: nil)
-            alert.addAction(action)
-            present(alert, animated: true, completion: nil)
+            addAlert(title: "오늘의 기록을 입력해주세요.", messageStr: "오늘의 기록 작성 필요합니다.", actionTitleStr: "확인")
             return
         }
         let timeStamp = Date()
@@ -85,6 +93,7 @@ class NewMemoViewController: UIViewController {
         super.viewDidLoad()
         memoTitleTextField.layer.cornerRadius = 15
         memoContextTextView.layer.cornerRadius = 15
+        //MemoViewController에서 받은 TableViewCell의 메모 내용
         if let target = editTarget {
             memoTitleTextField.text = target.title
             memoContextTextView.text   = target.context
@@ -99,7 +108,7 @@ class NewMemoViewController: UIViewController {
         }
     }
 }
-
+//메모제목 14자 넘으면 더 이상 내용 입력 불가능
 extension NewMemoViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 

@@ -34,6 +34,7 @@ class MainViewController: UIViewController {
 
     @IBOutlet var mainPageControl: UIPageControl!
 
+    /// PageControl 변하면 CollectionView안에 있는 이미지도 변경
     @IBAction func pageChaged(_ sender: UIPageControl) {
         let indexPath = IndexPath(item: sender.currentPage, section: 0)
         mainCollectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: true)
@@ -79,6 +80,7 @@ class MainViewController: UIViewController {
                         self.weatherDetailLabel.text = list.weather[0].main
                         self.weatherTempLabel.text = tempStr+"°"
 
+                        //현재 날씨에 관한 아이콘의 조건을 API에서 받으며, 그 조건에 대한 원하는 이미지로 설정
                         switch list.weather[0].icon {
                         case "01n", "01d":
                             self.mainWeatherImageView.image = UIImage(named: "sun")
@@ -102,6 +104,8 @@ class MainViewController: UIViewController {
         }
     }
 
+    /// 위치 업데이트 및 권한 생태 변경과 이벤트 처리
+    /// 위치의 정확도, 사용자에게 권한 요청 서비스, 글로벌 백그라운드에서 실행되는 클로저, 위치 활성화 되어있는지, 위치 변경을 감지하고 해당 위치는 delegate객체에 보고한다
     func setLocationManager() {
         locationManager.delegate = self
 
@@ -119,17 +123,22 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        mainGradientView.setGradient(color1: UIColor.systemOrange, color2: UIColor.white, color3: UIColor.white)
+        if traitCollection.userInterfaceStyle == .dark {
+            // 다크 모드에서의 동작을 수행하는 코드
+            mainGradientView.setGradient(color1: UIColor.systemOrange, color2: UIColor.systemOrange, color3: UIColor.black)
+        } else {
+            // 라이트 모드에서의 동작을 수행하는 코드
+            mainGradientView.setGradient(color1: UIColor.systemOrange, color2: UIColor.white, color3: UIColor.white)
+        }
 
         shadowWeather(inputView: weatherView)
 
         fetchMoya()
 
         CoreDataManager.shared.fetchProfile()
-        print(CoreDataManager.shared.profileList.count, "프로필 수")
-        mainPageControl.currentPage = 0
-        mainPageControl.numberOfPages = CoreDataManager.shared.profileList.count
+
+        mainPageControl.currentPage = 0 // 현재 PageControl 초기화
+        mainPageControl.numberOfPages = CoreDataManager.shared.profileList.count // 등록되어있는 프로필 수 PageControl에 넣기
 
         let conditionalLayout = UICollectionViewCompositionalLayout { sectionIndex, env in
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
@@ -149,9 +158,9 @@ class MainViewController: UIViewController {
         setLocationManager()
     }
 
-    /// viewWillAppear 실행될 때마다 추가된 프로필 이미지, 페이지 컨트롤, 최근 산책 날짜, 글귀 정보 추가한다.
-    /// - Parameter animated: <#animated description#>
+    /// viewWillAppear 실행될 때마다 추가된 프로필 이미지, 페이지 컨트롤, 최근 산책 날짜, 글귀 정보 추가한다
     override func viewWillAppear(_ animated: Bool) {
+        // 등록되어 있는 프로필 없으면 mainProfileView로 CollectionView를 가린다
         if CoreDataManager.shared.profileList.count != 0 {
             mainProfileView.isHidden = true
         } else {
@@ -219,10 +228,6 @@ extension MainViewController: UICollectionViewDataSource {
     }
 
     /// CoreData로 등록된 프로필의 이미지 가져오는 코드
-    /// - Parameters:
-    ///   - collectionView: <#collectionView description#>
-    ///   - indexPath: <#indexPath description#>
-    /// - Returns: <#description#>
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mainCell", for: indexPath) as! MainCollectionViewCell
         let target = CoreDataManager.shared.profileList[indexPath.row]
@@ -237,10 +242,6 @@ extension MainViewController: UICollectionViewDataSource {
 extension MainViewController: UICollectionViewDelegate {
 
     /// CollectionView에서 프로필 넘길때 해당되는 indexPath.row가 PageControl의 현재 페이지가 같도록 하는 코드
-    /// - Parameters:
-    ///   - collectionView: <#collectionView description#>
-    ///   - cell: <#cell description#>
-    ///   - indexPath: <#indexPath description#>
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         mainPageControl.currentPage = indexPath.row
     }

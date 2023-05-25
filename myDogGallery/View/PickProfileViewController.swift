@@ -17,7 +17,7 @@ class PickProfileViewController: UIViewController {
     @IBOutlet var profileCollectionView: UICollectionView!
 
     @IBOutlet var starWalkButton: UIButton!
-
+    //선택한 프로필의 이미지를 MapViewController의 Annotation으로 보내기 위한 코드
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "profilePickerSegue" {
 
@@ -53,7 +53,7 @@ class PickProfileViewController: UIViewController {
         profileCollectionView.collectionViewLayout = conditionalLayout
         profileCollectionView.reloadData()
     }
-
+    //추가된 프로필을 CollectionView에 넣기 위한 코드
     override func viewWillAppear(_ animated: Bool) {
         profileCollectionView.reloadData()
     }

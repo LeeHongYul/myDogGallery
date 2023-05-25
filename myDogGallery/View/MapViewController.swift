@@ -34,7 +34,7 @@ class MapViewController: UIViewController {
     @IBOutlet var timeLabel: UILabel!
 
     @IBOutlet var mapControlView: RoundedView!
-
+    //MapViewController에서 산책을 한 프로필의 이미지를 WalkHistoryViewController로 넘기기 위한 코드
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == " walkHistorySegue" {
 
@@ -52,17 +52,14 @@ class MapViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = .orange
         mapGradientView.setGradient(color1: UIColor.systemOrange, color2: UIColor.white, color3: UIColor.white)
 
-        shadow(inputView: mapControlView)
-
         getSaveResetBtn()
         addSaveBtn.layer.isHidden = true
         addResetBtn.layer.isHidden = true
 
         CoreDataManager.shared.fetchProfile()
 
-
-        let heigh = self.tabBarController?.tabBar.frame.height ?? 0
-        self.tabBarController?.tabBar.frame.origin = CGPoint(x: 0, y: UIScreen.main.bounds.maxY - heigh)
+        let tabBarHeight = self.tabBarController?.tabBar.frame.height ?? 0
+        self.tabBarController?.tabBar.frame.origin = CGPoint(x: 0, y: UIScreen.main.bounds.maxY - tabBarHeight)
         kmeterLabel.layer.cornerRadius = 15
 
         mapView.showsUserLocation = true
@@ -77,16 +74,15 @@ class MapViewController: UIViewController {
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
         case .denied, .restricted:
-            print("location 사용 불가능")
+            print("location 사용 불가능입니다.")
         case .authorizedWhenInUse, .authorizedAlways:
-            print("location 사용 가능")
-            print("location 사용 가능")
+            print("location 사용 가능입니다.")
 
         }
 
         guard let localValue: CLLocationCoordinate2D = locationManager.location?.coordinate else { return }
 
-        let region = MKCoordinateRegion(center: localValue, latitudinalMeters: 100, longitudinalMeters: 100)
+        let region = MKCoordinateRegion(center: localValue, latitudinalMeters: 50, longitudinalMeters: 50)
 
         mapView.setRegion(region, animated: true)
         mapView.register(MKAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
@@ -118,6 +114,7 @@ class MapViewController: UIViewController {
         print(#function)
         if getLocationBtnState == true {
             getLocationBtn.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+            getLocationBtnState = false
             requestMyLocation()
             addSaveBtn.layer.isHidden = false
             addResetBtn.layer.isHidden = false
@@ -125,15 +122,14 @@ class MapViewController: UIViewController {
             addResetBtn.addTarget(self, action: #selector(self.resetWalk), for: .touchUpInside)
 
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCounter), userInfo: nil, repeats: true)
-            getLocationBtnState = false
+
         } else if getLocationBtnState == false {
             getLocationBtn.setImage(UIImage(systemName: "play.fill"), for: .normal)
             getLocationBtnState = true
+            stopRequestMyLocation()
             addSaveBtn.layer.isHidden = true
             addResetBtn.layer.isHidden = true
             timer.invalidate()
-            stopRequestMyLocation()
-
         }
     }
 
@@ -159,7 +155,7 @@ class MapViewController: UIViewController {
     }
 
     func showAlertController() {
-        let alert = UIAlertController(title: "산책 기록을 저장합니다", message: "산책을 종료하겠습니까?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "산책 기록을 저장합니다.", message: "산책을 종료하겠습니까?", preferredStyle: .alert)
 
         let ok = UIAlertAction(title: "확인", style: .default) { _ in
             guard let data = self.pickedFinalImage?.pngData() else { return }
@@ -202,7 +198,7 @@ class MapViewController: UIViewController {
         addSaveBtn.trailingAnchor.constraint(equalTo: playBtnView.leadingAnchor, constant: -20).isActive = true
         addSaveBtn.bottomAnchor.constraint(equalTo: playBtnView.bottomAnchor, constant: 0).isActive = true
 
-        addResetBtn.setImage(UIImage(systemName: "stop.fill"), for: .normal)
+        addResetBtn.setImage(UIImage(systemName: "xmark"), for: .normal)
         addResetBtn.backgroundColor = .systemRed
         addResetBtn.tintColor = .white
         addResetBtn.translatesAutoresizingMaskIntoConstraints = false
@@ -213,14 +209,6 @@ class MapViewController: UIViewController {
         addResetBtn.heightAnchor.constraint(equalToConstant: playBtnView.frame.height).isActive = true
         addResetBtn.leadingAnchor.constraint(equalTo: playBtnView.trailingAnchor, constant: 20).isActive = true
         addResetBtn.bottomAnchor.constraint(equalTo: playBtnView.bottomAnchor, constant: 0).isActive = true
-    }
-
-    func shadow(inputView: UIView) {
-        inputView.layer.shadowColor = UIColor.lightGray.cgColor
-        inputView.layer.shadowOpacity = 1
-        inputView.layer.shadowRadius = 2
-        inputView.layer.shadowOffset = CGSize(width: 5, height: 5)
-        inputView.layer.shadowPath = nil
     }
 }
 
