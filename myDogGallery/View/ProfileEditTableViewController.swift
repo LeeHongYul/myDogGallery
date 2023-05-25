@@ -24,25 +24,25 @@ class ProfileEditTableViewController: UITableViewController {
     @IBAction func selectProfileImageBtn(_ sender: Any) {
         presentPickerView()
     }
-
+    
     var yearFormatter: DateFormatter = {
         let yearFormatter = DateFormatter()
         yearFormatter.dateFormat = "yyyy"
-           return yearFormatter
-       }()
-
+        return yearFormatter
+    }()
+    
     func addAlert(title: String, messageStr: String, actionTitleStr: String) {
         let alert = UIAlertController(title: title, message: messageStr, preferredStyle: .alert)
         let action = UIAlertAction(title: actionTitleStr, style: .cancel, handler: nil)
         alert.addAction(action)
-
+        
         present(alert, animated: true, completion: nil)
     }
-
+    
     @IBAction func close(_ sender: Any) {
         dismiss(animated: true)
     }
-
+    
     ///  새로운 프로필 등록이나, 이미 등록된 프로필 내용 수정할때 필요한 코드
     @IBAction func save(_ sender: Any) {
         guard let name = nameField.text, name.count > 0 else {
@@ -55,7 +55,7 @@ class ProfileEditTableViewController: UITableViewController {
         let ageYearStr = yearFormatter.string(from: birthDayDatePicker.date)
         let currentYearStr = yearFormatter.string(from: Date())
         guard let ageInt = Int(ageYearStr), let currentInt = Int(currentYearStr) else { return }
-            let age = currentInt - ageInt
+        let age = currentInt - ageInt
         let isMale = genderSegmentedControl.selectedSegmentIndex == 0
         let birthDay = birthDayDatePicker.date
         let detail = detailField.text

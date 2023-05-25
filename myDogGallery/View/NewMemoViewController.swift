@@ -14,22 +14,22 @@ extension Notification.Name {
 
 class NewMemoViewController: UIViewController {
     var editTarget: MemoEntity?
-
+    
     @IBOutlet var memoTitleTextField: UITextField!
     @IBOutlet var inputDatePicker: UIDatePicker!
     @IBOutlet var memoContextTextView: UITextView!
     @IBOutlet var walkCountLabel: UILabel!
     @IBOutlet var walkTimeLabel: UILabel!
     @IBOutlet var pooLabel: UILabel!
-
+    
     var dateFormatter: DateFormatter = {
         let inputDate = DateFormatter()
         inputDate.dateFormat = "MMM d, yyyy"
         inputDate.locale = Locale(identifier: "en_US_POSIX")
-
+        
         return inputDate
     }()
-
+    
     @IBAction func walkCountStepper(_ sender: UIStepper) {
         let target = sender.value
         walkCountLabel.text = "\(Int(target))"
@@ -42,11 +42,11 @@ class NewMemoViewController: UIViewController {
         let target = sender.value
         pooLabel.text = "\(Int(target))"
     }
-
+    
     @IBAction func close(_ sender: Any) {
         dismiss(animated: true)
     }
-
+    
     /// 경고창
     /// - Parameters:
     ///   - title: 경고창 제목
@@ -56,10 +56,10 @@ class NewMemoViewController: UIViewController {
         let alert = UIAlertController(title: title, message: messageStr, preferredStyle: .alert)
         let action = UIAlertAction(title: actionTitleStr, style: .cancel, handler: nil)
         alert.addAction(action)
-
+        
         present(alert, animated: true, completion: nil)
     }
-
+    
     @IBAction func save(_ sender: Any) {
         let memoTitle = memoTitleTextField.text
         if memoTitle?.count ?? 0 >= 15 {
@@ -74,11 +74,11 @@ class NewMemoViewController: UIViewController {
         let timeStamp = Date()
         let inputDate = inputDatePicker.date
         guard let walkCountStr = walkCountLabel.text else { return }
-            let walkCount = Int(walkCountStr)
+        let walkCount = Int(walkCountStr)
         guard let walkTimeStr = walkTimeLabel.text else { return }
-            let walkTime = Int(walkTimeStr)
+        let walkTime = Int(walkTimeStr)
         guard let pooCountStr = pooLabel.text else { return }
-            let pooCount = Int(pooCountStr)
+        let pooCount = Int(pooCountStr)
         CoreDataManager.shared.saveContext()
         if let target = editTarget {
             CoreDataManager.shared.updateMemo(memo: target, memoTitle: memoTitle, memoContext: memoContext, walkCount: walkCount, walkTime: walkTime, pooCount: pooCount, inputDate: inputDate)
@@ -102,7 +102,7 @@ class NewMemoViewController: UIViewController {
             pooLabel.text = "\(target.pooCount)"
             navigationItem.title = "Memo Edit Page"
             inputDatePicker.date = target.inputDate!
-
+            
         } else {
             print("Memo Edit Page Error")
         }
@@ -111,10 +111,10 @@ class NewMemoViewController: UIViewController {
 //메모제목 14자 넘으면 더 이상 내용 입력 불가능
 extension NewMemoViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-
+        
         let currentText = NSString(string: textField.text ?? "")
         let finalText = currentText.replacingCharacters(in: range, with: string)
-
+        
         switch textField {
         case memoTitleTextField:
             if finalText.count >= 14 {
@@ -123,7 +123,7 @@ extension NewMemoViewController: UITextFieldDelegate {
         default:
             break
         }
-
+        
         return true
     }
 }

@@ -20,22 +20,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nH1-Je-bQC" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
-                                <rect key="frame" x="20" y="374.33333333333331" width="390" height="71"/>
+                                <rect key="frame" x="20" y="374.33333333333331" width="390" height="91"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Walk" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J1l-Bl-GI4">
-                                        <rect key="frame" x="15" y="5" width="141" height="40.666666666666664"/>
+                                        <rect key="frame" x="15" y="14.999999999999996" width="141" height="40.666666666666657"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                         <color key="textColor" systemColor="secondaryLabelColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Walk Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glz-Cl-IEs">
-                                        <rect key="frame" x="15.000000000000007" y="45.666666666666686" width="113.66666666666669" height="20.333333333333329"/>
+                                        <rect key="frame" x="15.000000000000007" y="55.666666666666693" width="113.66666666666669" height="20.333333333333336"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" systemColor="secondaryLabelColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="walking-the-dog-2" translatesAutoresizingMaskIntoConstraints="NO" id="c79-hb-KjS">
-                                        <rect key="frame" x="320" y="10.333333333333371" width="50" height="50"/>
+                                        <rect key="frame" x="320" y="20.333333333333371" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="YO8-Ke-F5o"/>
                                             <constraint firstAttribute="height" constant="50" id="t4T-ai-l4f"/>
@@ -45,11 +45,11 @@
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstItem="glz-Cl-IEs" firstAttribute="top" secondItem="J1l-Bl-GI4" secondAttribute="bottom" id="28m-Ce-K4n"/>
-                                    <constraint firstItem="J1l-Bl-GI4" firstAttribute="top" secondItem="nH1-Je-bQC" secondAttribute="top" constant="5" id="2YA-TZ-iaT"/>
+                                    <constraint firstItem="J1l-Bl-GI4" firstAttribute="top" secondItem="nH1-Je-bQC" secondAttribute="top" constant="15" id="2YA-TZ-iaT"/>
                                     <constraint firstItem="J1l-Bl-GI4" firstAttribute="leading" secondItem="nH1-Je-bQC" secondAttribute="leading" constant="15" id="358-8a-4IE"/>
                                     <constraint firstItem="c79-hb-KjS" firstAttribute="centerY" secondItem="nH1-Je-bQC" secondAttribute="centerY" id="FZF-l3-Kko"/>
                                     <constraint firstAttribute="trailing" secondItem="c79-hb-KjS" secondAttribute="trailing" constant="20" id="XZT-Br-0kz"/>
-                                    <constraint firstAttribute="bottom" secondItem="glz-Cl-IEs" secondAttribute="bottom" constant="5" id="n5R-P7-YlE"/>
+                                    <constraint firstAttribute="bottom" secondItem="glz-Cl-IEs" secondAttribute="bottom" constant="15" id="n5R-P7-YlE"/>
                                     <constraint firstItem="glz-Cl-IEs" firstAttribute="leading" secondItem="nH1-Je-bQC" secondAttribute="leading" constant="15" id="uoj-3y-yjA"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -61,10 +61,10 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k72-B7-urk" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k72-B7-urk" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
                                 <rect key="frame" x="20" y="275.33333333333331" width="390" height="84"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="dsadasdasdadasdasdsadasdasdasdasdas" textAlignment="center" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2X-p2-9YB">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="식사는 매번 규칙적인 시간 정해진 그릇에 제공해야 강아지의 건강한 식습관이 형성됩니다." textAlignment="center" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2X-p2-9YB">
                                         <rect key="frame" x="10" y="10" width="370" height="64"/>
                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <color key="textColor" systemColor="secondaryLabelColor"/>
@@ -89,7 +89,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6oS-w3-gL3">
-                                <rect key="frame" x="20" y="460.33333333333326" width="390" height="356.66666666666674"/>
+                                <rect key="frame" x="20" y="480.33333333333326" width="390" height="336.66666666666674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OJW-10-dL6">
                                     <size key="itemSize" width="390" height="254"/>
@@ -105,7 +105,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="254"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="walking-the-dog-2" translatesAutoresizingMaskIntoConstraints="NO" id="3DV-Ud-JE7" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="walking-the-dog-2" translatesAutoresizingMaskIntoConstraints="NO" id="3DV-Ud-JE7" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="390" height="254"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="254" id="c2c-Fr-QnJ"/>
@@ -156,10 +156,10 @@
                                 </connections>
                             </pageControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SSE-jE-wtl" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
-                                <rect key="frame" x="20" y="460.33333333333326" width="390" height="356.66666666666674"/>
+                                <rect key="frame" x="20" y="480.33333333333326" width="390" height="336.66666666666674"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="프로필을 등록해주세요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6E-Gu-cXR">
-                                        <rect key="frame" x="119.33333333333333" y="168.33333333333331" width="151.33333333333337" height="20.333333333333343"/>
+                                        <rect key="frame" x="119.33333333333333" y="158.33333333333331" width="151.33333333333337" height="20.333333333333343"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="textColor" systemColor="secondaryLabelColor"/>
                                         <nil key="highlightedColor"/>
@@ -412,7 +412,7 @@
                                         <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="qzB-uX-cHL" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
                                             <rect key="frame" x="10" y="10" width="410" height="382"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="8595649" translatesAutoresizingMaskIntoConstraints="NO" id="j6e-AX-yvV" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="8595649" translatesAutoresizingMaskIntoConstraints="NO" id="j6e-AX-yvV" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="410" height="382"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -438,7 +438,7 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
-                                        <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PZt-5d-Puc" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
+                                        <view alpha="0.20000000000000001" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="PZt-5d-Puc" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
                                             <rect key="frame" x="10" y="10" width="410" height="382"/>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <userDefinedRuntimeAttributes>
@@ -587,7 +587,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="8595649" translatesAutoresizingMaskIntoConstraints="NO" id="2mS-xZ-XuW">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="8595649" translatesAutoresizingMaskIntoConstraints="NO" id="2mS-xZ-XuW">
                                 <rect key="frame" x="10" y="103" width="410" height="411"/>
                                 <color key="tintColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
@@ -608,7 +608,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="산책할 반려견을 선택해주세요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5FM-LC-bCd">
                                         <rect key="frame" x="0.0" y="20" width="410" height="30"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
-                                        <color key="textColor" systemColor="placeholderTextColor"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C6a-FH-ZhZ">
@@ -638,7 +638,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="188" height="185"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="88y-cM-1g1" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="88y-cM-1g1" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
                                                             <rect key="frame" x="5" y="5" width="178" height="175"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -710,7 +710,7 @@
                     <navigationItem key="navigationItem" id="uGY-A9-Nwz">
                         <barButtonItem key="rightBarButtonItem" image="folder" catalog="system" id="pKb-YW-Gs1">
                             <connections>
-                                <segue destination="MDO-JJ-BOh" kind="presentation" id="Pbw-ig-uPh"/>
+                                <segue destination="MDO-JJ-BOh" kind="presentation" id="7EM-pk-R26"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -740,10 +740,6 @@
                                     <outlet property="delegate" destination="kRh-qS-WNk" id="kkW-6R-A12"/>
                                 </connections>
                             </mapView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="scM-Fy-cvT">
-                                <rect key="frame" x="0.0" y="0.0" width="430" height="95"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6EE-PK-cDB" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
                                 <rect key="frame" x="15" y="723" width="400" height="106"/>
                                 <subviews>
@@ -821,17 +817,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="P15-ni-9fu" firstAttribute="leading" secondItem="8pJ-By-Frn" secondAttribute="leading" id="21R-he-ysB"/>
-                            <constraint firstItem="scM-Fy-cvT" firstAttribute="top" secondItem="lwu-Eq-LXe" secondAttribute="top" id="CAM-Sn-0Vf"/>
-                            <constraint firstItem="scM-Fy-cvT" firstAttribute="trailing" secondItem="8pJ-By-Frn" secondAttribute="trailing" id="CaK-Ai-sI8"/>
                             <constraint firstItem="8pJ-By-Frn" firstAttribute="trailing" secondItem="6EE-PK-cDB" secondAttribute="trailing" constant="15" id="P1d-eu-qoU"/>
                             <constraint firstItem="8pJ-By-Frn" firstAttribute="bottom" secondItem="6EE-PK-cDB" secondAttribute="bottom" constant="20" id="TMG-PZ-14i"/>
-                            <constraint firstItem="scM-Fy-cvT" firstAttribute="leading" secondItem="lwu-Eq-LXe" secondAttribute="leading" id="Yed-n6-0Zn"/>
-                            <constraint firstItem="P15-ni-9fu" firstAttribute="top" secondItem="scM-Fy-cvT" secondAttribute="bottom" constant="8" symbolic="YES" id="Yjl-o5-7VR"/>
-                            <constraint firstItem="scM-Fy-cvT" firstAttribute="top" secondItem="lwu-Eq-LXe" secondAttribute="top" id="Zpd-hY-GCT"/>
                             <constraint firstItem="6EE-PK-cDB" firstAttribute="leading" secondItem="8pJ-By-Frn" secondAttribute="leading" constant="15" id="b5h-NN-uHy"/>
                             <constraint firstItem="8pJ-By-Frn" firstAttribute="bottom" secondItem="P15-ni-9fu" secondAttribute="bottom" constant="13" id="bLt-hJ-d3P"/>
-                            <constraint firstAttribute="trailing" secondItem="scM-Fy-cvT" secondAttribute="trailing" id="c2n-ok-OCZ"/>
-                            <constraint firstItem="scM-Fy-cvT" firstAttribute="leading" secondItem="8pJ-By-Frn" secondAttribute="leading" id="r7D-1r-wuQ"/>
                             <constraint firstItem="P15-ni-9fu" firstAttribute="top" secondItem="8pJ-By-Frn" secondAttribute="top" id="xt2-DO-Zv6"/>
                             <constraint firstItem="P15-ni-9fu" firstAttribute="trailing" secondItem="8pJ-By-Frn" secondAttribute="trailing" id="yi3-dS-v5q"/>
                         </constraints>
@@ -840,7 +829,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="organize" id="ATg-iS-uit">
                             <color key="tintColor" systemColor="systemOrangeColor"/>
                             <connections>
-                                <segue destination="TAU-gl-on9" kind="show" identifier="walkHistorySegue" id="0Cq-mM-Z0c"/>
+                                <segue destination="TAU-gl-on9" kind="presentation" identifier="walkHistorySegue" id="0Cq-mM-Z0c"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -848,7 +837,6 @@
                         <outlet property="getLocationBtn" destination="QGi-bm-UnJ" id="KPS-mw-Kll"/>
                         <outlet property="kmeterLabel" destination="HgU-sf-bcw" id="VqI-b4-hJk"/>
                         <outlet property="mapControlView" destination="6EE-PK-cDB" id="mca-sq-i11"/>
-                        <outlet property="mapGradientView" destination="scM-Fy-cvT" id="tHb-mt-qng"/>
                         <outlet property="mapView" destination="P15-ni-9fu" id="PTa-75-Whg"/>
                         <outlet property="playBtnView" destination="DdU-PQ-jhL" id="u2W-nc-Kip"/>
                         <outlet property="timeLabel" destination="eVQ-xO-OnW" id="0Kt-30-Kta"/>
@@ -1147,7 +1135,7 @@
                                                 <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="1zS-vZ-7dX">
                                                     <rect key="frame" x="165" y="0.0" width="100" height="100"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dog-nose" translatesAutoresizingMaskIntoConstraints="NO" id="yuc-Hp-ksB" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dog-nose" translatesAutoresizingMaskIntoConstraints="NO" id="yuc-Hp-ksB" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -1391,7 +1379,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="HB6-Rc-at7">
-                                <rect key="frame" x="0.0" y="5" width="430" height="917"/>
+                                <rect key="frame" x="0.0" y="10" width="430" height="912"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="WalkHistoryTableViewCell" rowHeight="88" id="29z-u5-1sp" customClass="WalkHistoryTableViewCell" customModule="myDogGallery" customModuleProvider="target">
@@ -1410,7 +1398,7 @@
                                                             <color key="textColor" systemColor="systemOrangeColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="walking-the-dog" translatesAutoresizingMaskIntoConstraints="NO" id="OX5-Ee-bR4" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="walking-the-dog" translatesAutoresizingMaskIntoConstraints="NO" id="OX5-Ee-bR4" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
                                                             <rect key="frame" x="10" y="14" width="50" height="50"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="50" id="AY7-Wl-X0C"/>
@@ -1458,6 +1446,9 @@
                                                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                             <real key="value" value="0.0"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                                            <color key="value" systemColor="systemGray6Color"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
@@ -1487,7 +1478,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="HB6-Rc-at7" secondAttribute="trailing" id="c40-AY-JE7"/>
-                            <constraint firstItem="HB6-Rc-at7" firstAttribute="top" secondItem="gQ4-3y-We4" secondAttribute="top" constant="5" id="hba-wv-9KQ"/>
+                            <constraint firstItem="HB6-Rc-at7" firstAttribute="top" secondItem="gQ4-3y-We4" secondAttribute="top" constant="10" id="hba-wv-9KQ"/>
                             <constraint firstAttribute="bottom" secondItem="HB6-Rc-at7" secondAttribute="bottom" id="xdH-Ta-ILw"/>
                             <constraint firstItem="HB6-Rc-at7" firstAttribute="leading" secondItem="4tQ-dz-dCk" secondAttribute="leading" id="ywL-4g-oMe"/>
                         </constraints>
@@ -1526,7 +1517,7 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dog-nose" translatesAutoresizingMaskIntoConstraints="NO" id="EoU-38-XIf" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dog-nose" translatesAutoresizingMaskIntoConstraints="NO" id="EoU-38-XIf" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
                                 <rect key="frame" x="290" y="478" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="N6Y-Uo-XeA"/>
@@ -1623,7 +1614,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="ppQ-cY-vFd"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hLt-pO-dLV">
-                        <rect key="frame" x="0.0" y="59" width="430" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1654,7 +1645,7 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="Pbw-ig-uPh"/>
+        <segue reference="7EM-pk-R26"/>
         <segue reference="hkX-cq-ZWn"/>
         <segue reference="I58-Au-nqh"/>
     </inferredMetricsTieBreakers>

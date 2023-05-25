@@ -13,7 +13,7 @@ class DetailPhotoViewController: UIViewController {
     var editPhoto: PHAsset?
     @IBOutlet var imageView: UIImageView!
     @IBAction func close(_ sender: Any) {
-    dismiss(animated: true)
+        dismiss(animated: true)
     }
     override func viewDidLoad() {
         super.viewDidLoad()

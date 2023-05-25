@@ -29,7 +29,7 @@ class PhotoCollectionViewController: UICollectionViewController {
         let allPhotosOptions = PHFetchOptions()
         allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
         allPhotos = PHAsset.fetchAssets(with: allPhotosOptions)
-
+        
         self.photoCollectionView?.reloadData()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -76,7 +76,7 @@ class PhotoCollectionViewController: UICollectionViewController {
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if PHPhotoLibrary.authorizationStatus(for: .addOnly) == .authorized {
             return allPhotos.count

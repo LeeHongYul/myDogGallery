@@ -20,7 +20,7 @@ class CoreDataManager {
     var walkList = [WalkEntity]()
     var list = [NSManagedObject]()
     func fetchWalk() {
-
+        
         let request = WalkEntity.fetchRequest()
         do {
             walkList = try mainContext.fetch(request)
@@ -38,7 +38,7 @@ class CoreDataManager {
         newWalk.startLat = startLat
         newWalk.endLon = endLon
         newWalk.endLat = endLat
-
+        
         walkList.insert(newWalk, at: 0)
         saveContext()
     }
@@ -66,7 +66,7 @@ class CoreDataManager {
             print(error)
         }
     }
-
+    
     func fetchProfile() {
         let request = ProfileEntity.fetchRequest()
         let sortByTimeStamp = NSSortDescriptor(key: "timeStamp", ascending: false)

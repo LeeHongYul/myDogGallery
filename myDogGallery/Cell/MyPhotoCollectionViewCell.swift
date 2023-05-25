@@ -8,7 +8,7 @@
 import UIKit
 
 class MyPhotoCollectionViewCell: UICollectionViewCell {
-
+    
     @IBOutlet var imageView: UIImageView!
     var representedAssetIdentifier: String!
 }
