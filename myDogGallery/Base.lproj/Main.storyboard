@@ -456,17 +456,18 @@
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                             </variation>
                                         </label>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hto-zp-UQG">
-                                            <rect key="frame" x="332.33333333333331" y="355.66666666666669" width="67.666666666666686" height="25.333333333333314"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hto-zp-UQG">
+                                            <rect key="frame" x="352.66666666666669" y="355.66666666666669" width="47.333333333333314" height="25.333333333333314"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Male" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTh-DB-NlA">
-                                                    <rect key="frame" x="0.0" y="0.0" width="45.333333333333336" height="25.333333333333332"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="male" translatesAutoresizingMaskIntoConstraints="NO" id="t88-cL-i8c">
+                                                    <rect key="frame" x="0.0" y="0.33333333333331439" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="1kq-ak-ltv"/>
+                                                        <constraint firstAttribute="width" constant="25" id="djH-fh-lMM"/>
+                                                    </constraints>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Bp-Pa-cR2">
-                                                    <rect key="frame" x="55.333333333333371" y="0.0" width="12.333333333333329" height="25.333333333333332"/>
+                                                    <rect key="frame" x="35" y="0.0" width="12.333333333333336" height="25.333333333333332"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -492,7 +493,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="ageLabel" destination="9Bp-Pa-cR2" id="sWA-BC-3t6"/>
-                                    <outlet property="genderLabel" destination="BTh-DB-NlA" id="b1Y-4X-QGT"/>
+                                    <outlet property="genderImageView" destination="t88-cL-i8c" id="raG-uf-ImP"/>
                                     <outlet property="nameLabel" destination="xbo-EH-NFO" id="HJ8-KW-eW7"/>
                                     <outlet property="profileImage" destination="j6e-AX-yvV" id="gER-9T-7cJ"/>
                                     <segue destination="xvB-ci-Xah" kind="presentation" identifier="EditProfileSegue" modalPresentationStyle="fullScreen" id="wB4-4P-7vD"/>
@@ -1655,6 +1656,7 @@
         <image name="dog-nose" width="512" height="512"/>
         <image name="folder" catalog="system" width="128" height="96"/>
         <image name="house" catalog="system" width="128" height="104"/>
+        <image name="male" width="256" height="256"/>
         <image name="map" catalog="system" width="128" height="112"/>
         <image name="person" catalog="system" width="128" height="121"/>
         <image name="photo.artframe" catalog="system" width="128" height="93"/>

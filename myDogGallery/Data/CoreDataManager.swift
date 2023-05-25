@@ -128,11 +128,11 @@ class CoreDataManager {
             print(error)
         }
     }
-    func addNewProfile(name: String, age: Int, gender: Bool, birthDay: Date, detail: String?, image: Data, timeStamp: Date?) {
+    func addNewProfile(name: String, age: Int, gender: Int, birthDay: Date, detail: String?, image: Data, timeStamp: Date?) {
         let newProfile = ProfileEntity(context: mainContext)
         newProfile.name = name
         newProfile.age = Int16(age)
-        newProfile.gender = gender
+        newProfile.gender = Int16(gender)
         newProfile.birthDay = birthDay
         newProfile.detail  = detail
         newProfile.image = image
@@ -140,10 +140,10 @@ class CoreDataManager {
         profileList.insert(newProfile, at: 0)
         saveContext()
     }
-    func updateProfile(update: ProfileEntity ,name: String, age: Int, gender: Bool, birthDay: Date, detail: String?, image: Data) {
+    func updateProfile(update: ProfileEntity ,name: String, age: Int, gender: Int, birthDay: Date, detail: String?, image: Data) {
         update.name = name
         update.age = Int16(age)
-        update.gender = true
+        update.gender = Int16(gender)
         update.birthDay = birthDay
         update.detail = detail
         update.image = image

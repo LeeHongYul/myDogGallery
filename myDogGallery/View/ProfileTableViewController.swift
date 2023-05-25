@@ -45,7 +45,6 @@ class ProfileTableViewController: UITableViewController {
             self.profileListTableView.reloadData()
         }
     }
-    
     /// 등록한 프로필의 수 가져오기
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return CoreDataManager.shared.profileList.count
@@ -58,10 +57,10 @@ class ProfileTableViewController: UITableViewController {
         
         cell.nameLabel.text = target.name
         cell.ageLabel.text = "\(target.age) 살"
-        if target.gender == true {
-            cell.genderLabel.text = "Boy"
-        } else {
-            cell.genderLabel.text = "Girl"
+        if target.gender == 0 {
+            cell.genderImageView.image = UIImage(named: "male")
+        } else if target.gender == 1 {
+            cell.genderImageView.image = UIImage(named: "female")
         }
         
         cell.profileImage.image = UIImage(data: target.image ?? Data())

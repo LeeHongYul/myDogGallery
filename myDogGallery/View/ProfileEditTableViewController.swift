@@ -56,7 +56,9 @@ class ProfileEditTableViewController: UITableViewController {
         let currentYearStr = yearFormatter.string(from: Date())
         guard let ageInt = Int(ageYearStr), let currentInt = Int(currentYearStr) else { return }
         let age = currentInt - ageInt
-        let isMale = genderSegmentedControl.selectedSegmentIndex == 0
+
+        let isMale = genderSegmentedControl.selectedSegmentIndex
+
         let birthDay = birthDayDatePicker.date
         let detail = detailField.text
         let timeStamp = Date()
@@ -76,7 +78,7 @@ class ProfileEditTableViewController: UITableViewController {
         if let target = profileList {
             nameField.text = target.name
             ageLabel.text = "\(target.age)"
-            if target.gender {
+            if target.gender == 0 {
                 genderSegmentedControl.selectedSegmentIndex = 0
             } else {
                 genderSegmentedControl.selectedSegmentIndex = 1
