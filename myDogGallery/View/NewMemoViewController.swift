@@ -21,7 +21,7 @@ class NewMemoViewController: UIViewController {
     @IBOutlet var walkCountLabel: UILabel!
     @IBOutlet var walkTimeLabel: UILabel!
     @IBOutlet var pooLabel: UILabel!
-    
+
     var dateFormatter: DateFormatter = {
         let inputDate = DateFormatter()
         inputDate.dateFormat = "MMM d, yyyy"
@@ -106,6 +106,7 @@ class NewMemoViewController: UIViewController {
         } else {
             print("Memo Edit Page Error")
         }
+//        view.keyboardLayoutGuide.topAnchor.constraint(equalToSystemSpacingBelow: lastStackView.bottomAnchor, multiplier: 1.0).isActive = true
     }
 }
 //메모제목 14자 넘으면 더 이상 내용 입력 불가능

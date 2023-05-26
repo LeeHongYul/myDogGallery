@@ -13,7 +13,6 @@ class MemoViewController: UIViewController {
     var isSearchMode = false
     
     @IBOutlet var memoTableView: UITableView!
-    @IBOutlet var memoTitleLabel: UILabel!
     
     var dateFormatter: DateFormatter = {
         let inputDateFormat = DateFormatter()

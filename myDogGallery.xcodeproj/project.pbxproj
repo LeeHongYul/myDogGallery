@@ -452,7 +452,7 @@
 				DEVELOPMENT_TEAM = 2P89RZGR74;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = myDogGallery/Info.plist;
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "앨범 허용 가능할까요?";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "앨범에 대한 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -483,7 +483,7 @@
 				DEVELOPMENT_TEAM = 2P89RZGR74;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = myDogGallery/Info.plist;
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "앨범 허용 가능할까요?";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "앨범에 대한 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
