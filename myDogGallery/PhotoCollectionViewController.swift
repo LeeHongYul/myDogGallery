@@ -27,7 +27,7 @@ class PhotoCollectionViewController: UICollectionViewController {
     }
     func fetchAllPhotos() {
         let allPhotosOptions = PHFetchOptions()
-        allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+        allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         allPhotos = PHAsset.fetchAssets(with: allPhotosOptions)
         
         self.photoCollectionView?.reloadData()

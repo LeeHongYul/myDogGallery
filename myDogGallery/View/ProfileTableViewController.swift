@@ -45,6 +45,11 @@ class ProfileTableViewController: UITableViewController {
             self.profileListTableView.reloadData()
         }
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        navigationItem.title = CoreDataManager.shared.profileList.count == 0 ? "프로필을 등록해주세요" : "Profile"
+        profileListTableView.reloadData()
+    }
     /// 등록한 프로필의 수 가져오기
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return CoreDataManager.shared.profileList.count

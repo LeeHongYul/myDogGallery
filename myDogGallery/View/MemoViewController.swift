@@ -53,13 +53,14 @@ class MemoViewController: UIViewController {
             CoreDataManager.shared.fetchMemo()
             self.memoTableView.reloadData()
         }
-        memoSearchBar.placeholder = "제목을 검색해 주세요"
+
         navigationItem.titleView = memoSearchBar
         memoSearchBar.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        memoSearchBar.placeholder = CoreDataManager.shared.memoList.count == 0 ? "메모를 작성해주세요" : "제목을 검색해 주세요"
         CoreDataManager.shared.fetchPredicate()
         memoTableView.reloadData()
     }

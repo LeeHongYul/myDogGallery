@@ -65,7 +65,7 @@ class MapViewController: UIViewController {
         locationManager.delegate = self
         locationManager.distanceFilter = 1
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.activityType = .other
+        locationManager.activityType = .fitness
         
         switch locationManager.authorizationStatus {
         case .notDetermined:
@@ -166,23 +166,6 @@ class MapViewController: UIViewController {
         alert.addAction(ok)
         
         present(alert, animated: true, completion: nil)
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
     }
     
     func showAlertController() {

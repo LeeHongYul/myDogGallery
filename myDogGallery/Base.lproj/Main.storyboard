@@ -299,8 +299,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="meK-Hu-yOG">
-                                <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="meK-Hu-yOG">
+                                <rect key="frame" x="0.0" y="5" width="430" height="932"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MemoViewController" rowHeight="63" id="VtI-52-n9M" customClass="MemoTableViewCell" customModule="myDogGallery" customModuleProvider="target">
@@ -510,7 +510,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="HP8-2Q-o9R">
                             <color key="tintColor" systemColor="systemOrangeColor"/>
                             <connections>
-                                <segue destination="xvB-ci-Xah" kind="showDetail" identifier="EditProfileSegue" id="hkX-cq-ZWn"/>
+                                <segue destination="xvB-ci-Xah" kind="presentation" identifier="EditProfileSegue" modalPresentationStyle="fullScreen" id="hkX-cq-ZWn"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1144,6 +1144,49 @@
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tC8-gf-LWZ" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
+                                                            <rect key="frame" x="70" y="70" width="30" height="30"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="msi-7X-0i8">
+                                                                    <rect key="frame" x="5" y="5.9999999999999982" width="20" height="17.666666666666664"/>
+                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="20" id="aeu-cf-y80"/>
+                                                                        <constraint firstAttribute="height" constant="20" id="f3g-Iq-xa5"/>
+                                                                    </constraints>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                            <real key="value" value="6"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                            <real key="value" value="1"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                            <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="30" id="0xb-UR-4X0"/>
+                                                                <constraint firstItem="msi-7X-0i8" firstAttribute="centerY" secondItem="tC8-gf-LWZ" secondAttribute="centerY" id="CVW-eu-2bT"/>
+                                                                <constraint firstItem="msi-7X-0i8" firstAttribute="centerX" secondItem="tC8-gf-LWZ" secondAttribute="centerX" id="caK-v8-C9P"/>
+                                                                <constraint firstAttribute="height" constant="30" id="mBI-2r-3J4"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="15"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                    <real key="value" value="0.80000000000000004"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                    <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ajo-eG-xNs">
                                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                             <state key="normal" title="Button"/>
@@ -1159,9 +1202,11 @@
                                                         <constraint firstAttribute="trailing" secondItem="Ajo-eG-xNs" secondAttribute="trailing" id="O7H-5u-czh"/>
                                                         <constraint firstItem="Ajo-eG-xNs" firstAttribute="top" secondItem="1zS-vZ-7dX" secondAttribute="top" id="YjA-AS-QX9"/>
                                                         <constraint firstAttribute="trailing" secondItem="yuc-Hp-ksB" secondAttribute="trailing" id="aj7-rN-7bn"/>
+                                                        <constraint firstItem="tC8-gf-LWZ" firstAttribute="bottom" secondItem="yuc-Hp-ksB" secondAttribute="bottom" id="c71-yW-aVy"/>
                                                         <constraint firstItem="Ajo-eG-xNs" firstAttribute="leading" secondItem="1zS-vZ-7dX" secondAttribute="leading" id="hQ2-Eb-SXs"/>
                                                         <constraint firstAttribute="bottom" secondItem="yuc-Hp-ksB" secondAttribute="bottom" id="j2r-UZ-eyK"/>
                                                         <constraint firstItem="yuc-Hp-ksB" firstAttribute="top" secondItem="1zS-vZ-7dX" secondAttribute="top" id="jTz-u1-Es7"/>
+                                                        <constraint firstItem="tC8-gf-LWZ" firstAttribute="trailing" secondItem="yuc-Hp-ksB" secondAttribute="trailing" id="ktK-BH-nmN"/>
                                                         <constraint firstItem="yuc-Hp-ksB" firstAttribute="leading" secondItem="1zS-vZ-7dX" secondAttribute="leading" id="mUl-Cc-LMl"/>
                                                         <constraint firstAttribute="height" constant="100" id="oYx-zy-Ks0"/>
                                                         <constraint firstAttribute="bottom" secondItem="Ajo-eG-xNs" secondAttribute="bottom" id="zoc-RN-cRf"/>
@@ -1322,7 +1367,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="ULM-fP-tUL"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="d7P-tG-89Y">
-                        <rect key="frame" x="0.0" y="59" width="430" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1641,6 +1686,9 @@
         <designable name="j6e-AX-yvV">
             <size key="intrinsicContentSize" width="1752.5" height="3000"/>
         </designable>
+        <designable name="msi-7X-0i8">
+            <size key="intrinsicContentSize" width="24.666666666666668" height="20.333333333333332"/>
+        </designable>
         <designable name="yuc-Hp-ksB">
             <size key="intrinsicContentSize" width="512" height="512"/>
         </designable>
@@ -1653,6 +1701,7 @@
     <resources>
         <image name="8595649" width="1752.5" height="3000"/>
         <image name="book" catalog="system" width="128" height="99"/>
+        <image name="camera" catalog="system" width="128" height="93"/>
         <image name="dog-nose" width="512" height="512"/>
         <image name="folder" catalog="system" width="128" height="96"/>
         <image name="house" catalog="system" width="128" height="104"/>
