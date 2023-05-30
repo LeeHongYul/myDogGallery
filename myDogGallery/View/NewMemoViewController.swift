@@ -104,9 +104,8 @@ class NewMemoViewController: UIViewController {
             inputDatePicker.date = target.inputDate!
             
         } else {
-            print("Memo Edit Page Error")
+            print("New Memo Page Entered")
         }
-//        view.keyboardLayoutGuide.topAnchor.constraint(equalToSystemSpacingBelow: lastStackView.bottomAnchor, multiplier: 1.0).isActive = true
     }
 }
 //메모제목 14자 넘으면 더 이상 내용 입력 불가능
