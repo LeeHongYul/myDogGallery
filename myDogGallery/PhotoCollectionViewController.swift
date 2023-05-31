@@ -13,8 +13,10 @@ private let reuseIdentifier = "cell"
 
 class PhotoCollectionViewController: UICollectionViewController {
     @IBOutlet var photoCollectionView: UICollectionView!
+
     var allPhotos: PHFetchResult<PHAsset>!
     let imageManager = PHCachingImageManager()
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PhotoSegue" {
             if let cell = sender as? UICollectionViewCell, let indexPath = photoCollectionView.indexPath(for: cell) {
@@ -25,6 +27,12 @@ class PhotoCollectionViewController: UICollectionViewController {
             }
         }
     }
+
+    @IBAction func reloadPhoto(_ sender: Any) {
+        fetchAllPhotos()
+    }
+
+
     func fetchAllPhotos() {
         let allPhotosOptions = PHFetchOptions()
         allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
@@ -32,8 +40,7 @@ class PhotoCollectionViewController: UICollectionViewController {
         
         self.photoCollectionView?.reloadData()
     }
-    override func viewWillAppear(_ animated: Bool) {
-    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         switch PHPhotoLibrary.authorizationStatus(for: .addOnly) {

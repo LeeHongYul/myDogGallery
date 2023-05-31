@@ -140,7 +140,7 @@ class CoreDataManager {
         profileList.insert(newProfile, at: 0)
         saveContext()
     }
-    func updateProfile(update: ProfileEntity ,name: String, age: Int, gender: Int, birthDay: Date, detail: String?, image: Data) {
+    func updateProfile(update: ProfileEntity, name: String, age: Int, gender: Int, birthDay: Date, detail: String?, image: Data) {
         update.name = name
         update.age = Int16(age)
         update.gender = Int16(gender)
