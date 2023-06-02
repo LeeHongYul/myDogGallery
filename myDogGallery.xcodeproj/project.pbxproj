@@ -117,8 +117,8 @@
 				5D4B6FE929F51E1A00BFC43B /* MainCollectionViewCell.swift */,
 				5D5A16FC29F827BD002E7C15 /* MemoTableViewCell.swift */,
 				5D56118629EFB0E700A6EA56 /* ProfileTableViewCell.swift */,
-				5D75A3C729F3BC5C001C25B3 /* MyPhotoCollectionViewCell.swift */,
 				5DB2CE1D2A17069900A8D479 /* ProfilePickCollectionViewCell.swift */,
+				5DF898582A28B47D00A03F5B /* PhotoCollectionViewCell.swift */,
 				5D687F6D2A08ED06003FCDA3 /* WalkHistoryTableViewCell.swift */,
 			);
 			path = Cell;
@@ -166,9 +166,7 @@
 				5D56118829EFB1EC00A6EA56 /* Cell */,
 				5D56118D29EFBCE000A6EA56 /* CustomView */,
 				5D75A3C329F3BAAC001C25B3 /* PhotoCollectionViewController.swift */,
-				5D75A3C929F3C27C001C25B3 /* DetailPhotoViewController.swift */,
-				5DF898562A28B44C00A03F5B /* GridViewController.swift */,
-				5DF898582A28B47D00A03F5B /* PhotoCollectionViewCell.swift */,
+				5D75A3C729F3BC5C001C25B3 /* MyPhotoCollectionViewCell.swift */,
 				5D5A16FA29F7FF5F002E7C15 /* Phrase.swift */,
 				5DA8FC952A1D1448007D6A20 /* .swiftlint.yml */,
 			);
@@ -196,6 +194,8 @@
 				5D37E4E12A26F8E2002C6060 /* SettingViewController.swift */,
 				5D56118429EFB02100A6EA56 /* ProfileEditTableViewController.swift */,
 				5D5CB80E2A0E93BA0098E38B /* PickProfileViewController.swift */,
+				5DF898562A28B44C00A03F5B /* GridViewController.swift */,
+				5D75A3C929F3C27C001C25B3 /* DetailPhotoViewController.swift */,
 				5DD4372229FFFF8300181A72 /* MapViewController.swift */,
 				5D12B0952A08A8E7007CA12B /* WalkHistoryViewController.swift */,
 				5D221E5B2A19A02B00B4AC33 /* MapDetailViewController.swift */,
