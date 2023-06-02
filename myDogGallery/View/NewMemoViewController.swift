@@ -93,7 +93,8 @@ class NewMemoViewController: UIViewController {
         super.viewDidLoad()
         memoTitleTextField.layer.cornerRadius = 15
         memoContextTextView.layer.cornerRadius = 15
-        //MemoViewController에서 받은 TableViewCell의 메모 내용
+
+        // MemoViewController에서 받은 TableViewCell의 메모 내용
         if let target = editTarget {
             memoTitleTextField.text = target.title
             memoContextTextView.text   = target.context
@@ -108,7 +109,8 @@ class NewMemoViewController: UIViewController {
         }
     }
 }
-//메모제목 14자 넘으면 더 이상 내용 입력 불가능
+
+// 메모제목 14자 넘으면 더 이상 내용 입력 불가능
 extension NewMemoViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
@@ -123,7 +125,6 @@ extension NewMemoViewController: UITextFieldDelegate {
         default:
             break
         }
-        
         return true
     }
 }

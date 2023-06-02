@@ -10,6 +10,7 @@ import UIKit
 class ProfileTableViewController: UITableViewController {
     var editProfileList: ProfileEntity?
     @IBOutlet var profileListTableView: UITableView!
+
     var dateFormatter: DateFormatter = {
         let birthDayDate = DateFormatter()
         birthDayDate.dateFormat = "MMM d, yyyy"
@@ -32,7 +33,7 @@ class ProfileTableViewController: UITableViewController {
         }
     }
     
-    /// 프로필을 등록하거나 수정할 때 NotificationCenter을 활용한다.
+    /// 프로필을 등록하거나 수정할 때 NotificationCenter을 활용
     override func viewDidLoad() {
         super.viewDidLoad()
         CoreDataManager.shared.fetchProfile()
@@ -55,7 +56,7 @@ class ProfileTableViewController: UITableViewController {
         return CoreDataManager.shared.profileList.count
     }
     
-    /// 등록한 프로필의 이미지, 이름, 나이, 성별 표시한다
+    /// 등록한 프로필의 이미지, 이름, 나이, 성별 표시
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewCell") as! ProfileTableViewCell
         let target = CoreDataManager.shared.profileList[indexPath.row]

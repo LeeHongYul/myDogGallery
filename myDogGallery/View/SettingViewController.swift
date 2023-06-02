@@ -16,6 +16,7 @@ struct TableData {
 class SettingViewController: UIViewController {
 
     let list = [
+        TableData(items: ["버전 정보"]),
         TableData(items: ["계정 / 정보 관리"]),
         TableData(items: ["공지사항", "업데이트"])
     ]
@@ -32,7 +33,6 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
     }
 
     func logout() {
@@ -43,7 +43,12 @@ class SettingViewController: UIViewController {
         keychain.delete(Keys.email.rawValue)
     }
     
+    func getVersion() -> String {
+        let dictonary = Bundle.main.infoDictionary!
+        let version = dictonary["CFBundleVersion"] as! String
 
+        return "\(version)"
+    }
 
 }
 extension SettingViewController: UITableViewDataSource {
@@ -64,7 +69,10 @@ extension SettingViewController: UITableViewDataSource {
         switch indexPath.section {
         case 0:
             content.text = "\(target)"
+            content.secondaryText = "최신버전: \(getVersion())"
         case 1:
+            content.text = "\(target)"
+        case 2:
             content.text = "\(target)"
         default:
            break
@@ -78,8 +86,10 @@ extension SettingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "사용자 설정"
+            return "기본 설정"
         case 1:
+            return "사용자 설정"
+        case 2:
             return "기타 설정"
         default:
             return nil

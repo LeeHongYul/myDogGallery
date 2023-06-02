@@ -21,6 +21,7 @@ class ProfileEditTableViewController: UITableViewController {
     @IBOutlet var birthDayDatePicker: UIDatePicker!
     @IBOutlet var detailField: UITextField!
     @IBOutlet var profileImage: UIImageView!
+
     @IBAction func selectProfileImageBtn(_ sender: Any) {
         presentPickerView()
     }
@@ -48,12 +49,15 @@ class ProfileEditTableViewController: UITableViewController {
         guard let name = nameField.text, name.count > 0 else {
             return
         }
+
         if name.count >= 11 {
             addAlert(title: "이름 글자수가 많습니다 10자", messageStr: "이름 글자수 수정 필요합니다.", actionTitleStr: "확인")
             return
         }
+
         let ageYearStr = yearFormatter.string(from: birthDayDatePicker.date)
         let currentYearStr = yearFormatter.string(from: Date())
+
         guard let ageInt = Int(ageYearStr), let currentInt = Int(currentYearStr) else { return }
         let age = currentInt - ageInt
 
@@ -62,6 +66,7 @@ class ProfileEditTableViewController: UITableViewController {
         let birthDay = birthDayDatePicker.date
         let detail = detailField.text
         let timeStamp = Date()
+
         guard let data = profileImage.image?.jpegData(compressionQuality: 0.75) else { return }
         if let target = profileList {
             CoreDataManager.shared.updateProfile(update: target, name: name, age: age, gender: isMale, birthDay: birthDay, detail: detail, image: data)
@@ -72,9 +77,10 @@ class ProfileEditTableViewController: UITableViewController {
         }
         dismiss(animated: true)
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        //ProfileTableController에서 클릭한 프로필의 데이터 가져오기
+        // ProfileTableController에서 클릭한 프로필의 데이터 가져오기
         if let target = profileList {
             nameField.text = target.name
             ageLabel.text = "\(target.age)"
@@ -91,7 +97,7 @@ class ProfileEditTableViewController: UITableViewController {
             print("error")
         }
     }
-    //프로필 선택하는 뷰
+    // 프로필 선택하는 뷰
     func presentPickerView() {
         var configuration = PHPickerConfiguration()
         configuration.filter = PHPickerFilter.images
@@ -101,7 +107,7 @@ class ProfileEditTableViewController: UITableViewController {
         self.present(picker, animated: true, completion: nil)
     }
 }
-
+// 프로필 사진 정하고 profileImageView에 선택한 이미지 넣기
 extension ProfileEditTableViewController: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         dismiss(animated: true, completion: nil)

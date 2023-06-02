@@ -34,7 +34,7 @@ class MainViewController: UIViewController {
 
     @IBOutlet var mainPageControl: UIPageControl!
 
-    /// PageControl 변하면 CollectionView안에 있는 이미지도 변경
+    ///CollectionView의 이미지를 PageControl의 변화에 따라 변경하도록 구현
     @IBAction func pageChaged(_ sender: UIPageControl) {
         let indexPath = IndexPath(item: sender.currentPage, section: 0)
         mainCollectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: true)
@@ -58,7 +58,7 @@ class MainViewController: UIViewController {
         inputView.layer.shadowPath = nil
     }
 
-    /// 날씨 API  데이터를 Moya를 통하여 가져오는 코드
+    ///  Moya를 사용하여 날씨 API 데이터를 가져오는 예시 코드
     func fetchMoya() {
         let provider = MoyaProvider<WeatherDataApi>()
         provider.request(.weatherDataList(lat: locationManager.location?.coordinate.latitude ?? 0, lon: locationManager.location?.coordinate.longitude ?? 0, units: "metric")) { result in
@@ -80,7 +80,7 @@ class MainViewController: UIViewController {
                         self.weatherDetailLabel.text = list.weather[0].main
                         self.weatherTempLabel.text = tempStr+"°"
 
-                        //현재 날씨에 관한 아이콘의 조건을 API에서 받으며, 그 조건에 대한 원하는 이미지로 설정
+                        //API에서 받은 현재 날씨 조건에 따라 해당 조건에 맞는 원하는 이미지를 설정하는 코드를 작성
                         switch list.weather[0].icon {
                         case "01n", "01d":
                             self.mainWeatherImageView.image = UIImage(named: "sun")
@@ -121,6 +121,21 @@ class MainViewController: UIViewController {
         }
     }
 
+    func createLayout() -> UICollectionViewLayout {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+        section.orthogonalScrollingBehavior = .groupPaging
+
+        let layout = UICollectionViewCompositionalLayout(section: section)
+
+        return layout
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         if traitCollection.userInterfaceStyle == .dark {
@@ -135,25 +150,13 @@ class MainViewController: UIViewController {
 
         fetchMoya()
 
-        CoreDataManager.shared.fetchProfile()
+        CoreDataManager.shared.fetchProfile() // CoreData에 있는 프로필 데이터 가져오는 코드
 
-        mainPageControl.currentPage = 0 // 현재 PageControl 초기화
-        mainPageControl.numberOfPages = CoreDataManager.shared.profileList.count // 등록되어있는 프로필 수 PageControl에 넣기
+        mainPageControl.currentPage = 0 // 현재 PageControl 0으로 초기화
+        mainPageControl.numberOfPages = CoreDataManager.shared.profileList.count // 등록되어 있는 프로필의 수를 PageControl에 표시하기 위한 코드
 
-        let conditionalLayout = UICollectionViewCompositionalLayout { sectionIndex, env in
-            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
-            let item = NSCollectionLayoutItem(layoutSize: itemSize)
-            item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
-            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
-            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-            let section = NSCollectionLayoutSection(group: group)
-            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
-            section.orthogonalScrollingBehavior = .groupPaging
-            return section
-        }
-
+        mainCollectionView.collectionViewLayout = createLayout()
         mainCollectionView.layer.cornerRadius = 15
-        mainCollectionView.collectionViewLayout = conditionalLayout
         mainCollectionView.reloadData()
         setLocationManager()
     }

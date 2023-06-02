@@ -12,20 +12,16 @@ class WalkHistoryViewController: UIViewController {
     var pickedFinalImage: UIImage?
     
     @IBOutlet var walkHistoryTableview: UITableView!
-    
+
+    // 산책 정보 데이터 MapDetailView로 넘기기
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueMapDetail" {
             if let cell = sender as? UITableViewCell, let indexPath = walkHistoryTableview.indexPath(for: cell) {
                 let target = CoreDataManager.shared.walkList[indexPath.row]
                 
                 if (segue.destination.sheetPresentationController?.detents = [.medium()]) != nil, let vc = segue.destination as? MapDetailViewController {
-                    vc.fristLat = target.startLat
-                    vc.fristLon = target.startLon
-                    vc.secondLat = target.endLat
-                    vc.secondLon = target.endLon
-                    vc.walkDetailImage = UIImage(data: target.profile!)
-                    vc.walkDetail = target.totalDistance
-                    vc.walkDistance = target.totalTime
+
+                    vc.walkHistory = target
                 }
             }
         }
@@ -50,7 +46,9 @@ extension WalkHistoryViewController: UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WalkHistoryTableViewCell") as! WalkHistoryTableViewCell
+
         let target = CoreDataManager.shared.walkList[indexPath.row]
+
         cell.currentDateLabel?.text = dateFormatter.string(from: target.currentDate!)
         let result = target.totalDistance / 1000
         

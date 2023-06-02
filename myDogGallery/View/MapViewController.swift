@@ -32,7 +32,8 @@ class MapViewController: UIViewController {
     @IBOutlet var timeLabel: UILabel!
     
     @IBOutlet var mapControlView: RoundedView!
-    //MapViewController에서 산책을 한 프로필의 이미지를 WalkHistoryViewController로 넘기기 위한 코드
+    
+    // MapViewController에서 산책을 한 프로필의 이미지를 WalkHistoryViewController로 넘기기 위한 코드
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == " walkHistorySegue" {
             
@@ -49,7 +50,7 @@ class MapViewController: UIViewController {
         
         self.navigationController?.navigationBar.tintColor = .orange
         
-        getSaveResetBtn()
+        createSaveResetBtn()
         addSaveBtn.layer.isHidden = true
         addResetBtn.layer.isHidden = true
         
@@ -106,7 +107,8 @@ class MapViewController: UIViewController {
         
         return timeString
     }
-    
+
+    /// getLocationBtn 버튼 누르면 play 이미지 표시 후,  Save, Reset 버튼 표시, 다시 누르면 pause 이미지로 변경
     @IBAction func getLocationBtn(_ sender: Any) {
         print(#function)
         if getLocationBtnState == true {
@@ -132,7 +134,7 @@ class MapViewController: UIViewController {
     
     @objc func saveWalk(_ sender: UIButton) {
         print("save btn pressed")
-        showAlertController()
+        saveWalkHistory()
     }
     
     @objc func resetWalk(_ sender: UIButton) {
@@ -167,8 +169,8 @@ class MapViewController: UIViewController {
         
         present(alert, animated: true, completion: nil)
     }
-    
-    func showAlertController() {
+    // 산책 기록 저장 후, timer, distance, label 초기화
+    func saveWalkHistory() {
         let alert = UIAlertController(title: "산책 기록을 저장합니다.", message: "산책을 종료하겠습니까?", preferredStyle: .alert)
         
         let ok = UIAlertAction(title: "확인", style: .default) { _ in
@@ -197,8 +199,9 @@ class MapViewController: UIViewController {
         addSaveBtn.layer.isHidden = true
         addResetBtn.layer.isHidden = true
     }
-    
-    func getSaveResetBtn() {
+
+    // Save, Reset 버튼 생성
+    func createSaveResetBtn() {
         
         addSaveBtn.setImage(UIImage(systemName: "arrow.down.doc.fill"), for: .normal)
         addSaveBtn.backgroundColor = .systemOrange
@@ -281,7 +284,8 @@ extension MapViewController: CLLocationManagerDelegate {
 }
 
 extension MapViewController: MKMapViewDelegate {
-    
+
+    /// PickProfileView에서 선택한 프로필 이미지로 Annotation 설정
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let reusableAnnotation = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier, for: annotation)
         
@@ -312,6 +316,7 @@ extension MapViewController: MKMapViewDelegate {
     }
 }
 
+// 현재 좌표와 다른 좌표 사이의 거리를 계산하여 CLLocationDistance 타입으로 반환
 extension CLLocationCoordinate2D {
     func distance(from: CLLocationCoordinate2D) -> CLLocationDistance {
         let destination = CLLocation(latitude: from.latitude, longitude: from.longitude)

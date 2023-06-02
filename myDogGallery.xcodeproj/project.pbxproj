@@ -37,6 +37,8 @@
 		5DC7F7F029EF89D0005F9E22 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC7F7EF29EF89D0005F9E22 /* WeatherData.swift */; };
 		5DC7F7F429EF9816005F9E22 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC7F7F329EF9816005F9E22 /* CoreDataManager.swift */; };
 		5DD4372329FFFF8300181A72 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD4372229FFFF8300181A72 /* MapViewController.swift */; };
+		5DF898572A28B44C00A03F5B /* GridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF898562A28B44C00A03F5B /* GridViewController.swift */; };
+		5DF898592A28B47D00A03F5B /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF898582A28B47D00A03F5B /* PhotoCollectionViewCell.swift */; };
 		5DF9B75D2A125EEF006B3F43 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 5DF9B75C2A125EEF006B3F43 /* Moya */; };
 		5DF9B7602A125EF9006B3F43 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 5DF9B75F2A125EF9006B3F43 /* SDWebImage */; };
 		5DF9B7622A125EF9006B3F43 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5DF9B7612A125EF9006B3F43 /* SDWebImageMapKit */; };
@@ -78,6 +80,8 @@
 		5DC7F7EF29EF89D0005F9E22 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		5DC7F7F329EF9816005F9E22 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		5DD4372229FFFF8300181A72 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		5DF898562A28B44C00A03F5B /* GridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewController.swift; sourceTree = "<group>"; };
+		5DF898582A28B47D00A03F5B /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		63D1A34A21309D59724A41A1 /* Pods_myDogGallery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myDogGallery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		841B0B890D573DDF11DA6210 /* Pods-myDogGallery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myDogGallery.release.xcconfig"; path = "Target Support Files/Pods-myDogGallery/Pods-myDogGallery.release.xcconfig"; sourceTree = "<group>"; };
 		9A8822891B5E5637B7ADB365 /* Pods-myDogGallery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myDogGallery.debug.xcconfig"; path = "Target Support Files/Pods-myDogGallery/Pods-myDogGallery.debug.xcconfig"; sourceTree = "<group>"; };
@@ -163,6 +167,8 @@
 				5D56118D29EFBCE000A6EA56 /* CustomView */,
 				5D75A3C329F3BAAC001C25B3 /* PhotoCollectionViewController.swift */,
 				5D75A3C929F3C27C001C25B3 /* DetailPhotoViewController.swift */,
+				5DF898562A28B44C00A03F5B /* GridViewController.swift */,
+				5DF898582A28B47D00A03F5B /* PhotoCollectionViewCell.swift */,
 				5D5A16FA29F7FF5F002E7C15 /* Phrase.swift */,
 				5DA8FC952A1D1448007D6A20 /* .swiftlint.yml */,
 			);
@@ -366,12 +372,14 @@
 				5D221E5C2A19A02B00B4AC33 /* MapDetailViewController.swift in Sources */,
 				5D75A3C829F3BC5C001C25B3 /* MyPhotoCollectionViewCell.swift in Sources */,
 				5DC7F7E329EF836C005F9E22 /* myDogGallery.xcdatamodeld in Sources */,
+				5DF898592A28B47D00A03F5B /* PhotoCollectionViewCell.swift in Sources */,
 				5D0DEAA529EF9E4C00FFF700 /* MemoViewController.swift in Sources */,
 				5D0DEAA729EFA19400FFF700 /* NewMemoViewController.swift in Sources */,
 				5D56118C29EFBBBF00A6EA56 /* RoundedView.swift in Sources */,
 				5DC7F7D929EF836C005F9E22 /* AppDelegate.swift in Sources */,
 				5DC7F7DB29EF836C005F9E22 /* SceneDelegate.swift in Sources */,
 				5D37E4E22A26F8E2002C6060 /* SettingViewController.swift in Sources */,
+				5DF898572A28B44C00A03F5B /* GridViewController.swift in Sources */,
 				5D75A3CA29F3C27C001C25B3 /* DetailPhotoViewController.swift in Sources */,
 				5D37E4E02A260E90002C6060 /* LoginViewController.swift in Sources */,
 				5D56118529EFB02100A6EA56 /* ProfileEditTableViewController.swift in Sources */,
