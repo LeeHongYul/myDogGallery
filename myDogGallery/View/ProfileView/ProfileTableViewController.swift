@@ -18,10 +18,7 @@ class ProfileTableViewController: UITableViewController {
         return birthDayDate
     }()
     
-    /// 등록한 프로필의 내용을 수정하기 위한 코드
-    /// - Parameters:
-    ///   - segue: EditProfileSegue으로 ProfileEditTableViewController 연결
-    ///   - sender: UITableViewCell
+    // 등록한 프로필의 내용을 수정하기 위한 코드
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EditProfileSegue" {
             if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
@@ -33,7 +30,7 @@ class ProfileTableViewController: UITableViewController {
         }
     }
     
-    /// 프로필을 등록하거나 수정할 때 NotificationCenter을 활용
+    // 프로필을 등록하거나 수정할 때 NotificationCenter을 활용
     override func viewDidLoad() {
         super.viewDidLoad()
         CoreDataManager.shared.fetchProfile()
@@ -51,12 +48,12 @@ class ProfileTableViewController: UITableViewController {
         navigationItem.title = CoreDataManager.shared.profileList.count == 0 ? "프로필을 등록해주세요" : "Profile"
         profileListTableView.reloadData()
     }
-    /// 등록한 프로필의 수 가져오기
+    // 등록한 프로필의 수 가져오기
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return CoreDataManager.shared.profileList.count
     }
     
-    /// 등록한 프로필의 이미지, 이름, 나이, 성별 표시
+    // 등록한 프로필의 이미지, 이름, 나이, 성별 표시
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewCell") as! ProfileTableViewCell
         let target = CoreDataManager.shared.profileList[indexPath.row]
@@ -84,8 +81,8 @@ class ProfileTableViewController: UITableViewController {
         }
     }
     
-    /// 등록되어 있는 프로필은 Pin으로 상단에 고정할 수 있도록 했다.
-    /// Pin을 사용하면 CoreData에서 fetchProfileByPin을 활용하여 Pin순서로 Profile을 불러오고 아니면 fetchProfile 으로 불러온다
+    // 등록되어 있는 프로필은 Pin으로 상단에 고정할 수 있도록 했다.
+    // Pin을 사용하면 CoreData에서 fetchProfileByPin을 활용하여 Pin순서로 Profile을 불러오고 아니면 fetchProfile 으로 불러온다
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let target = CoreDataManager.shared.profileList[indexPath.row]
         let actionPin = UIContextualAction(style: .normal, title: "", handler: { action, view, completionHaldler in
@@ -101,7 +98,7 @@ class ProfileTableViewController: UITableViewController {
             completionHaldler(true)
         })
         actionPin.image = UIImage(systemName: "pin")
-        if target.pin == true {
+        if target.pin {
             actionPin.backgroundColor = .blue
             actionPin.image = UIImage(systemName: "pin.fill")
         }

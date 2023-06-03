@@ -14,7 +14,8 @@ enum WeatherDataApi {
 
 extension WeatherDataApi: TargetType {
     var baseURL: URL {
-        URL(string: "https://api.openweathermap.org")!
+        let urlString = "https://api.openweathermap.org"
+        return URL(string: urlString) != nil ? URL(string: urlString)! : URL(fileURLWithPath: "")
     }
     var path: String {
         switch self {

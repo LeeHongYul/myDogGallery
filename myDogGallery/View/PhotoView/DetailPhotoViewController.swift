@@ -24,12 +24,10 @@ class DetailPhotoViewController: UIViewController {
             options.deliveryMode = .highQualityFormat
 
             PHImageManager.default().requestImage(for: asset, targetSize: imageView.bounds.size, contentMode: .aspectFit, options: options) { image, _ in
-                print("\(image)!!!!!!!!")
                 self.imageView.image = image
             }
         }
     }
-
 
 
     override func viewDidLoad() {
@@ -42,7 +40,6 @@ class DetailPhotoViewController: UIViewController {
     deinit {
         PHPhotoLibrary.shared().unregisterChangeObserver(self)
     }
-
 
 
 //    func getAssetThumbnail(asset: PHAsset) -> UIImage {

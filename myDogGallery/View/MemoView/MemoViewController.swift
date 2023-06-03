@@ -10,7 +10,7 @@ import CoreData
 
 class MemoViewController: UIViewController {
     let memoSearchBar = UISearchBar()
-    var isSearchMode = false //isSearchMode 변수에 따라 memolist을 불러올지 검색된 리스트를 불러올지 결정하는 변수
+    var isSearchMode = false // isSearchMode 변수에 따라 memolist을 불러올지 검색된 리스트를 불러올지 결정하는 변수
     
     @IBOutlet var memoTableView: UITableView!
     
@@ -22,10 +22,7 @@ class MemoViewController: UIViewController {
         return inputDateFormat
     }()
     
-    /// Memo 내용을 수정하가 위한 세그웨이 코드
-    /// - Parameters:
-    ///   - segue: EditSegue
-    ///   - sender: UITableViewCell
+    // Memo 내용을 수정하가 위한 세그웨이 코드
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EditSegue" {
             if let cell = sender as? UITableViewCell, let indexPath = memoTableView.indexPath(for: cell) {
@@ -37,7 +34,7 @@ class MemoViewController: UIViewController {
         }
     }
     
-    /// 메모의 이름으로 검색하는 SearchBar
+    // 메모의 이름으로 검색하는 SearchBar
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         CoreDataManager.shared.searchByName(searchBar.text)
@@ -70,7 +67,7 @@ extension MemoViewController: UITableViewDataSource {
         if isSearchMode == false {
             return CoreDataManager.shared.memoList.count
         } else {
-            return CoreDataManager.shared.list.count
+            return CoreDataManager.shared.searchlist.count
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -81,7 +78,7 @@ extension MemoViewController: UITableViewDataSource {
                 cell.memoInputDateLabel.text = dateFormatter.string(from: inputDateType)
             }
         } else {
-            let target = CoreDataManager.shared.list[indexPath.row]
+            let target = CoreDataManager.shared.searchlist[indexPath.row]
             if let title = target.value(forKey: "title") as? String {
                 cell.memoTitleLabel?.text  = "\(title)"
             }
@@ -96,7 +93,7 @@ extension MemoViewController: UITableViewDelegate {
         true
     }
 
-    /// Memo delete
+    // Memo delete
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let target = CoreDataManager.shared.memoList[indexPath.row]

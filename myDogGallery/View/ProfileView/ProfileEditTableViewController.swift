@@ -91,7 +91,9 @@ class ProfileEditTableViewController: UITableViewController {
             }
             birthDayDatePicker.date = target.birthDay ?? Date()
             detailField.text = target.detail
-            profileImage.image = UIImage(data: target.image!)
+            if let targetImage =  target.image {
+                profileImage.image = UIImage(data: targetImage )
+            }
             navigationItem.title = "Profile Edit Page"
         } else {
             print("error")

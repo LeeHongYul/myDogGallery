@@ -34,7 +34,7 @@ class MainViewController: UIViewController {
 
     @IBOutlet var mainPageControl: UIPageControl!
 
-    ///CollectionView의 이미지를 PageControl의 변화에 따라 변경하도록 구현
+    // CollectionView의 이미지를 PageControl의 변화에 따라 변경하도록 구현
     @IBAction func pageChaged(_ sender: UIPageControl) {
         let indexPath = IndexPath(item: sender.currentPage, section: 0)
         mainCollectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: true)
@@ -48,8 +48,7 @@ class MainViewController: UIViewController {
         return inputDate
     }()
 
-    /// 날씨를 나타내는 뷰에 그림자 넣는 코드
-    /// - Parameter inputView: 그림자를 넣을 뷰
+    // 날씨를 나타내는 뷰에 그림자 넣는 코드
     func shadowWeather(inputView: UIView) {
         inputView.layer.shadowColor = UIColor.black.cgColor
         inputView.layer.shadowOpacity = 0.9
@@ -58,7 +57,7 @@ class MainViewController: UIViewController {
         inputView.layer.shadowPath = nil
     }
 
-    ///  Moya를 사용하여 날씨 API 데이터를 가져오는 예시 코드
+    //  Moya를 사용하여 날씨 API 데이터를 가져오는 예시 코드
     func fetchMoya() {
         let provider = MoyaProvider<WeatherDataApi>()
         provider.request(.weatherDataList(lat: locationManager.location?.coordinate.latitude ?? 0, lon: locationManager.location?.coordinate.longitude ?? 0, units: "metric")) { result in
@@ -104,8 +103,7 @@ class MainViewController: UIViewController {
         }
     }
 
-    /// 위치 업데이트 및 권한 생태 변경과 이벤트 처리
-    /// 위치의 정확도, 사용자에게 권한 요청 서비스, 글로벌 백그라운드에서 실행되는 클로저, 위치 활성화 되어있는지, 위치 변경을 감지하고 해당 위치는 delegate객체에 보고한다
+    // 위치 업데이트 및 권한 생태 변경과 이벤트 처리
     func setLocationManager() {
         locationManager.delegate = self
 
@@ -139,10 +137,8 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if traitCollection.userInterfaceStyle == .dark {
-            // 다크 모드에서의 동작을 수행하는 코드
             mainGradientView.setGradient(color1: UIColor.systemOrange, color2: UIColor.systemOrange, color3: UIColor.black)
         } else {
-            // 라이트 모드에서의 동작을 수행하는 코드
             mainGradientView.setGradient(color1: UIColor.systemOrange, color2: UIColor.white, color3: UIColor.white)
         }
 
@@ -169,7 +165,7 @@ class MainViewController: UIViewController {
         } else {
             mainProfileView.isHidden = false
         }
-        CoreDataManager.shared.fetchProfile()
+//        CoreDataManager.shared.fetchProfile()
 
         mainPageControl.currentPage = 0
         mainPageControl.numberOfPages = CoreDataManager.shared.profileList.count
@@ -185,11 +181,7 @@ class MainViewController: UIViewController {
 
 extension UIView {
 
-    /// 그라데이션을 만들기 위한 함수
-    /// - Parameters:
-    ///   - color1: 그라데이션에 들어갈 color1
-    ///   - color2: 그라데이션에 들어갈 color2
-    ///   - color3: 그라데이션에 들어갈 color3
+    // 그라데이션을 만들기 위한 함수
     func setGradient(color1: UIColor, color2: UIColor, color3: UIColor) {
         let gradient: CAGradientLayer = CAGradientLayer()
         gradient.colors = [color1.cgColor, color2.cgColor, color3.cgColor]
@@ -230,7 +222,7 @@ extension MainViewController: UICollectionViewDataSource {
         return CoreDataManager.shared.profileList.count
     }
 
-    /// CoreData로 등록된 프로필의 이미지 가져오는 코드
+    // CoreData로 등록된 프로필의 이미지 가져오는 코드
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mainCell", for: indexPath) as! MainCollectionViewCell
         let target = CoreDataManager.shared.profileList[indexPath.row]
@@ -244,7 +236,7 @@ extension MainViewController: UICollectionViewDataSource {
 
 extension MainViewController: UICollectionViewDelegate {
 
-    /// CollectionView에서 프로필 넘길때 해당되는 indexPath.row가 PageControl의 현재 페이지가 같도록 하는 코드
+    // CollectionView에서 프로필 넘길때 해당되는 indexPath.row가 PageControl의 현재 페이지가 같도록 하는 코드
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         mainPageControl.currentPage = indexPath.row
     }

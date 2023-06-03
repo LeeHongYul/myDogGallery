@@ -10,6 +10,7 @@ import Foundation
 struct Forcast: Codable {
     let main: ForcastTemp
     let weather: [ForcastDetail]
+    
     struct ForcastTemp: Codable {
         let temp: Double
         let temp_max: Double

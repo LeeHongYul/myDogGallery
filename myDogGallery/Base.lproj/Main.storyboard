@@ -529,10 +529,10 @@
             </objects>
             <point key="canvasLocation" x="560.93023255813955" y="905.79399141630904"/>
         </scene>
-        <!--Pick Profile View Controller-->
+        <!--Walk Profile View Controller-->
         <scene sceneID="RXY-Tv-k6X">
             <objects>
-                <viewController id="svF-Ko-5II" customClass="PickProfileViewController" customModule="myDogGallery" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="svF-Ko-5II" customClass="WalkProfileViewController" customModule="myDogGallery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Ss-0M-k9w">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1695,10 +1695,10 @@
             </objects>
             <point key="canvasLocation" x="4326" y="2415"/>
         </scene>
-        <!--Grid View Controller-->
+        <!--Photo View Controller-->
         <scene sceneID="VRb-Dk-Qb5">
             <objects>
-                <viewController id="Vs4-uH-frJ" customClass="GridViewController" customModule="myDogGallery" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Vs4-uH-frJ" customClass="PhotoViewController" customModule="myDogGallery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qdJ-0m-8ZQ">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

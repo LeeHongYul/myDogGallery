@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PickProfileViewController: UIViewController {
+class WalkProfileViewController: UIViewController {
     
     var pickedFinalImage: UIImage? // 선택 프로필 이미지를 MapViewController로 넘기기 위한 변수
     var didSelectedProfileCell = false // 프로필을 선택하지 않은 상태에서 MapViewController로 전환을 방지하기 위한 변수
@@ -74,7 +74,7 @@ class PickProfileViewController: UIViewController {
     }
 }
 
-extension PickProfileViewController: UICollectionViewDataSource {
+extension WalkProfileViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return CoreDataManager.shared.profileList.count
     }
@@ -83,19 +83,22 @@ extension PickProfileViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfilePickCollectionViewCell", for: indexPath) as! ProfilePickCollectionViewCell
         
         let target = CoreDataManager.shared.profileList[indexPath.row]
-        
-        cell.profilePickImage.image = UIImage(data: target.image!)
-        
+
+        if let targetImage = target.image {
+            cell.profilePickImage.image = UIImage(data: targetImage)
+        }
+
         return cell
     }
 }
 
-extension PickProfileViewController: UICollectionViewDelegate {
+extension WalkProfileViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let target = CoreDataManager.shared.profileList[indexPath.row]
         didSelectedProfileCell = true
-        selectedProfileImage.image = UIImage(data: target.image!)
-        
-        pickedFinalImage = UIImage(data: target.image!)
+        if let targetImage = target.image {
+            selectedProfileImage.image = UIImage(data: targetImage)
+            pickedFinalImage = UIImage(data: targetImage)
+        }
     }
 }
