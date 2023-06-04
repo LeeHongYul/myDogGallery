@@ -38,7 +38,6 @@ class SettingViewController: UIViewController {
     func logout() {
         let keychain = KeychainSwift()
         keychain.delete(Keys.id.rawValue)
-        keychain.delete(Keys.provider.rawValue)
         keychain.delete(Keys.name.rawValue)
         keychain.delete(Keys.email.rawValue)
     }

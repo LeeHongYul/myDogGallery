@@ -23,8 +23,8 @@ class ProfileTableViewController: UITableViewController {
         if segue.identifier == "EditProfileSegue" {
             if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
                 let target = CoreDataManager.shared.profileList[indexPath.row]
-                if let vc = segue.destination.children.first as? ProfileEditTableViewController {
-                    vc.profileList = target
+                if let viewController = segue.destination.children.first as? ProfileEditTableViewController {
+                    viewController.profileList = target
                 }
             }
         }
@@ -60,11 +60,8 @@ class ProfileTableViewController: UITableViewController {
         
         cell.nameLabel.text = target.name
         cell.ageLabel.text = "\(target.age) 살"
-        if target.gender == 0 {
-            cell.genderImageView.image = UIImage(named: "male")
-        } else if target.gender == 1 {
-            cell.genderImageView.image = UIImage(named: "female")
-        }
+
+        cell.genderImageView.image = target.gender == 0 ? UIImage(named: "male") : UIImage(named: "female")
         
         cell.profileImage.image = UIImage(data: target.image ?? Data())
         cell.profileImage.contentMode = .scaleAspectFill

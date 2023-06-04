@@ -29,8 +29,8 @@ class PhotoCollectionViewController: UICollectionViewController, PHPhotoLibraryC
         if segue.identifier == "PhotoSegue" {
             if let cell = sender as? UICollectionViewCell, let indexPath = photoCollectionView.indexPath(for: cell) {
                 let target = allPhotos.object(at: indexPath.item)
-                if let vc = segue.destination.children.first as? DetailPhotoViewController {
-                    vc.asset = target
+                if let viewController = segue.destination.children.first as? DetailPhotoViewController {
+                    viewController.asset = target
                 }
             }
         }

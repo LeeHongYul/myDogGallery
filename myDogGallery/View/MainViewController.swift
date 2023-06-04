@@ -72,10 +72,10 @@ class MainViewController: UIViewController {
                     let decoder = JSONDecoder()
                     let list = try decoder.decode(Forcast.self, from: data)
 
-                    self.weatherList = [list.main]
+                    self.weatherList = [list.mainForcast]
 
                     DispatchQueue.main.async {
-                        let tempStr = String(format: "%.1f", list.main.temp)
+                        let tempStr = String(format: "%.1f", list.mainForcast.mainTempature)
                         self.weatherDetailLabel.text = list.weather[0].main
                         self.weatherTempLabel.text = tempStr+"°"
 
@@ -134,16 +134,20 @@ class MainViewController: UIViewController {
         return layout
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func gradientStyle() {
         if traitCollection.userInterfaceStyle == .dark {
             mainGradientView.setGradient(color1: UIColor.systemOrange, color2: UIColor.systemOrange, color3: UIColor.black)
         } else {
             mainGradientView.setGradient(color1: UIColor.systemOrange, color2: UIColor.white, color3: UIColor.white)
         }
 
-        shadowWeather(inputView: weatherView)
+    }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        shadowWeather(inputView: weatherView)
+        gradientStyle()
         fetchMoya()
 
         CoreDataManager.shared.fetchProfile() // CoreData에 있는 프로필 데이터 가져오는 코드
@@ -160,11 +164,7 @@ class MainViewController: UIViewController {
     /// viewWillAppear 실행될 때마다 추가된 프로필 이미지, 페이지 컨트롤, 최근 산책 날짜, 글귀 정보 추가한다
     override func viewWillAppear(_ animated: Bool) {
         // 등록되어 있는 프로필 없으면 mainProfileView로 CollectionView를 가린다
-        if CoreDataManager.shared.profileList.count != 0 {
-            mainProfileView.isHidden = true
-        } else {
-            mainProfileView.isHidden = false
-        }
+        mainProfileView.isHidden = CoreDataManager.shared.profileList.count != 0 ? true : false
 //        CoreDataManager.shared.fetchProfile()
 
         mainPageControl.currentPage = 0

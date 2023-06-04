@@ -29,12 +29,27 @@ class DetailPhotoViewController: UIViewController {
         }
     }
 
+    @objc func deleteAsset() {
+        PHPhotoLibrary.shared().performChanges({
+            PHAssetChangeRequest.deleteAssets([self.asset as Any] as NSArray)
+        }, completionHandler: { success, error in
+            if success {
+                DispatchQueue.main.async { [weak self] in
+                    self?.navigationController?.popViewController(animated: true)
+                }
+            }
+        })
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         load()
 
         PHPhotoLibrary.shared().register(self)
+        let deleteButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteAsset))
+        deleteButton.tintColor = .systemOrange
+        navigationItem.rightBarButtonItem = deleteButton
     }
 
     deinit {

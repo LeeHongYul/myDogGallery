@@ -34,9 +34,9 @@ class WalkProfileViewController: UIViewController {
         } else {
             if segue.identifier == "profilePickerSegue" {
                 
-                if let destinationVC = segue.destination as? MapViewController {
+                if let destinationViewController = segue.destination as? MapViewController {
                     
-                    destinationVC.pickedFinalImage = pickedFinalImage
+                    destinationViewController.pickedFinalImage = pickedFinalImage
                 }
             }
         }

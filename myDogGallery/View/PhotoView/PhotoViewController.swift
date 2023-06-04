@@ -27,8 +27,8 @@ class PhotoViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "PhotoSegue":
-            if let vc = segue.destination.children.first as? DetailPhotoViewController {
-                vc.asset = sender as? PHAsset
+            if let viewController = segue.destination.children.first as? DetailPhotoViewController {
+                viewController.asset = sender as? PHAsset
             }
         default:
             break
@@ -77,6 +77,7 @@ class PhotoViewController: UIViewController {
     func createLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/3), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 1, leading: 1, bottom: 1, trailing: 1)
 
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(200))
 
@@ -94,7 +95,6 @@ class PhotoViewController: UIViewController {
         fetch()
         photoCollectionView.collectionViewLayout = createLayout()
         PHPhotoLibrary.shared().register(self)
-
     }
 
     deinit {
@@ -117,7 +117,6 @@ extension PhotoViewController: UICollectionViewDelegate {
         default:
             break
         }
-
     }
 }
 

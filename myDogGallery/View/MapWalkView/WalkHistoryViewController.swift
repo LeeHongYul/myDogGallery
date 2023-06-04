@@ -19,9 +19,9 @@ class WalkHistoryViewController: UIViewController {
             if let cell = sender as? UITableViewCell, let indexPath = walkHistoryTableview.indexPath(for: cell) {
                 let target = CoreDataManager.shared.walkList[indexPath.row]
                 
-                if (segue.destination.sheetPresentationController?.detents = [.medium()]) != nil, let vc = segue.destination as? MapDetailViewController {
+                if (segue.destination.sheetPresentationController?.detents = [.medium()]) != nil, let viewController = segue.destination as? MapDetailViewController {
 
-                    vc.walkHistory = target
+                    viewController.walkHistory = target
                 }
             }
         }

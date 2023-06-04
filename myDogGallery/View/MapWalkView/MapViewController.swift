@@ -37,9 +37,9 @@ class MapViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == " walkHistorySegue" {
             
-            if let destinationVC = segue.destination as? WalkHistoryViewController {
+            if let destinationViewController = segue.destination as? WalkHistoryViewController {
                 
-                destinationVC.pickedFinalImage = pickedFinalImage
+                destinationViewController.pickedFinalImage = pickedFinalImage
                 
             }
         }
@@ -111,7 +111,7 @@ class MapViewController: UIViewController {
     /// getLocationBtn 버튼 누르면 play 이미지 표시 후,  Save, Reset 버튼 표시, 다시 누르면 pause 이미지로 변경
     @IBAction func getLocationBtn(_ sender: Any) {
         print(#function)
-        if getLocationBtnState == true {
+        if getLocationBtnState {
             getLocationBtn.setImage(UIImage(systemName: "pause.fill"), for: .normal)
             getLocationBtnState = false
             requestMyLocation()

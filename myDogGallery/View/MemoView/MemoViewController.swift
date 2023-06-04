@@ -27,8 +27,8 @@ class MemoViewController: UIViewController {
         if segue.identifier == "EditSegue" {
             if let cell = sender as? UITableViewCell, let indexPath = memoTableView.indexPath(for: cell) {
                 let target = CoreDataManager.shared.memoList[indexPath.row]
-                if let vc = segue.destination.children.first as? NewMemoViewController {
-                    vc.editTarget = target
+                if let viewController = segue.destination.children.first as? NewMemoViewController {
+                    viewController.editTarget = target
                 }
             }
         }
@@ -67,7 +67,7 @@ extension MemoViewController: UITableViewDataSource {
         if isSearchMode == false {
             return CoreDataManager.shared.memoList.count
         } else {
-            return CoreDataManager.shared.searchlist.count
+            return CoreDataManager.shared.searchBarlist.count
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -78,7 +78,7 @@ extension MemoViewController: UITableViewDataSource {
                 cell.memoInputDateLabel.text = dateFormatter.string(from: inputDateType)
             }
         } else {
-            let target = CoreDataManager.shared.searchlist[indexPath.row]
+            let target = CoreDataManager.shared.searchBarlist[indexPath.row]
             if let title = target.value(forKey: "title") as? String {
                 cell.memoTitleLabel?.text  = "\(title)"
             }

@@ -8,13 +8,26 @@
 import Foundation
 
 struct Forcast: Codable {
-    let main: ForcastTemp
+
+    enum CodingKeys: String, CodingKey {
+        case mainForcast = "main"
+        case weather = "weather"
+    }
+
+    let mainForcast: ForcastTemp
     let weather: [ForcastDetail]
     
     struct ForcastTemp: Codable {
-        let temp: Double
-        let temp_max: Double
-        let temp_min: Double
+
+        enum CodingKeys: String, CodingKey {
+            case mainTempature = "temp"
+            case maxTempature = "temp_max"
+            case minTempature = "temp_min"
+        }
+
+        let mainTempature: Double
+        let maxTempature: Double
+        let minTempature: Double
     }
     struct ForcastDetail: Codable {
         let main: String

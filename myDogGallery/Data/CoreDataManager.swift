@@ -10,15 +10,31 @@ import CoreData
 
 class CoreDataManager {
     static let shared = CoreDataManager()
-    private init() {
-    }
+    private init() {}
     var mainContext: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
     var memoList = [MemoEntity]()
     var profileList = [ProfileEntity]()
     var walkList = [WalkEntity]()
-    var searchlist = [NSManagedObject]()
+    var searchBarlist = [NSManagedObject]()
+
+    func searchByName(_ keyword: String?) {
+        guard let keyword = keyword else { return }
+        let predicate = NSPredicate(format: "title CONTAINS[c] %@", keyword)
+        fetchPredicate(predicate: predicate)
+    }
+
+    func fetchPredicate(predicate: NSPredicate? = nil) {
+        let request = NSFetchRequest<NSManagedObject>(entityName: "Memo")
+        request.predicate = predicate
+        do {
+            searchBarlist = try CoreDataManager.shared.mainContext.fetch(request)
+        } catch {
+            print(error)
+        }
+    }
+
     func fetchWalk() {
         
         let request = WalkEntity.fetchRequest()
@@ -28,40 +44,13 @@ class CoreDataManager {
             print(error)
         }
     }
-    func addNewWalk(cuurentDate: Date, totalDistance: Double, totalTime: String, profile: Data, startLon: Double, startLat: Double, endLon: Double, endLat: Double) {
-        let newWalk = WalkEntity(context: mainContext)
-        newWalk.currentDate = cuurentDate
-        newWalk.totalDistance = totalDistance
-        newWalk.totalTime = totalTime
-        newWalk.profile = profile
-        newWalk.startLon = startLon
-        newWalk.startLat = startLat
-        newWalk.endLon = endLon
-        newWalk.endLat = endLat
-        
-        walkList.insert(newWalk, at: 0)
-        saveContext()
-    }
+
     func fetchMemo() {
         let request = MemoEntity.fetchRequest()
         let sortByTimeStamp = NSSortDescriptor(key: "timeStamp", ascending: false)
         request.sortDescriptors = [sortByTimeStamp]
         do {
             memoList = try mainContext.fetch(request)
-        } catch {
-            print(error)
-        }
-    }
-    func searchByName(_ keyword: String?) {
-        guard let keyword = keyword else { return }
-        let predicate = NSPredicate(format: "title CONTAINS[c] %@", keyword)
-        fetchPredicate(predicate: predicate)
-    }
-    func fetchPredicate(predicate: NSPredicate? = nil) {
-        let request = NSFetchRequest<NSManagedObject>(entityName: "Memo")
-        request.predicate = predicate
-        do {
-            searchlist = try CoreDataManager.shared.mainContext.fetch(request)
         } catch {
             print(error)
         }
@@ -87,6 +76,22 @@ class CoreDataManager {
             print(error)
         }
     }
+
+    func addNewWalk(cuurentDate: Date, totalDistance: Double, totalTime: String, profile: Data, startLon: Double, startLat: Double, endLon: Double, endLat: Double) {
+        let newWalk = WalkEntity(context: mainContext)
+        newWalk.currentDate = cuurentDate
+        newWalk.totalDistance = totalDistance
+        newWalk.totalTime = totalTime
+        newWalk.profile = profile
+        newWalk.startLon = startLon
+        newWalk.startLat = startLat
+        newWalk.endLon = endLon
+        newWalk.endLat = endLat
+
+        walkList.insert(newWalk, at: 0)
+        saveContext()
+    }
+
     func addNewMemo(memoTitle: String?, memoContext: String?, timeStamp: Date?, walkCount: Int?, walkTime: Int?, pooCount: Int?, inputDate: Date?) {
         let newMemo = MemoEntity(context: mainContext)
         newMemo.title = memoTitle
@@ -107,6 +112,20 @@ class CoreDataManager {
         memoList.insert(newMemo, at: 0)
         saveContext()
     }
+
+    func addNewProfile(name: String, age: Int, gender: Int, birthDay: Date, detail: String?, image: Data, timeStamp: Date?) {
+        let newProfile = ProfileEntity(context: mainContext)
+        newProfile.name = name
+        newProfile.age = Int16(age)
+        newProfile.gender = Int16(gender)
+        newProfile.birthDay = birthDay
+        newProfile.detail  = detail
+        newProfile.image = image
+        newProfile.timeStamp = timeStamp
+        profileList.insert(newProfile, at: 0)
+        saveContext()
+    }
+
     func updateMemo(memo: MemoEntity, memoTitle: String?, memoContext: String?, walkCount: Int?, walkTime: Int?, pooCount: Int?, inputDate: Date?) {
         memo.title = memoTitle
         memo.context = memoContext
@@ -128,18 +147,7 @@ class CoreDataManager {
             print(error)
         }
     }
-    func addNewProfile(name: String, age: Int, gender: Int, birthDay: Date, detail: String?, image: Data, timeStamp: Date?) {
-        let newProfile = ProfileEntity(context: mainContext)
-        newProfile.name = name
-        newProfile.age = Int16(age)
-        newProfile.gender = Int16(gender)
-        newProfile.birthDay = birthDay
-        newProfile.detail  = detail
-        newProfile.image = image
-        newProfile.timeStamp = timeStamp
-        profileList.insert(newProfile, at: 0)
-        saveContext()
-    }
+
     func updateProfile(update: ProfileEntity, name: String, age: Int, gender: Int, birthDay: Date, detail: String?, image: Data) {
         update.name = name
         update.age = Int16(age)
@@ -153,14 +161,17 @@ class CoreDataManager {
             print(error)
         }
     }
+
     func deleteMemo(memo: MemoEntity) {
         mainContext.delete(memo)
         saveContext()
     }
+
     func deleteProfile(profile: ProfileEntity) {
         mainContext.delete(profile)
         saveContext()
     }
+
     // MARK: - Core Data stack
     lazy var persistentContainer: NSPersistentContainer = {
 
@@ -173,6 +184,7 @@ class CoreDataManager {
         })
         return container
     }()
+
     // MARK: - Core Data Saving support
     func saveContext () {
         let context = persistentContainer.viewContext

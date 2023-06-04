@@ -45,10 +45,8 @@ class LoginViewController: UIViewController {
 
         return startButton
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        shadowView(inputView: imageContainView)
-        startButtonSet()
+
+    func checkSignInID() {
 
         let loginButton = ASAuthorizationAppleIDButton(type: .signIn, style: .whiteOutline)
         loginButton.addTarget(self, action: #selector(startAppleIDButton), for: .touchUpInside)
@@ -57,35 +55,33 @@ class LoginViewController: UIViewController {
 
         let keychain = KeychainSwift()
         if let id = keychain.get(Keys.id.rawValue) {
-            if let value = keychain.get(Keys.provider.rawValue), let provider = Provider(rawValue: value) {
-                switch provider {
-                case .apple:
-                    ASAuthorizationAppleIDProvider().getCredentialState(forUserID: id) { state, error in
-                        if let error {
-                            print(error)
-                            return
-                        }
+            ASAuthorizationAppleIDProvider().getCredentialState(forUserID: id) { state, error in
+                if let error {
+                    print(error)
+                    return
+                }
 
-                        DispatchQueue.main.async {
-                            switch state {
-                            case .authorized:
-                                if let name = keychain.get(Keys.name.rawValue) {
-                                    self.mainLabel.text = "\(name)님, 안녕하세요 :)"
-                                }
-                                loginButton.isHidden = true
-                                self.startButton.isHidden = false
-                            @unknown default:
-                                print(error)
-                            }
+                DispatchQueue.main.async {
+                    switch state {
+                    case .authorized:
+                        if let name = keychain.get(Keys.name.rawValue) {
+                            self.mainLabel.text = "\(name)님, 안녕하세요 :)"
                         }
+                        loginButton.isHidden = true
+                        self.startButton.isHidden = false
+                    @unknown default:
+                        print(error)
                     }
-                case .naver:
-                    break
-                case .kakao:
-                    break
                 }
             }
         }
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        shadowView(inputView: imageContainView)
+        startButtonSet()
+        checkSignInID()
     }
 
     @objc func startAppleIDButton() {
@@ -108,7 +104,6 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
 
             let keychain = KeychainSwift()
 
-            keychain.set(Provider.apple.rawValue, forKey: Keys.provider.rawValue)
             keychain.set(id, forKey: Keys.id.rawValue)
 
             if let email {
@@ -118,9 +113,10 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             if let fullName = credential.fullName?.formatted(), fullName.count > 0 {
                 keychain.set(fullName, forKey: Keys.name.rawValue)
             }
+
             mainLabel.text = "\(fullName), 안녕하세요 :)"
             // 키 체인을 사용하여 데이터가 저장되어 있는지 확인하는 코드
-            print(keychain.get(Keys.id.rawValue), keychain.get(Keys.email.rawValue), keychain.get(Keys.name.rawValue))
+
             performSegue(withIdentifier: "loginSegue", sender: self)
         }
     }
@@ -134,11 +130,4 @@ enum Keys: String {
     case id = "com.leehongryul.myDogGallery.id"
     case email = "com.leehongryul.myDogGallery.email"
     case name = "com.leehongryul.myDogGallery.name"
-    case provider = "com.leehongryul.myDogGallery.provider"
-}
-
-enum Provider: String {
-    case apple
-    case kakao
-    case naver
 }
