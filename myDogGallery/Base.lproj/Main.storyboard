@@ -106,16 +106,29 @@
                                             <constraint firstAttribute="height" constant="50" id="t4T-ai-l4f"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ap1-0E-aed">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="91"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain"/>
+                                        <connections>
+                                            <action selector="lastWalkButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="azR-Gj-sdF"/>
+                                            <segue destination="ONP-OL-Khf" kind="showDetail" identifier="lastWalkSegue" id="1O4-fJ-vSt"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstItem="glz-Cl-IEs" firstAttribute="top" secondItem="J1l-Bl-GI4" secondAttribute="bottom" id="28m-Ce-K4n"/>
                                     <constraint firstItem="J1l-Bl-GI4" firstAttribute="top" secondItem="nH1-Je-bQC" secondAttribute="top" constant="15" id="2YA-TZ-iaT"/>
                                     <constraint firstItem="J1l-Bl-GI4" firstAttribute="leading" secondItem="nH1-Je-bQC" secondAttribute="leading" constant="15" id="358-8a-4IE"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ap1-0E-aed" secondAttribute="trailing" id="BZA-J6-Sgr"/>
                                     <constraint firstItem="c79-hb-KjS" firstAttribute="centerY" secondItem="nH1-Je-bQC" secondAttribute="centerY" id="FZF-l3-Kko"/>
+                                    <constraint firstItem="Ap1-0E-aed" firstAttribute="leading" secondItem="nH1-Je-bQC" secondAttribute="leading" id="MZl-Xj-ivz"/>
                                     <constraint firstAttribute="trailing" secondItem="c79-hb-KjS" secondAttribute="trailing" constant="20" id="XZT-Br-0kz"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ap1-0E-aed" secondAttribute="bottom" id="Yew-b6-UGc"/>
                                     <constraint firstAttribute="bottom" secondItem="glz-Cl-IEs" secondAttribute="bottom" constant="15" id="n5R-P7-YlE"/>
                                     <constraint firstItem="glz-Cl-IEs" firstAttribute="leading" secondItem="nH1-Je-bQC" secondAttribute="leading" constant="15" id="uoj-3y-yjA"/>
+                                    <constraint firstItem="Ap1-0E-aed" firstAttribute="top" secondItem="nH1-Je-bQC" secondAttribute="top" id="v7m-A5-E3L"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -2215,6 +2228,9 @@
         <designable name="OX5-Ee-bR4">
             <size key="intrinsicContentSize" width="256" height="256"/>
         </designable>
+        <designable name="dCO-wa-ePO">
+            <size key="intrinsicContentSize" width="1839" height="1455"/>
+        </designable>
         <designable name="j6e-AX-yvV">
             <size key="intrinsicContentSize" width="1752.5" height="3000"/>
         </designable>
@@ -2226,6 +2242,7 @@
         <segue reference="JuO-Fx-gPU"/>
         <segue reference="7EM-pk-R26"/>
         <segue reference="wB4-4P-7vD"/>
+        <segue reference="1O4-fJ-vSt"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="8595649" width="1752.5" height="3000"/>

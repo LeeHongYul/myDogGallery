@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct TableData {
+struct SettingTableData {
     let items: [String]
 
 }
 
 let mainSettinglist = [
-    TableData(items: ["버전 정보"]),
-    TableData(items: ["계정 / 정보 관리"]),
-    TableData(items: ["공지사항", "이용약관"])
+    SettingTableData(items: ["버전 정보"]),
+    SettingTableData(items: ["계정 / 정보 관리"]),
+    SettingTableData(items: ["공지사항", "이용약관"])
 ]
 
 struct Announcement {

@@ -34,6 +34,10 @@ class MainViewController: UIViewController {
 
     @IBOutlet var mainPageControl: UIPageControl!
 
+    @IBAction func lastWalkButton(_ sender: Any) {
+performSegue(withIdentifier: "lastWalkSegue", sender: self)
+    }
+
     // CollectionView의 이미지를 PageControl의 변화에 따라 변경하도록 구현
     @IBAction func pageChaged(_ sender: UIPageControl) {
         let indexPath = IndexPath(item: sender.currentPage, section: 0)
@@ -174,7 +178,6 @@ class MainViewController: UIViewController {
         if let inputeDate = CoreDataManager.shared.memoList.first?.inputDate {
             lastWalkDateLabel.text =  dateFormatter.string(from: inputeDate)
         }
-//        randomPhraseTextView.text = "\(phraselist[Int.random(in: 0 ... phraselist.count - 1)])"
 
         if let randQuestion = questionList.randomElement() {
             randomPhraseTextView.text = "\(randQuestion.question)"
