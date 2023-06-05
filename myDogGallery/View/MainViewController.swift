@@ -187,13 +187,10 @@ class MainViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
         if segue.identifier == "answerSegue" {
-            if let viewController = segue.destination as? AnswerViewController {
+            if (segue.destination.sheetPresentationController?.detents = [.medium()]) != nil, let viewController = segue.destination as? AnswerViewController {
                 viewController.targetQuestion = randSelectedQuestion
             }
         }
-
-
-
     }
 }
 

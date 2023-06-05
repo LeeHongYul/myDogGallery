@@ -16,32 +16,52 @@
             <objects>
                 <viewController id="utK-7y-fQG" customClass="AnswerViewController" customModule="myDogGallery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P31-lS-C9I">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="922"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="FVX-rG-eX1">
-                                <rect key="frame" x="20" y="252" width="390" height="631"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="20" y="219.66666666666669" width="390" height="702.33333333333326"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qC2-MY-vDm">
-                                <rect key="frame" x="20" y="191" width="390" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qC2-MY-vDm">
+                                <rect key="frame" x="20" y="146" width="390" height="33.666666666666657"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="runny" translatesAutoresizingMaskIntoConstraints="NO" id="dCO-wa-ePO" customClass="RoundedView" customModule="myDogGallery" customModuleProvider="target">
+                                <rect key="frame" x="20" y="10" width="390" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="dXr-pp-3SP"/>
+                                    <constraint firstAttribute="width" constant="390" id="hc0-7b-KXS"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" systemColor="systemOrangeColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cUO-3s-HDu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="qC2-MY-vDm" firstAttribute="leading" secondItem="cUO-3s-HDu" secondAttribute="leading" constant="20" id="2Mi-fb-54i"/>
+                            <constraint firstItem="qC2-MY-vDm" firstAttribute="top" secondItem="dCO-wa-ePO" secondAttribute="bottom" constant="8" symbolic="YES" id="4tI-t2-R7n"/>
+                            <constraint firstItem="cUO-3s-HDu" firstAttribute="trailing" secondItem="dCO-wa-ePO" secondAttribute="trailing" constant="20" id="6yC-3F-TsU"/>
                             <constraint firstItem="FVX-rG-eX1" firstAttribute="bottom" secondItem="cUO-3s-HDu" secondAttribute="bottom" id="Cmn-s1-s8p"/>
-                            <constraint firstItem="qC2-MY-vDm" firstAttribute="top" secondItem="cUO-3s-HDu" secondAttribute="top" constant="147" id="TTT-r9-Rlk"/>
+                            <constraint firstItem="dCO-wa-ePO" firstAttribute="leading" secondItem="cUO-3s-HDu" secondAttribute="leading" constant="20" id="SJA-mK-k5d"/>
                             <constraint firstItem="cUO-3s-HDu" firstAttribute="trailing" secondItem="qC2-MY-vDm" secondAttribute="trailing" constant="20" id="gZ6-KM-8Jp"/>
                             <constraint firstItem="FVX-rG-eX1" firstAttribute="trailing" secondItem="qC2-MY-vDm" secondAttribute="trailing" id="ljI-jB-vHg"/>
+                            <constraint firstItem="dCO-wa-ePO" firstAttribute="top" secondItem="cUO-3s-HDu" secondAttribute="top" constant="10" id="pOy-Ag-tL5"/>
                             <constraint firstItem="FVX-rG-eX1" firstAttribute="top" secondItem="qC2-MY-vDm" secondAttribute="bottom" constant="40" id="tCC-a3-v7w"/>
                             <constraint firstItem="FVX-rG-eX1" firstAttribute="leading" secondItem="qC2-MY-vDm" secondAttribute="leading" id="yxm-Wd-n4K"/>
                         </constraints>
@@ -121,7 +141,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain"/>
                                         <connections>
-                                            <segue destination="utK-7y-fQG" kind="show" identifier="answerSegue" id="TfG-K9-YOe"/>
+                                            <segue destination="utK-7y-fQG" kind="presentation" identifier="answerSegue" id="TfG-K9-YOe"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2220,6 +2240,7 @@
         <image name="person" catalog="system" width="128" height="121"/>
         <image name="photo.artframe" catalog="system" width="128" height="93"/>
         <image name="play.fill" catalog="system" width="117" height="128"/>
+        <image name="runny" width="1839" height="1455"/>
         <image name="square.and.pencil" catalog="system" width="128" height="113"/>
         <image name="walking-the-dog" width="256" height="256"/>
         <image name="walking-the-dog-2" width="256" height="256"/>
