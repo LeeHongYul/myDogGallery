@@ -9,7 +9,7 @@ import UIKit
 import Photos
 import PhotosUI
 
-//private let reuseIdentifier = "cell"
+// private let reuseIdentifier = "cell"
 
 class PhotoCollectionViewController: UICollectionViewController, PHPhotoLibraryChangeObserver {
     func photoLibraryDidChange(_ changeInstance: PHChange) {

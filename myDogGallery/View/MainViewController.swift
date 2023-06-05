@@ -174,8 +174,26 @@ class MainViewController: UIViewController {
         if let inputeDate = CoreDataManager.shared.memoList.first?.inputDate {
             lastWalkDateLabel.text =  dateFormatter.string(from: inputeDate)
         }
-        randomPhraseTextView.text = "\(phraselist[Int.random(in: 0 ... phraselist.count - 1)])"
+//        randomPhraseTextView.text = "\(phraselist[Int.random(in: 0 ... phraselist.count - 1)])"
+
+        if let randQuestion = questionList.randomElement() {
+            randomPhraseTextView.text = "\(randQuestion.question)"
+            randSelectedQuestion = randQuestion
+        }
+
         mainCollectionView.reloadData()
+    }
+    var randSelectedQuestion: QuestionAnswer?
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if segue.identifier == "answerSegue" {
+            if let viewController = segue.destination as? AnswerViewController {
+                viewController.targetQuestion = randSelectedQuestion
+            }
+        }
+
+
+
     }
 }
 

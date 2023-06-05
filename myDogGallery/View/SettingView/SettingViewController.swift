@@ -8,18 +8,9 @@
 import UIKit
 import KeychainSwift
 
-struct TableData {
-    let items: [String]
-
-}
 
 class SettingViewController: UIViewController {
 
-    let list = [
-        TableData(items: ["버전 정보"]),
-        TableData(items: ["계정 / 정보 관리"]),
-        TableData(items: ["공지사항", "업데이트"])
-    ]
 
     @IBAction func logoutButton(_ sender: Any) {
         logout()
@@ -33,6 +24,7 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print("\( keychainlist.count)!!!!!)()()()()()()()")
     }
 
     func logout() {
@@ -52,18 +44,18 @@ class SettingViewController: UIViewController {
 }
 extension SettingViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return list.count
+        return mainSettinglist.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list[section].items.count
+        return mainSettinglist[section].items.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingViewController", for: indexPath)
         var content = cell.defaultContentConfiguration()
 
-        let target = list[indexPath.section].items[indexPath.row]
+        let target = mainSettinglist[indexPath.section].items[indexPath.row]
 
         switch indexPath.section {
         case 0:
@@ -95,4 +87,25 @@ extension SettingViewController: UITableViewDelegate {
         }
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        let target = mainSettinglist[indexPath.section].items[indexPath.row]
+
+        switch indexPath.section {
+        case 0:
+            print("")
+        case 1:
+            if target == "계정 / 정보 관리" {
+                performSegue(withIdentifier: "etcSegue", sender: self)
+            }
+        case 2:
+            if target == "공지사항" {
+                performSegue(withIdentifier: "announcementSegue", sender: self)
+            } else {
+                performSegue(withIdentifier: "updateSegue", sender: self)
+            }
+        default:
+           break
+        }
+    }
 }

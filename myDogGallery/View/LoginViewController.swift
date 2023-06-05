@@ -105,13 +105,15 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             let keychain = KeychainSwift()
 
             keychain.set(id, forKey: Keys.id.rawValue)
-
+            keychainlist.append(id)
             if let email {
                 keychain.set(email, forKey: Keys.email.rawValue)
+                keychainlist.append(email)
             }
 
             if let fullName = credential.fullName?.formatted(), fullName.count > 0 {
                 keychain.set(fullName, forKey: Keys.name.rawValue)
+                keychainlist.append(fullName)
             }
 
             mainLabel.text = "\(fullName), 안녕하세요 :)"

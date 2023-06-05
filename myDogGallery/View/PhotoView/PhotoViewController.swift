@@ -14,16 +14,6 @@ class PhotoViewController: UIViewController {
 
     @IBOutlet var photoCollectionView: UICollectionView!
 
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "PhotoSegue" {
-//            if let cell = sender as? UICollectionViewCell, let indexPath = photoCollectionView.indexPath(for: cell) {
-//                let target = .object(at: indexPath.item)
-//                if let vc = segue.destination as? DetailPhotoViewController {
-//                    vc.editPhoto = target
-//                }
-//            }
-//        }
-//    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "PhotoSegue":
@@ -34,7 +24,6 @@ class PhotoViewController: UIViewController {
             break
         }
     }
-
 
     lazy var dataSource: UICollectionViewDiffableDataSource<Int, PHAsset> = {
         return UICollectionViewDiffableDataSource(collectionView: photoCollectionView) { collectionView, indexPath, asset in
