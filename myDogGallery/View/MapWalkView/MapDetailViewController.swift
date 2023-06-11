@@ -9,7 +9,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapDetailViewController: UIViewController {
+class MapDetailViewController: BaseViewController {
 
     var walkHistory: WalkEntity?
 

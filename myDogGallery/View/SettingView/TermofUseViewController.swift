@@ -7,10 +7,9 @@
 
 import UIKit
 
-class TermofUseViewController: UIViewController {
+class TermofUseViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.tintColor = .orange
     }
 }

@@ -9,13 +9,12 @@ import UIKit
 import KeychainSwift
 import AuthenticationServices
 
-class UserSettingViewController: UIViewController {
+class UserSettingViewController: BaseViewController {
 
     let list = ["이메일", "휴대폰 번호", "이름"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.tintColor = .orange
     }
 }
 

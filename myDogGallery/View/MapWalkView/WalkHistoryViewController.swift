@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WalkHistoryViewController: UIViewController {
+class WalkHistoryViewController: BaseViewController {
     
     var pickedFinalImage: UIImage?
     

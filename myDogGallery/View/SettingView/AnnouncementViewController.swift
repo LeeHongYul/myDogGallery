@@ -7,11 +7,10 @@
 
 import UIKit
 
-class AnnouncementViewController: UIViewController {
+class AnnouncementViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.tintColor = .orange
     }
 }
 

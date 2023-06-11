@@ -8,7 +8,7 @@
 import UIKit
 import Photos
 
-class PhotoViewController: UIViewController {
+class PhotoViewController: BaseViewController {
 
     let imageManager = PHImageManager() //이미지나 영상 읽어올때
 

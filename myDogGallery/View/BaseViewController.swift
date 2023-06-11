@@ -5,25 +5,34 @@
 //  Created by 이홍렬 on 2023/06/12.
 //
 
+import Foundation
 import UIKit
 
-class BaseViewController: UIViewController {
+class BaseViewController : UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.tintColor = .orange
     }
-    
 
-    /*
-    // MARK: - Navigation
+    func showErrorAlert(){
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
 
+    func showAlert(titile : String,
+                   message : String ,
+                   confrimTitle: String = "확인" ,
+                   cancelTitle : String = "취소",
+                   callback: ()->() ,
+                   cancelCallback : ()->()) {
+        let alert = UIAlertController(title: titile, message: message, preferredStyle: .alert)
+
+        let alertAction = UIAlertAction(title: confrimTitle, style: .default)
+
+        let cancleAction = UIAlertAction(title: cancelTitle, style: .cancel)
+
+        alert.addAction(alertAction)
+
+        self.present(alert, animated: true )
+    }
 }

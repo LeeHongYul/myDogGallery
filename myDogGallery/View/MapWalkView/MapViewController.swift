@@ -9,7 +9,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController {
+class MapViewController: BaseViewController {
     var timer: Timer = Timer()
     var count: Int = 0
     var totalMeter = 0.0
@@ -47,8 +47,6 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationController?.navigationBar.tintColor = .orange
         
         createSaveResetBtn()
         addSaveBtn.layer.isHidden = true

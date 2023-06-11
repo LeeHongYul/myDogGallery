@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AnswerViewController: UIViewController {
+class AnswerViewController: BaseViewController {
 
     @IBOutlet var questionLabel: UILabel!
     @IBOutlet var answerTextView: UITextView!
@@ -18,7 +18,5 @@ var targetQuestion: QuestionAnswer?
         super.viewDidLoad()
         questionLabel.text = targetQuestion?.question
         answerTextView.text =  targetQuestion?.answer
-
-        self.navigationController?.navigationBar.tintColor = .orange
     }
 }

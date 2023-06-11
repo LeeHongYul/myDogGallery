@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WalkProfileViewController: UIViewController {
+class WalkProfileViewController: BaseViewController {
     
     var pickedFinalImage: UIImage? // 선택 프로필 이미지를 MapViewController로 넘기기 위한 변수
     var didSelectedProfileCell = false // 프로필을 선택하지 않은 상태에서 MapViewController로 전환을 방지하기 위한 변수
@@ -61,7 +61,6 @@ class WalkProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.tintColor = .orange
         ProfileManager.shared.fetchProfile()
 
         profileCollectionView.collectionViewLayout = createLayout()

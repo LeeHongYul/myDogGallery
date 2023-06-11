@@ -12,7 +12,7 @@ extension Notification.Name {
     static let memoDidChange = Notification.Name(rawValue: "memoDidChange")
 }
 
-class NewMemoViewController: UIViewController {
+class NewMemoViewController: BaseViewController {
     var editTarget: MemoEntity?
     
     @IBOutlet var memoTitleTextField: UITextField!

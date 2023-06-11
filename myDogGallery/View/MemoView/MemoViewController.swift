@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class MemoViewController: UIViewController {
+class MemoViewController: BaseViewController {
     let memoSearchBar = UISearchBar()
     var isSearchMode = false // isSearchMode 변수에 따라 memolist을 불러올지 검색된 리스트를 불러올지 결정하는 변수
     

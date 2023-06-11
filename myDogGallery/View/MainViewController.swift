@@ -10,7 +10,7 @@ import Moya
 import CoreLocation
 import SDWebImage
 
-class MainViewController: UIViewController {
+class MainViewController: BaseViewController {
 
     var weatherList = [Forcast.ForcastTemp]()
 

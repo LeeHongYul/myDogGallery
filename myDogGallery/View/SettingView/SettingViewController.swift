@@ -8,7 +8,7 @@
 import UIKit
 import KeychainSwift
 
-class SettingViewController: UIViewController {
+class SettingViewController: BaseViewController {
 
     @IBAction func logoutButton(_ sender: Any) {
         logout()

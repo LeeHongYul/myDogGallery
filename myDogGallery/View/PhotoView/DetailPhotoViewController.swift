@@ -8,7 +8,7 @@
 import UIKit
 import Photos
 
-class DetailPhotoViewController: UIViewController {
+class DetailPhotoViewController: BaseViewController {
 
     var asset: PHAsset?
 

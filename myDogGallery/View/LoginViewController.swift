@@ -9,7 +9,7 @@ import UIKit
 import AuthenticationServices
 import KeychainSwift
 
-class LoginViewController: UIViewController {
+class LoginViewController: BaseViewController {
 
     @IBOutlet var mainLabel: UILabel!
 
