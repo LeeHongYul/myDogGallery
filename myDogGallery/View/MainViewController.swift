@@ -190,7 +190,7 @@ performSegue(withIdentifier: "lastWalkSegue", sender: self)
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
         if segue.identifier == "answerSegue" {
-            if (segue.destination.sheetPresentationController?.detents = [.medium()]) != nil, let viewController = segue.destination as? AnswerViewController {
+            if (segue.destination.sheetPresentationController?.detents = [.medium(), .large()]) != nil, let viewController = segue.destination as? AnswerViewController {
                 viewController.targetQuestion = randSelectedQuestion
             }
         }
