@@ -62,7 +62,7 @@ class WalkProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.tintColor = .orange
-        CoreDataManager.shared.fetchProfile()
+        ProfileManager.shared.fetchProfile()
 
         profileCollectionView.collectionViewLayout = createLayout()
         profileCollectionView.reloadData()
@@ -76,13 +76,13 @@ class WalkProfileViewController: UIViewController {
 
 extension WalkProfileViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return CoreDataManager.shared.profileList.count
+        return ProfileManager.shared.profileList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfilePickCollectionViewCell", for: indexPath) as! ProfilePickCollectionViewCell
         
-        let target = CoreDataManager.shared.profileList[indexPath.row]
+        let target = ProfileManager.shared.profileList[indexPath.row]
 
         if let targetImage = target.image {
             cell.profilePickImage.image = UIImage(data: targetImage)
@@ -94,7 +94,7 @@ extension WalkProfileViewController: UICollectionViewDataSource {
 
 extension WalkProfileViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let target = CoreDataManager.shared.profileList[indexPath.row]
+        let target = ProfileManager.shared.profileList[indexPath.row]
         didSelectedProfileCell = true
         if let targetImage = target.image {
             selectedProfileImage.image = UIImage(data: targetImage)

@@ -26,7 +26,7 @@ class MemoViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EditSegue" {
             if let cell = sender as? UITableViewCell, let indexPath = memoTableView.indexPath(for: cell) {
-                let target = CoreDataManager.shared.memoList[indexPath.row]
+                let target = MemoManager.shared.memoList[indexPath.row]
                 if let viewController = segue.destination.children.first as? NewMemoViewController {
                     viewController.editTarget = target
                 }
@@ -37,7 +37,7 @@ class MemoViewController: UIViewController {
     // 메모의 이름으로 검색하는 SearchBar
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        CoreDataManager.shared.searchByName(searchBar.text)
+        MemoManager.shared.searchByName(searchBar.text)
         memoTableView.reloadData()
         
         print("searchBar clicked")
@@ -46,7 +46,7 @@ class MemoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(forName: .memoDidChange, object: nil, queue: .main) { noti in
-            CoreDataManager.shared.fetchMemo()
+            MemoManager.shared.fetchMemo()
             self.memoTableView.reloadData()
         }
 
@@ -56,8 +56,8 @@ class MemoViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        memoSearchBar.placeholder = CoreDataManager.shared.memoList.count == 0 ? "메모를 작성해주세요" : "제목을 검색해 주세요"
-        CoreDataManager.shared.fetchPredicate()
+        memoSearchBar.placeholder = MemoManager.shared.memoList.count == 0 ? "메모를 작성해주세요" : "제목을 검색해 주세요"
+        MemoManager.shared.fetchSearchedMemo()
         memoTableView.reloadData()
     }
 }
@@ -65,20 +65,20 @@ class MemoViewController: UIViewController {
 extension MemoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearchMode == false {
-            return CoreDataManager.shared.memoList.count
+            return MemoManager.shared.memoList.count
         } else {
-            return CoreDataManager.shared.searchBarlist.count
+            return MemoManager.shared.searchBarlist.count
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemoViewController") as! MemoTableViewCell
         if isSearchMode == false {
-            cell.memoTitleLabel?.text = CoreDataManager.shared.memoList[indexPath.row].title
-            if let inputDateType = CoreDataManager.shared.memoList[indexPath.row].inputDate {
+            cell.memoTitleLabel?.text = MemoManager.shared.memoList[indexPath.row].title
+            if let inputDateType = MemoManager.shared.memoList[indexPath.row].inputDate {
                 cell.memoInputDateLabel.text = dateFormatter.string(from: inputDateType)
             }
         } else {
-            let target = CoreDataManager.shared.searchBarlist[indexPath.row]
+            let target = MemoManager.shared.searchBarlist[indexPath.row]
             if let title = target.value(forKey: "title") as? String {
                 cell.memoTitleLabel?.text  = "\(title)"
             }
@@ -96,10 +96,10 @@ extension MemoViewController: UITableViewDelegate {
     // Memo delete
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let target = CoreDataManager.shared.memoList[indexPath.row]
-            CoreDataManager.shared.deleteMemo(memo: target)
+            let target = MemoManager.shared.memoList[indexPath.row]
+            MemoManager.shared.deleteMemo(memo: target)
             
-            CoreDataManager.shared.fetchMemo()
+            MemoManager.shared.fetchMemo()
             memoTableView.reloadData()
         }
     }

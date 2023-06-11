@@ -69,10 +69,10 @@ class ProfileEditTableViewController: UITableViewController {
 
         guard let data = profileImage.image?.jpegData(compressionQuality: 0.75) else { return }
         if let target = profileList {
-            CoreDataManager.shared.updateProfile(update: target, name: name, age: age, gender: isMale, birthDay: birthDay, detail: detail, image: data)
+            ProfileManager.shared.updateProfile(update: target, name: name, age: age, gender: isMale, birthDay: birthDay, detail: detail, image: data)
             NotificationCenter.default.post(name: .profileDidUpdate, object: nil)
         } else {
-            CoreDataManager.shared.addNewProfile(name: name, age: age, gender: isMale, birthDay: birthDay, detail: detail, image: data, timeStamp: timeStamp)
+            ProfileManager.shared.addNewProfile(name: name, age: age, gender: isMale, birthDay: birthDay, detail: detail, image: data, timeStamp: timeStamp)
             NotificationCenter.default.post(name: .profileDidInsert, object: nil)
         }
         dismiss(animated: true)

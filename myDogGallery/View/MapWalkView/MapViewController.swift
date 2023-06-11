@@ -54,7 +54,7 @@ class MapViewController: UIViewController {
         addSaveBtn.layer.isHidden = true
         addResetBtn.layer.isHidden = true
         
-        CoreDataManager.shared.fetchProfile()
+        ProfileManager.shared.fetchProfile()
         
         let tabBarHeight = self.tabBarController?.tabBar.frame.height ?? 0
         self.tabBarController?.tabBar.frame.origin = CGPoint(x: 0, y: UIScreen.main.bounds.maxY - tabBarHeight)
@@ -176,7 +176,7 @@ class MapViewController: UIViewController {
         let ok = UIAlertAction(title: "확인", style: .default) { _ in
             guard let data = self.pickedFinalImage?.pngData() else { return }
             if let timeString = self.timeLabel.text {
-                CoreDataManager.shared.addNewWalk(cuurentDate: Date(), totalDistance: self.totalMeter, totalTime: timeString, profile: data, startLon: self.drawPoint.first?.longitude ?? 0.0, startLat: self.drawPoint.first?.latitude ?? 0.0, endLon: self.drawPoint.last?.longitude ?? 0.0, endLat: self.drawPoint.last?.latitude ?? 0.0)
+                WalkManger.shared.addNewWalk(cuurentDate: Date(), totalDistance: self.totalMeter, totalTime: timeString, profile: data, startLon: self.drawPoint.first?.longitude ?? 0.0, startLat: self.drawPoint.first?.latitude ?? 0.0, endLon: self.drawPoint.last?.longitude ?? 0.0, endLat: self.drawPoint.last?.latitude ?? 0.0)
                 self.drawPoint = []
             }
             

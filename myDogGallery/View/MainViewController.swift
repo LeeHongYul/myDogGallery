@@ -154,10 +154,10 @@ performSegue(withIdentifier: "lastWalkSegue", sender: self)
         gradientStyle()
         fetchMoya()
 
-        CoreDataManager.shared.fetchProfile() // CoreData에 있는 프로필 데이터 가져오는 코드
+        ProfileManager.shared.fetchProfile() // CoreData에 있는 프로필 데이터 가져오는 코드
 
         mainPageControl.currentPage = 0 // 현재 PageControl 0으로 초기화
-        mainPageControl.numberOfPages = CoreDataManager.shared.profileList.count // 등록되어 있는 프로필의 수를 PageControl에 표시하기 위한 코드
+        mainPageControl.numberOfPages = ProfileManager.shared.profileList.count // 등록되어 있는 프로필의 수를 PageControl에 표시하기 위한 코드
 
         mainCollectionView.collectionViewLayout = createLayout()
         mainCollectionView.layer.cornerRadius = 15
@@ -168,14 +168,14 @@ performSegue(withIdentifier: "lastWalkSegue", sender: self)
     /// viewWillAppear 실행될 때마다 추가된 프로필 이미지, 페이지 컨트롤, 최근 산책 날짜, 글귀 정보 추가한다
     override func viewWillAppear(_ animated: Bool) {
         // 등록되어 있는 프로필 없으면 mainProfileView로 CollectionView를 가린다
-        mainProfileView.isHidden = CoreDataManager.shared.profileList.count != 0 ? true : false
+        mainProfileView.isHidden = ProfileManager.shared.profileList.count != 0 ? true : false
 //        CoreDataManager.shared.fetchProfile()
 
         mainPageControl.currentPage = 0
-        mainPageControl.numberOfPages = CoreDataManager.shared.profileList.count
+        mainPageControl.numberOfPages = ProfileManager.shared.profileList.count
 
-        CoreDataManager.shared.fetchMemo()
-        if let inputeDate = CoreDataManager.shared.memoList.first?.inputDate {
+        MemoManager.shared.fetchMemo()
+        if let inputeDate = MemoManager.shared.memoList.first?.inputDate {
             lastWalkDateLabel.text =  dateFormatter.string(from: inputeDate)
         }
 
@@ -237,13 +237,13 @@ extension MainViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return CoreDataManager.shared.profileList.count
+        return ProfileManager.shared.profileList.count
     }
 
     // CoreData로 등록된 프로필의 이미지 가져오는 코드
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mainCell", for: indexPath) as! MainCollectionViewCell
-        let target = CoreDataManager.shared.profileList[indexPath.row]
+        let target = ProfileManager.shared.profileList[indexPath.row]
 
         if let imageData = target.image {
             cell.mainImageView.image = UIImage(data: imageData)

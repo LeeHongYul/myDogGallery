@@ -36,7 +36,7 @@
 		5DC7F7E529EF836C005F9E22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DC7F7E429EF836C005F9E22 /* Assets.xcassets */; };
 		5DC7F7E829EF836C005F9E22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DC7F7E629EF836C005F9E22 /* LaunchScreen.storyboard */; };
 		5DC7F7F029EF89D0005F9E22 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC7F7EF29EF89D0005F9E22 /* WeatherData.swift */; };
-		5DC7F7F429EF9816005F9E22 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC7F7F329EF9816005F9E22 /* CoreDataManager.swift */; };
+		5DC7F7F429EF9816005F9E22 /* DataMangers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC7F7F329EF9816005F9E22 /* DataMangers.swift */; };
 		5DD4372329FFFF8300181A72 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD4372229FFFF8300181A72 /* MapViewController.swift */; };
 		5DE5310D2A2C684C00A1C8DA /* UserSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE5310C2A2C684C00A1C8DA /* UserSettingViewController.swift */; };
 		5DE5310F2A2C68AA00A1C8DA /* SettingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE5310E2A2C68AA00A1C8DA /* SettingData.swift */; };
@@ -84,7 +84,7 @@
 		5DC7F7E729EF836C005F9E22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5DC7F7E929EF836C005F9E22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DC7F7EF29EF89D0005F9E22 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
-		5DC7F7F329EF9816005F9E22 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		5DC7F7F329EF9816005F9E22 /* DataMangers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMangers.swift; sourceTree = "<group>"; };
 		5DD4372229FFFF8300181A72 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		5DE5310C2A2C684C00A1C8DA /* UserSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingViewController.swift; sourceTree = "<group>"; };
 		5DE5310E2A2C68AA00A1C8DA /* SettingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingData.swift; sourceTree = "<group>"; };
@@ -193,7 +193,7 @@
 		5DC7F7F129EF8A1A005F9E22 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				5DC7F7F329EF9816005F9E22 /* CoreDataManager.swift */,
+				5DC7F7F329EF9816005F9E22 /* DataMangers.swift */,
 				5DC7F7EF29EF89D0005F9E22 /* WeatherData.swift */,
 				5D1F3F5829F22AF2007FBD7E /* WeatherDataApi.swift */,
 				5DE5310E2A2C68AA00A1C8DA /* SettingData.swift */,
@@ -418,7 +418,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D56118329EFB00100A6EA56 /* ProfileTableViewController.swift in Sources */,
-				5DC7F7F429EF9816005F9E22 /* CoreDataManager.swift in Sources */,
+				5DC7F7F429EF9816005F9E22 /* DataMangers.swift in Sources */,
 				5D12B0962A08A8E7007CA12B /* WalkHistoryViewController.swift in Sources */,
 				5DC7F7DD29EF836C005F9E22 /* MainViewController.swift in Sources */,
 				5DD4372329FFFF8300181A72 /* MapViewController.swift in Sources */,

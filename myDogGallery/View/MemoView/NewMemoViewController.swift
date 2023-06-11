@@ -79,12 +79,12 @@ class NewMemoViewController: UIViewController {
         let walkTime = Int(walkTimeStr)
         guard let pooCountStr = pooLabel.text else { return }
         let pooCount = Int(pooCountStr)
-        CoreDataManager.shared.saveContext()
+        MemoManager.shared.saveContext()
         if let target = editTarget {
-            CoreDataManager.shared.updateMemo(memo: target, memoTitle: memoTitle, memoContext: memoContext, walkCount: walkCount, walkTime: walkTime, pooCount: pooCount, inputDate: inputDate)
+            MemoManager.shared.updateMemo(memo: target, memoTitle: memoTitle, memoContext: memoContext, walkCount: walkCount, walkTime: walkTime, pooCount: pooCount, inputDate: inputDate)
             NotificationCenter.default.post(name: .memoDidChange, object: nil)
         } else {
-            CoreDataManager.shared.addNewMemo(memoTitle: memoTitle, memoContext: memoContext, timeStamp: timeStamp, walkCount: walkCount, walkTime: walkTime, pooCount: pooCount, inputDate: inputDate)
+            MemoManager.shared.addNewMemo(memoTitle: memoTitle, memoContext: memoContext, timeStamp: timeStamp, walkCount: walkCount, walkTime: walkTime, pooCount: pooCount, inputDate: inputDate)
             NotificationCenter.default.post(name: .newMemoDidInsert, object: nil)
         }
         dismiss(animated: true)

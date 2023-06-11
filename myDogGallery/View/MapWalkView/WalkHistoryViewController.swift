@@ -17,7 +17,7 @@ class WalkHistoryViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueMapDetail" {
             if let cell = sender as? UITableViewCell, let indexPath = walkHistoryTableview.indexPath(for: cell) {
-                let target = CoreDataManager.shared.walkList[indexPath.row]
+                let target = WalkManger.shared.walkList[indexPath.row]
                 
                 if (segue.destination.sheetPresentationController?.detents = [.medium()]) != nil, let viewController = segue.destination as? MapDetailViewController {
 
@@ -29,7 +29,7 @@ class WalkHistoryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        CoreDataManager.shared.fetchWalk()
+        WalkManger.shared.fetchWalk()
     }
     var dateFormatter: DateFormatter = {
         let inputDate = DateFormatter()
@@ -42,12 +42,12 @@ class WalkHistoryViewController: UIViewController {
 
 extension WalkHistoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        CoreDataManager.shared.walkList.count
+        WalkManger.shared.walkList.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WalkHistoryTableViewCell") as! WalkHistoryTableViewCell
 
-        let target = CoreDataManager.shared.walkList[indexPath.row]
+        let target = WalkManger.shared.walkList[indexPath.row]
 
         cell.currentDateLabel?.text = dateFormatter.string(from: target.currentDate!)
         let result = target.totalDistance / 1000
@@ -61,6 +61,6 @@ extension WalkHistoryViewController: UITableViewDataSource {
 
 extension WalkHistoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let target = CoreDataManager.shared.walkList[indexPath.row]
+        let target = WalkManger.shared.walkList[indexPath.row]
     }
 }
