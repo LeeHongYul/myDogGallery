@@ -54,24 +54,32 @@ class NewMemoViewController: BaseViewController {
     
     @IBAction func save(_ sender: Any) {
         let memoTitle = memoTitleTextField.text
+
         if memoTitle?.count ?? 0 >= 15 {
             showAlert(titile: "제목 글자수가 많습니다. 15자", message: "제목 글자수 수정 필요합니다.")
             return
         }
+
         let memoContext = memoContextTextView.text
+
         if memoContext?.count == 0 {
             showAlert(titile: "오늘의 기록을 입력해주세요.", message: "오늘의 기록 작성 필요합니다.")
             return
         }
         let timeStamp = Date()
+
         let inputDate = inputDatePicker.date
+
         guard let walkCountStr = walkCountLabel.text else { return }
         let walkCount = Int(walkCountStr)
+
         guard let walkTimeStr = walkTimeLabel.text else { return }
         let walkTime = Int(walkTimeStr)
+
         guard let pooCountStr = pooLabel.text else { return }
         let pooCount = Int(pooCountStr)
         MemoManager.shared.saveContext()
+
         if let target = editTarget {
             MemoManager.shared.updateMemo(memo: target, memoTitle: memoTitle, memoContext: memoContext, walkCount: walkCount, walkTime: walkTime, pooCount: pooCount, inputDate: inputDate)
             NotificationCenter.default.post(name: .memoDidChange, object: nil)

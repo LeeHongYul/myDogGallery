@@ -89,6 +89,7 @@ class ProfileTableViewController: UITableViewController {
             completionHaldler(true)
         })
         actionPin.image = UIImage(systemName: "pin")
+
         if target.pin {
             actionPin.backgroundColor = .blue
             actionPin.image = UIImage(systemName: "pin.fill")

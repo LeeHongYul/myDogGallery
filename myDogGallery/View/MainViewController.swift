@@ -35,7 +35,7 @@ class MainViewController: BaseViewController {
     @IBOutlet var mainPageControl: UIPageControl!
 
     @IBAction func lastWalkButton(_ sender: Any) {
-performSegue(withIdentifier: "lastWalkSegue", sender: self)
+        performSegue(withIdentifier: "lastWalkSegue", sender: self)
     }
 
     // CollectionView의 이미지를 PageControl의 변화에 따라 변경하도록 구현
@@ -47,7 +47,7 @@ performSegue(withIdentifier: "lastWalkSegue", sender: self)
     // 날씨를 나타내는 뷰에 그림자 넣는 코드
 
     //  Moya를 사용하여 날씨 API 데이터를 가져오는 예시 코드
-    func fetchMoya() {
+    func fetchWeatherMoya() {
         let provider = MoyaProvider<WeatherDataApi>()
         provider.request(.weatherDataList(lat: locationManager.location?.coordinate.latitude ?? 0, lon: locationManager.location?.coordinate.longitude ?? 0, units: "metric")) { result in
             switch result {
@@ -60,9 +60,6 @@ performSegue(withIdentifier: "lastWalkSegue", sender: self)
 
                     let decoder = JSONDecoder()
                     let list = try decoder.decode(Forcast.self, from: data)
-
-                    self.weatherList = [list.mainForcast]
-
                     DispatchQueue.main.async {
                         let tempStr = String(format: "%.1f", list.mainForcast.mainTempature)
                         self.weatherDetailLabel.text = list.weather[0].main
@@ -82,10 +79,11 @@ performSegue(withIdentifier: "lastWalkSegue", sender: self)
                             print("no image")
                         }
                     }
+                    self.weatherList = [list.mainForcast]
+
                 } catch {
                     print(error)
                 }
-
             case let .failure(_):
                 break
             }
@@ -100,11 +98,13 @@ performSegue(withIdentifier: "lastWalkSegue", sender: self)
 
         locationManager.requestWhenInUseAuthorization()
         DispatchQueue.global().async {
-            if CLLocationManager.locationServicesEnabled() {
-                self.locationManager.startUpdatingLocation()
-            } else {
-                print("위치 서비스 허용 off")
-            }
+            CLLocationManager.locationServicesEnabled() ? self.locationManager.startUpdatingLocation() : print("위치 서비스 허용 off")
+
+//            if CLLocationManager.locationServicesEnabled() {
+//                self.locationManager.startUpdatingLocation()
+//            } else {
+//                print("위치 서비스 허용 off")
+//            }
         }
     }
 
@@ -124,29 +124,32 @@ performSegue(withIdentifier: "lastWalkSegue", sender: self)
     }
 
     func gradientStyle() {
-        if traitCollection.userInterfaceStyle == .dark {
-            mainGradientView.setGradient(color1: UIColor.systemOrange, color2: UIColor.systemOrange, color3: UIColor.black)
-        } else {
-            mainGradientView.setGradient(color1: UIColor.systemOrange, color2: UIColor.white, color3: UIColor.white)
-        }
+        let color1 = UIColor.systemOrange
+        let color2 = traitCollection.userInterfaceStyle == .dark ? UIColor.systemOrange : UIColor.white
+        let color3 = traitCollection.userInterfaceStyle == .dark ? UIColor.black : UIColor.white
 
+        mainGradientView.setGradient(color1: color1, color2: color2, color3: color3)
+    }
+
+    func setPageControl() {
+        mainPageControl.currentPage = 0 // 현재 PageControl 0으로 초기화
+        mainPageControl.numberOfPages = ProfileManager.shared.profileList.count // 등록되어 있는 프로필의 수를 PageControl에 표시하기 위한 코드
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         weatherView.setShadow(color: .black, opacity: 0.9, radius: 10, offset: CGSize(width: 0, height: 1))
         gradientStyle()
-        fetchMoya()
-
+        fetchWeatherMoya()
         ProfileManager.shared.fetchProfile() // CoreData에 있는 프로필 데이터 가져오는 코드
-
-        mainPageControl.currentPage = 0 // 현재 PageControl 0으로 초기화
-        mainPageControl.numberOfPages = ProfileManager.shared.profileList.count // 등록되어 있는 프로필의 수를 PageControl에 표시하기 위한 코드
+        setPageControl()
+        setLocationManager()
 
         mainCollectionView.collectionViewLayout = createLayout()
         mainCollectionView.layer.cornerRadius = 15
         mainCollectionView.reloadData()
-        setLocationManager()
+
     }
 
     /// viewWillAppear 실행될 때마다 추가된 프로필 이미지, 페이지 컨트롤, 최근 산책 날짜, 글귀 정보 추가한다
@@ -159,14 +162,19 @@ performSegue(withIdentifier: "lastWalkSegue", sender: self)
         mainPageControl.numberOfPages = ProfileManager.shared.profileList.count
 
         MemoManager.shared.fetchMemo()
-        if let inputeDate = MemoManager.shared.memoList.first?.inputDate {
-            lastWalkDateLabel.text = inputeDate.dateToString(format: "MMM d, yyyy")
-        }
+        guard let inputeDate = MemoManager.shared.memoList.first?.inputDate else { return }
+        lastWalkDateLabel.text = inputeDate.dateToString(format: "MMM d, yyyy")
+//        if let inputeDate = MemoManager.shared.memoList.first?.inputDate {
+//            lastWalkDateLabel.text = inputeDate.dateToString(format: "MMM d, yyyy")
+//        }
 
-        if let randQuestion = questionList.randomElement() {
-            randomPhraseTextView.text = "\(randQuestion.question)"
-            randSelectedQuestion = randQuestion
-        }
+        guard let randQuestion = questionList.randomElement() else { return }
+        randomPhraseTextView.text = "\(randQuestion.question)"
+        randSelectedQuestion = randQuestion
+//        if let randQuestion = questionList.randomElement() {
+//            randomPhraseTextView.text = "\(randQuestion.question)"
+//            randSelectedQuestion = randQuestion
+//        }
 
         mainCollectionView.reloadData()
     }

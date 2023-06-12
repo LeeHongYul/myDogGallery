@@ -17,8 +17,6 @@ class LoginViewController: BaseViewController {
     @IBOutlet var imageContainView: UIView!
     @IBOutlet var loginStackView: UIStackView!
 
-
-
     // 앱이 시작될 때, 로그인 아이디가 키 체인에 이미 저장되어 있는 경우 해당 아이디를 사용하여 자동으로 로그인하도록 구현
     @IBAction func startButton(_ sender: Any) {
         let keychain = KeychainSwift()

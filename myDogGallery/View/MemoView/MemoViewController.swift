@@ -16,12 +16,10 @@ class MemoViewController: BaseViewController {
     
     // Memo 내용을 수정하가 위한 세그웨이 코드
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "EditSegue" {
-            if let cell = sender as? UITableViewCell, let indexPath = memoTableView.indexPath(for: cell) {
+        if segue.identifier == "EditSegue", let cell = sender as? UITableViewCell, let indexPath = memoTableView.indexPath(for: cell) {
                 let target = MemoManager.shared.memoList[indexPath.row]
                 if let viewController = segue.destination.children.first as? NewMemoViewController {
                     viewController.editTarget = target
-                }
             }
         }
     }
@@ -56,12 +54,9 @@ class MemoViewController: BaseViewController {
 
 extension MemoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isSearchMode == false {
-            return MemoManager.shared.memoList.count
-        } else {
-            return MemoManager.shared.searchBarlist.count
-        }
+        isSearchMode ? MemoManager.shared.searchBarlist.count : MemoManager.shared.memoList.count
     }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemoViewController") as! MemoTableViewCell
         if isSearchMode == false {

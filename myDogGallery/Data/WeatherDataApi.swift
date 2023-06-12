@@ -8,6 +8,7 @@
 import Foundation
 import Moya
 
+
 enum WeatherDataApi {
     case weatherDataList(lat: Double, lon: Double, units: String)
 }

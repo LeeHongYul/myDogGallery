@@ -28,17 +28,18 @@ class WalkProfileViewController: BaseViewController {
     
     // 선택한 프로필의 이미지를 MapViewController의 Annotation으로 보내기 위한 코드
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if didSelectedProfileCell == false {
-            addAlert(title: "프로필을 선택해주세요.", messageStr: "프로필을 선택하지 않았습니다.", actionTitleStr: "확인")
-            return
-        } else {
+
+        if didSelectedProfileCell {
             if segue.identifier == "profilePickerSegue" {
-                
+
                 if let destinationViewController = segue.destination as? MapViewController {
-                    
+
                     destinationViewController.pickedFinalImage = pickedFinalImage
                 }
             }
+        } else {
+            addAlert(title: "프로필을 선택해주세요.", messageStr: "프로필을 선택하지 않았습니다.", actionTitleStr: "확인")
+            return
         }
     }
 

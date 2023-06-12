@@ -40,7 +40,6 @@ class MapViewController: BaseViewController {
             if let destinationViewController = segue.destination as? WalkHistoryViewController {
                 
                 destinationViewController.pickedFinalImage = pickedFinalImage
-                
             }
         }
     }
@@ -120,7 +119,7 @@ class MapViewController: BaseViewController {
             
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCounter), userInfo: nil, repeats: true)
             
-        } else if getLocationBtnState == false {
+        } else {
             getLocationBtn.setImage(UIImage(systemName: "play.fill"), for: .normal)
             getLocationBtnState = true
             stopRequestMyLocation()
@@ -277,6 +276,7 @@ extension MapViewController: CLLocationManagerDelegate {
         let result = totalMeter / 1000
         kmeterLabel.text = String(format: "%.2f Km", result)
     }
+    
     func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager) {
     }
 }

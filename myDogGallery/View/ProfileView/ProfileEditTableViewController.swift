@@ -78,6 +78,7 @@ class ProfileEditTableViewController: UITableViewController {
         if let target = profileList {
             nameField.text = target.name
             ageLabel.text = "\(target.age)"
+
             if target.gender == 0 {
                 genderSegmentedControl.selectedSegmentIndex = 0
             } else {
@@ -85,6 +86,7 @@ class ProfileEditTableViewController: UITableViewController {
             }
             birthDayDatePicker.date = target.birthDay ?? Date()
             detailField.text = target.detail
+
             if let targetImage =  target.image {
                 profileImage.image = UIImage(data: targetImage )
             }
