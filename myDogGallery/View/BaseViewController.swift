@@ -22,9 +22,7 @@ class BaseViewController : UIViewController {
     func showAlert(titile : String,
                    message : String ,
                    confrimTitle: String = "확인" ,
-                   cancelTitle : String = "취소",
-                   callback: ()->() ,
-                   cancelCallback : ()->()) {
+                   cancelTitle : String = "취소") {
         let alert = UIAlertController(title: titile, message: message, preferredStyle: .alert)
 
         let alertAction = UIAlertAction(title: confrimTitle, style: .default)
@@ -36,3 +34,5 @@ class BaseViewController : UIViewController {
         self.present(alert, animated: true )
     }
 }
+//callback: ()->() ,
+//cancelCallback : ()->()

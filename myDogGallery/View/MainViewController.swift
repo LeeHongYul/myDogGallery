@@ -44,22 +44,7 @@ performSegue(withIdentifier: "lastWalkSegue", sender: self)
         mainCollectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: true)
     }
 
-    var dateFormatter: DateFormatter = {
-        let inputDate = DateFormatter()
-        inputDate.dateFormat = "MMM d, yyyy"
-        inputDate.locale = Locale(identifier: "en_US_POSIX")
-
-        return inputDate
-    }()
-
     // 날씨를 나타내는 뷰에 그림자 넣는 코드
-    func shadowWeather(inputView: UIView) {
-        inputView.layer.shadowColor = UIColor.black.cgColor
-        inputView.layer.shadowOpacity = 0.9
-        inputView.layer.shadowRadius = 10
-        inputView.layer.shadowOffset = CGSize(width: 0, height: 1)
-        inputView.layer.shadowPath = nil
-    }
 
     //  Moya를 사용하여 날씨 API 데이터를 가져오는 예시 코드
     func fetchMoya() {
@@ -149,8 +134,7 @@ performSegue(withIdentifier: "lastWalkSegue", sender: self)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        shadowWeather(inputView: weatherView)
+        weatherView.setShadow(color: .black, opacity: 0.9, radius: 10, offset: CGSize(width: 0, height: 1))
         gradientStyle()
         fetchMoya()
 
@@ -176,7 +160,7 @@ performSegue(withIdentifier: "lastWalkSegue", sender: self)
 
         MemoManager.shared.fetchMemo()
         if let inputeDate = MemoManager.shared.memoList.first?.inputDate {
-            lastWalkDateLabel.text =  dateFormatter.string(from: inputeDate)
+            lastWalkDateLabel.text = inputeDate.dateToString(format: "MMM d, yyyy")
         }
 
         if let randQuestion = questionList.randomElement() {
@@ -194,22 +178,6 @@ performSegue(withIdentifier: "lastWalkSegue", sender: self)
                 viewController.targetQuestion = randSelectedQuestion
             }
         }
-    }
-}
-
-extension UIView {
-
-    // 그라데이션을 만들기 위한 함수
-    func setGradient(color1: UIColor, color2: UIColor, color3: UIColor) {
-        let gradient: CAGradientLayer = CAGradientLayer()
-        gradient.colors = [color1.cgColor, color2.cgColor, color3.cgColor]
-        gradient.locations = [0.0, 0.8]
-        gradient.startPoint = CGPoint(x: 5.0, y: 0.0)
-        gradient.endPoint = CGPoint(x: 5.0, y: 1.0)
-        gradient.frame = bounds
-        gradient.type = .axial
-
-        layer.addSublayer(gradient)
     }
 }
 

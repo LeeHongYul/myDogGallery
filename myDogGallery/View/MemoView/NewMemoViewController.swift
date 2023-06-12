@@ -22,14 +22,6 @@ class NewMemoViewController: BaseViewController {
     @IBOutlet var walkTimeLabel: UILabel!
     @IBOutlet var pooLabel: UILabel!
 
-    var dateFormatter: DateFormatter = {
-        let inputDate = DateFormatter()
-        inputDate.dateFormat = "MMM d, yyyy"
-        inputDate.locale = Locale(identifier: "en_US_POSIX")
-        
-        return inputDate
-    }()
-    
     @IBAction func walkCountStepper(_ sender: UIStepper) {
         let target = sender.value
         walkCountLabel.text = "\(Int(target))"
@@ -63,12 +55,12 @@ class NewMemoViewController: BaseViewController {
     @IBAction func save(_ sender: Any) {
         let memoTitle = memoTitleTextField.text
         if memoTitle?.count ?? 0 >= 15 {
-            addAlert(title: "제목 글자수가 많습니다. 15자", messageStr: "제목 글자수 수정 필요합니다.", actionTitleStr: "확인")
+            showAlert(titile: "제목 글자수가 많습니다. 15자", message: "제목 글자수 수정 필요합니다.")
             return
         }
         let memoContext = memoContextTextView.text
         if memoContext?.count == 0 {
-            addAlert(title: "오늘의 기록을 입력해주세요.", messageStr: "오늘의 기록 작성 필요합니다.", actionTitleStr: "확인")
+            showAlert(titile: "오늘의 기록을 입력해주세요.", message: "오늘의 기록 작성 필요합니다.")
             return
         }
         let timeStamp = Date()

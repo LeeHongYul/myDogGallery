@@ -27,6 +27,9 @@
 		5D75A3C429F3BAAC001C25B3 /* PhotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D75A3C329F3BAAC001C25B3 /* PhotoCollectionViewController.swift */; };
 		5D75A3C829F3BC5C001C25B3 /* MyPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D75A3C729F3BC5C001C25B3 /* MyPhotoCollectionViewCell.swift */; };
 		5D75A3CA29F3C27C001C25B3 /* DetailPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D75A3C929F3C27C001C25B3 /* DetailPhotoViewController.swift */; };
+		5DAE59912A36CF240045464C /* StartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE59902A36CF240045464C /* StartButton.swift */; };
+		5DAE59932A36D0500045464C /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE59922A36D0500045464C /* Extension+UIView.swift */; };
+		5DAE59952A36DA780045464C /* Extension+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE59942A36DA780045464C /* Extension+Date.swift */; };
 		5DB2CE1E2A17069900A8D479 /* ProfilePickCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB2CE1D2A17069900A8D479 /* ProfilePickCollectionViewCell.swift */; };
 		5DC7F7D929EF836C005F9E22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC7F7D829EF836C005F9E22 /* AppDelegate.swift */; };
 		5DC7F7DB29EF836C005F9E22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC7F7DA29EF836C005F9E22 /* SceneDelegate.swift */; };
@@ -74,6 +77,9 @@
 		5D75A3C729F3BC5C001C25B3 /* MyPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		5D75A3C929F3C27C001C25B3 /* DetailPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPhotoViewController.swift; sourceTree = "<group>"; };
 		5DA8FC952A1D1448007D6A20 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		5DAE59902A36CF240045464C /* StartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartButton.swift; sourceTree = "<group>"; };
+		5DAE59922A36D0500045464C /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
+		5DAE59942A36DA780045464C /* Extension+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Date.swift"; sourceTree = "<group>"; };
 		5DB2CE1D2A17069900A8D479 /* ProfilePickCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePickCollectionViewCell.swift; sourceTree = "<group>"; };
 		5DC7F7D529EF836C005F9E22 /* myDogGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myDogGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DC7F7D829EF836C005F9E22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +155,9 @@
 			isa = PBXGroup;
 			children = (
 				5D56118B29EFBBBF00A6EA56 /* RoundedView.swift */,
+				5DAE59902A36CF240045464C /* StartButton.swift */,
+				5DAE59922A36D0500045464C /* Extension+UIView.swift */,
+				5DAE59942A36DA780045464C /* Extension+Date.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -421,11 +430,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D56118329EFB00100A6EA56 /* ProfileTableViewController.swift in Sources */,
+				5DAE59952A36DA780045464C /* Extension+Date.swift in Sources */,
+				5DAE59932A36D0500045464C /* Extension+UIView.swift in Sources */,
 				5DC7F7F429EF9816005F9E22 /* DataMangers.swift in Sources */,
 				5D12B0962A08A8E7007CA12B /* WalkHistoryViewController.swift in Sources */,
 				5DC7F7DD29EF836C005F9E22 /* MainViewController.swift in Sources */,
 				5DD4372329FFFF8300181A72 /* MapViewController.swift in Sources */,
 				5DD00E192A361B85008BB048 /* BaseViewController.swift in Sources */,
+				5DAE59912A36CF240045464C /* StartButton.swift in Sources */,
 				5DB2CE1E2A17069900A8D479 /* ProfilePickCollectionViewCell.swift in Sources */,
 				5D75A3C429F3BAAC001C25B3 /* PhotoCollectionViewController.swift in Sources */,
 				5D1F3F5929F22AF2007FBD7E /* WeatherDataApi.swift in Sources */,

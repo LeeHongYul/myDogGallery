@@ -14,14 +14,6 @@ class MemoViewController: BaseViewController {
     
     @IBOutlet var memoTableView: UITableView!
     
-    var dateFormatter: DateFormatter = {
-        let inputDateFormat = DateFormatter()
-        inputDateFormat.dateFormat = "MMM d, yyyy"
-        inputDateFormat.locale = Locale(identifier: "en_US_POSIX")
-        
-        return inputDateFormat
-    }()
-    
     // Memo 내용을 수정하가 위한 세그웨이 코드
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EditSegue" {
@@ -75,7 +67,7 @@ extension MemoViewController: UITableViewDataSource {
         if isSearchMode == false {
             cell.memoTitleLabel?.text = MemoManager.shared.memoList[indexPath.row].title
             if let inputDateType = MemoManager.shared.memoList[indexPath.row].inputDate {
-                cell.memoInputDateLabel.text = dateFormatter.string(from: inputDateType)
+                cell.memoInputDateLabel.text = inputDateType.dateToString(format: "MMM d, yyyy")
             }
         } else {
             let target = MemoManager.shared.searchBarlist[indexPath.row]

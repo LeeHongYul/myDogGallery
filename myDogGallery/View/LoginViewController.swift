@@ -13,17 +13,11 @@ class LoginViewController: BaseViewController {
 
     @IBOutlet var mainLabel: UILabel!
 
-    @IBOutlet var startButton: UIButton!
+    @IBOutlet var startButton: StartButton!
     @IBOutlet var imageContainView: UIView!
     @IBOutlet var loginStackView: UIStackView!
 
-    func shadowView(inputView: UIView) {
-        inputView.layer.shadowColor = UIColor.black.cgColor
-        inputView.layer.shadowOpacity = 0.9
-        inputView.layer.shadowRadius = 10
-        inputView.layer.shadowOffset = CGSize(width: 0, height: 1)
-        inputView.layer.shadowPath = nil
-    }
+
 
     // 앱이 시작될 때, 로그인 아이디가 키 체인에 이미 저장되어 있는 경우 해당 아이디를 사용하여 자동으로 로그인하도록 구현
     @IBAction func startButton(_ sender: Any) {
@@ -36,14 +30,6 @@ class LoginViewController: BaseViewController {
     // LoginViewController가 다시 나타날 때 (로그아웃한 후), startButton을 숨기도록 구현
     override func viewWillAppear(_ animated: Bool) {
         startButton.isHidden = true
-    }
-
-    func startButtonSet() -> UIButton {
-        startButton.layer.borderColor = UIColor.systemGray.cgColor
-        startButton.layer.borderWidth = 0.8
-        startButton.layer.cornerRadius = 10
-
-        return startButton
     }
 
     func checkSignInID() {
@@ -79,21 +65,21 @@ class LoginViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        shadowView(inputView: imageContainView)
-        startButtonSet()
+
+        imageContainView.setShadow(color: .black, opacity: 0.9, radius: 10, offset:  CGSize(width: 0, height: 1))
         checkSignInID()
+
     }
 
     @objc func startAppleIDButton() {
-        let request = ASAuthorizationAppleIDProvider().createRequest()
+        let provider = ASAuthorizationAppleIDProvider()
+        let request = provider.createRequest()
         request.requestedScopes = [.fullName, .email]
-
         let controller = ASAuthorizationController(authorizationRequests: [request])
         controller.delegate = self
         controller.performRequests()
     }
 }
-
 extension LoginViewController: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         // 키 체인을 사용하여 데이터가 저장되어 있는지 확인한 후, 해당 데이터를 사용하여 사용자 이름을 mainLabel에 표시
@@ -105,7 +91,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             let keychain = KeychainSwift()
 
             keychain.set(id, forKey: Keys.id.rawValue)
-            
+
             if let email {
                 keychain.set(email, forKey: Keys.email.rawValue)
             }
@@ -125,6 +111,8 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         print(error)
     }
 }
+
+
 
 enum Keys: String {
     case id = "com.leehongryul.myDogGallery.id"

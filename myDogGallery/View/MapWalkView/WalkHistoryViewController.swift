@@ -31,13 +31,6 @@ class WalkHistoryViewController: BaseViewController {
         super.viewDidLoad()
         WalkManger.shared.fetchWalk()
     }
-    var dateFormatter: DateFormatter = {
-        let inputDate = DateFormatter()
-        inputDate.dateFormat = "yyyy.MM.dd"
-        inputDate.locale = Locale(identifier: "en_US_POSIX")
-        return inputDate
-    }()
-    
 }
 
 extension WalkHistoryViewController: UITableViewDataSource {
@@ -49,7 +42,7 @@ extension WalkHistoryViewController: UITableViewDataSource {
 
         let target = WalkManger.shared.walkList[indexPath.row]
 
-        cell.currentDateLabel?.text = dateFormatter.string(from: target.currentDate!)
+        cell.currentDateLabel?.text = target.currentDate!.dateToString(format: "yyyy.MM.dd")
         let result = target.totalDistance / 1000
         
         cell.walkProfileImageView.image = UIImage(data: target.profile ?? Data())

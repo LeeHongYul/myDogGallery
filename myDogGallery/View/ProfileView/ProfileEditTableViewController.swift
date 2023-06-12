@@ -25,13 +25,7 @@ class ProfileEditTableViewController: UITableViewController {
     @IBAction func selectProfileImageBtn(_ sender: Any) {
         presentPickerView()
     }
-    
-    var yearFormatter: DateFormatter = {
-        let yearFormatter = DateFormatter()
-        yearFormatter.dateFormat = "yyyy"
-        return yearFormatter
-    }()
-    
+
     func addAlert(title: String, messageStr: String, actionTitleStr: String) {
         let alert = UIAlertController(title: title, message: messageStr, preferredStyle: .alert)
         let action = UIAlertAction(title: actionTitleStr, style: .cancel, handler: nil)
@@ -55,8 +49,8 @@ class ProfileEditTableViewController: UITableViewController {
             return
         }
 
-        let ageYearStr = yearFormatter.string(from: birthDayDatePicker.date)
-        let currentYearStr = yearFormatter.string(from: Date())
+        let ageYearStr = birthDayDatePicker.date.dateToString(format: "yyyy")
+        let currentYearStr = Date().dateToString(format: "yyyy")
 
         guard let ageInt = Int(ageYearStr), let currentInt = Int(currentYearStr) else { return }
         let age = currentInt - ageInt

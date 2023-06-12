@@ -8,16 +8,10 @@
 import UIKit
 
 class ProfileTableViewController: UITableViewController {
+
     var editProfileList: ProfileEntity?
     @IBOutlet var profileListTableView: UITableView!
 
-    var dateFormatter: DateFormatter = {
-        let birthDayDate = DateFormatter()
-        birthDayDate.dateFormat = "MMM d, yyyy"
-        birthDayDate.locale = Locale(identifier: "en_US_POSIX")
-        return birthDayDate
-    }()
-    
     // 등록한 프로필의 내용을 수정하기 위한 코드
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EditProfileSegue" {
