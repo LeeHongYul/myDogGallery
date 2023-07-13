@@ -162,6 +162,25 @@
 			path = CustomView;
 			sourceTree = "<group>";
 		};
+		5D979E1C2A6038E500C70A52 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				5DC7F7E129EF836C005F9E22 /* myDogGallery.xcdatamodeld */,
+				5DC7F7E929EF836C005F9E22 /* Info.plist */,
+				5DC7F7D829EF836C005F9E22 /* AppDelegate.swift */,
+				5DC7F7DA29EF836C005F9E22 /* SceneDelegate.swift */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		5D979E1D2A60392A00C70A52 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				5DC7F7DE29EF836C005F9E22 /* Main.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
 		5DC7F7CC29EF836C005F9E22 = {
 			isa = PBXGroup;
 			children = (
@@ -183,14 +202,11 @@
 		5DC7F7D729EF836C005F9E22 /* myDogGallery */ = {
 			isa = PBXGroup;
 			children = (
+				5D979E1D2A60392A00C70A52 /* StoryBoard */,
+				5D979E1C2A6038E500C70A52 /* Resource */,
 				5D1BE46729FA11F0003371EF /* myDogGallery.entitlements */,
-				5DC7F7D829EF836C005F9E22 /* AppDelegate.swift */,
-				5DC7F7DA29EF836C005F9E22 /* SceneDelegate.swift */,
-				5DC7F7DE29EF836C005F9E22 /* Main.storyboard */,
 				5DC7F7E429EF836C005F9E22 /* Assets.xcassets */,
 				5DC7F7E629EF836C005F9E22 /* LaunchScreen.storyboard */,
-				5DC7F7E929EF836C005F9E22 /* Info.plist */,
-				5DC7F7E129EF836C005F9E22 /* myDogGallery.xcdatamodeld */,
 				5DC7F7F229EF8A87005F9E22 /* View */,
 				5DC7F7F129EF8A1A005F9E22 /* Data */,
 				5D56118829EFB1EC00A6EA56 /* Cell */,
