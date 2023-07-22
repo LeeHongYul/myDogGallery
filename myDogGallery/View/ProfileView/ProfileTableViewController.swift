@@ -27,7 +27,7 @@ class ProfileTableViewController: UITableViewController {
     // 프로필을 등록하거나 수정할 때 NotificationCenter을 활용
     override func viewDidLoad() {
         super.viewDidLoad()
-        ProfileManager.shared.fetchProfile()
+        checkPin()
         NotificationCenter.default.addObserver(forName: .profileDidInsert, object: nil, queue: .main) { noti in
             ProfileManager.shared.fetchProfile()
             self.profileListTableView.reloadData()
@@ -35,6 +35,16 @@ class ProfileTableViewController: UITableViewController {
         NotificationCenter.default.addObserver(forName: .profileDidUpdate, object: nil, queue: .main) { noti in
             ProfileManager.shared.fetchProfile()
             self.profileListTableView.reloadData()
+        }
+    }
+
+    func checkPin() {
+        let target = ProfileManager.shared.profileList
+
+        if target.contains(where: { $0.pin == true }) {
+            ProfileManager.shared.fetchProfileByPin()
+        } else {
+            ProfileManager.shared.fetchProfile()
         }
     }
 
@@ -82,7 +92,7 @@ class ProfileTableViewController: UITableViewController {
                 ProfileManager.shared.fetchProfileByPin()
             } else {
                 target.pin = false
-                ProfileManager.shared.fetchProfile()
+                self.checkPin()
             }
             self.profileListTableView.reloadData()
             ProfileManager.shared.saveContext()

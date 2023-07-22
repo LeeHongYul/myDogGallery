@@ -63,6 +63,7 @@ class ProfileManager: BaseManger {
     func fetchProfileByPin() {
         let request = ProfileEntity.fetchRequest()
         let sortByPin = NSSortDescriptor(key: "pin", ascending: false)
+
         request.sortDescriptors = [sortByPin]
         do {
             profileList = try mainContext.fetch(request)

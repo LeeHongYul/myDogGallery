@@ -39,6 +39,4 @@ extension Date {
 
         return dateString.string(from: self)
     }
-
-
 }

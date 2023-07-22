@@ -38,7 +38,6 @@ class PhotoViewController: BaseViewController {
                     cell.imageView.image = image
                 }
             }
-
             return cell
         }
     }()
@@ -55,12 +54,11 @@ class PhotoViewController: BaseViewController {
             }
 
         var snapshot = NSDiffableDataSourceSnapshot<Int, PHAsset>()
-        snapshot.appendSections([0]) // numberofsectiond이랑 비슷
+        snapshot.appendSections([0]) // numberofsection이랑 비슷
 
         snapshot.appendItems(assets)
 
         dataSource.apply(snapshot)
-
     }
 
     func createLayout() -> UICollectionViewLayout {
@@ -76,7 +74,6 @@ class PhotoViewController: BaseViewController {
         let layout = UICollectionViewCompositionalLayout(section: section)
 
         return layout
-
     }
 
     override func viewDidLoad() {
@@ -89,20 +86,18 @@ class PhotoViewController: BaseViewController {
     deinit {
         PHPhotoLibrary.shared().unregisterChangeObserver(self)
     }
-
 }
 
 extension PhotoViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
         guard let asset = dataSource.itemIdentifier(for: indexPath) else { return }
         switch asset.playbackStyle {
         case .image, .livePhoto:
             performSegue(withIdentifier: "PhotoSegue", sender: asset)
         case .unsupported:
-            performSegue(withIdentifier: "livePhotosSegue", sender: asset)
+            performSegue(withIdentifier: "LivePhotosSegue", sender: asset)
         case .video:
-            performSegue(withIdentifier: "videoSegue", sender: nil)
+            performSegue(withIdentifier: "VideoSegue", sender: nil)
         default:
             break
         }

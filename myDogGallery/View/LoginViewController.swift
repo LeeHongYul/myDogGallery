@@ -66,7 +66,6 @@ class LoginViewController: BaseViewController {
 
         imageContainView.setShadow(color: .black, opacity: 0.9, radius: 10, offset:  CGSize(width: 0, height: 1))
         checkSignInID()
-
     }
 
     @objc func startAppleIDButton() {
@@ -78,6 +77,7 @@ class LoginViewController: BaseViewController {
         controller.performRequests()
     }
 }
+
 extension LoginViewController: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         // 키 체인을 사용하여 데이터가 저장되어 있는지 확인한 후, 해당 데이터를 사용하여 사용자 이름을 mainLabel에 표시
@@ -109,8 +109,6 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         print(error)
     }
 }
-
-
 
 enum Keys: String {
     case id = "com.leehongryul.myDogGallery.id"
