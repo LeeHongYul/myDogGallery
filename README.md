@@ -69,11 +69,24 @@ ScrollView를 사용하면 화면을 스크롤하여 키보드가 가리는 부�
 </div>
 </details>
 <details>
-<summary></summary>
+<summary>중복되는 코드 해결</summary>
 <div markdown="1">
+중복되는 코드 navigationBar.tintColor = .orange를 줄이기 위해 고민한 결과, 새로운 BaseViewController를 생성하여 필요한 ViewController에서 상속받도록 구현하였습니다.<br>
+또한 extension을 활용하여 타입에 대해 확장 메소드를 만들면서 중복 코드를 줄이고 유지 보수가 편리해지도록 구현하였습니다.<br>
+  
+```swift
+extension Date {
+  func dateToString() -> String {
+    let dateString = DateFormatter()
+    dateString.dateFormat = "MMM d, yyyy"
+    dateString.locale = Locale(identifier: "en_US_POSIX")
+
+    return dateString.string(from: self)
+  }
+}
+```
 </div>
 </details>
-
 
 ### 성장 과정
 - Swift 와 다양한 iOS 프레임워크를 활용하여 첫 번째 개인 프로젝트로 원하는 앱을 개발하는 경험을 쌓았습니다.
