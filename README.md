@@ -22,10 +22,64 @@
 
 <br/>
 
-
-
 ### UI
 <img width="250" height="360" src="https://github.com/LeeHongYul/WorkoutCycle/assets/117960228/491c9b99-314b-419d-b241-d0b367cb42f7"> <img width="250" height="360" src="https://github.com/LeeHongYul/WorkoutCycle/assets/117960228/84354a58-3a88-4ab8-9b31-2e35a3d78e29"> <img width="250" height="360" src="https://github.com/LeeHongYul/WorkoutCycle/assets/117960228/1a870444-80fc-4132-9312-f84f3fdddc35"> <img width="250" height="360" src="https://github.com/LeeHongYul/WorkoutCycle/assets/117960228/139bf6c7-3ff0-4aef-a980-60620f9f2d40"> <img width="250" height="360" src="https://github.com/LeeHongYul/WorkoutCycle/assets/117960228/2ccf384f-679d-4917-8aad-a3e1f5008e44"> <img width="250" height="360" src="https://github.com/LeeHongYul/WorkoutCycle/assets/117960228/320d5fa4-c56b-4a4c-8c79-3e4203b4f8d0"> <img width="250" height="360" src="https://github.com/LeeHongYul/WorkoutCycle/assets/117960228/c6ae3d0f-d5b9-46df-9f35-1d2ddd2107ba">
+
+### 개발 상세
+<details>
+<summary>OpenWeather API, Moya 활용</summary>
+<div markdown="1">
+간단한 코드로 네트워크 요청을 생성할 수 있도록 Moya를 적용했습니다.<br>
+JSON 데이터를 디코딩하기 위한 JSONDecoder 객체를 생성하고. API 응답 데이터(data)를 Forcast 객체로 디코딩했습니다.<br>
+  
+```swift
+let decoder = JSONDecoder()
+
+let list = try decoder.decode(Forcast.self, from: data)JSONDecoder
+```
+</div>
+</details>
+<details>
+<summary>앨범 연동</summary>
+<div markdown="1">
+Photos framework를 사용하여 사진 정보를 가져오도록 하였습니다.<br>
+사진을 가져올 때 사용할 옵션을 위한 PHFetchOptions 객체 options를 생성하며 
+options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]:
+옵션인 sortDescriptors를 설정하여 내림차순으로 정렬되로록 하였습니다.<br>
+  
+```swift
+var assets = [PHAsset]()
+let options = PHFetchOptions()
+options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+```
+</div>
+</details>
+<details>
+<summary>NSPredicate 활용하여 산책 기록 제목 검색</summary>
+<div markdown="1">
+주어진 키워드를 사용하여 산책 기록의 제목(title)에서 검색하는 기능을 구현했습니다.<br>
+검색을 위한 NSPredicate 객체 predicate를 생성했으며 "title CONTAINS[c] keyword"라는 조건을 넣었습니다.<br>
+
+```swift
+func searchByName(_ keyword: String?) {
+guard let keyword = keyword else { return }
+
+let predicate = NSPredicate(format: "title CONTAINS[c] %@", keyword)
+
+fetchSearchedMemo(predicate: predicate)
+}
+```
+</div>
+</details>
+<details>
+<summary>애플 로그인에서 Keychain 사용</summary>
+<div markdown="1">
+애플 로그인 Keychain을 활용하여 이미 로그인한 사용자를 기억하는 기능을 구현하였고, 앱에 다음 접속 시 사용자의 이름을 label에 표시하도록 하였습니다.<br>
+Apple 로그인을 수행한 후에 제공되며, 사용자의 ID, 이름, 이메일 주소 등과 같은 정보를 담고 있는 ASAuthorizationAppleIDCredential를 활용했습니다.<br>
+</div>
+</details>
+
+
 
 ### 고민 과정
 <details>
