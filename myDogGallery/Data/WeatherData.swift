@@ -29,6 +29,7 @@ struct Forcast: Codable {
         let maxTempature: Double
         let minTempature: Double
     }
+
     struct ForcastDetail: Codable {
         let main: String
         let id: Int

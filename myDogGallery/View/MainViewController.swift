@@ -99,12 +99,6 @@ class MainViewController: BaseViewController {
         locationManager.requestWhenInUseAuthorization()
         DispatchQueue.global().async {
             CLLocationManager.locationServicesEnabled() ? self.locationManager.startUpdatingLocation() : print("위치 서비스 허용 off")
-
-//            if CLLocationManager.locationServicesEnabled() {
-//                self.locationManager.startUpdatingLocation()
-//            } else {
-//                print("위치 서비스 허용 off")
-//            }
         }
     }
 

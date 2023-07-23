@@ -72,7 +72,6 @@ class MapViewController: BaseViewController {
             print("location 사용 불가능입니다.")
         case .authorizedWhenInUse, .authorizedAlways:
             print("location 사용 가능입니다.")
-            
         }
         
         guard let localValue: CLLocationCoordinate2D = locationManager.location?.coordinate else { return }
@@ -118,7 +117,6 @@ class MapViewController: BaseViewController {
             addResetBtn.addTarget(self, action: #selector(self.resetWalk), for: .touchUpInside)
             
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCounter), userInfo: nil, repeats: true)
-            
         } else {
             getLocationBtn.setImage(UIImage(systemName: "play.fill"), for: .normal)
             getLocationBtnState = true
@@ -185,7 +183,6 @@ class MapViewController: BaseViewController {
             self.stopRequestMyLocation()
             self.getLocationBtn.setImage(UIImage(systemName: "play.fill"), for: .normal)
             self.getLocationBtnState = true
-            
         }
         let cancel = UIAlertAction(title: "취소", style: .destructive, handler: nil)
         
@@ -231,10 +228,12 @@ extension MapViewController: CLLocationManagerDelegate {
     func requestMyLocation() {
         locationManager.startUpdatingLocation()
     }
+
     func stopRequestMyLocation() {
         locationManager.stopUpdatingLocation()
         locationManager.delegate?.locationManagerDidPauseLocationUpdates!(locationManager)
     }
+
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         switch manager.authorizationStatus {
         case .denied, .restricted:
@@ -245,9 +244,11 @@ extension MapViewController: CLLocationManagerDelegate {
             break
         }
     }
+
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
     }
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else {return}
         let latitude = location.coordinate.latitude
