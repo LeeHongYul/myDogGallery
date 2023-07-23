@@ -16,7 +16,7 @@
 
 <br/>
 
-| <img width="250" height="360" src="https://github.com/LeeHongYul/WorkoutCycle/assets/117960228/2924b2a3-3ec7-413c-9cd7-fa89f59bf43b"> | <img width="250" height="360" src="https://github.com/LeeHongYul/TIL/assets/117960228/b72d6b1a-6b53-43be-89ff-148c1011c68d"> | <img width="250" height="360" src="https://github.com/LeeHongYul/TIL/assets/117960228/cfe066f6-0c7d-456e-a26e-0f5c3ce9d447"> | <img width="250" height="360" src="https://github.com/LeeHongYul/WorkoutCycle/assets/117960228/76f6068b-ea78-4581-946f-6710cf1fbb7c"> | <img width="250" height="360" src="https://github.com/LeeHongYul/TIL/assets/117960228/1664bdb8-5440-426f-9913-162b9903660c"> |
+| <img width="300" height="360" src="https://github.com/LeeHongYul/TIL/assets/117960228/03dfd7d3-751a-410a-8a5d-5c565e6a7864"> | <img width="300" height="360" src="https://github.com/LeeHongYul/TIL/assets/117960228/b72d6b1a-6b53-43be-89ff-148c1011c68d"> | <img width="300" height="360" src="https://github.com/LeeHongYul/TIL/assets/117960228/cfe066f6-0c7d-456e-a26e-0f5c3ce9d447"> | <img width="300" height="360" src="https://github.com/LeeHongYul/WorkoutCycle/assets/117960228/76f6068b-ea78-4581-946f-6710cf1fbb7c"> | <img width="300" height="360" src="https://github.com/LeeHongYul/TIL/assets/117960228/1664bdb8-5440-426f-9913-162b9903660c"> |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
 |  `애플로그인`   |  `프로필 등록`  | `산책 기록`  | `오늘의 꿀팁` | `앨범 연동` |
 
