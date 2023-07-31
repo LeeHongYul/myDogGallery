@@ -51,9 +51,3 @@ extension WalkHistoryViewController: UITableViewDataSource {
         return cell
     }
 }
-
-extension WalkHistoryViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let target = WalkManger.shared.walkList[indexPath.row]
-    }
-}

@@ -64,7 +64,7 @@ class LoginViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        imageContainView.setShadow(color: .black, opacity: 0.9, radius: 10, offset:  CGSize(width: 0, height: 1))
+        imageContainView.setShadow(color: .black, opacity: 0.9, radius: 10, offset: CGSize(width: 0, height: 1))
         checkSignInID()
     }
 

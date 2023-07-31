@@ -97,8 +97,7 @@ class ProfileManager: BaseManger {
                        gender: Int,
                        birthDay: Date,
                        detail: String?,
-                       image: Data)
-    {
+                       image: Data) {
         update.name = name
         update.age = Int16(age)
         update.gender = Int16(gender)
@@ -147,8 +146,7 @@ class WalkManger: BaseManger {
                     startLon: Double,
                     startLat: Double,
                     endLon: Double,
-                    endLat: Double)
-    {
+                    endLat: Double) {
         let newWalk = WalkEntity(context: mainContext)
         newWalk.currentDate = cuurentDate
         newWalk.totalDistance = totalDistance
@@ -164,7 +162,7 @@ class WalkManger: BaseManger {
     }
 }
 
-class MemoManager : BaseManger {
+class MemoManager: BaseManger {
 
     static let shared = MemoManager()
 
@@ -211,8 +209,7 @@ class MemoManager : BaseManger {
                     walkCount: Int?,
                     walkTime: Int?,
                     pooCount: Int?,
-                    inputDate: Date?)
-    {
+                    inputDate: Date?) {
         let newMemo = MemoEntity(context: mainContext)
         newMemo.title = memoTitle
         newMemo.context = memoContext
@@ -239,8 +236,7 @@ class MemoManager : BaseManger {
                     walkCount: Int?,
                     walkTime: Int?,
                     pooCount: Int?,
-                    inputDate: Date?)
-    {
+                    inputDate: Date?) {
         memo.title = memoTitle
         memo.context = memoContext
         if let walkCount {

@@ -5,6 +5,8 @@ disabled_rules:
     - unused_closure_parameter
     - large_tuple
     - trailing_whitespace
+    - function_parameter_count
+    - redundant_void_return
 
 line_length:
     warning: 500

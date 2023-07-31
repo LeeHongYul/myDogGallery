@@ -19,11 +19,11 @@ struct Forcast: Codable {
     
     struct ForcastTemp: Codable {
 
-        enum CodingKeys: String, CodingKey {
-            case mainTempature = "temp"
-            case maxTempature = "temp_max"
-            case minTempature = "temp_min"
-        }
+    enum CodingKeys: String, CodingKey {
+        case mainTempature = "temp"
+        case maxTempature = "temp_max"
+        case minTempature = "temp_min"
+    }
 
         let mainTempature: Double
         let maxTempature: Double

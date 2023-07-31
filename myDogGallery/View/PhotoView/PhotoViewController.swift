@@ -10,7 +10,7 @@ import Photos
 
 class PhotoViewController: BaseViewController {
 
-    let imageManager = PHImageManager() //이미지나 영상 읽어올때
+    let imageManager = PHImageManager()
 
     @IBOutlet var photoCollectionView: UICollectionView!
 

@@ -8,21 +8,21 @@
 import Foundation
 import UIKit
 
-class BaseViewController : UIViewController {
+class BaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.tintColor = .orange
     }
 
-    func showErrorAlert(){
+    func showErrorAlert() {
 
     }
 
-    func showAlert(titile : String,
-                   message : String ,
-                   confrimTitle: String = "확인" ,
-                   cancelTitle : String = "취소") {
+    func showAlert(titile: String,
+                   message: String,
+                   confrimTitle: String = "확인",
+                   cancelTitle: String = "취소") {
         let alert = UIAlertController(title: titile, message: message, preferredStyle: .alert)
 
         let alertAction = UIAlertAction(title: confrimTitle, style: .default)

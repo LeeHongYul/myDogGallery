@@ -41,7 +41,6 @@ class DetailPhotoViewController: BaseViewController {
         })
     }
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         load()
@@ -55,7 +54,6 @@ class DetailPhotoViewController: BaseViewController {
     deinit {
         PHPhotoLibrary.shared().unregisterChangeObserver(self)
     }
-
 
 //    func getAssetThumbnail(asset: PHAsset) -> UIImage {
 //        let manager = PHImageManager.default()

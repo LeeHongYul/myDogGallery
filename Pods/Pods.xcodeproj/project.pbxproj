@@ -43,8 +43,8 @@
 		7CF559128B06A2651FFC3E3AA38B26FB /* Pods-myDogGallery-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-myDogGallery-frameworks.sh"; sourceTree = "<group>"; };
 		8BFD1109CD6F971D40A99388F3CBB858 /* Pods-myDogGallery-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-myDogGallery-acknowledgements.markdown"; sourceTree = "<group>"; };
 		9D4164016EDF456F0829F4ECB7DC4E61 /* Pods-myDogGallery-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-myDogGallery-dummy.m"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9E0FD012ADC3C7179C684035672383E5 /* KeychainSwift */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = KeychainSwift; path = KeychainSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9E0FD012ADC3C7179C684035672383E5 /* KeychainSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeychainSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A748A98687F62714D3DC4DE2FFEC49EA /* Pods-myDogGallery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-myDogGallery.debug.xcconfig"; sourceTree = "<group>"; };
 		B6DBDC187520AEA2149B702813C781D4 /* KeychainSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = KeychainSwift.release.xcconfig; sourceTree = "<group>"; };
 		BAAE727F18BB4A52CF7EDD038CC9C89D /* Pods-myDogGallery-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-myDogGallery-umbrella.h"; sourceTree = "<group>"; };
@@ -133,7 +133,7 @@
 		B2FF8CB5DB371A403622ED21E3441363 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9E0FD012ADC3C7179C684035672383E5 /* KeychainSwift */,
+				9E0FD012ADC3C7179C684035672383E5 /* KeychainSwift.framework */,
 				768C9C758EB21C9F3A7020EC1D9B9E69 /* Pods-myDogGallery */,
 			);
 			name = Products;
@@ -147,7 +147,6 @@
 				CAA3466BDF1C63EE297562FE8F1823FD /* TegKeychainConstants.swift */,
 				B00DA973CA9C8B3444685714158C4C85 /* Support Files */,
 			);
-			name = KeychainSwift;
 			path = KeychainSwift;
 			sourceTree = "<group>";
 		};
@@ -207,7 +206,7 @@
 			);
 			name = KeychainSwift;
 			productName = KeychainSwift;
-			productReference = 9E0FD012ADC3C7179C684035672383E5 /* KeychainSwift */;
+			productReference = 9E0FD012ADC3C7179C684035672383E5 /* KeychainSwift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		E40E03A6852ED4476BABE4593F97623A /* Pods-myDogGallery */ = {
@@ -486,7 +485,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/KeychainSwift/KeychainSwift-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/KeychainSwift/KeychainSwift-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -559,7 +558,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/KeychainSwift/KeychainSwift-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/KeychainSwift/KeychainSwift-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

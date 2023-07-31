@@ -40,7 +40,6 @@ class PhotoCollectionViewController: UICollectionViewController, PHPhotoLibraryC
     //        fetchAllPhotos()
     //    }
 
-
     //    func fetchAllPhotos() {
     //        let allPhotosOptions = PHFetchOptions()
     //        allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
@@ -54,11 +53,11 @@ class PhotoCollectionViewController: UICollectionViewController, PHPhotoLibraryC
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyPhotoCollectionViewCell", for: indexPath) as! MyPhotoCollectionViewCell
 
             cell.representedAssetIdentifier = asset.localIdentifier
-            cell.imageView.image = nil //이전 이미지 남아았을수도있어서 초기화
+            cell.imageView.image = nil // 이전 이미지 남아았을수도있어서 초기화
 
             self.imageManager.requestImage(for: asset, targetSize: CGSize(width: 200, height: 200), contentMode: .aspectFill, options: nil) { image, _ in
                 if cell.representedAssetIdentifier == asset.localIdentifier {
-                    //없으면 예전셀에 들어갈수도있음, 잘못된 이미지 안들어감, 급작스럽게 교체 안됨
+                    // 없으면 예전셀에 들어갈수도있음, 잘못된 이미지 안들어감, 급작스럽게 교체 안됨
                     cell.imageView.image = image
                 }
             }
@@ -70,7 +69,7 @@ class PhotoCollectionViewController: UICollectionViewController, PHPhotoLibraryC
     func fetch() {
         var assets = [PHAsset]()
 
-        var options = PHFetchOptions()
+        let options = PHFetchOptions()
         options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
 
         let result = PHAsset.fetchAssets(with: options)
@@ -78,7 +77,7 @@ class PhotoCollectionViewController: UICollectionViewController, PHPhotoLibraryC
             assets.append(asset)
 
             var snapshot = NSDiffableDataSourceSnapshot<Int, PHAsset>()
-            snapshot.appendSections([0]) //numberofsectiond이랑 비슷
+            snapshot.appendSections([0]) // numberofsectiond이랑 비슷
 
             snapshot.appendItems(assets)
 
@@ -175,4 +174,3 @@ class PhotoCollectionViewController: UICollectionViewController, PHPhotoLibraryC
 //            return cell
 //        }
     }
-

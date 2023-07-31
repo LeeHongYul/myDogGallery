@@ -65,7 +65,7 @@ class MainViewController: BaseViewController {
                         self.weatherDetailLabel.text = list.weather[0].main
                         self.weatherTempLabel.text = tempStr+"°"
 
-                        //API에서 받은 현재 날씨 조건에 따라 해당 조건에 맞는 원하는 이미지를 설정하는 코드를 작성
+                        // API에서 받은 현재 날씨 조건에 따라 해당 조건에 맞는 원하는 이미지를 설정하는 코드를 작성
                         switch list.weather[0].icon {
                         case "01n", "01d":
                             self.mainWeatherImageView.image = UIImage(named: "sun")
