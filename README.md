@@ -6,8 +6,6 @@
 2. 산책에 있었던 일 기록할 수 있고 산책 경로, 시간 등을 저장할 수 있습니다.
 3. 산책하기전에 오늘의 날씨를 알 수 있습니다.
 
-### AppStore 
-[WorkoutCycle](https://apps.apple.com/kr/app/workoutcycle/id6457203197)
 ### 개발 기간
 - 2023년 02월 ~ 2023 06월
 ### 기술 스택
@@ -159,4 +157,4 @@ extension Date {
 - Swift 와 다양한 iOS 프레임워크를 활용하여 첫 번째 개인 프로젝트로 원하는 앱을 개발하는 경험을 쌓았습니다.
 
 ### 상세 내용
-[WorkoutCycle 포트폴리오](https://bright-melody-10d.notion.site/WorkoutCycle-e5a22f5c21f04682bb7c0dfee4af06c6?pvs=4)
+[myDogGallery 포트폴리오](https://bright-melody-10d.notion.site/myDogGallery-5b33a32b5cab43de914cd5446b21440e?pvs=4)
